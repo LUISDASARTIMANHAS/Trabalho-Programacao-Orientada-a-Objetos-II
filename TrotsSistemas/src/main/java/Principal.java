@@ -34,23 +34,23 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         Background = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menucadastro = new javax.swing.JMenu();
+        menu = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem22 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        menuconsulta = new javax.swing.JMenu();
+        menuConsulta = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        menuRelatorios = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuUtilitarios = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
@@ -83,8 +83,8 @@ public class Principal extends javax.swing.JFrame {
         Background.setAutoscrolls(true);
         getContentPane().add(Background, java.awt.BorderLayout.CENTER);
 
-        menucadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Add.png"))); // NOI18N
-        menucadastro.setText("Cadastros");
+        menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Add.png"))); // NOI18N
+        menuCadastro.setText("Cadastros");
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Person.png"))); // NOI18N
         jMenuItem1.setText("Cliente");
@@ -93,18 +93,18 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        menucadastro.add(jMenuItem1);
+        menuCadastro.add(jMenuItem1);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_(add)_16x16.gif"))); // NOI18N
         jMenuItem2.setText("Produto");
-        menucadastro.add(jMenuItem2);
+        menuCadastro.add(jMenuItem2);
 
         jMenuItem22.setText("Pedido");
-        menucadastro.add(jMenuItem22);
+        menuCadastro.add(jMenuItem22);
 
         jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/table_(add)_16x16.gif"))); // NOI18N
         jMenuItem20.setText("Lista de Preço");
-        menucadastro.add(jMenuItem20);
+        menuCadastro.add(jMenuItem20);
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Turn off.png"))); // NOI18N
         jMenuItem4.setText("Sair");
@@ -113,16 +113,16 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        menucadastro.add(jMenuItem4);
+        menuCadastro.add(jMenuItem4);
 
-        jMenuBar1.add(menucadastro);
+        menu.add(menuCadastro);
 
-        menuconsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        menuconsulta.setText("Consultas");
+        menuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
+        menuConsulta.setText("Consultas");
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Person.png"))); // NOI18N
         jMenuItem6.setText("Cliente");
-        menuconsulta.add(jMenuItem6);
+        menuConsulta.add(jMenuItem6);
 
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_16x16.gif"))); // NOI18N
         jMenuItem7.setText("Produto");
@@ -131,15 +131,15 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        menuconsulta.add(jMenuItem7);
+        menuConsulta.add(jMenuItem7);
 
         jMenuItem10.setText("Pedido");
-        menuconsulta.add(jMenuItem10);
+        menuConsulta.add(jMenuItem10);
 
-        jMenuBar1.add(menuconsulta);
+        menu.add(menuConsulta);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
-        jMenu1.setText("Relatórios");
+        menuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
+        menuRelatorios.setText("Relatórios");
 
         jMenuItem12.setText("Clientes");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
@@ -147,20 +147,20 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem12);
+        menuRelatorios.add(jMenuItem12);
 
         jMenuItem14.setText("Pedidos");
-        jMenu1.add(jMenuItem14);
+        menuRelatorios.add(jMenuItem14);
 
         jMenuItem15.setText("Produtos");
-        jMenu1.add(jMenuItem15);
+        menuRelatorios.add(jMenuItem15);
 
         jMenuItem13.setText("Lista de Preços");
-        jMenu1.add(jMenuItem13);
+        menuRelatorios.add(jMenuItem13);
 
-        jMenuBar1.add(jMenu1);
+        menu.add(menuRelatorios);
 
-        jMenu2.setText("Utilitarios");
+        menuUtilitarios.setText("Utilitarios");
 
         jMenu4.setText("Remover");
 
@@ -174,11 +174,11 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem8.setText("Preços");
         jMenu4.add(jMenuItem8);
 
-        jMenu2.add(jMenu4);
+        menuUtilitarios.add(jMenu4);
 
-        jMenuBar1.add(jMenu2);
+        menu.add(menuUtilitarios);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,11 +236,8 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
@@ -263,7 +260,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenu menucadastro;
-    private javax.swing.JMenu menuconsulta;
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuConsulta;
+    private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JMenu menuUtilitarios;
     // End of variables declaration//GEN-END:variables
 }
