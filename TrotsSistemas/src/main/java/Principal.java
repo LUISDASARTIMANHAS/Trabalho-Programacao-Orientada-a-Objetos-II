@@ -208,14 +208,23 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
         // TODO add your handling code here:
+        DialogCadastroProduto tela = new DialogCadastroProduto(this, true);
+        
+        tela.setVisible(true);
     }//GEN-LAST:event_CadProdutoActionPerformed
 
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
+        DialogCadastroPedido tela = new DialogCadastroPedido(this, true);
+        
+        tela.setVisible(true);
     }//GEN-LAST:event_CadPedidoActionPerformed
 
     private void CadListadePrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadListadePrecoActionPerformed
         // TODO add your handling code here:
+        DialogCadastroListadePreco tela = new DialogCadastroListadePreco(this, true);
+        
+        tela.setVisible(true);
     }//GEN-LAST:event_CadListadePrecoActionPerformed
 
     /**

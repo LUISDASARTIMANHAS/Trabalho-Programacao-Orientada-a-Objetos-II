@@ -7,12 +7,12 @@
  *
  * @author 2023122760328
  */
-public class DialogCadastro extends javax.swing.JDialog {
+public class DialogCadastroPedido extends javax.swing.JDialog {
 
     /**
      * Creates new form Cadastro
      */
-    public DialogCadastro(java.awt.Frame parent, boolean modal) {
+    public DialogCadastroPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -62,6 +62,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         rdbFemin = new javax.swing.JRadioButton();
         rdbMasc = new javax.swing.JRadioButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -70,16 +71,12 @@ public class DialogCadastro extends javax.swing.JDialog {
         setResizable(false);
 
         background.setBackground(new java.awt.Color(204, 204, 204));
-        background.setAlignmentX(50.0F);
-        background.setAlignmentY(50.0F);
         background.setMinimumSize(new java.awt.Dimension(720, 720));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 50);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout1.setAlignOnBaseline(true);
         background.setLayout(flowLayout1);
 
-        jScrollPane1.setAlignmentX(50.0F);
-        jScrollPane1.setAlignmentY(50.0F);
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(720, 600));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(600, 400));
 
         FORM.setBackground(new java.awt.Color(255, 255, 255));
         FORM.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -87,8 +84,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.setAlignmentX(100.0F);
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
-        FORM.setMaximumSize(new java.awt.Dimension(720, 32767));
+        FORM.setMaximumSize(new java.awt.Dimension(1024, 800));
         FORM.setMinimumSize(new java.awt.Dimension(720, 600));
+        FORM.setName(""); // NOI18N
         FORM.setPreferredSize(new java.awt.Dimension(720, 600));
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout2.setAlignOnBaseline(true);
@@ -103,7 +101,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.add(Logo);
 
         PaineldeCad.setBackground(new java.awt.Color(204, 204, 204));
-        PaineldeCad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        PaineldeCad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Pedidos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         PaineldeCad.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad.setAlignmentX(50.0F);
         PaineldeCad.setAlignmentY(50.0F);
@@ -239,7 +237,9 @@ public class DialogCadastro extends javax.swing.JDialog {
                 .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PaineldeCadLayout.createSequentialGroup()
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
@@ -347,20 +347,23 @@ public class DialogCadastro extends javax.swing.JDialog {
                     .addComponent(lblCidade)
                     .addComponent(cmbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTelFixo)
-                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnder5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnder7)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAlterar))
+                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTelFixo)
+                            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEnder5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEnder7)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNovo)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnAlterar)))
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -434,6 +437,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblComplem;
