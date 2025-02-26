@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author 2023122760328
  */
-public class DialogCadastroPedido extends javax.swing.JDialog {
+public class DialogCadastroListaPreco extends javax.swing.JDialog {
 
     /**
      * Creates new form Cadastro
      */
-    public DialogCadastroPedido(java.awt.Frame parent, boolean modal) {
+    public DialogCadastroListaPreco(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -71,7 +71,6 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setMinimumSize(new java.awt.Dimension(720, 720));
-        background.setPreferredSize(new java.awt.Dimension(630, 630));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout1.setAlignOnBaseline(true);
         background.setLayout(flowLayout1);
@@ -87,7 +86,7 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
         FORM.setMaximumSize(new java.awt.Dimension(1024, 800));
         FORM.setMinimumSize(new java.awt.Dimension(720, 620));
         FORM.setName(""); // NOI18N
-        FORM.setPreferredSize(new java.awt.Dimension(620, 620));
+        FORM.setPreferredSize(new java.awt.Dimension(720, 620));
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout2.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout2);
@@ -129,20 +128,29 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
         tblPedido.setForeground(new java.awt.Color(0, 0, 0));
         tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"CH",  new Integer(10),  new Float(500.0), null, null, null, null}
             },
             new String [] {
-                "Lanche", "Qtde", "Bife", "Queijo", "Ovo", "Presunto", "Ingredientes"
+                "Tipo", "Qtde", "Peso", "Queijo", "Ovo", "Presunto", "Ingredientes"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblPedido.setToolTipText("");
+        tblPedido.setDragEnabled(true);
         tblPedido.setRowHeight(15);
         tblPedido.setShowGrid(true);
         jScrollPane3.setViewportView(tblPedido);
@@ -155,7 +163,7 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
 
         lblLanche.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLanche.setForeground(new java.awt.Color(0, 0, 0));
-        lblLanche.setText("Lanche");
+        lblLanche.setText("Tipo De Erva");
 
         cmbLanche.setBackground(new java.awt.Color(255, 255, 255));
         cmbLanche.setForeground(new java.awt.Color(0, 0, 0));

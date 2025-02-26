@@ -38,9 +38,6 @@
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[720, 720]"/>
         </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[630, 630]"/>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -81,7 +78,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[620, 620]"/>
+                  <Dimension value="[720, 620]"/>
                 </Property>
               </Properties>
               <SubComponents>
@@ -310,16 +307,24 @@
                                   <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="7" rowCount="0">
-                                    <Column editable="false" title="Lanche" type="java.lang.Object"/>
-                                    <Column editable="false" title="Qtde" type="java.lang.Object"/>
-                                    <Column editable="false" title="Bife" type="java.lang.Object"/>
+                                  <Table columnCount="7" rowCount="1">
+                                    <Column editable="false" title="Tipo" type="java.lang.Object">
+                                      <Data value="CH"/>
+                                    </Column>
+                                    <Column editable="false" title="Qtde" type="java.lang.Integer">
+                                      <Data value="10"/>
+                                    </Column>
+                                    <Column editable="false" title="Peso" type="java.lang.Float">
+                                      <Data value="500.0"/>
+                                    </Column>
                                     <Column editable="false" title="Queijo" type="java.lang.Object"/>
                                     <Column editable="false" title="Ovo" type="java.lang.Object"/>
                                     <Column editable="false" title="Presunto" type="java.lang.Object"/>
                                     <Column editable="true" title="Ingredientes" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
+                                <Property name="toolTipText" type="java.lang.String" value=""/>
+                                <Property name="dragEnabled" type="boolean" value="true"/>
                                 <Property name="rowHeight" type="int" value="15"/>
                                 <Property name="showGrid" type="boolean" value="true"/>
                               </Properties>
@@ -347,7 +352,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Lanche"/>
+                        <Property name="text" type="java.lang.String" value="Tipo De Erva"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cmbLanche">

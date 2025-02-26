@@ -64,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         menuCadastro.setMnemonic('c');
         menuCadastro.setText("Cadastros");
 
+        CadCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         CadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Person.png"))); // NOI18N
         CadCliente.setText("Cliente");
         CadCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +74,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menuCadastro.add(CadCliente);
 
+        CadProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         CadProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_(add)_16x16.gif"))); // NOI18N
         CadProduto.setText("Produto");
         CadProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +84,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menuCadastro.add(CadProduto);
 
+        CadPedido.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         CadPedido.setText("Pedido");
         CadPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +93,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menuCadastro.add(CadPedido);
 
+        CadListadePreco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         CadListadePreco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/table_(add)_16x16.gif"))); // NOI18N
         CadListadePreco.setText("Lista de Preço");
         CadListadePreco.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +226,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadListadePrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadListadePrecoActionPerformed
         // TODO add your handling code here:
-        DialogCadastroListadePreco tela = new DialogCadastroListadePreco(this, true);
+        DialogCadastroListaPreco tela = new DialogCadastroListaPreco(this, true);
         
         tela.setVisible(true);
     }//GEN-LAST:event_CadListadePrecoActionPerformed
@@ -239,7 +243,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 System.out.println(info.getName());
-                if ("Metal".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
