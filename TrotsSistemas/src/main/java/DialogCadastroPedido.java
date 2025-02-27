@@ -1,4 +1,4 @@
-
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -30,6 +30,10 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        inserir = new javax.swing.JMenuItem();
+        excluir = new javax.swing.JMenuItem();
+        PopupAlert = new javax.swing.JPopupMenu();
         background = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         FORM = new javax.swing.JPanel();
@@ -63,6 +67,21 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
         btnAddLanche = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
+
+        inserir.setText("inserir");
+        inserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirActionPerformed(evt);
+            }
+        });
+        Popup.add(inserir);
+
+        excluir.setText("excluir");
+        Popup.add(excluir);
+
+        PopupAlert.setBackground(new java.awt.Color(255, 255, 255));
+        PopupAlert.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        PopupAlert.setForeground(new java.awt.Color(0, 0, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -143,6 +162,7 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblPedido.setComponentPopupMenu(Popup);
         tblPedido.setRowHeight(15);
         tblPedido.setShowGrid(true);
         jScrollPane3.setViewportView(tblPedido);
@@ -371,6 +391,11 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
         inserirTabela("teste","gpa","s");
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
+    private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showInternalConfirmDialog(this, evt);
+    }//GEN-LAST:event_inserirActionPerformed
+
     
     private void inserirTabela(String nome, String lista, String entrega){
         ((DefaultTableModel) tblPedido.getModel()).addRow(new Object[9]);
@@ -428,6 +453,8 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
     private javax.swing.JPanel FORM;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
+    private javax.swing.JPopupMenu Popup;
+    private javax.swing.JPopupMenu PopupAlert;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAddLanche;
     private javax.swing.JButton btnCancelar1;
@@ -438,6 +465,8 @@ public class DialogCadastroPedido extends javax.swing.JDialog {
     private javax.swing.JCheckBox chkPresunto;
     private javax.swing.JCheckBox chkQueijo;
     private javax.swing.JComboBox cmbLanche;
+    private javax.swing.JMenuItem excluir;
+    private javax.swing.JMenuItem inserir;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

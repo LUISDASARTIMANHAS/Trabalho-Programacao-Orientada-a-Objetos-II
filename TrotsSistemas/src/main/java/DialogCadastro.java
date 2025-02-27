@@ -1,6 +1,11 @@
 
+import java.io.File;
+import java.io.FileFilter;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JSpinner;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -70,6 +75,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         setResizable(false);
 
         background.setBackground(new java.awt.Color(204, 204, 204));
+        background.setForeground(new java.awt.Color(0, 0, 0));
         background.setAlignmentX(50.0F);
         background.setAlignmentY(50.0F);
         background.setMinimumSize(new java.awt.Dimension(620, 620));
@@ -89,8 +95,8 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
         FORM.setMaximumSize(new java.awt.Dimension(720, 32767));
-        FORM.setMinimumSize(new java.awt.Dimension(720, 600));
-        FORM.setPreferredSize(new java.awt.Dimension(720, 600));
+        FORM.setMinimumSize(new java.awt.Dimension(520, 550));
+        FORM.setPreferredSize(new java.awt.Dimension(520, 550));
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout2.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout2);
@@ -155,6 +161,16 @@ public class DialogCadastro extends javax.swing.JDialog {
         Foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
         Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Foto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FotoMouseClicked(evt);
+            }
+        });
+        Foto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FotoKeyPressed(evt);
+            }
+        });
 
         painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
         painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
@@ -402,13 +418,42 @@ public class DialogCadastro extends javax.swing.JDialog {
     private void txtEnderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderActionPerformed
-    
+
+    private void FotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoMouseClicked
+        // TODO add your handling code here:
+        MostrarFoto();
+    }//GEN-LAST:event_FotoMouseClicked
+
+    private void FotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FotoKeyPressed
+        // TODO add your handling code here:
+        MostrarFoto();
+
+    }//GEN-LAST:event_FotoKeyPressed
+
     private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
         if (chk.isSelected()) {
             spn.setEnabled(true);
         } else {
             spn.setEnabled(false);
             spn.setValue(0);
+        }
+    }
+
+    private void MostrarFoto() {
+        JFileChooser fileWindow = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg");
+
+        //        config da janela
+        fileWindow.setCurrentDirectory("");
+        fileWindow.setMultiSelectionEnabled(false);
+        fileWindow.setAcceptAllFileFilterUsed(false);
+        fileWindow.setFileFilter(filtro);
+
+        if (fileWindow.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File arq = fileWindow.getSelectedFile();
+            ImageIcon foto = new ImageIcon(arq.getPath());
+
+            Foto.setIcon(foto);
         }
     }
 
