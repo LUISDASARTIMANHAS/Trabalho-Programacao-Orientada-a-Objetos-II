@@ -179,7 +179,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadClienteActionPerformed
         // TODO add your handling code here:
-        DialogCadastro tela = new DialogCadastro(this, true);
+        DialogCadastro tela = new DialogCadastro(this,true);
         
         tela.setVisible(true);
     }//GEN-LAST:event_CadClienteActionPerformed
@@ -198,7 +198,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
         // TODO add your handling code here:
-        DialogCadastroProduto tela = new DialogCadastroProduto(this, true);
+        DialogCadastroProduto tela = new DialogCadastroProduto(this, false);
         
         tela.setVisible(true);
     }//GEN-LAST:event_CadProdutoActionPerformed

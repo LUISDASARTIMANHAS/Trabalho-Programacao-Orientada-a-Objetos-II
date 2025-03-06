@@ -68,6 +68,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         lblEnder7 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        btnPesqCli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -342,6 +343,16 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtEmail.setPreferredSize(new java.awt.Dimension(100, 26));
         painelEnderec.add(txtEmail);
 
+        btnPesqCli.setBackground(new java.awt.Color(255, 255, 255));
+        btnPesqCli.setForeground(new java.awt.Color(0, 0, 0));
+        btnPesqCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/zoom_16x16.gif"))); // NOI18N
+        btnPesqCli.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPesqCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqCliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PaineldeCadLayout = new javax.swing.GroupLayout(PaineldeCad);
         PaineldeCad.setLayout(PaineldeCadLayout);
         PaineldeCadLayout.setHorizontalGroup(
@@ -355,7 +366,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                         .addGap(26, 26, 26)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                    .addGroup(PaineldeCadLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblNome)
                             .addGroup(PaineldeCadLayout.createSequentialGroup()
@@ -365,8 +376,10 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(txtCpf))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -379,6 +392,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnPesqCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,13 +401,13 @@ public class DialogCadastro extends javax.swing.JDialog {
                             .addComponent(lblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         FORM.add(PaineldeCad);
@@ -429,6 +443,10 @@ public class DialogCadastro extends javax.swing.JDialog {
         MostrarFoto();
 
     }//GEN-LAST:event_FotoKeyPressed
+
+    private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
         if (chk.isSelected()) {
@@ -510,6 +528,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesqCli;
     private javax.swing.JComboBox cmbCidade;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JScrollPane jScrollPane1;

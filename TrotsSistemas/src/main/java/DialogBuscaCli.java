@@ -7,13 +7,12 @@
  *
  * @author 2023122760328
  */
-public class DialogCadastroProduto extends javax.swing.JDialog {
+public class DialogBuscaCli extends javax.swing.JFrame {
 
     /**
      * Creates new form Cadastro
      */
-    public DialogCadastroProduto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public DialogBuscaCli() {
         initComponents();
     }
 
@@ -35,8 +34,6 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         btnCancelar1 = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         painelEnderec = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnPesqProd = new javax.swing.JButton();
         lblCEP = new javax.swing.JLabel();
         txtEnder1 = new javax.swing.JTextField();
         lblEnder = new javax.swing.JLabel();
@@ -87,7 +84,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         FORM.add(Logo);
 
         PaineldeCad1.setBackground(new java.awt.Color(204, 204, 204));
-        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produtos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         PaineldeCad1.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad1.setAlignmentX(50.0F);
         PaineldeCad1.setAlignmentY(50.0F);
@@ -99,6 +96,11 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         btnNovo1.setMnemonic('N');
         btnNovo1.setText("Novo");
+        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovo1ActionPerformed(evt);
+            }
+        });
 
         btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,23 +124,6 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         painelEnderec.setAlignmentY(50.0F);
         painelEnderec.setAutoscrolls(true);
         painelEnderec.setLayout(new java.awt.GridLayout(6, 2, 15, 15));
-
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pesquisar Produto Existente");
-        painelEnderec.add(jLabel1);
-
-        btnPesqProd.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesqProd.setForeground(new java.awt.Color(0, 0, 0));
-        btnPesqProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/zoom_16x16.gif"))); // NOI18N
-        btnPesqProd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPesqProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesqProdActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(btnPesqProd);
 
         lblCEP.setBackground(new java.awt.Color(255, 255, 255));
         lblCEP.setForeground(new java.awt.Color(255, 255, 255));
@@ -277,12 +262,9 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
-    private void btnPesqProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdActionPerformed
+    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
-        DialogBuscaProd tela = new DialogBuscaProd(this,true);
-        
-        tela.setVisible(true);
-    }//GEN-LAST:event_btnPesqProdActionPerformed
+    }//GEN-LAST:event_btnNovo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,8 +317,6 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnNovo1;
-    private javax.swing.JButton btnPesqProd;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
