@@ -31,7 +31,6 @@ public class Principal extends javax.swing.JFrame {
         CadCliente = new javax.swing.JMenuItem();
         CadProduto = new javax.swing.JMenuItem();
         CadPedido = new javax.swing.JMenuItem();
-        CadListadePreco = new javax.swing.JMenuItem();
         Sair = new javax.swing.JMenuItem();
         menuConsulta = new javax.swing.JMenu();
         ConsultaCliente = new javax.swing.JMenuItem();
@@ -41,7 +40,6 @@ public class Principal extends javax.swing.JFrame {
         RelatorioCliente = new javax.swing.JMenuItem();
         RelatorioPedidos = new javax.swing.JMenuItem();
         Relatorioprodutos = new javax.swing.JMenuItem();
-        RelatorioListadePrecos = new javax.swing.JMenuItem();
         menuUtilitarios = new javax.swing.JMenu();
         MenuDelete = new javax.swing.JMenu();
         DeletarCliente = new javax.swing.JMenuItem();
@@ -85,23 +83,14 @@ public class Principal extends javax.swing.JFrame {
         menuCadastro.add(CadProduto);
 
         CadPedido.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        CadPedido.setText("Pedido");
+        CadPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
+        CadPedido.setText("Venda");
         CadPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadPedidoActionPerformed(evt);
             }
         });
         menuCadastro.add(CadPedido);
-
-        CadListadePreco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        CadListadePreco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/table_(add)_16x16.gif"))); // NOI18N
-        CadListadePreco.setText("Lista de Preço");
-        CadListadePreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadListadePrecoActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(CadListadePreco);
 
         Sair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         Sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Turn off.png"))); // NOI18N
@@ -157,9 +146,6 @@ public class Principal extends javax.swing.JFrame {
 
         Relatorioprodutos.setText("Produtos");
         menuRelatorios.add(Relatorioprodutos);
-
-        RelatorioListadePrecos.setText("Lista de Preços");
-        menuRelatorios.add(RelatorioListadePrecos);
 
         menu.add(menuRelatorios);
 
@@ -219,17 +205,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
-        DialogCadastroPedido tela = new DialogCadastroPedido(this, true);
+        DialogCadastroVenda tela = new DialogCadastroVenda(this, true);
         
         tela.setVisible(true);
     }//GEN-LAST:event_CadPedidoActionPerformed
-
-    private void CadListadePrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadListadePrecoActionPerformed
-        // TODO add your handling code here:
-        DialogCadastroListaPreco tela = new DialogCadastroListaPreco(this, true);
-        
-        tela.setVisible(true);
-    }//GEN-LAST:event_CadListadePrecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +250,6 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JMenuItem CadCliente;
-    private javax.swing.JMenuItem CadListadePreco;
     private javax.swing.JMenuItem CadPedido;
     private javax.swing.JMenuItem CadProduto;
     private javax.swing.JMenuItem ConsultaCliente;
@@ -283,7 +261,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuDelete;
     private javax.swing.JMenu MenuTema;
     private javax.swing.JMenuItem RelatorioCliente;
-    private javax.swing.JMenuItem RelatorioListadePrecos;
     private javax.swing.JMenuItem RelatorioPedidos;
     private javax.swing.JMenuItem Relatorioprodutos;
     private javax.swing.JMenuItem Sair;

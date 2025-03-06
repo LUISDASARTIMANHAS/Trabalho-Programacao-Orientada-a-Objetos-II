@@ -1,4 +1,4 @@
-
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author 2023122760328
  */
-public class DialogCadastroListaPreco extends javax.swing.JDialog {
+public class DialogCadastroVenda extends javax.swing.JDialog {
 
     /**
      * Creates new form Cadastro
      */
-    public DialogCadastroListaPreco(java.awt.Frame parent, boolean modal) {
+    public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -30,6 +30,10 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        inserir = new javax.swing.JMenuItem();
+        excluir = new javax.swing.JMenuItem();
+        PopupAlert = new javax.swing.JPopupMenu();
         background = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         FORM = new javax.swing.JPanel();
@@ -64,6 +68,21 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
 
+        inserir.setText("inserir");
+        inserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirActionPerformed(evt);
+            }
+        });
+        Popup.add(inserir);
+
+        excluir.setText("excluir");
+        Popup.add(excluir);
+
+        PopupAlert.setBackground(new java.awt.Color(255, 255, 255));
+        PopupAlert.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        PopupAlert.setForeground(new java.awt.Color(0, 0, 0));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1024, 720));
@@ -71,6 +90,7 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setMinimumSize(new java.awt.Dimension(720, 720));
+        background.setPreferredSize(new java.awt.Dimension(630, 630));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout1.setAlignOnBaseline(true);
         background.setLayout(flowLayout1);
@@ -86,7 +106,7 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
         FORM.setMaximumSize(new java.awt.Dimension(1024, 800));
         FORM.setMinimumSize(new java.awt.Dimension(720, 620));
         FORM.setName(""); // NOI18N
-        FORM.setPreferredSize(new java.awt.Dimension(720, 620));
+        FORM.setPreferredSize(new java.awt.Dimension(620, 620));
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout2.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout2);
@@ -128,29 +148,21 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
         tblPedido.setForeground(new java.awt.Color(0, 0, 0));
         tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"CH",  new Integer(10),  new Float(500.0), null, null, null, null}
+
             },
             new String [] {
-                "Tipo", "Qtde", "Peso", "Queijo", "Ovo", "Presunto", "Ingredientes"
+                "Lanche", "Qtde", "Bife", "Queijo", "Ovo", "Presunto", "Ingredientes"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, true
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblPedido.setToolTipText("");
-        tblPedido.setDragEnabled(true);
+        tblPedido.setComponentPopupMenu(Popup);
         tblPedido.setRowHeight(15);
         tblPedido.setShowGrid(true);
         jScrollPane3.setViewportView(tblPedido);
@@ -163,7 +175,7 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
 
         lblLanche.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLanche.setForeground(new java.awt.Color(0, 0, 0));
-        lblLanche.setText("Tipo De Erva");
+        lblLanche.setText("Lanche");
 
         cmbLanche.setBackground(new java.awt.Color(255, 255, 255));
         cmbLanche.setForeground(new java.awt.Color(0, 0, 0));
@@ -379,6 +391,11 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
         inserirTabela("teste","gpa","s");
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
+    private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showInternalConfirmDialog(this, evt);
+    }//GEN-LAST:event_inserirActionPerformed
+
     
     private void inserirTabela(String nome, String lista, String entrega){
         ((DefaultTableModel) tblPedido.getModel()).addRow(new Object[9]);
@@ -436,6 +453,8 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
     private javax.swing.JPanel FORM;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
+    private javax.swing.JPopupMenu Popup;
+    private javax.swing.JPopupMenu PopupAlert;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAddLanche;
     private javax.swing.JButton btnCancelar1;
@@ -446,6 +465,8 @@ public class DialogCadastroListaPreco extends javax.swing.JDialog {
     private javax.swing.JCheckBox chkPresunto;
     private javax.swing.JCheckBox chkQueijo;
     private javax.swing.JComboBox cmbLanche;
+    private javax.swing.JMenuItem excluir;
+    private javax.swing.JMenuItem inserir;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
