@@ -444,7 +444,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg");
 
         //        config da janela
-        fileWindow.setCurrentDirectory("");
+//        fileWindow.setCurrentDirectory("");;
         fileWindow.setMultiSelectionEnabled(false);
         fileWindow.setAcceptAllFileFilterUsed(false);
         fileWindow.setFileFilter(filtro);

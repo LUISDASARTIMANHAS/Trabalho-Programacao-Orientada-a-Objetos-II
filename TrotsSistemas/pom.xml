@@ -15,6 +15,14 @@
                     <compilerArgs>
                         <arg>-Xlint</arg>
                     </compilerArgs>
+                    
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.pingobras.Principal</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
@@ -50,7 +58,7 @@
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
-            <version>2.3.2</version>
+            <version>4.0.3</version>
         </dependency>
     </dependencies>
     <properties>
