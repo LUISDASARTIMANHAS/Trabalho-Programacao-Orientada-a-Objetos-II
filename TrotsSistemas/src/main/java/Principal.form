@@ -15,6 +15,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="CadCliente">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+F2"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/16x16/Person.png"/>
                 </Property>
@@ -26,6 +29,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="CadProduto">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+F2"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/16x16/shopping_cart_(add)_16x16.gif"/>
                 </Property>
@@ -37,21 +43,16 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="CadPedido">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pedido"/>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+F3"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/16x16/Dollar.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Venda"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadPedidoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="CadListadePreco">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/16x16/table_(add)_16x16.gif"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Lista de Pre&#xe7;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadListadePrecoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Sair">
@@ -139,11 +140,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="Relatorioprodutos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Produtos"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="RelatorioListadePrecos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Lista de Pre&#xe7;os"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -1,8 +1,16 @@
+
+import java.io.File;
+import java.io.FileFilter;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
+import javax.swing.JSpinner;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-
 /**
  *
  * @author 2023122760328
@@ -31,38 +39,35 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PaineldeCad = new javax.swing.JPanel();
-        lblNum = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
-        txtNum = new javax.swing.JTextField();
-        txtCelular = new javax.swing.JTextField();
-        lblEnder = new javax.swing.JLabel();
-        lblTelFixo = new javax.swing.JLabel();
-        txtTel = new javax.swing.JTextField();
-        cmbCidade = new javax.swing.JComboBox();
-        lblComplem = new javax.swing.JLabel();
-        txtEnder = new javax.swing.JTextField();
-        lblEnder7 = new javax.swing.JLabel();
-        lblEnder5 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblEnder6 = new javax.swing.JLabel();
-        txtRef = new javax.swing.JTextField();
-        txtBairro = new javax.swing.JTextField();
-        lblCidade = new javax.swing.JLabel();
-        lblEnder1 = new javax.swing.JLabel();
-        txtComplemento = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCpf = new javax.swing.JLabel();
-        lblDtNasc = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
+        btnAlterar = new javax.swing.JButton();
+        Foto = new javax.swing.JLabel();
+        painelEnderec = new javax.swing.JPanel();
         lblCEP = new javax.swing.JLabel();
         txtCEP = new javax.swing.JFormattedTextField();
-        btnAlterar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        rdbFemin = new javax.swing.JRadioButton();
-        rdbMasc = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblEnder = new javax.swing.JLabel();
+        txtEnder = new javax.swing.JTextField();
+        lblNum = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        lblComplem = new javax.swing.JLabel();
+        txtComplemento = new javax.swing.JTextField();
+        lblCidade = new javax.swing.JLabel();
+        cmbCidade = new javax.swing.JComboBox();
+        bairroLabel = new javax.swing.JLabel();
+        txtBairro = new javax.swing.JTextField();
+        lblComplem1 = new javax.swing.JLabel();
+        txtRua = new javax.swing.JTextField();
+        labelRef = new javax.swing.JLabel();
+        txtRef = new javax.swing.JTextField();
+        lblEnder5 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        lblEnder7 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -70,9 +75,11 @@ public class DialogCadastro extends javax.swing.JDialog {
         setResizable(false);
 
         background.setBackground(new java.awt.Color(204, 204, 204));
+        background.setForeground(new java.awt.Color(0, 0, 0));
         background.setAlignmentX(50.0F);
         background.setAlignmentY(50.0F);
-        background.setMinimumSize(new java.awt.Dimension(720, 720));
+        background.setMinimumSize(new java.awt.Dimension(620, 620));
+        background.setPreferredSize(new java.awt.Dimension(620, 620));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 50);
         flowLayout1.setAlignOnBaseline(true);
         background.setLayout(flowLayout1);
@@ -88,8 +95,8 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
         FORM.setMaximumSize(new java.awt.Dimension(720, 32767));
-        FORM.setMinimumSize(new java.awt.Dimension(720, 600));
-        FORM.setPreferredSize(new java.awt.Dimension(720, 600));
+        FORM.setMinimumSize(new java.awt.Dimension(520, 550));
+        FORM.setPreferredSize(new java.awt.Dimension(520, 550));
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout2.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout2);
@@ -107,71 +114,26 @@ public class DialogCadastro extends javax.swing.JDialog {
         PaineldeCad.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad.setAlignmentX(50.0F);
         PaineldeCad.setAlignmentY(50.0F);
-        PaineldeCad.setMaximumSize(new java.awt.Dimension(300, 500));
-        PaineldeCad.setMinimumSize(new java.awt.Dimension(300, 300));
-
-        lblNum.setForeground(new java.awt.Color(0, 0, 0));
-        lblNum.setText("Nº");
+        PaineldeCad.setMaximumSize(new java.awt.Dimension(620, 620));
+        PaineldeCad.setMinimumSize(new java.awt.Dimension(500, 400));
+        PaineldeCad.setPreferredSize(new java.awt.Dimension(500, 400));
 
         lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome");
 
-        txtNum.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtCelular.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblEnder.setForeground(new java.awt.Color(0, 0, 0));
-        lblEnder.setText("Endereço");
-
-        lblTelFixo.setForeground(new java.awt.Color(0, 0, 0));
-        lblTelFixo.setText("Tel. Fixo");
-
-        txtTel.setForeground(new java.awt.Color(0, 0, 0));
-
-        cmbCidade.setForeground(new java.awt.Color(0, 0, 0));
-        cmbCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vitória", "Colatina", "Aracruz", "Baixo Guandu" }));
-        cmbCidade.setSelectedIndex(1);
-
-        lblComplem.setForeground(new java.awt.Color(0, 0, 0));
-        lblComplem.setText("Complemento");
-
-        txtEnder.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblEnder7.setForeground(new java.awt.Color(0, 0, 0));
-        lblEnder7.setText("E-mail");
-
-        lblEnder5.setForeground(new java.awt.Color(0, 0, 0));
-        lblEnder5.setText("Tel. Cel.");
-
-        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblEnder6.setForeground(new java.awt.Color(0, 0, 0));
-        lblEnder6.setText("Referência");
-
-        txtRef.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtBairro.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblCidade.setForeground(new java.awt.Color(0, 0, 0));
-        lblCidade.setText("Cidade");
-
-        lblEnder1.setForeground(new java.awt.Color(0, 0, 0));
-        lblEnder1.setText("Bairro");
-
-        txtComplemento.setForeground(new java.awt.Color(0, 0, 0));
-        txtComplemento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtComplementoActionPerformed(evt);
-            }
-        });
-
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("My name");
+        txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtNome.setDisabledTextColor(new java.awt.Color(255, 0, 0));
 
+        btnNovo.setBackground(new java.awt.Color(255, 255, 255));
         btnNovo.setForeground(new java.awt.Color(0, 0, 0));
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         btnNovo.setMnemonic('N');
         btnNovo.setText("Novo");
 
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -179,188 +141,258 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblCpf.setForeground(new java.awt.Color(0, 0, 0));
         lblCpf.setText("CPF");
 
-        lblDtNasc.setForeground(new java.awt.Color(0, 0, 0));
-        lblDtNasc.setText("Dt. Nasc.");
-
+        txtCpf.setBackground(new java.awt.Color(255, 255, 255));
         txtCpf.setForeground(new java.awt.Color(0, 0, 0));
         try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpf.setText("999.999.999-99");
 
-        lblCEP.setForeground(new java.awt.Color(0, 0, 0));
-        lblCEP.setText("CEP");
+        btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/repeat.png"))); // NOI18N
+        btnAlterar.setMnemonic('A');
+        btnAlterar.setText("Alterar");
 
+        Foto.setBackground(new java.awt.Color(0, 0, 0));
+        Foto.setForeground(new java.awt.Color(255, 255, 255));
+        Foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
+        Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Foto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FotoMouseClicked(evt);
+            }
+        });
+        Foto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FotoKeyPressed(evt);
+            }
+        });
+
+        painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
+        painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
+        painelEnderec.setAlignmentX(10.0F);
+        painelEnderec.setAlignmentY(10.0F);
+        painelEnderec.setAutoscrolls(true);
+        painelEnderec.setLayout(new java.awt.GridLayout(5, 4, 15, 15));
+
+        lblCEP.setBackground(new java.awt.Color(255, 255, 255));
+        lblCEP.setForeground(new java.awt.Color(255, 255, 255));
+        lblCEP.setText("  CEP");
+        lblCEP.setAlignmentX(10.0F);
+        lblCEP.setAlignmentY(10.0F);
+        painelEnderec.add(lblCEP);
+
+        txtCEP.setBackground(new java.awt.Color(255, 255, 255));
         txtCEP.setForeground(new java.awt.Color(0, 0, 0));
         try {
             txtCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCEP.setText("11111-111");
+        txtCEP.setAlignmentX(10.0F);
+        txtCEP.setAlignmentY(10.0F);
+        txtCEP.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtCEP);
 
-        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/repeat.png"))); // NOI18N
-        btnAlterar.setMnemonic('A');
-        btnAlterar.setText("Alterar");
+        lblEnder.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnder.setText("Endereço");
+        lblEnder.setAlignmentX(10.0F);
+        lblEnder.setAlignmentY(10.0F);
+        painelEnderec.add(lblEnder);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Sexo"));
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        txtEnder.setBackground(new java.awt.Color(255, 255, 255));
+        txtEnder.setForeground(new java.awt.Color(0, 0, 0));
+        txtEnder.setText("Ender");
+        txtEnder.setAlignmentX(10.0F);
+        txtEnder.setAlignmentY(10.0F);
+        txtEnder.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtEnder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnderActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtEnder);
 
-        rdbFemin.setMnemonic('F');
-        rdbFemin.setText("Feminino");
-        rdbFemin.setActionCommand("Feminino");
-        rdbFemin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/rb.gif"))); // NOI18N
-        rdbFemin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/rbr.gif"))); // NOI18N
-        rdbFemin.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/rbrs.gif"))); // NOI18N
-        jPanel2.add(rdbFemin, java.awt.BorderLayout.CENTER);
+        lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblNum.setText("  Nº");
+        lblNum.setAlignmentX(10.0F);
+        lblNum.setAlignmentY(10.0F);
+        painelEnderec.add(lblNum);
 
-        rdbMasc.setMnemonic('M');
-        rdbMasc.setSelected(true);
-        rdbMasc.setText("Masculino");
-        rdbMasc.setActionCommand("Masculino");
-        rdbMasc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/rb.gif"))); // NOI18N
-        rdbMasc.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/rbp.gif"))); // NOI18N
-        rdbMasc.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/rbs.gif"))); // NOI18N
-        jPanel2.add(rdbMasc, java.awt.BorderLayout.PAGE_START);
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel());
+        jSpinner1.setAlignmentX(10.0F);
+        jSpinner1.setAlignmentY(10.0F);
+        jSpinner1.setAutoscrolls(true);
+        painelEnderec.add(jSpinner1);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblComplem.setForeground(new java.awt.Color(255, 255, 255));
+        lblComplem.setText("Complemento");
+        lblComplem.setAlignmentX(10.0F);
+        lblComplem.setAlignmentY(10.0F);
+        painelEnderec.add(lblComplem);
+
+        txtComplemento.setBackground(new java.awt.Color(255, 255, 255));
+        txtComplemento.setForeground(new java.awt.Color(0, 0, 0));
+        txtComplemento.setText("Compl");
+        txtComplemento.setAlignmentX(10.0F);
+        txtComplemento.setAlignmentY(10.0F);
+        txtComplemento.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtComplemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtComplementoActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtComplemento);
+
+        lblCidade.setBackground(new java.awt.Color(255, 255, 255));
+        lblCidade.setForeground(new java.awt.Color(255, 255, 255));
+        lblCidade.setText("  Cidade");
+        lblCidade.setAlignmentX(10.0F);
+        lblCidade.setAlignmentY(10.0F);
+        painelEnderec.add(lblCidade);
+
+        cmbCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "Vitória", "Colatina", "Aracruz", "Baixo Guandu" }));
+        cmbCidade.setAlignmentX(10.0F);
+        cmbCidade.setAlignmentY(10.0F);
+        painelEnderec.add(cmbCidade);
+
+        bairroLabel.setForeground(new java.awt.Color(255, 255, 255));
+        bairroLabel.setText("Bairro");
+        bairroLabel.setAlignmentX(10.0F);
+        bairroLabel.setAlignmentY(10.0F);
+        painelEnderec.add(bairroLabel);
+
+        txtBairro.setBackground(new java.awt.Color(255, 255, 255));
+        txtBairro.setForeground(new java.awt.Color(0, 0, 0));
+        txtBairro.setText("Bairro");
+        txtBairro.setAlignmentX(10.0F);
+        txtBairro.setAlignmentY(10.0F);
+        txtBairro.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtBairro);
+
+        lblComplem1.setForeground(new java.awt.Color(255, 255, 255));
+        lblComplem1.setText("  Rua");
+        lblComplem1.setAlignmentX(10.0F);
+        lblComplem1.setAlignmentY(10.0F);
+        painelEnderec.add(lblComplem1);
+
+        txtRua.setBackground(new java.awt.Color(255, 255, 255));
+        txtRua.setForeground(new java.awt.Color(0, 0, 0));
+        txtRua.setText("Rua X");
+        txtRua.setAlignmentX(10.0F);
+        txtRua.setAlignmentY(10.0F);
+        txtRua.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtRua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRuaActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtRua);
+
+        labelRef.setForeground(new java.awt.Color(255, 255, 255));
+        labelRef.setText("Referência");
+        labelRef.setAlignmentX(10.0F);
+        labelRef.setAlignmentY(10.0F);
+        painelEnderec.add(labelRef);
+
+        txtRef.setBackground(new java.awt.Color(255, 255, 255));
+        txtRef.setForeground(new java.awt.Color(0, 0, 0));
+        txtRef.setText("Ref");
+        txtRef.setAlignmentX(10.0F);
+        txtRef.setAlignmentY(10.0F);
+        txtRef.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtRef);
+
+        lblEnder5.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnder5.setText("  Tel. Cel.");
+        lblEnder5.setAlignmentX(10.0F);
+        lblEnder5.setAlignmentY(10.0F);
+        painelEnderec.add(lblEnder5);
+
+        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setText("(99) 99999-9999");
+        jFormattedTextField1.setToolTipText("Telefone Celular");
+        jFormattedTextField1.setActionCommand("<Not Set>");
+        jFormattedTextField1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(jFormattedTextField1);
+
+        lblEnder7.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnder7.setText("E-mail");
+        lblEnder7.setAlignmentX(10.0F);
+        lblEnder7.setAlignmentY(10.0F);
+        painelEnderec.add(lblEnder7);
+
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmail.setText("Email");
+        txtEmail.setAlignmentX(10.0F);
+        txtEmail.setAlignmentY(10.0F);
+        txtEmail.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtEmail.setPreferredSize(new java.awt.Dimension(100, 26));
+        painelEnderec.add(txtEmail);
 
         javax.swing.GroupLayout PaineldeCadLayout = new javax.swing.GroupLayout(PaineldeCad);
         PaineldeCad.setLayout(PaineldeCadLayout);
         PaineldeCadLayout.setHorizontalGroup(
             PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(btnAlterar)
-                .addGap(18, 18, 18)
-                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelar)
-                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(PaineldeCadLayout.createSequentialGroup()
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelFixo)
-                            .addComponent(lblEnder7))
-                        .addGap(18, 18, 18)
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)
-                                .addComponent(lblEnder5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCelular)
-                                .addGap(6, 6, 6))
-                            .addComponent(txtEmail)))
+                        .addGap(14, 14, 14)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEnder)
-                            .addComponent(lblCpf)
-                            .addComponent(lblNum)
-                            .addComponent(lblEnder1)
-                            .addComponent(lblEnder6)
-                            .addComponent(lblCidade))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblComplem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtBairro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                                    .addComponent(txtEnder, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRef, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblNome)
-                            .addComponent(lblDtNasc)
-                            .addComponent(lblCEP))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCpf)
-                                    .addComponent(txtCEP))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap()
+                                .addComponent(lblCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(txtCpf))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PaineldeCadLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PaineldeCadLayout.setVerticalGroup(
             PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCadLayout.createSequentialGroup()
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblCEP)
-                                    .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblNome)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblCpf)
-                                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblDtNasc))
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEnder)
-                            .addComponent(txtEnder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNum)
-                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblComplem)
-                    .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnder1)
-                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnder6)
-                    .addComponent(txtRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCidade)
-                    .addComponent(cmbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTelFixo)
-                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnder5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnder7)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAlterar))
+                    .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -379,6 +411,52 @@ public class DialogCadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtComplementoActionPerformed
 
+    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRuaActionPerformed
+
+    private void txtEnderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnderActionPerformed
+
+    private void FotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoMouseClicked
+        // TODO add your handling code here:
+        MostrarFoto();
+    }//GEN-LAST:event_FotoMouseClicked
+
+    private void FotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FotoKeyPressed
+        // TODO add your handling code here:
+        MostrarFoto();
+
+    }//GEN-LAST:event_FotoKeyPressed
+
+    private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
+        if (chk.isSelected()) {
+            spn.setEnabled(true);
+        } else {
+            spn.setEnabled(false);
+            spn.setValue(0);
+        }
+    }
+
+    private void MostrarFoto() {
+        JFileChooser fileWindow = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg");
+
+        //        config da janela
+//        fileWindow.setCurrentDirectory("");;
+        fileWindow.setMultiSelectionEnabled(false);
+        fileWindow.setAcceptAllFileFilterUsed(false);
+        fileWindow.setFileFilter(filtro);
+
+        if (fileWindow.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File arq = fileWindow.getSelectedFile();
+            ImageIcon foto = new ImageIcon(arq.getPath());
+
+            Foto.setIcon(foto);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -390,7 +468,7 @@ public class DialogCadastro extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -424,41 +502,38 @@ public class DialogCadastro extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
+    private javax.swing.JLabel Foto;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad;
     private javax.swing.JPanel background;
+    private javax.swing.JLabel bairroLabel;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JComboBox cmbCidade;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel labelRef;
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblComplem;
+    private javax.swing.JLabel lblComplem1;
     private javax.swing.JLabel lblCpf;
-    private javax.swing.JLabel lblDtNasc;
     private javax.swing.JLabel lblEnder;
-    private javax.swing.JLabel lblEnder1;
     private javax.swing.JLabel lblEnder5;
-    private javax.swing.JLabel lblEnder6;
     private javax.swing.JLabel lblEnder7;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
-    private javax.swing.JLabel lblTelFixo;
-    private javax.swing.JRadioButton rdbFemin;
-    private javax.swing.JRadioButton rdbMasc;
+    private javax.swing.JPanel painelEnderec;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCEP;
-    private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEnder;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNum;
     private javax.swing.JTextField txtRef;
-    private javax.swing.JTextField txtTel;
+    private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 }
