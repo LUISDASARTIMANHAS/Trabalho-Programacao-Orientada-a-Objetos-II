@@ -280,9 +280,9 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
     private void btnPesqProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdActionPerformed
         // TODO add your handling code here:
-        DialogBuscaProd tela = new DialogBuscaProd(this,true);
-        
-        tela.setVisible(true);
+//        DialogBuscaProd tela = new DialogBuscaProd(this,true);
+//        
+//        tela.setVisible(true);
     }//GEN-LAST:event_btnPesqProdActionPerformed
 
     /**
