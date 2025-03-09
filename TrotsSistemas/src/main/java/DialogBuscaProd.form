@@ -131,92 +131,23 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="btnAlterar" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="btnNovo1" pref="85" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="btnCancelar1" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="painelEnderec" min="-2" pref="584" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="painelEnderec" min="-2" pref="584" max="-2" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnNovo1" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="btnCancelar1" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="btnAlterar" alignment="3" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="painelEnderec" pref="272" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="painelEnderec" pref="276" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btnNovo1">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/imagens/add.png"/>
-                        </Property>
-                        <Property name="mnemonic" type="int" value="78"/>
-                        <Property name="text" type="java.lang.String" value="Novo"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnCancelar1">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/imagens/remove.png"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Cancelar"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelar1ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnAlterar">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/16x16/Save.png"/>
-                        </Property>
-                        <Property name="mnemonic" type="int" value="65"/>
-                        <Property name="text" type="java.lang.String" value="Alterar"/>
-                      </Properties>
-                    </Component>
                     <Container class="javax.swing.JPanel" name="painelEnderec">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -240,44 +171,27 @@
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
                         <Property name="horizontalGap" type="int" value="15"/>
-                        <Property name="rows" type="int" value="6"/>
+                        <Property name="rows" type="int" value="5"/>
                         <Property name="verticalGap" type="int" value="15"/>
                       </Layout>
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel1">
                           <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="18" style="0"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Pesquisar Produto Existente"/>
+                            <Property name="text" type="java.lang.String" value="Produto"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnPesqCli">
+                        <Component class="javax.swing.JComboBox" name="jComboBox1">
                           <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/16x16/zoom_16x16.gif"/>
-                            </Property>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                                <BevelBorder/>
-                              </Border>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="2">
+                                <StringItem index="0" value="Selecione Um"/>
+                                <StringItem index="1" value="Aqui vai ter o select do banco de dados"/>
+                              </StringArray>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqCliActionPerformed"/>
-                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblCEP">
                           <Properties>
@@ -290,13 +204,14 @@
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/16x16/Smile.png"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Nome"/>
+                            <Property name="text" type="java.lang.String" value="SKU"/>
                             <Property name="alignmentX" type="float" value="10.0"/>
                             <Property name="alignmentY" type="float" value="10.0"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtEnder1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
@@ -307,113 +222,94 @@
                             <Property name="alignmentX" type="float" value="10.0"/>
                             <Property name="alignmentY" type="float" value="10.0"/>
                             <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
+                              <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder1ActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEnder">
+                        <Component class="javax.swing.JLabel" name="jLabel3">
                           <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/16x16/Retort.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Sabor"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
+                            <Property name="text" type="java.lang.String" value="Peso (G)"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEnder">
+                        <Component class="javax.swing.JTextField" name="txtEnder3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Eucalipto"/>
+                            <Property name="text" type="java.lang.String" value="500"/>
                             <Property name="alignmentX" type="float" value="10.0"/>
                             <Property name="alignmentY" type="float" value="10.0"/>
                             <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder3ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel4">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Em Estoque"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtEnder4">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="1"/>
+                            <Property name="alignmentX" type="float" value="10.0"/>
+                            <Property name="alignmentY" type="float" value="10.0"/>
+                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder4ActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel2">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtEnder2">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="O sabor do campo em forma de erva. A Lim&#xe3;o Caipira traz a intensidade e a refresc&#xe2;ncia  do lim&#xe3;o associado ao sabor &#xfa;nico que s&#xf3; a erva mate tem. "/>
+                            <Property name="alignmentX" type="float" value="10.0"/>
+                            <Property name="alignmentY" type="float" value="10.0"/>
+                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[100, 26]"/>
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder2ActionPerformed"/>
                           </Events>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblNum">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/16x16/Dollar.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="  Valor (R$)"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner1">
-                          <Properties>
-                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                              <SpinnerModel initial="10.85" minimum="1.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
-                            </Property>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="autoscrolls" type="boolean" value="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblComplem">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/16x16/Target.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Peso (G)"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner2">
-                          <Properties>
-                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                              <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                            </Property>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="autoscrolls" type="boolean" value="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblComplem2">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/16x16/Table.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Quantidade Em Estoque"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner3">
-                          <Properties>
-                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                              <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="10" type="number"/>
-                            </Property>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="autoscrolls" type="boolean" value="true"/>
-                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>

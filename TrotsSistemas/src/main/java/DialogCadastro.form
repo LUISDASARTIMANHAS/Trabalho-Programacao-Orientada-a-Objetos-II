@@ -7,7 +7,7 @@
       <Color blue="cc" green="cc" red="cc" type="rgb"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1024, 720]"/>
+      <Dimension value="[720, 720]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -25,7 +25,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,108,0,0,2,108"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-48,0,0,2,-48"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -41,10 +41,10 @@
         <Property name="alignmentX" type="float" value="50.0"/>
         <Property name="alignmentY" type="float" value="50.0"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[620, 620]"/>
+          <Dimension value="[720, 720]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[620, 620]"/>
+          <Dimension value="[720, 720]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -84,10 +84,11 @@
                   <Dimension value="[720, 32767]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[520, 550]"/>
+                  <Dimension value="[650, 620]"/>
                 </Property>
+                <Property name="name" type="java.lang.String" value="" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[520, 550]"/>
+                  <Dimension value="[650, 620]"/>
                 </Property>
               </Properties>
               <SubComponents>
@@ -125,51 +126,55 @@
                     </Property>
                     <Property name="alignmentX" type="float" value="50.0"/>
                     <Property name="alignmentY" type="float" value="50.0"/>
+                    <Property name="autoscrolls" type="boolean" value="true"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[620, 620]"/>
+                      <Dimension value="[720, 620]"/>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[500, 400]"/>
+                      <Dimension value="[620, 460]"/>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[500, 400]"/>
+                      <Dimension value="[620, 460]"/>
                     </Property>
                   </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Component id="btnAlterar" pref="137" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="btnNovo" pref="131" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="btnCancelar" pref="148" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane2" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lblCpf" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtNome" pref="181" max="32767" attributes="1"/>
-                                          <Component id="txtCpf" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnPesqCli" min="-2" pref="34" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="Foto" min="-2" pref="218" max="-2" attributes="0"/>
+                                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="lblCpf" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="painelEnderec" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtCpf" max="32767" attributes="0"/>
+                                          <Component id="txtNome" max="32767" attributes="1"/>
+                                          <Component id="txtEmail" max="32767" attributes="0"/>
+                                          <Component id="txtTel" pref="295" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPesqCli" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Foto" min="-2" pref="203" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -179,31 +184,43 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="btnPesqCli" max="32767" attributes="0"/>
-                                          <Component id="lblNome" min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="txtNome" pref="32" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtNome" alignment="3" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtCpf" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="lblCpf" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                          <Component id="txtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtEmail" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="Foto" max="32767" attributes="0"/>
+                                  <Component id="Foto" min="-2" pref="127" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Component id="painelEnderec" pref="210" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="256" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnNovo" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="btnCancelar" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="btnAlterar" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAlterar" max="32767" attributes="0"/>
+                                  <Component id="btnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="20" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -233,6 +250,9 @@
                           <Color blue="0" green="0" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnNovo">
                       <Properties>
@@ -248,6 +268,9 @@
                         <Property name="mnemonic" type="int" value="78"/>
                         <Property name="text" type="java.lang.String" value="Novo"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCancelar">
                       <Properties>
@@ -298,6 +321,8 @@
                         </Property>
                         <Property name="mnemonic" type="int" value="65"/>
                         <Property name="text" type="java.lang.String" value="Alterar"/>
+                        <Property name="autoscrolls" type="boolean" value="true"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="Foto">
@@ -323,312 +348,6 @@
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FotoKeyPressed"/>
                       </Events>
                     </Component>
-                    <Container class="javax.swing.JPanel" name="painelEnderec">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="33" green="33" red="33" type="rgb"/>
-                        </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                            <BevelBorder>
-                              <Color PropertyName="highlightOuter" blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
-                              <Color PropertyName="highlightInner" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
-                              <Color PropertyName="shadowOuter" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
-                              <Color PropertyName="shadowInner" blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
-                            </BevelBorder>
-                          </Border>
-                        </Property>
-                        <Property name="alignmentX" type="float" value="10.0"/>
-                        <Property name="alignmentY" type="float" value="10.0"/>
-                        <Property name="autoscrolls" type="boolean" value="true"/>
-                      </Properties>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                        <Property name="columns" type="int" value="4"/>
-                        <Property name="horizontalGap" type="int" value="15"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="verticalGap" type="int" value="15"/>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JLabel" name="lblCEP">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="  CEP"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="txtCEP">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                              <Format format="#####-###" subtype="-1" type="5"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="11111-111"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblEnder">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtEnder">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Ender"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblNum">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="  N&#xba;"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner1">
-                          <Properties>
-                            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                              <SpinnerModel initial="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                            </Property>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="autoscrolls" type="boolean" value="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblComplem">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Complemento"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtComplemento">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Compl"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtComplementoActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblCidade">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="  Cidade"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JComboBox" name="cmbCidade">
-                          <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="5">
-                                <StringItem index="0" value="Selecione Um"/>
-                                <StringItem index="1" value="Vit&#xf3;ria"/>
-                                <StringItem index="2" value="Colatina"/>
-                                <StringItem index="3" value="Aracruz"/>
-                                <StringItem index="4" value="Baixo Guandu"/>
-                              </StringArray>
-                            </Property>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="bairroLabel">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Bairro"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtBairro">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Bairro"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblComplem1">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="  Rua"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtRua">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Rua X"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRuaActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="labelRef">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Refer&#xea;ncia"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtRef">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Ref"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblEnder5">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="  Tel. Cel."/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                              <Format format="(##) #####-####" subtype="-1" type="5"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="(99) 99999-9999"/>
-                            <Property name="toolTipText" type="java.lang.String" value="Telefone Celular"/>
-                            <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblEnder7">
-                          <Properties>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="E-mail"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtEmail">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Email"/>
-                            <Property name="alignmentX" type="float" value="10.0"/>
-                            <Property name="alignmentY" type="float" value="10.0"/>
-                            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[100, 26]"/>
-                            </Property>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
                     <Component class="javax.swing.JButton" name="btnPesqCli">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -650,13 +369,352 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqCliActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="lblEmail">
+                      <Properties>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="E-MAIL"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtEmail">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Email"/>
+                        <Property name="alignmentX" type="float" value="10.0"/>
+                        <Property name="alignmentY" type="float" value="10.0"/>
+                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[100, 26]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTel">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Tel. Cel."/>
+                        <Property name="alignmentX" type="float" value="10.0"/>
+                        <Property name="alignmentY" type="float" value="10.0"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JFormattedTextField" name="txtTel">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                          <Format format="(##) #####-####" subtype="-1" type="5"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="(99) 99999-9999"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Telefone Celular"/>
+                        <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
+                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder title="Endere&#xe7;o">
+                              <Font PropertyName="font" name="Segoe UI" size="16" style="0"/>
+                              <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
+                            </TitledBorder>
+                          </Border>
+                        </Property>
+                        <Property name="autoscrolls" type="boolean" value="true"/>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 200]"/>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[400, 210]"/>
+                        </Property>
+                      </Properties>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="painelEnderec">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="33" green="33" red="33" type="rgb"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                                <BevelBorder>
+                                  <Color PropertyName="highlightOuter" blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                                  <Color PropertyName="highlightInner" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+                                  <Color PropertyName="shadowOuter" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+                                  <Color PropertyName="shadowInner" blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+                                </BevelBorder>
+                              </Border>
+                            </Property>
+                            <Property name="alignmentX" type="float" value="10.0"/>
+                            <Property name="alignmentY" type="float" value="10.0"/>
+                            <Property name="autoscrolls" type="boolean" value="true"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[245, 350]"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[300, 350]"/>
+                            </Property>
+                          </Properties>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="2"/>
+                            <Property name="horizontalGap" type="int" value="15"/>
+                            <Property name="rows" type="int" value="8"/>
+                            <Property name="verticalGap" type="int" value="15"/>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="lblCEP">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  CEP"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JFormattedTextField" name="txtCEP">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                                  <Format format="#####-###" subtype="-1" type="5"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="11111-111"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lblEnder">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  Logradouro"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtEnder">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Ender"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lblNum">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  N&#xba;"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JSpinner" name="numResidencial">
+                              <Properties>
+                                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                                  <SpinnerModel initial="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                                </Property>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="autoscrolls" type="boolean" value="true"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="bairroLabel">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  Bairro"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtBairro">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Bairro"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lblCidade">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  Cidade"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="cmbCidade">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="5">
+                                    <StringItem index="0" value="Selecione Um"/>
+                                    <StringItem index="1" value="Vit&#xf3;ria"/>
+                                    <StringItem index="2" value="Colatina"/>
+                                    <StringItem index="3" value="Aracruz"/>
+                                    <StringItem index="4" value="Baixo Guandu"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lblComplem">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  Complemento"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtComplemento">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Compl"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtComplementoActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lblComplem1">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="  Rua"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtRua">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Rua X"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRuaActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="labelRef">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Refer&#xea;ncia"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtRef">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Ref"/>
+                                <Property name="alignmentX" type="float" value="10.0"/>
+                                <Property name="alignmentY" type="float" value="10.0"/>
+                                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
                   </SubComponents>
                 </Container>
               </SubComponents>
               <LayoutCode>
                 <CodeStatement>
-                  <CodeExpression id="1_flowLayout2">
-                    <CodeVariable name="flowLayout2" type="4096" declaredType="java.awt.FlowLayout"/>
+                  <CodeExpression id="1_flowLayout1">
+                    <CodeVariable name="flowLayout1" type="4096" declaredType="java.awt.FlowLayout"/>
                     <ExpressionOrigin>
                       <ExpressionProvider type="CodeConstructor">
                         <CodeConstructor class="java.awt.FlowLayout" parameterTypes="int, int, int"/>
@@ -681,7 +739,7 @@
                     </ExpressionOrigin>
                   </CodeExpression>
                   <StatementProvider type="CodeExpression">
-                    <CodeExpression id="1_flowLayout2"/>
+                    <CodeExpression id="1_flowLayout1"/>
                   </StatementProvider>
                   <Parameters>
                     <CodeExpression id="2"/>
@@ -690,7 +748,7 @@
                   </Parameters>
                 </CodeStatement>
                 <CodeStatement>
-                  <CodeExpression id="1_flowLayout2"/>
+                  <CodeExpression id="1_flowLayout1"/>
                   <StatementProvider type="CodeMethod">
                     <CodeMethod name="setAlignOnBaseline" class="java.awt.FlowLayout" parameterTypes="boolean"/>
                   </StatementProvider>
@@ -715,7 +773,7 @@
                     <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="1_flowLayout2"/>
+                    <CodeExpression id="1_flowLayout1"/>
                   </Parameters>
                 </CodeStatement>
               </LayoutCode>
@@ -725,8 +783,8 @@
       </SubComponents>
       <LayoutCode>
         <CodeStatement>
-          <CodeExpression id="7_flowLayout1">
-            <CodeVariable name="flowLayout1" type="4096" declaredType="java.awt.FlowLayout"/>
+          <CodeExpression id="7_flowLayout2">
+            <CodeVariable name="flowLayout2" type="4096" declaredType="java.awt.FlowLayout"/>
             <ExpressionOrigin>
               <ExpressionProvider type="CodeConstructor">
                 <CodeConstructor class="java.awt.FlowLayout" parameterTypes="int, int, int"/>
@@ -751,7 +809,7 @@
             </ExpressionOrigin>
           </CodeExpression>
           <StatementProvider type="CodeExpression">
-            <CodeExpression id="7_flowLayout1"/>
+            <CodeExpression id="7_flowLayout2"/>
           </StatementProvider>
           <Parameters>
             <CodeExpression id="8"/>
@@ -760,7 +818,7 @@
           </Parameters>
         </CodeStatement>
         <CodeStatement>
-          <CodeExpression id="7_flowLayout1"/>
+          <CodeExpression id="7_flowLayout2"/>
           <StatementProvider type="CodeMethod">
             <CodeMethod name="setAlignOnBaseline" class="java.awt.FlowLayout" parameterTypes="boolean"/>
           </StatementProvider>
@@ -785,7 +843,7 @@
             <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
           </StatementProvider>
           <Parameters>
-            <CodeExpression id="7_flowLayout1"/>
+            <CodeExpression id="7_flowLayout2"/>
           </Parameters>
         </CodeStatement>
       </LayoutCode>

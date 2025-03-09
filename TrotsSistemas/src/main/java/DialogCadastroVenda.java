@@ -1,12 +1,14 @@
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this
+ * template
  */
-
 /**
  *
  * @author 2023122760328
@@ -33,7 +35,6 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         inserir = new javax.swing.JMenuItem();
         excluir = new javax.swing.JMenuItem();
-        PopupAlert = new javax.swing.JPopupMenu();
         background = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         FORM = new javax.swing.JPanel();
@@ -42,23 +43,14 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         btnNovo1 = new javax.swing.JButton();
         btnCancelar1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        overflow = new javax.swing.JScrollPane();
         tblPedido = new javax.swing.JTable();
+        lblValor = new javax.swing.JLabel();
         lblNome1 = new javax.swing.JLabel();
         lblLanche = new javax.swing.JLabel();
         cmbSabor = new javax.swing.JComboBox();
         txtNome1 = new javax.swing.JTextField();
         btnPesqCli = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        chkBife = new javax.swing.JCheckBox();
-        spnBife = new javax.swing.JSpinner();
-        chkQueijo = new javax.swing.JCheckBox();
-        spnQueijo = new javax.swing.JSpinner();
-        chkPresunto = new javax.swing.JCheckBox();
-        spnPresunto = new javax.swing.JSpinner();
-        chkOvo = new javax.swing.JCheckBox();
-        spnOvo = new javax.swing.JSpinner();
-        lblValor = new javax.swing.JLabel();
         btnAddLanche = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
@@ -72,21 +64,22 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         Popup.add(inserir);
 
         excluir.setText("excluir");
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
         Popup.add(excluir);
-
-        PopupAlert.setBackground(new java.awt.Color(255, 255, 255));
-        PopupAlert.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        PopupAlert.setForeground(new java.awt.Color(0, 0, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setMinimumSize(new java.awt.Dimension(720, 720));
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         background.setForeground(new java.awt.Color(255, 255, 255));
-        background.setMinimumSize(new java.awt.Dimension(720, 720));
-        background.setPreferredSize(new java.awt.Dimension(530, 630));
+        background.setMinimumSize(new java.awt.Dimension(530, 530));
+        background.setPreferredSize(new java.awt.Dimension(430, 530));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout1.setAlignOnBaseline(true);
         background.setLayout(flowLayout1);
@@ -100,9 +93,9 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
         FORM.setMaximumSize(new java.awt.Dimension(1024, 800));
-        FORM.setMinimumSize(new java.awt.Dimension(520, 620));
+        FORM.setMinimumSize(new java.awt.Dimension(650, 650));
         FORM.setName(""); // NOI18N
-        FORM.setPreferredSize(new java.awt.Dimension(620, 620));
+        FORM.setPreferredSize(new java.awt.Dimension(650, 650));
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout2.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout2);
@@ -122,12 +115,14 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         PaineldeCad1.setAlignmentY(50.0F);
         PaineldeCad1.setAutoscrolls(true);
         PaineldeCad1.setMaximumSize(new java.awt.Dimension(300, 500));
-        PaineldeCad1.setMinimumSize(new java.awt.Dimension(300, 300));
+        PaineldeCad1.setMinimumSize(new java.awt.Dimension(450, 450));
+        PaineldeCad1.setName(""); // NOI18N
+        PaineldeCad1.setPreferredSize(new java.awt.Dimension(450, 450));
 
         btnNovo1.setBackground(new java.awt.Color(255, 255, 255));
         btnNovo1.setForeground(new java.awt.Color(0, 0, 0));
         btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/accept.png"))); // NOI18N
-        btnNovo1.setText("Comprar");
+        btnNovo1.setText("Confirmar Venda");
         btnNovo1.setAutoscrolls(true);
         btnNovo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +145,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         tblPedido.setForeground(new java.awt.Color(0, 0, 0));
         tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Erva Mate - Menta & Cereja ",  new Integer(3),  new Double(500.0),  new Double(10.89)}
+                {"sad",  new Integer(7),  new Double(500.0),  new Double(10.89)},
+                {"Erva Mate - Menta & Cereja ",  new Integer(3),  new Double(500.0),  new Double(10.89)},
+                {"aasd",  new Integer(5),  new Double(500.0),  new Double(10.89)},
+                {"aasdasd",  new Integer(8),  new Double(500.0),  new Double(10.89)}
             },
             new String [] {
                 "Sabor", "Qtde", "Peso", "Valor"
@@ -173,19 +171,29 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         });
         tblPedido.setComponentPopupMenu(Popup);
         tblPedido.setGridColor(new java.awt.Color(0, 0, 0));
-        tblPedido.setSelectionForeground(new java.awt.Color(51, 51, 255));
+        tblPedido.setMinimumSize(new java.awt.Dimension(400, 520));
+        tblPedido.setPreferredSize(new java.awt.Dimension(400, 520));
+        tblPedido.setSelectionBackground(new java.awt.Color(0, 0, 204));
         tblPedido.setShowGrid(true);
-        jScrollPane3.setViewportView(tblPedido);
+        tblPedido.getTableHeader().setResizingAllowed(false);
+        tblPedido.getTableHeader().setReorderingAllowed(false);
+        overflow.setViewportView(tblPedido);
 
-        jPanel5.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+        jPanel5.add(overflow, java.awt.BorderLayout.CENTER);
+
+        lblValor.setBackground(new java.awt.Color(255, 255, 255));
+        lblValor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblValor.setForeground(new java.awt.Color(0, 0, 0));
+        lblValor.setText("TOTAL: R$ 0,0");
+        jPanel5.add(lblValor, java.awt.BorderLayout.PAGE_END);
 
         lblNome1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNome1.setForeground(new java.awt.Color(0, 0, 0));
-        lblNome1.setText("Nome");
+        lblNome1.setText("Cliente");
 
         lblLanche.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLanche.setForeground(new java.awt.Color(0, 0, 0));
-        lblLanche.setText("Sabor");
+        lblLanche.setText("Item");
 
         cmbSabor.setBackground(new java.awt.Color(255, 255, 255));
         cmbSabor.setForeground(new java.awt.Color(0, 0, 0));
@@ -206,59 +214,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "++ Mais ++", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.setLayout(new java.awt.GridLayout(4, 2));
-
-        chkBife.setBackground(new java.awt.Color(255, 255, 255));
-        chkBife.setForeground(new java.awt.Color(0, 0, 0));
-        chkBife.setMnemonic('1');
-        chkBife.setText("Bife");
-        jPanel3.add(chkBife);
-
-        spnBife.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
-        spnBife.setEnabled(false);
-        jPanel3.add(spnBife);
-
-        chkQueijo.setBackground(new java.awt.Color(255, 255, 255));
-        chkQueijo.setForeground(new java.awt.Color(0, 0, 0));
-        chkQueijo.setMnemonic('2');
-        chkQueijo.setText("Queijo");
-        jPanel3.add(chkQueijo);
-
-        spnQueijo.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
-        spnQueijo.setEnabled(false);
-        jPanel3.add(spnQueijo);
-
-        chkPresunto.setBackground(new java.awt.Color(255, 255, 255));
-        chkPresunto.setForeground(new java.awt.Color(0, 0, 0));
-        chkPresunto.setMnemonic('3');
-        chkPresunto.setText("Presunto");
-        jPanel3.add(chkPresunto);
-
-        spnPresunto.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
-        spnPresunto.setEnabled(false);
-        jPanel3.add(spnPresunto);
-
-        chkOvo.setBackground(new java.awt.Color(255, 255, 255));
-        chkOvo.setForeground(new java.awt.Color(0, 0, 0));
-        chkOvo.setText("Ovo");
-        jPanel3.add(chkOvo);
-
-        spnOvo.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
-        spnOvo.setEnabled(false);
-        jPanel3.add(spnOvo);
-
-        lblValor.setBackground(new java.awt.Color(255, 255, 255));
-        lblValor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblValor.setForeground(new java.awt.Color(51, 153, 255));
-        lblValor.setText("R$ 0,0");
-
         btnAddLanche.setBackground(new java.awt.Color(255, 255, 255));
         btnAddLanche.setForeground(new java.awt.Color(0, 0, 0));
         btnAddLanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnAddLanche.setText("Adicionar A Venda");
+        btnAddLanche.setText("Incluir");
         btnAddLanche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddLancheActionPerformed(evt);
@@ -275,43 +234,37 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                .addGap(83, 83, 83))
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
-                        .addComponent(lblNome1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                        .addComponent(lblLanche)
-                        .addGap(7, 7, 7)))
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                        .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                                        .addComponent(lblNome1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                        .addComponent(lblLanche)
+                                        .addGap(7, 7, 7)))
+                                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                        .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnNovo1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAddLanche)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,22 +280,18 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                     .addComponent(lblLanche)
                     .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddLanche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblValor))
-                .addGap(21, 21, 21)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                    .addComponent(jLabel3)
+                    .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(9, 9, 9))
+                .addGap(75, 75, 75))
         );
 
         FORM.add(PaineldeCad1);
@@ -358,7 +307,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void btnAddLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLancheActionPerformed
         // TODO add your handling code here:
-        inserirTabela("teste","gpa","s");
+        inserirTabela("teste", "gpa", "s");
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
@@ -374,24 +323,50 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
-    
-    private void inserirTabela(String nome, String lista, String entrega){
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+        // TODO add your handling code here:
+        int linha = tblPedido.getSelectedRow();
+        if (linha >= 0) {
+            int confirmPane = JOptionPane.showConfirmDialog(
+                    this,
+                    "Deseja realmente Excluir o Pedido?"
+            );
+
+            if (confirmPane == JOptionPane.YES_OPTION) {
+                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Excluido com sucesso!",
+                        "Cadastro de Produto",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
+        }
+
+    }//GEN-LAST:event_excluirActionPerformed
+
+    private void inserirTabela(String nome, String lista, String entrega) {
         ((DefaultTableModel) tblPedido.getModel()).addRow(new Object[9]);
-        
+
         int linha = tblPedido.getRowCount() - 1;
         int col = 0;
         tblPedido.setValueAt(nome, linha, col++);
         tblPedido.setValueAt(lista, linha, col++);
         tblPedido.setValueAt(entrega, linha, col++);
     }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /*
+         * Set the Nimbus look and feel
+         */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the
+         * default look and feel. For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -412,7 +387,9 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /*
+         * Create and display the dialog
+         */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 DialogCadastro dialog = new DialogCadastro(new javax.swing.JFrame(), true);
@@ -432,32 +409,22 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPopupMenu Popup;
-    private javax.swing.JPopupMenu PopupAlert;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAddLanche;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnNovo1;
     private javax.swing.JButton btnPesqCli;
-    private javax.swing.JCheckBox chkBife;
-    private javax.swing.JCheckBox chkOvo;
-    private javax.swing.JCheckBox chkPresunto;
-    private javax.swing.JCheckBox chkQueijo;
     private javax.swing.JComboBox cmbSabor;
     private javax.swing.JMenuItem excluir;
     private javax.swing.JMenuItem inserir;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblLanche;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblValor;
-    private javax.swing.JSpinner spnBife;
-    private javax.swing.JSpinner spnOvo;
-    private javax.swing.JSpinner spnPresunto;
+    private javax.swing.JScrollPane overflow;
     private javax.swing.JSpinner spnQtde;
-    private javax.swing.JSpinner spnQueijo;
     private javax.swing.JTable tblPedido;
     private javax.swing.JTextField txtNome1;
     // End of variables declaration//GEN-END:variables

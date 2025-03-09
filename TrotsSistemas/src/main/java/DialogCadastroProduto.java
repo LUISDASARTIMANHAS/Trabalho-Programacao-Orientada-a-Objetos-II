@@ -87,7 +87,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         FORM.add(Logo);
 
         PaineldeCad1.setBackground(new java.awt.Color(204, 204, 204));
-        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produtos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produtos em Estoque", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         PaineldeCad1.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad1.setAlignmentX(50.0F);
         PaineldeCad1.setAlignmentY(50.0F);
@@ -115,6 +115,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Save.png"))); // NOI18N
         btnAlterar.setMnemonic('A');
         btnAlterar.setText("Alterar");
+        btnAlterar.setEnabled(false);
 
         painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
         painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
@@ -126,7 +127,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pesquisar Produto Existente");
+        jLabel1.setText("Consultar Produto");
         painelEnderec.add(jLabel1);
 
         btnPesqProd.setBackground(new java.awt.Color(255, 255, 255));
@@ -143,7 +144,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         lblCEP.setBackground(new java.awt.Color(255, 255, 255));
         lblCEP.setForeground(new java.awt.Color(255, 255, 255));
         lblCEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblCEP.setText("Nome");
+        lblCEP.setText("Codigo");
         lblCEP.setAlignmentX(10.0F);
         lblCEP.setAlignmentY(10.0F);
         painelEnderec.add(lblCEP);
@@ -163,7 +164,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
         lblEnder.setForeground(new java.awt.Color(255, 255, 255));
         lblEnder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
-        lblEnder.setText("Sabor");
+        lblEnder.setText("Produto");
         lblEnder.setAlignmentX(10.0F);
         lblEnder.setAlignmentY(10.0F);
         painelEnderec.add(lblEnder);
@@ -201,7 +202,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         lblComplem.setAlignmentY(10.0F);
         painelEnderec.add(lblComplem);
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(500, 500, null, 100));
         jSpinner2.setAlignmentX(10.0F);
         jSpinner2.setAlignmentY(10.0F);
         jSpinner2.setAutoscrolls(true);
@@ -224,14 +225,14 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(75, 75, 75)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                .addGap(312, 312, 312)
                 .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addGap(104, 104, 104)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(74, 74, 74))
+                .addContainerGap())
             .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PaineldeCad1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -250,7 +251,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
             .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PaineldeCad1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                     .addGap(68, 68, 68)))
         );
 

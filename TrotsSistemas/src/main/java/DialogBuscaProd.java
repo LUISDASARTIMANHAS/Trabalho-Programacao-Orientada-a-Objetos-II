@@ -31,22 +31,17 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         FORM = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
-        btnNovo1 = new javax.swing.JButton();
-        btnCancelar1 = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
         painelEnderec = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnPesqCli = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         lblCEP = new javax.swing.JLabel();
         txtEnder1 = new javax.swing.JTextField();
-        lblEnder = new javax.swing.JLabel();
-        txtEnder = new javax.swing.JTextField();
-        lblNum = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        lblComplem = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        lblComplem2 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        txtEnder3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtEnder4 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtEnder2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -94,66 +89,35 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         PaineldeCad1.setMaximumSize(new java.awt.Dimension(300, 500));
         PaineldeCad1.setMinimumSize(new java.awt.Dimension(300, 300));
 
-        btnNovo1.setBackground(new java.awt.Color(255, 255, 255));
-        btnNovo1.setForeground(new java.awt.Color(0, 0, 0));
-        btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnNovo1.setMnemonic('N');
-        btnNovo1.setText("Novo");
-
-        btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
-        btnCancelar1.setText("Cancelar");
-        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar1ActionPerformed(evt);
-            }
-        });
-
-        btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Save.png"))); // NOI18N
-        btnAlterar.setMnemonic('A');
-        btnAlterar.setText("Alterar");
-
         painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
         painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
         painelEnderec.setAlignmentX(50.0F);
         painelEnderec.setAlignmentY(50.0F);
         painelEnderec.setAutoscrolls(true);
-        painelEnderec.setLayout(new java.awt.GridLayout(6, 2, 15, 15));
+        painelEnderec.setLayout(new java.awt.GridLayout(5, 2, 15, 15));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pesquisar Produto Existente");
+        jLabel1.setText("Produto");
         painelEnderec.add(jLabel1);
 
-        btnPesqCli.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesqCli.setForeground(new java.awt.Color(0, 0, 0));
-        btnPesqCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/zoom_16x16.gif"))); // NOI18N
-        btnPesqCli.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPesqCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesqCliActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(btnPesqCli);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Um", "Aqui vai ter o select do banco de dados" }));
+        painelEnderec.add(jComboBox1);
 
         lblCEP.setBackground(new java.awt.Color(255, 255, 255));
         lblCEP.setForeground(new java.awt.Color(255, 255, 255));
         lblCEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblCEP.setText("Nome");
+        lblCEP.setText("SKU");
         lblCEP.setAlignmentX(10.0F);
         lblCEP.setAlignmentY(10.0F);
         painelEnderec.add(lblCEP);
 
+        txtEnder1.setEditable(false);
         txtEnder1.setBackground(new java.awt.Color(255, 255, 255));
         txtEnder1.setForeground(new java.awt.Color(0, 0, 0));
         txtEnder1.setText("SKU10");
         txtEnder1.setAlignmentX(10.0F);
         txtEnder1.setAlignmentY(10.0F);
-        txtEnder1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtEnder1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtEnder1.setEnabled(false);
         txtEnder1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnder1ActionPerformed(evt);
@@ -161,97 +125,76 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         });
         painelEnderec.add(txtEnder1);
 
-        lblEnder.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
-        lblEnder.setText("Sabor");
-        lblEnder.setAlignmentX(10.0F);
-        lblEnder.setAlignmentY(10.0F);
-        painelEnderec.add(lblEnder);
+        jLabel3.setText("Peso (G)");
+        painelEnderec.add(jLabel3);
 
-        txtEnder.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder.setText("Eucalipto");
-        txtEnder.setAlignmentX(10.0F);
-        txtEnder.setAlignmentY(10.0F);
-        txtEnder.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEnder.addActionListener(new java.awt.event.ActionListener() {
+        txtEnder3.setEditable(false);
+        txtEnder3.setBackground(new java.awt.Color(255, 255, 255));
+        txtEnder3.setForeground(new java.awt.Color(0, 0, 0));
+        txtEnder3.setText("500");
+        txtEnder3.setAlignmentX(10.0F);
+        txtEnder3.setAlignmentY(10.0F);
+        txtEnder3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtEnder3.setEnabled(false);
+        txtEnder3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnderActionPerformed(evt);
+                txtEnder3ActionPerformed(evt);
             }
         });
-        painelEnderec.add(txtEnder);
+        painelEnderec.add(txtEnder3);
 
-        lblNum.setForeground(new java.awt.Color(255, 255, 255));
-        lblNum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
-        lblNum.setText("  Valor (R$)");
-        lblNum.setAlignmentX(10.0F);
-        lblNum.setAlignmentY(10.0F);
-        painelEnderec.add(lblNum);
+        jLabel4.setText("Em Estoque");
+        painelEnderec.add(jLabel4);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(10.85d, 1.0d, null, 1.0d));
-        jSpinner1.setAlignmentX(10.0F);
-        jSpinner1.setAlignmentY(10.0F);
-        jSpinner1.setAutoscrolls(true);
-        painelEnderec.add(jSpinner1);
+        txtEnder4.setEditable(false);
+        txtEnder4.setBackground(new java.awt.Color(255, 255, 255));
+        txtEnder4.setForeground(new java.awt.Color(0, 0, 0));
+        txtEnder4.setText("1");
+        txtEnder4.setAlignmentX(10.0F);
+        txtEnder4.setAlignmentY(10.0F);
+        txtEnder4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtEnder4.setEnabled(false);
+        txtEnder4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnder4ActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtEnder4);
 
-        lblComplem.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
-        lblComplem.setText("Peso (G)");
-        lblComplem.setAlignmentX(10.0F);
-        lblComplem.setAlignmentY(10.0F);
-        painelEnderec.add(lblComplem);
+        jLabel2.setText("Descrição");
+        painelEnderec.add(jLabel2);
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        jSpinner2.setAlignmentX(10.0F);
-        jSpinner2.setAlignmentY(10.0F);
-        jSpinner2.setAutoscrolls(true);
-        painelEnderec.add(jSpinner2);
-
-        lblComplem2.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
-        lblComplem2.setText("Quantidade Em Estoque");
-        lblComplem2.setAlignmentX(10.0F);
-        lblComplem2.setAlignmentY(10.0F);
-        painelEnderec.add(lblComplem2);
-
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 10));
-        jSpinner3.setAlignmentX(10.0F);
-        jSpinner3.setAlignmentY(10.0F);
-        jSpinner3.setAutoscrolls(true);
-        painelEnderec.add(jSpinner3);
+        txtEnder2.setEditable(false);
+        txtEnder2.setBackground(new java.awt.Color(255, 255, 255));
+        txtEnder2.setForeground(new java.awt.Color(0, 0, 0));
+        txtEnder2.setText("O sabor do campo em forma de erva. A Limão Caipira traz a intensidade e a refrescância  do limão associado ao sabor único que só a erva mate tem. ");
+        txtEnder2.setAlignmentX(10.0F);
+        txtEnder2.setAlignmentY(10.0F);
+        txtEnder2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtEnder2.setEnabled(false);
+        txtEnder2.setMinimumSize(new java.awt.Dimension(100, 26));
+        txtEnder2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnder2ActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtEnder2);
 
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(75, 75, 75)
-                .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addGap(104, 104, 104)
-                .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(74, 74, 74))
-            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(317, 317, 317)
-                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                    .addGap(68, 68, 68)))
+                .addContainerGap()
+                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
 
         FORM.add(PaineldeCad1);
@@ -265,21 +208,21 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtEnderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnderActionPerformed
-
     private void txtEnder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnder1ActionPerformed
 
-    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+    private void txtEnder2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar1ActionPerformed
+    }//GEN-LAST:event_txtEnder2ActionPerformed
 
-    private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
+    private void txtEnder3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesqCliActionPerformed
+    }//GEN-LAST:event_txtEnder3ActionPerformed
+
+    private void txtEnder4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnder4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,22 +272,17 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCancelar1;
-    private javax.swing.JButton btnNovo1;
-    private javax.swing.JButton btnPesqCli;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JLabel lblCEP;
-    private javax.swing.JLabel lblComplem;
-    private javax.swing.JLabel lblComplem2;
-    private javax.swing.JLabel lblEnder;
-    private javax.swing.JLabel lblNum;
     private javax.swing.JPanel painelEnderec;
-    private javax.swing.JTextField txtEnder;
     private javax.swing.JTextField txtEnder1;
+    private javax.swing.JTextField txtEnder2;
+    private javax.swing.JTextField txtEnder3;
+    private javax.swing.JTextField txtEnder4;
     // End of variables declaration//GEN-END:variables
 }

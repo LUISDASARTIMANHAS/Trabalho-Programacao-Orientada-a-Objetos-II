@@ -1,15 +1,18 @@
-
+import Utils.MainUtils;
+import java.awt.Color;
 import java.io.File;
-import java.io.FileFilter;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this
+ * template
  */
 /**
  *
@@ -47,43 +50,44 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtCpf = new javax.swing.JFormattedTextField();
         btnAlterar = new javax.swing.JButton();
         Foto = new javax.swing.JLabel();
+        btnPesqCli = new javax.swing.JButton();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblTel = new javax.swing.JLabel();
+        txtTel = new javax.swing.JFormattedTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
         painelEnderec = new javax.swing.JPanel();
         lblCEP = new javax.swing.JLabel();
         txtCEP = new javax.swing.JFormattedTextField();
         lblEnder = new javax.swing.JLabel();
         txtEnder = new javax.swing.JTextField();
         lblNum = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        lblComplem = new javax.swing.JLabel();
-        txtComplemento = new javax.swing.JTextField();
-        lblCidade = new javax.swing.JLabel();
-        cmbCidade = new javax.swing.JComboBox();
+        numResidencial = new javax.swing.JSpinner();
         bairroLabel = new javax.swing.JLabel();
         txtBairro = new javax.swing.JTextField();
+        lblCidade = new javax.swing.JLabel();
+        cmbCidade = new javax.swing.JComboBox();
+        lblComplem = new javax.swing.JLabel();
+        txtComplemento = new javax.swing.JTextField();
         lblComplem1 = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
         labelRef = new javax.swing.JLabel();
         txtRef = new javax.swing.JTextField();
-        lblEnder5 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        lblEnder7 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        btnPesqCli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setMinimumSize(new java.awt.Dimension(720, 720));
         setResizable(false);
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setForeground(new java.awt.Color(0, 0, 0));
         background.setAlignmentX(50.0F);
         background.setAlignmentY(50.0F);
-        background.setMinimumSize(new java.awt.Dimension(620, 620));
-        background.setPreferredSize(new java.awt.Dimension(620, 620));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 50);
-        flowLayout1.setAlignOnBaseline(true);
-        background.setLayout(flowLayout1);
+        background.setMinimumSize(new java.awt.Dimension(720, 720));
+        background.setPreferredSize(new java.awt.Dimension(720, 720));
+        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 50);
+        flowLayout2.setAlignOnBaseline(true);
+        background.setLayout(flowLayout2);
 
         jScrollPane1.setAlignmentX(50.0F);
         jScrollPane1.setAlignmentY(50.0F);
@@ -96,11 +100,12 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
         FORM.setMaximumSize(new java.awt.Dimension(720, 32767));
-        FORM.setMinimumSize(new java.awt.Dimension(520, 550));
-        FORM.setPreferredSize(new java.awt.Dimension(520, 550));
-        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
-        flowLayout2.setAlignOnBaseline(true);
-        FORM.setLayout(flowLayout2);
+        FORM.setMinimumSize(new java.awt.Dimension(650, 620));
+        FORM.setName(""); // NOI18N
+        FORM.setPreferredSize(new java.awt.Dimension(650, 620));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
+        flowLayout1.setAlignOnBaseline(true);
+        FORM.setLayout(flowLayout1);
 
         Logo.setBackground(new java.awt.Color(255, 255, 255));
         Logo.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,9 +120,11 @@ public class DialogCadastro extends javax.swing.JDialog {
         PaineldeCad.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad.setAlignmentX(50.0F);
         PaineldeCad.setAlignmentY(50.0F);
-        PaineldeCad.setMaximumSize(new java.awt.Dimension(620, 620));
-        PaineldeCad.setMinimumSize(new java.awt.Dimension(500, 400));
-        PaineldeCad.setPreferredSize(new java.awt.Dimension(500, 400));
+        PaineldeCad.setAutoscrolls(true);
+        PaineldeCad.setMaximumSize(new java.awt.Dimension(720, 620));
+        PaineldeCad.setMinimumSize(new java.awt.Dimension(620, 460));
+        PaineldeCad.setName(""); // NOI18N
+        PaineldeCad.setPreferredSize(new java.awt.Dimension(620, 460));
 
         lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome");
@@ -127,12 +134,22 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtNome.setText("My name");
         txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtNome.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         btnNovo.setBackground(new java.awt.Color(255, 255, 255));
         btnNovo.setForeground(new java.awt.Color(0, 0, 0));
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         btnNovo.setMnemonic('N');
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
@@ -156,6 +173,8 @@ public class DialogCadastro extends javax.swing.JDialog {
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/repeat.png"))); // NOI18N
         btnAlterar.setMnemonic('A');
         btnAlterar.setText("Alterar");
+        btnAlterar.setAutoscrolls(true);
+        btnAlterar.setEnabled(false);
 
         Foto.setBackground(new java.awt.Color(0, 0, 0));
         Foto.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,12 +192,63 @@ public class DialogCadastro extends javax.swing.JDialog {
             }
         });
 
+        btnPesqCli.setBackground(new java.awt.Color(255, 255, 255));
+        btnPesqCli.setForeground(new java.awt.Color(0, 0, 0));
+        btnPesqCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/zoom_16x16.gif"))); // NOI18N
+        btnPesqCli.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPesqCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqCliActionPerformed(evt);
+            }
+        });
+
+        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmail.setText("E-MAIL");
+
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmail.setText("Email");
+        txtEmail.setAlignmentX(10.0F);
+        txtEmail.setAlignmentY(10.0F);
+        txtEmail.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtEmail.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        lblTel.setBackground(new java.awt.Color(255, 255, 255));
+        lblTel.setForeground(new java.awt.Color(0, 0, 0));
+        lblTel.setText("Tel. Cel.");
+        lblTel.setAlignmentX(10.0F);
+        lblTel.setAlignmentY(10.0F);
+
+        txtTel.setBackground(new java.awt.Color(255, 255, 255));
+        txtTel.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            txtTel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtTel.setText("(99) 99999-9999");
+        txtTel.setToolTipText("Telefone Celular");
+        txtTel.setActionCommand("<Not Set>");
+        txtTel.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        txtTel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 16), new java.awt.Color(0, 0, 0))); // NOI18N
+        jScrollPane2.setAutoscrolls(true);
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(200, 200));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(400, 210));
+
         painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
         painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
         painelEnderec.setAlignmentX(10.0F);
         painelEnderec.setAlignmentY(10.0F);
         painelEnderec.setAutoscrolls(true);
-        painelEnderec.setLayout(new java.awt.GridLayout(5, 4, 15, 15));
+        painelEnderec.setMinimumSize(new java.awt.Dimension(245, 350));
+        painelEnderec.setPreferredSize(new java.awt.Dimension(300, 350));
+        painelEnderec.setLayout(new java.awt.GridLayout(8, 2, 15, 15));
 
         lblCEP.setBackground(new java.awt.Color(255, 255, 255));
         lblCEP.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,7 +271,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         painelEnderec.add(txtCEP);
 
         lblEnder.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder.setText("Endereço");
+        lblEnder.setText("  Logradouro");
         lblEnder.setAlignmentX(10.0F);
         lblEnder.setAlignmentY(10.0F);
         painelEnderec.add(lblEnder);
@@ -225,14 +295,40 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblNum.setAlignmentY(10.0F);
         painelEnderec.add(lblNum);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel());
-        jSpinner1.setAlignmentX(10.0F);
-        jSpinner1.setAlignmentY(10.0F);
-        jSpinner1.setAutoscrolls(true);
-        painelEnderec.add(jSpinner1);
+        numResidencial.setModel(new javax.swing.SpinnerNumberModel());
+        numResidencial.setAlignmentX(10.0F);
+        numResidencial.setAlignmentY(10.0F);
+        numResidencial.setAutoscrolls(true);
+        painelEnderec.add(numResidencial);
+
+        bairroLabel.setForeground(new java.awt.Color(255, 255, 255));
+        bairroLabel.setText("  Bairro");
+        bairroLabel.setAlignmentX(10.0F);
+        bairroLabel.setAlignmentY(10.0F);
+        painelEnderec.add(bairroLabel);
+
+        txtBairro.setBackground(new java.awt.Color(255, 255, 255));
+        txtBairro.setForeground(new java.awt.Color(0, 0, 0));
+        txtBairro.setText("Bairro");
+        txtBairro.setAlignmentX(10.0F);
+        txtBairro.setAlignmentY(10.0F);
+        txtBairro.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtBairro);
+
+        lblCidade.setBackground(new java.awt.Color(255, 255, 255));
+        lblCidade.setForeground(new java.awt.Color(255, 255, 255));
+        lblCidade.setText("  Cidade");
+        lblCidade.setAlignmentX(10.0F);
+        lblCidade.setAlignmentY(10.0F);
+        painelEnderec.add(lblCidade);
+
+        cmbCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "Vitória", "Colatina", "Aracruz", "Baixo Guandu" }));
+        cmbCidade.setAlignmentX(10.0F);
+        cmbCidade.setAlignmentY(10.0F);
+        painelEnderec.add(cmbCidade);
 
         lblComplem.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem.setText("Complemento");
+        lblComplem.setText("  Complemento");
         lblComplem.setAlignmentX(10.0F);
         lblComplem.setAlignmentY(10.0F);
         painelEnderec.add(lblComplem);
@@ -249,32 +345,6 @@ public class DialogCadastro extends javax.swing.JDialog {
             }
         });
         painelEnderec.add(txtComplemento);
-
-        lblCidade.setBackground(new java.awt.Color(255, 255, 255));
-        lblCidade.setForeground(new java.awt.Color(255, 255, 255));
-        lblCidade.setText("  Cidade");
-        lblCidade.setAlignmentX(10.0F);
-        lblCidade.setAlignmentY(10.0F);
-        painelEnderec.add(lblCidade);
-
-        cmbCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "Vitória", "Colatina", "Aracruz", "Baixo Guandu" }));
-        cmbCidade.setAlignmentX(10.0F);
-        cmbCidade.setAlignmentY(10.0F);
-        painelEnderec.add(cmbCidade);
-
-        bairroLabel.setForeground(new java.awt.Color(255, 255, 255));
-        bairroLabel.setText("Bairro");
-        bairroLabel.setAlignmentX(10.0F);
-        bairroLabel.setAlignmentY(10.0F);
-        painelEnderec.add(bairroLabel);
-
-        txtBairro.setBackground(new java.awt.Color(255, 255, 255));
-        txtBairro.setForeground(new java.awt.Color(0, 0, 0));
-        txtBairro.setText("Bairro");
-        txtBairro.setAlignmentX(10.0F);
-        txtBairro.setAlignmentY(10.0F);
-        txtBairro.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtBairro);
 
         lblComplem1.setForeground(new java.awt.Color(255, 255, 255));
         lblComplem1.setText("  Rua");
@@ -309,105 +379,75 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtRef.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         painelEnderec.add(txtRef);
 
-        lblEnder5.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder5.setText("  Tel. Cel.");
-        lblEnder5.setAlignmentX(10.0F);
-        lblEnder5.setAlignmentY(10.0F);
-        painelEnderec.add(lblEnder5);
-
-        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField1.setText("(99) 99999-9999");
-        jFormattedTextField1.setToolTipText("Telefone Celular");
-        jFormattedTextField1.setActionCommand("<Not Set>");
-        jFormattedTextField1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(jFormattedTextField1);
-
-        lblEnder7.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder7.setText("E-mail");
-        lblEnder7.setAlignmentX(10.0F);
-        lblEnder7.setAlignmentY(10.0F);
-        painelEnderec.add(lblEnder7);
-
-        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
-        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
-        txtEmail.setText("Email");
-        txtEmail.setAlignmentX(10.0F);
-        txtEmail.setAlignmentY(10.0F);
-        txtEmail.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEmail.setPreferredSize(new java.awt.Dimension(100, 26));
-        painelEnderec.add(txtEmail);
-
-        btnPesqCli.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesqCli.setForeground(new java.awt.Color(0, 0, 0));
-        btnPesqCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/zoom_16x16.gif"))); // NOI18N
-        btnPesqCli.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPesqCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesqCliActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(painelEnderec);
 
         javax.swing.GroupLayout PaineldeCadLayout = new javax.swing.GroupLayout(PaineldeCad);
         PaineldeCad.setLayout(PaineldeCadLayout);
         PaineldeCadLayout.setHorizontalGroup(
             PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCadLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblNome)
-                            .addGroup(PaineldeCadLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(txtCpf))
+                        .addComponent(btnNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar))
+                    .addGroup(PaineldeCadLayout.createSequentialGroup()
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblNome))
+                            .addComponent(lblEmail)
+                            .addComponent(lblTel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCpf)
+                            .addComponent(txtNome)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTel, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PaineldeCadLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)))
                 .addContainerGap())
         );
         PaineldeCadLayout.setVerticalGroup(
             PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCadLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnPesqCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                            .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblNome)
+                                .addComponent(txtNome)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCpf))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmail)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTel)
+                            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNovo))
+                .addContainerGap())
         );
 
         FORM.add(PaineldeCad);
@@ -448,6 +488,78 @@ public class DialogCadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        // TODO add your handling code here:
+        String nome = txtNome.getText();
+        String cpf = txtCpf.getText();
+        String email = txtEmail.getText();
+        String tel = txtTel.getText();
+        String cep = txtCEP.getText();
+        String cidade = cmbCidade.getSelectedItem().toString();
+
+        if (validarCampos()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Usuario: " + nome + ". Cadastrado com sucesso!",
+                    "Cadastro de Cliente",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private boolean validarCampos() {
+        String msgError = "";
+        String cpf = txtCpf.getText();
+        
+        lblNome.setForeground(Color.black);
+        lblCEP.setForeground(Color.white);
+        lblEmail.setForeground(Color.black);
+        lblCpf.setForeground(Color.black);
+
+        if (txtNome.getText().isEmpty()) {
+            msgError = msgError + "Digite seu nome.\n";
+            lblNome.setForeground(Color.red);
+        }
+        if (txtCEP.getText().isEmpty()) {
+            msgError = msgError + "Digite seu CEP.\n";
+            lblCEP.setForeground(Color.red);
+        }
+        if (txtEmail.getText().isEmpty()) {
+            msgError = msgError + "Digite seu EMAIL.\n";
+            lblEmail.setForeground(Color.red);
+        }
+        if (cpf.isEmpty()) {
+            msgError = msgError + "Digite seu CPF.\n";
+            lblCpf.setForeground(Color.red);
+        }
+        if (!MainUtils.ValidarCPF(cpf)) {
+            msgError = msgError + "CPF inválido!.\n";
+            lblCpf.setForeground(Color.red);
+        }
+
+        if (msgError.isEmpty()) {
+//            não a erros
+            return true;
+        } else {
+            //            mostra o erro
+            JOptionPane.showMessageDialog(
+                    this,
+                    msgError,
+                    "Cadastro de Cliente",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return false;
+        }
+    }
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelActionPerformed
+
     private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
         if (chk.isSelected()) {
             spn.setEnabled(true);
@@ -479,10 +591,14 @@ public class DialogCadastro extends javax.swing.JDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /*
+         * Set the Nimbus look and feel
+         */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the
+         * default look and feel. For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -503,7 +619,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /*
+         * Create and display the dialog
+         */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 DialogCadastro dialog = new DialogCadastro(new javax.swing.JFrame(), true);
@@ -530,20 +648,20 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesqCli;
     private javax.swing.JComboBox cmbCidade;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelRef;
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblComplem;
     private javax.swing.JLabel lblComplem1;
     private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEnder;
-    private javax.swing.JLabel lblEnder5;
-    private javax.swing.JLabel lblEnder7;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblTel;
+    private javax.swing.JSpinner numResidencial;
     private javax.swing.JPanel painelEnderec;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCEP;
@@ -554,5 +672,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtRef;
     private javax.swing.JTextField txtRua;
+    private javax.swing.JFormattedTextField txtTel;
     // End of variables declaration//GEN-END:variables
+
 }

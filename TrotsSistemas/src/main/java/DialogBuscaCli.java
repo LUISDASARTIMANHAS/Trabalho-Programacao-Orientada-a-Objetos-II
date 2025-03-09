@@ -84,7 +84,7 @@ public class DialogBuscaCli extends javax.swing.JFrame {
         FORM.add(Logo);
 
         PaineldeCad1.setBackground(new java.awt.Color(204, 204, 204));
-        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         PaineldeCad1.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad1.setAlignmentX(50.0F);
         PaineldeCad1.setAlignmentY(50.0F);
@@ -209,14 +209,14 @@ public class DialogBuscaCli extends javax.swing.JFrame {
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                .addGap(306, 306, 306)
                 .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(75, 75, 75)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addGap(104, 104, 104)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(74, 74, 74))
+                .addContainerGap())
             .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PaineldeCad1Layout.createSequentialGroup()
                     .addContainerGap()
