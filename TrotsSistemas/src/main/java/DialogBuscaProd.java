@@ -1,3 +1,6 @@
+
+import Cadastro.DialogCadastro;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -96,6 +99,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         painelEnderec.setAutoscrolls(true);
         painelEnderec.setLayout(new java.awt.GridLayout(5, 2, 15, 15));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Produto");
         painelEnderec.add(jLabel1);
 
@@ -125,6 +130,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         });
         painelEnderec.add(txtEnder1);
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Peso (G)");
         painelEnderec.add(jLabel3);
 
@@ -143,6 +150,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         });
         painelEnderec.add(txtEnder3);
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Em Estoque");
         painelEnderec.add(jLabel4);
 
@@ -161,6 +170,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         });
         painelEnderec.add(txtEnder4);
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Descrição");
         painelEnderec.add(jLabel2);
 

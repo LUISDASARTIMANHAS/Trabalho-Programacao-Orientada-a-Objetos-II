@@ -1,3 +1,8 @@
+
+import Cadastro.DialogCadastroProduto;
+import Cadastro.DialogCadastroVenda;
+import Cadastro.DialogCadastro;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -38,22 +43,20 @@ public class Principal extends javax.swing.JFrame {
         ConsultaPedido = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         RelatorioCliente = new javax.swing.JMenuItem();
-        RelatorioPedidos = new javax.swing.JMenuItem();
         Relatorioprodutos = new javax.swing.JMenuItem();
+        RelatorioPedidos = new javax.swing.JMenuItem();
         menuUtilitarios = new javax.swing.JMenu();
-        MenuDelete = new javax.swing.JMenu();
-        DeletarCliente = new javax.swing.JMenuItem();
-        DeletarProduto = new javax.swing.JMenuItem();
-        DeletarPrecos = new javax.swing.JMenuItem();
         MenuTema = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trots Sistemas - gestão de Vendas");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(1024, 296));
+        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setPreferredSize(new java.awt.Dimension(1024, 720));
         setResizable(false);
 
+        Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trots/Trots_Novos_desktop_1024x292.png"))); // NOI18N
         Background.setAutoscrolls(true);
         getContentPane().add(Background, java.awt.BorderLayout.CENTER);
@@ -111,6 +114,11 @@ public class Principal extends javax.swing.JFrame {
         ConsultaCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         ConsultaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Person.png"))); // NOI18N
         ConsultaCliente.setText("Cliente");
+        ConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaClienteActionPerformed(evt);
+            }
+        });
         menuConsulta.add(ConsultaCliente);
 
         ConsultaProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -124,7 +132,13 @@ public class Principal extends javax.swing.JFrame {
         menuConsulta.add(ConsultaProduto);
 
         ConsultaPedido.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        ConsultaPedido.setText("Pedido");
+        ConsultaPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
+        ConsultaPedido.setText("Venda");
+        ConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaPedidoActionPerformed(evt);
+            }
+        });
         menuConsulta.add(ConsultaPedido);
 
         menu.add(menuConsulta);
@@ -133,6 +147,7 @@ public class Principal extends javax.swing.JFrame {
         menuRelatorios.setMnemonic('r');
         menuRelatorios.setText("Relatórios");
 
+        RelatorioCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Person.png"))); // NOI18N
         RelatorioCliente.setText("Clientes");
         RelatorioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,32 +156,21 @@ public class Principal extends javax.swing.JFrame {
         });
         menuRelatorios.add(RelatorioCliente);
 
-        RelatorioPedidos.setText("Pedidos");
-        menuRelatorios.add(RelatorioPedidos);
-
+        Relatorioprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_16x16.gif"))); // NOI18N
         Relatorioprodutos.setText("Produtos");
         menuRelatorios.add(Relatorioprodutos);
 
+        RelatorioPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
+        RelatorioPedidos.setText("Vendas");
+        menuRelatorios.add(RelatorioPedidos);
+
         menu.add(menuRelatorios);
 
+        menuUtilitarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/settings1_16x16.gif"))); // NOI18N
         menuUtilitarios.setMnemonic('u');
         menuUtilitarios.setText("Utilitarios");
 
-        MenuDelete.setText("Remover");
-
-        DeletarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
-        DeletarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/user2_(delete)_16x16.gif"))); // NOI18N
-        DeletarCliente.setText("Cliente");
-        MenuDelete.add(DeletarCliente);
-
-        DeletarProduto.setText("Produto");
-        MenuDelete.add(DeletarProduto);
-
-        DeletarPrecos.setText("Preços");
-        MenuDelete.add(DeletarPrecos);
-
-        menuUtilitarios.add(MenuDelete);
-
+        MenuTema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/settings2_16x16.gif"))); // NOI18N
         MenuTema.setText("Temas");
         menuUtilitarios.add(MenuTema);
 
@@ -209,6 +213,20 @@ public class Principal extends javax.swing.JFrame {
         
         tela.setVisible(true);
     }//GEN-LAST:event_CadPedidoActionPerformed
+
+    private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
+        // TODO add your handling code here:
+        DialogBuscaProd tela = new DialogBuscaProd(this,false);
+        
+        tela.setVisible(true);
+    }//GEN-LAST:event_ConsultaPedidoActionPerformed
+
+    private void ConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaClienteActionPerformed
+        // TODO add your handling code here:
+        DialogBuscaCli tela = new DialogBuscaCli(this,false);
+        
+        tela.setVisible(true);
+    }//GEN-LAST:event_ConsultaClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,10 +273,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ConsultaCliente;
     private javax.swing.JMenuItem ConsultaPedido;
     private javax.swing.JMenuItem ConsultaProduto;
-    private javax.swing.JMenuItem DeletarCliente;
-    private javax.swing.JMenuItem DeletarPrecos;
-    private javax.swing.JMenuItem DeletarProduto;
-    private javax.swing.JMenu MenuDelete;
     private javax.swing.JMenu MenuTema;
     private javax.swing.JMenuItem RelatorioCliente;
     private javax.swing.JMenuItem RelatorioPedidos;

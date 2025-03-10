@@ -1,3 +1,6 @@
+
+import Cadastro.DialogCadastro;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -7,12 +10,13 @@
  *
  * @author 2023122760328
  */
-public class DialogBuscaCli extends javax.swing.JFrame {
+public class DialogBuscaCli extends javax.swing.JDialog {
 
     /**
      * Creates new form Cadastro
      */
-    public DialogBuscaCli() {
+    public DialogBuscaCli(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -30,9 +34,6 @@ public class DialogBuscaCli extends javax.swing.JFrame {
         FORM = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
-        btnNovo1 = new javax.swing.JButton();
-        btnCancelar1 = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
         painelEnderec = new javax.swing.JPanel();
         lblCEP = new javax.swing.JLabel();
         txtEnder1 = new javax.swing.JTextField();
@@ -90,33 +91,6 @@ public class DialogBuscaCli extends javax.swing.JFrame {
         PaineldeCad1.setAlignmentY(50.0F);
         PaineldeCad1.setMaximumSize(new java.awt.Dimension(300, 500));
         PaineldeCad1.setMinimumSize(new java.awt.Dimension(300, 300));
-
-        btnNovo1.setBackground(new java.awt.Color(255, 255, 255));
-        btnNovo1.setForeground(new java.awt.Color(0, 0, 0));
-        btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnNovo1.setMnemonic('N');
-        btnNovo1.setText("Novo");
-        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovo1ActionPerformed(evt);
-            }
-        });
-
-        btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
-        btnCancelar1.setText("Cancelar");
-        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelar1ActionPerformed(evt);
-            }
-        });
-
-        btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Save.png"))); // NOI18N
-        btnAlterar.setMnemonic('A');
-        btnAlterar.setText("Alterar");
 
         painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
         painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
@@ -209,34 +183,17 @@ public class DialogBuscaCli extends javax.swing.JFrame {
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
-                .addGap(306, 306, 306)
-                .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(317, 317, 317)
-                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                    .addGap(68, 68, 68)))
+                .addContainerGap()
+                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
         );
 
         FORM.add(PaineldeCad1);
@@ -257,14 +214,6 @@ public class DialogBuscaCli extends javax.swing.JFrame {
     private void txtEnder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnder1ActionPerformed
-
-    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelar1ActionPerformed
-
-    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNovo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,9 +263,6 @@ public class DialogBuscaCli extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCancelar1;
-    private javax.swing.JButton btnNovo1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;

@@ -21,7 +21,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin para gerar o JAR corretamente -->
+             <!--Plugin para gerar o JAR corretamente--> 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -29,7 +29,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Principal</mainClass> <!-- Definir a classe principal -->
+                            <!--Definir a classe principal--> 
+                            <mainClass>Principal</mainClass>  
                         </manifest>
                     </archive>
                 </configuration>
@@ -72,7 +73,7 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>23</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
         <exec.mainClass>pingobras.glitch.me.trotssistemas.TrotsSistemas</exec.mainClass>
     </properties>
 </project>

@@ -1,3 +1,5 @@
+package Cadastro;
+
 import Utils.MainUtils;
 import java.awt.Color;
 import java.io.File;
