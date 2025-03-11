@@ -4,6 +4,8 @@
  */
 package Utils;
 
+import Sistema.Endereco;
+
 /**
  *
  * @author LUIS DAS ARTIMANHAS
@@ -12,21 +14,22 @@ public class MainUtils {
 
 //    metodo/função de validar cpf
     public static boolean ValidarCPF(String cpf) {
-        String CpfFormatado = cpf.replaceAll(".", cpf).replaceAll("-", cpf);
+        String CpfFormatado = cpf.replace(".", "").replace("-", "");
         int TamCPF = CpfFormatado.length();
+
         for (int i = 0; i < 10; i++) {
             String CpfIgual = GerarCpfIgual(i);
             //percorre o tanto de cpf com numeros iguais
             if (CpfFormatado.equals(CpfIgual)) {
-                System.err.println("CPF IGUAL DETECTADO: CPF: "+ 
-                        CpfFormatado+
-                        " E IGUAL A CPF GERADO: "+
-                        CpfIgual);
+                System.err.println("CPF IGUAL DETECTADO: CPF: "
+                        + CpfFormatado
+                        + " E IGUAL A CPF GERADO: "
+                        + CpfIgual);
                 return (false);
             }
         }
         if (TamCPF != 11) {
-            System.err.println("CPF TEM TAMANHOS INCORRETOS! " + TamCPF);
+            System.err.println("CPF TEM TAMANHOS INCORRETOS! " + TamCPF + ", cpf: " + CpfFormatado);
             return false;
         }
         if (!ValidarDigitoVerificador(CpfFormatado)) {
@@ -44,7 +47,7 @@ public class MainUtils {
             //Ex: se i=0 então ele roda 11 vezes o que da 00000000000
             CpfIgual = CpfIgual + i;
         }
-        System.out.println("CPF IGUAL GERADO: " + CpfIgual);
+//        System.out.println("CPF IGUAL GERADO: " + CpfIgual);
         return CpfIgual;
     }
 
@@ -88,6 +91,10 @@ public class MainUtils {
         } else {
             return false;
         }
+    }
+
+    public static Endereco consultarCep() {
+
     }
 
 }

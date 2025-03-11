@@ -1,5 +1,6 @@
 package Cadastro;
 
+import Sistema.Endereco;
 import Utils.MainUtils;
 import java.awt.Color;
 import java.io.File;
@@ -75,6 +76,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtRua = new javax.swing.JTextField();
         labelRef = new javax.swing.JLabel();
         txtRef = new javax.swing.JTextField();
+        btnDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -169,6 +171,11 @@ public class DialogCadastro extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         txtCpf.setText("999.999.999-99");
+        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCpfFocusLost(evt);
+            }
+        });
 
         btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
@@ -383,6 +390,12 @@ public class DialogCadastro extends javax.swing.JDialog {
 
         jScrollPane2.setViewportView(painelEnderec);
 
+        btnDeletar.setBackground(new java.awt.Color(255, 255, 255));
+        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
+        btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/user2_(delete)_16x16.gif"))); // NOI18N
+        btnDeletar.setText("Deletar");
+        btnDeletar.setEnabled(false);
+
         javax.swing.GroupLayout PaineldeCadLayout = new javax.swing.GroupLayout(PaineldeCad);
         PaineldeCad.setLayout(PaineldeCadLayout);
         PaineldeCadLayout.setHorizontalGroup(
@@ -392,7 +405,8 @@ public class DialogCadastro extends javax.swing.JDialog {
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNovo)
@@ -409,8 +423,8 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCpf)
                             .addComponent(txtNome)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTel, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(txtTel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -448,7 +462,8 @@ public class DialogCadastro extends javax.swing.JDialog {
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNovo))
+                    .addComponent(btnNovo)
+                    .addComponent(btnDeletar))
                 .addContainerGap())
         );
 
@@ -512,7 +527,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private boolean validarCampos() {
         String msgError = "";
         String cpf = txtCpf.getText();
-        
+
         lblNome.setForeground(Color.black);
         lblCEP.setForeground(Color.white);
         lblEmail.setForeground(Color.black);
@@ -547,7 +562,7 @@ public class DialogCadastro extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(
                     this,
                     msgError,
-                    "Cadastro de Cliente",
+                    "CADASTRO DE CLIENTE",
                     JOptionPane.ERROR_MESSAGE
             );
             return false;
@@ -561,6 +576,22 @@ public class DialogCadastro extends javax.swing.JDialog {
     private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelActionPerformed
+
+    private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
+        // TODO add your handling code here:
+        Endereco ender = consultarCep(txtCEP.getText());
+
+        if (ender != null) {
+            cmbCidade.setSelectedItem(ender.getCidade());
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "CEP Invalido!",
+                    "CADASTRO DE CLIENTE",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_txtCpfFocusLost
 
     private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
         if (chk.isSelected()) {
@@ -647,6 +678,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JLabel bairroLabel;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesqCli;
     private javax.swing.JComboBox cmbCidade;
