@@ -4,6 +4,9 @@ import Sistema.Endereco;
 import Utils.MainUtils;
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -578,15 +581,31 @@ public class DialogCadastro extends javax.swing.JDialog {
     }//GEN-LAST:event_txtTelActionPerformed
 
     private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        // TODO add your handling code here:
-        Endereco ender = consultarCep(txtCEP.getText());
-
-        if (ender != null) {
-            cmbCidade.setSelectedItem(ender.getCidade());
-        } else {
+        try {
+            // TODO add your handling code here:
+            Endereco ender = MainUtils.consultarCEP(txtCEP.getText());
             JOptionPane.showMessageDialog(
                     this,
-                    "CEP Invalido!",
+                    "Consultando Integração...",
+                    "Busca Cep",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+            if (ender != null) {
+                cmbCidade.setSelectedItem(ender.getCidade());
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "CEP Invalido!",
+                        "CADASTRO DE CLIENTE",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(
+                    this,
+                    ex,
                     "CADASTRO DE CLIENTE",
                     JOptionPane.ERROR_MESSAGE
             );
