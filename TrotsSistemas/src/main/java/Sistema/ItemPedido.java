@@ -44,4 +44,25 @@ public class ItemPedido {
         return Valor;
     }
 
+    public void setSabor(String Sabor) {
+        this.Sabor = Sabor;
+    }
+
+    public void setCodigo(int Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    public void setQdte(int Qdte) {
+        this.Qdte = Qdte;
+    }
+
+    public void setPeso(float Peso) {
+        this.Peso = Peso;
+    }
+
+    public void setValor(float Valor) {
+        this.Valor = Valor;
+    }
+
+    
 }
