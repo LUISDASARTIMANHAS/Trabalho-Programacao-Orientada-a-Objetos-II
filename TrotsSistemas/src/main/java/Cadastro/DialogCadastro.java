@@ -2,7 +2,9 @@ package Cadastro;
 
 import Sistema.Endereco;
 import Utils.MainUtils;
+import Utils.SwingUtils;
 import java.awt.Color;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -12,6 +14,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
@@ -26,12 +29,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class DialogCadastro extends javax.swing.JDialog {
 
+    private File arq;
+
     /**
      * Creates new form Cadastro
      */
     public DialogCadastro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        arq = null;
     }
 
     /**
@@ -65,20 +72,20 @@ public class DialogCadastro extends javax.swing.JDialog {
         painelEnderec = new javax.swing.JPanel();
         lblCEP = new javax.swing.JLabel();
         txtCEP = new javax.swing.JFormattedTextField();
-        lblEnder = new javax.swing.JLabel();
-        txtEnder = new javax.swing.JTextField();
         lblNum = new javax.swing.JLabel();
-        numResidencial = new javax.swing.JSpinner();
+        txtNumResidencial = new javax.swing.JSpinner();
+        labelRef = new javax.swing.JLabel();
+        txtRef = new javax.swing.JTextField();
+        lblComplem = new javax.swing.JLabel();
+        txtComplemento = new javax.swing.JTextField();
+        lblLogradouro = new javax.swing.JLabel();
+        txtLogradouro = new javax.swing.JTextField();
         bairroLabel = new javax.swing.JLabel();
         txtBairro = new javax.swing.JTextField();
         lblCidade = new javax.swing.JLabel();
         cmbCidade = new javax.swing.JComboBox();
-        lblComplem = new javax.swing.JLabel();
-        txtComplemento = new javax.swing.JTextField();
-        lblComplem1 = new javax.swing.JLabel();
-        txtRua = new javax.swing.JTextField();
-        labelRef = new javax.swing.JLabel();
-        txtRef = new javax.swing.JTextField();
+        lblUf = new javax.swing.JLabel();
+        txtUf = new javax.swing.JTextField();
         btnDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -92,7 +99,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         background.setAlignmentY(50.0F);
         background.setMinimumSize(new java.awt.Dimension(720, 720));
         background.setPreferredSize(new java.awt.Dimension(720, 720));
-        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 50);
+        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20);
         flowLayout2.setAlignOnBaseline(true);
         background.setLayout(flowLayout2);
 
@@ -107,9 +114,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
         FORM.setMaximumSize(new java.awt.Dimension(720, 32767));
-        FORM.setMinimumSize(new java.awt.Dimension(650, 620));
+        FORM.setMinimumSize(new java.awt.Dimension(650, 720));
         FORM.setName(""); // NOI18N
-        FORM.setPreferredSize(new java.awt.Dimension(650, 620));
+        FORM.setPreferredSize(new java.awt.Dimension(650, 720));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout1.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout1);
@@ -129,9 +136,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         PaineldeCad.setAlignmentY(50.0F);
         PaineldeCad.setAutoscrolls(true);
         PaineldeCad.setMaximumSize(new java.awt.Dimension(720, 620));
-        PaineldeCad.setMinimumSize(new java.awt.Dimension(620, 460));
+        PaineldeCad.setMinimumSize(new java.awt.Dimension(620, 560));
         PaineldeCad.setName(""); // NOI18N
-        PaineldeCad.setPreferredSize(new java.awt.Dimension(620, 460));
+        PaineldeCad.setPreferredSize(new java.awt.Dimension(620, 560));
 
         lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome");
@@ -162,6 +169,11 @@ public class DialogCadastro extends javax.swing.JDialog {
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         lblCpf.setForeground(new java.awt.Color(0, 0, 0));
         lblCpf.setText("CPF");
@@ -174,11 +186,6 @@ public class DialogCadastro extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         txtCpf.setText("999.999.999-99");
-        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCpfFocusLost(evt);
-            }
-        });
 
         btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
@@ -260,7 +267,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         painelEnderec.setAutoscrolls(true);
         painelEnderec.setMinimumSize(new java.awt.Dimension(245, 350));
         painelEnderec.setPreferredSize(new java.awt.Dimension(300, 350));
-        painelEnderec.setLayout(new java.awt.GridLayout(8, 2, 15, 15));
+        painelEnderec.setLayout(new java.awt.GridLayout(8, 2, 10, 10));
 
         lblCEP.setBackground(new java.awt.Color(255, 255, 255));
         lblCEP.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,26 +287,12 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtCEP.setAlignmentX(10.0F);
         txtCEP.setAlignmentY(10.0F);
         txtCEP.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtCEP);
-
-        lblEnder.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder.setText("  Logradouro");
-        lblEnder.setAlignmentX(10.0F);
-        lblEnder.setAlignmentY(10.0F);
-        painelEnderec.add(lblEnder);
-
-        txtEnder.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder.setText("Ender");
-        txtEnder.setAlignmentX(10.0F);
-        txtEnder.setAlignmentY(10.0F);
-        txtEnder.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEnder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnderActionPerformed(evt);
+        txtCEP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCEPFocusLost(evt);
             }
         });
-        painelEnderec.add(txtEnder);
+        painelEnderec.add(txtCEP);
 
         lblNum.setForeground(new java.awt.Color(255, 255, 255));
         lblNum.setText("  Nº");
@@ -307,11 +300,60 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblNum.setAlignmentY(10.0F);
         painelEnderec.add(lblNum);
 
-        numResidencial.setModel(new javax.swing.SpinnerNumberModel());
-        numResidencial.setAlignmentX(10.0F);
-        numResidencial.setAlignmentY(10.0F);
-        numResidencial.setAutoscrolls(true);
-        painelEnderec.add(numResidencial);
+        txtNumResidencial.setModel(new javax.swing.SpinnerNumberModel());
+        txtNumResidencial.setAlignmentX(10.0F);
+        txtNumResidencial.setAlignmentY(10.0F);
+        txtNumResidencial.setAutoscrolls(true);
+        painelEnderec.add(txtNumResidencial);
+
+        labelRef.setForeground(new java.awt.Color(255, 255, 255));
+        labelRef.setText("  Referência");
+        labelRef.setAlignmentX(10.0F);
+        labelRef.setAlignmentY(10.0F);
+        painelEnderec.add(labelRef);
+
+        txtRef.setBackground(new java.awt.Color(255, 255, 255));
+        txtRef.setForeground(new java.awt.Color(0, 0, 0));
+        txtRef.setText("Ref");
+        txtRef.setAlignmentX(10.0F);
+        txtRef.setAlignmentY(10.0F);
+        painelEnderec.add(txtRef);
+
+        lblComplem.setForeground(new java.awt.Color(255, 255, 255));
+        lblComplem.setText("  Complemento");
+        lblComplem.setAlignmentX(10.0F);
+        lblComplem.setAlignmentY(10.0F);
+        painelEnderec.add(lblComplem);
+
+        txtComplemento.setBackground(new java.awt.Color(255, 255, 255));
+        txtComplemento.setForeground(new java.awt.Color(0, 0, 0));
+        txtComplemento.setText("Compl");
+        txtComplemento.setAlignmentX(10.0F);
+        txtComplemento.setAlignmentY(10.0F);
+        txtComplemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtComplementoActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtComplemento);
+
+        lblLogradouro.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogradouro.setText("  Logradouro");
+        lblLogradouro.setAlignmentX(10.0F);
+        lblLogradouro.setAlignmentY(10.0F);
+        painelEnderec.add(lblLogradouro);
+
+        txtLogradouro.setBackground(new java.awt.Color(255, 255, 255));
+        txtLogradouro.setForeground(new java.awt.Color(0, 0, 0));
+        txtLogradouro.setText("Ender");
+        txtLogradouro.setAlignmentX(10.0F);
+        txtLogradouro.setAlignmentY(10.0F);
+        txtLogradouro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLogradouroActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(txtLogradouro);
 
         bairroLabel.setForeground(new java.awt.Color(255, 255, 255));
         bairroLabel.setText("  Bairro");
@@ -324,7 +366,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtBairro.setText("Bairro");
         txtBairro.setAlignmentX(10.0F);
         txtBairro.setAlignmentY(10.0F);
-        txtBairro.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         painelEnderec.add(txtBairro);
 
         lblCidade.setBackground(new java.awt.Color(255, 255, 255));
@@ -339,57 +380,18 @@ public class DialogCadastro extends javax.swing.JDialog {
         cmbCidade.setAlignmentY(10.0F);
         painelEnderec.add(cmbCidade);
 
-        lblComplem.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem.setText("  Complemento");
-        lblComplem.setAlignmentX(10.0F);
-        lblComplem.setAlignmentY(10.0F);
-        painelEnderec.add(lblComplem);
+        lblUf.setForeground(new java.awt.Color(255, 255, 255));
+        lblUf.setText("  Estado");
+        lblUf.setAlignmentX(10.0F);
+        lblUf.setAlignmentY(10.0F);
+        painelEnderec.add(lblUf);
 
-        txtComplemento.setBackground(new java.awt.Color(255, 255, 255));
-        txtComplemento.setForeground(new java.awt.Color(0, 0, 0));
-        txtComplemento.setText("Compl");
-        txtComplemento.setAlignmentX(10.0F);
-        txtComplemento.setAlignmentY(10.0F);
-        txtComplemento.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtComplemento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtComplementoActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtComplemento);
-
-        lblComplem1.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem1.setText("  Rua");
-        lblComplem1.setAlignmentX(10.0F);
-        lblComplem1.setAlignmentY(10.0F);
-        painelEnderec.add(lblComplem1);
-
-        txtRua.setBackground(new java.awt.Color(255, 255, 255));
-        txtRua.setForeground(new java.awt.Color(0, 0, 0));
-        txtRua.setText("Rua X");
-        txtRua.setAlignmentX(10.0F);
-        txtRua.setAlignmentY(10.0F);
-        txtRua.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtRua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRuaActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtRua);
-
-        labelRef.setForeground(new java.awt.Color(255, 255, 255));
-        labelRef.setText("Referência");
-        labelRef.setAlignmentX(10.0F);
-        labelRef.setAlignmentY(10.0F);
-        painelEnderec.add(labelRef);
-
-        txtRef.setBackground(new java.awt.Color(255, 255, 255));
-        txtRef.setForeground(new java.awt.Color(0, 0, 0));
-        txtRef.setText("Ref");
-        txtRef.setAlignmentX(10.0F);
-        txtRef.setAlignmentY(10.0F);
-        txtRef.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtRef);
+        txtUf.setBackground(new java.awt.Color(255, 255, 255));
+        txtUf.setForeground(new java.awt.Color(0, 0, 0));
+        txtUf.setText("Estado");
+        txtUf.setAlignmentX(10.0F);
+        txtUf.setAlignmentY(10.0F);
+        painelEnderec.add(txtUf);
 
         jScrollPane2.setViewportView(painelEnderec);
 
@@ -407,14 +409,6 @@ public class DialogCadastro extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
-                        .addComponent(btnDeletar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar))
                     .addGroup(PaineldeCadLayout.createSequentialGroup()
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -432,7 +426,16 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)))
+                        .addGap(7, 7, 7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar)))
                 .addContainerGap())
         );
         PaineldeCadLayout.setVerticalGroup(
@@ -460,7 +463,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                             .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -485,13 +488,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtComplementoActionPerformed
 
-    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
+    private void txtLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogradouroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuaActionPerformed
-
-    private void txtEnderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnderActionPerformed
+    }//GEN-LAST:event_txtLogradouroActionPerformed
 
     private void FotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoMouseClicked
         // TODO add your handling code here:
@@ -580,19 +579,28 @@ public class DialogCadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelActionPerformed
 
-    private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
+    private void txtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCEPFocusLost
+        // TODO add your handling code here:
         try {
-            // TODO add your handling code here:
-            Endereco ender = MainUtils.consultarCEP(txtCEP.getText());
             JOptionPane.showMessageDialog(
                     this,
                     "Consultando Integração...",
                     "Busca Cep",
                     JOptionPane.INFORMATION_MESSAGE
             );
+            Endereco ender = MainUtils.consultarCEP(txtCEP.getText());
 
             if (ender != null) {
+                txtLogradouro.setText(ender.getLogradouro());
+                txtUf.setText(ender.getUf());
+                txtBairro.setText(ender.getBairro());
+                txtRef.setText(ender.getReferencia());
                 cmbCidade.setSelectedItem(ender.getCidade());
+
+                SwingUtils.toggleEnabledAndEditable(txtLogradouro);
+                SwingUtils.toggleEnabledAndEditable(txtUf);
+                SwingUtils.toggleEnabledAndEditable(txtBairro);
+                SwingUtils.toggleEnabledAndEditable(txtRef);
             } else {
                 JOptionPane.showMessageDialog(
                         this,
@@ -600,6 +608,10 @@ public class DialogCadastro extends javax.swing.JDialog {
                         "CADASTRO DE CLIENTE",
                         JOptionPane.ERROR_MESSAGE
                 );
+                SwingUtils.toggleEnabledAndEditable(txtLogradouro);
+                SwingUtils.toggleEnabledAndEditable(txtUf);
+                SwingUtils.toggleEnabledAndEditable(txtBairro);
+                SwingUtils.toggleEnabledAndEditable(txtRef);
             }
         } catch (IOException ex) {
             Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -610,7 +622,13 @@ public class DialogCadastro extends javax.swing.JDialog {
                     JOptionPane.ERROR_MESSAGE
             );
         }
-    }//GEN-LAST:event_txtCpfFocusLost
+    }//GEN-LAST:event_txtCEPFocusLost
+
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        limparCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
         if (chk.isSelected()) {
@@ -623,20 +641,43 @@ public class DialogCadastro extends javax.swing.JDialog {
 
     private void MostrarFoto() {
         JFileChooser fileWindow = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
 
         //        config da janela
-//        fileWindow.setCurrentDirectory("");;
         fileWindow.setMultiSelectionEnabled(false);
         fileWindow.setAcceptAllFileFilterUsed(false);
         fileWindow.setFileFilter(filtro);
+
+        // Abrir no último diretório aberto. Na primeira vez é NULL
+        fileWindow.setCurrentDirectory(arq);
 
         if (fileWindow.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File arq = fileWindow.getSelectedFile();
             ImageIcon foto = new ImageIcon(arq.getPath());
 
+            // Redimensionar
+            Image imagem = foto.getImage();
+            Image Scale = imagem.getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT);
+            foto.setImage(Scale);
             Foto.setIcon(foto);
         }
+    }
+
+    private void limparCampos() {
+        txtNome.setText("");
+        txtCpf.setText("");
+        txtTel.setText("");
+        txtEmail.setText("");
+        Foto.setText("Foto");
+        Foto.setIcon(null);
+
+        txtCEP.setText("");
+        txtLogradouro.setText("");
+        txtNumResidencial.setValue(0);
+        txtComplemento.setText("");
+        txtBairro.setText("");
+        txtRef.setText("");
+        cmbCidade.setSelectedIndex(0);
     }
 
     /**
@@ -707,25 +748,25 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblComplem;
-    private javax.swing.JLabel lblComplem1;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblEnder;
+    private javax.swing.JLabel lblLogradouro;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
     private javax.swing.JLabel lblTel;
-    private javax.swing.JSpinner numResidencial;
+    private javax.swing.JLabel lblUf;
     private javax.swing.JPanel painelEnderec;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCEP;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEnder;
+    private javax.swing.JTextField txtLogradouro;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JSpinner txtNumResidencial;
     private javax.swing.JTextField txtRef;
-    private javax.swing.JTextField txtRua;
     private javax.swing.JFormattedTextField txtTel;
+    private javax.swing.JTextField txtUf;
     // End of variables declaration//GEN-END:variables
 
 }
