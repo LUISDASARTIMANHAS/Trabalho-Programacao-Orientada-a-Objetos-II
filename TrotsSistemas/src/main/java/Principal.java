@@ -1,7 +1,7 @@
 
+import Cadastro.DialogCadastro;
 import Cadastro.DialogCadastroProduto;
 import Cadastro.DialogCadastroVenda;
-import Cadastro.DialogCadastro;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,6 +30,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        GrupodeTema = new javax.swing.ButtonGroup();
         Background = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
@@ -47,6 +48,11 @@ public class Principal extends javax.swing.JFrame {
         RelatorioPedidos = new javax.swing.JMenuItem();
         menuUtilitarios = new javax.swing.JMenu();
         MenuTema = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem5 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trots Sistemas - gestão de Vendas");
@@ -172,6 +178,28 @@ public class Principal extends javax.swing.JFrame {
 
         MenuTema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/settings2_16x16.gif"))); // NOI18N
         MenuTema.setText("Temas");
+
+        GrupodeTema.add(jRadioButtonMenuItem1);
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Windows");
+        MenuTema.add(jRadioButtonMenuItem1);
+
+        GrupodeTema.add(jRadioButtonMenuItem2);
+        jRadioButtonMenuItem2.setText("Motif");
+        MenuTema.add(jRadioButtonMenuItem2);
+
+        GrupodeTema.add(jRadioButtonMenuItem3);
+        jRadioButtonMenuItem3.setText("Nimbus");
+        MenuTema.add(jRadioButtonMenuItem3);
+
+        GrupodeTema.add(jRadioButtonMenuItem4);
+        jRadioButtonMenuItem4.setText("Metal");
+        MenuTema.add(jRadioButtonMenuItem4);
+
+        GrupodeTema.add(jRadioButtonMenuItem5);
+        jRadioButtonMenuItem5.setText("Dark");
+        MenuTema.add(jRadioButtonMenuItem5);
+
         menuUtilitarios.add(MenuTema);
 
         menu.add(menuUtilitarios);
@@ -273,11 +301,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ConsultaCliente;
     private javax.swing.JMenuItem ConsultaPedido;
     private javax.swing.JMenuItem ConsultaProduto;
+    private javax.swing.ButtonGroup GrupodeTema;
     private javax.swing.JMenu MenuTema;
     private javax.swing.JMenuItem RelatorioCliente;
     private javax.swing.JMenuItem RelatorioPedidos;
     private javax.swing.JMenuItem Relatorioprodutos;
     private javax.swing.JMenuItem Sair;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuConsulta;
