@@ -1,4 +1,4 @@
-package Cadastro;
+package viwer;
 
 
 import javax.swing.JOptionPane;

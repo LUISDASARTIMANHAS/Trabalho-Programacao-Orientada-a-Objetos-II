@@ -1,5 +1,7 @@
+package viwer;
 
-import Cadastro.DialogCadastro;
+
+import viwer.DialogCadastro;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

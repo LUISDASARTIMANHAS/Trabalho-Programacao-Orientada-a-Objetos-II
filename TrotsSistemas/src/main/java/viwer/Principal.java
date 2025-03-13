@@ -1,7 +1,9 @@
+package viwer;
 
-import Cadastro.DialogCadastro;
-import Cadastro.DialogCadastroProduto;
-import Cadastro.DialogCadastroVenda;
+
+import viwer.DialogCadastro;
+import viwer.DialogCadastroProduto;
+import viwer.DialogCadastroVenda;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -59,7 +61,6 @@ public class Principal extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1024, 720));
-        setPreferredSize(new java.awt.Dimension(1024, 720));
         setResizable(false);
 
         Background.setBackground(new java.awt.Color(255, 255, 255));

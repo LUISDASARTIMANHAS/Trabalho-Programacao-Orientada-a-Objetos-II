@@ -1,8 +1,8 @@
-package Cadastro;
+package viwer;
 
-import Sistema.Endereco;
-import Utils.MainUtils;
-import Utils.SwingUtils;
+import domain.Endereco;
+import control.MainUtils;
+import control.SwingUtils;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;

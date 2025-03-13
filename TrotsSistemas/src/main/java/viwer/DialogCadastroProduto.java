@@ -1,5 +1,4 @@
-
-import Cadastro.DialogCadastro;
+package viwer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,12 +9,12 @@ import Cadastro.DialogCadastro;
  *
  * @author 2023122760328
  */
-public class DialogBuscaCli extends javax.swing.JDialog {
+public class DialogCadastroProduto extends javax.swing.JDialog {
 
     /**
      * Creates new form Cadastro
      */
-    public DialogBuscaCli(java.awt.Frame parent, boolean modal) {
+    public DialogCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -34,7 +33,12 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         FORM = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
+        btnNovo1 = new javax.swing.JButton();
+        btnCancelar1 = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
         painelEnderec = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnPesqProd = new javax.swing.JButton();
         lblCEP = new javax.swing.JLabel();
         txtEnder1 = new javax.swing.JTextField();
         lblEnder = new javax.swing.JLabel();
@@ -45,6 +49,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         jSpinner2 = new javax.swing.JSpinner();
         lblComplem2 = new javax.swing.JLabel();
         jSpinner3 = new javax.swing.JSpinner();
+        btnDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -85,12 +90,40 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         FORM.add(Logo);
 
         PaineldeCad1.setBackground(new java.awt.Color(204, 204, 204));
-        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produtos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         PaineldeCad1.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad1.setAlignmentX(50.0F);
         PaineldeCad1.setAlignmentY(50.0F);
         PaineldeCad1.setMaximumSize(new java.awt.Dimension(300, 500));
         PaineldeCad1.setMinimumSize(new java.awt.Dimension(300, 300));
+
+        btnNovo1.setBackground(new java.awt.Color(255, 255, 255));
+        btnNovo1.setForeground(new java.awt.Color(0, 0, 0));
+        btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
+        btnNovo1.setMnemonic('N');
+        btnNovo1.setText("Novo");
+
+        btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar1ActionPerformed(evt);
+            }
+        });
+
+        btnAlterar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Save.png"))); // NOI18N
+        btnAlterar.setMnemonic('A');
+        btnAlterar.setText("Alterar");
+        btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
         painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
@@ -98,6 +131,23 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         painelEnderec.setAlignmentY(50.0F);
         painelEnderec.setAutoscrolls(true);
         painelEnderec.setLayout(new java.awt.GridLayout(6, 2, 15, 15));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Pesquisar Produto Existente");
+        painelEnderec.add(jLabel1);
+
+        btnPesqProd.setBackground(new java.awt.Color(255, 255, 255));
+        btnPesqProd.setForeground(new java.awt.Color(0, 0, 0));
+        btnPesqProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/zoom_16x16.gif"))); // NOI18N
+        btnPesqProd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPesqProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqProdActionPerformed(evt);
+            }
+        });
+        painelEnderec.add(btnPesqProd);
 
         lblCEP.setBackground(new java.awt.Color(255, 255, 255));
         lblCEP.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,21 +229,52 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         jSpinner3.setAutoscrolls(true);
         painelEnderec.add(jSpinner3);
 
+        btnDeletar.setBackground(new java.awt.Color(255, 255, 255));
+        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
+        btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_(delete)_16x16.gif"))); // NOI18N
+        btnDeletar.setText("Deletar");
+        btnDeletar.setEnabled(false);
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(180, 180, 180)
+                .addComponent(btnDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addGap(317, 317, 317)
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addGap(68, 68, 68)))
         );
 
         FORM.add(PaineldeCad1);
@@ -214,6 +295,25 @@ public class DialogBuscaCli extends javax.swing.JDialog {
     private void txtEnder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnder1ActionPerformed
+
+    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelar1ActionPerformed
+
+    private void btnPesqProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdActionPerformed
+        // TODO add your handling code here:
+//        DialogBuscaProd tela = new DialogBuscaProd(this,true);
+//        
+//        tela.setVisible(true);
+    }//GEN-LAST:event_btnPesqProdActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +363,12 @@ public class DialogBuscaCli extends javax.swing.JDialog {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnCancelar1;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnNovo1;
+    private javax.swing.JButton btnPesqProd;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;

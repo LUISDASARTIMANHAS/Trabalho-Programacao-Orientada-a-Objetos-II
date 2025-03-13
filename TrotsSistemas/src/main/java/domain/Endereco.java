@@ -1,4 +1,4 @@
-package Sistema;
+package domain;
 
 import java.io.Serializable;
 
