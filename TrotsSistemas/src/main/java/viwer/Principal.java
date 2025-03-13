@@ -1,6 +1,7 @@
 package viwer;
 
 
+import control.GUIManager;
 import viwer.DialogCadastro;
 import viwer.DialogCadastroProduto;
 import viwer.DialogCadastroVenda;
@@ -212,9 +213,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadClienteActionPerformed
         // TODO add your handling code here:
-        DialogCadastro tela = new DialogCadastro(this,true);
-        
-        tela.setVisible(true);
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirCadCli();
     }//GEN-LAST:event_CadClienteActionPerformed
 
     private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
@@ -231,23 +231,25 @@ public class Principal extends javax.swing.JFrame {
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
         // TODO add your handling code here:
-        DialogCadastroProduto tela = new DialogCadastroProduto(this, false);
+        GUIManager gui = GUIManager.getMyInstance();
         
-        tela.setVisible(true);
+//        DialogCadastroProduto tela = new DialogCadastroProduto(this, false);
+//        
+//        tela.setVisible(true);
     }//GEN-LAST:event_CadProdutoActionPerformed
 
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
-        DialogCadastroVenda tela = new DialogCadastroVenda(this, true);
-        
-        tela.setVisible(true);
+//        DialogCadastroVenda tela = new DialogCadastroVenda(this, true);;
+//        
+//        tela.setVisible(true);
     }//GEN-LAST:event_CadPedidoActionPerformed
 
     private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
         // TODO add your handling code here:
-        DialogBuscaProd tela = new DialogBuscaProd(this,false);
-        
-        tela.setVisible(true);
+//        DialogBuscaProd tela = new DialogBuscaProd(this,false);
+//        
+//        tela.setVisible(true);
     }//GEN-LAST:event_ConsultaPedidoActionPerformed
 
     private void ConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaClienteActionPerformed
@@ -257,42 +259,7 @@ public class Principal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_ConsultaClienteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                System.out.println(info.getName());
-                if ("Metal".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
