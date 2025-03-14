@@ -253,9 +253,6 @@
                           <Color blue="0" green="0" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnNovo">
                       <Properties>
@@ -433,9 +430,6 @@
                           <Color blue="0" green="0" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelActionPerformed"/>
-                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                       <Properties>
@@ -591,9 +585,6 @@
                                 <Property name="alignmentX" type="float" value="10.0"/>
                                 <Property name="alignmentY" type="float" value="10.0"/>
                               </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtComplementoActionPerformed"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lblLogradouro">
                               <Properties>
@@ -617,9 +608,6 @@
                                 <Property name="alignmentX" type="float" value="10.0"/>
                                 <Property name="alignmentY" type="float" value="10.0"/>
                               </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLogradouroActionPerformed"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="bairroLabel">
                               <Properties>

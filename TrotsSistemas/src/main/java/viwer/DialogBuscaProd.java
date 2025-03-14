@@ -1,8 +1,5 @@
 package viwer;
 
-
-import viwer.DialogCadastro;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -37,16 +34,16 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
         painelEnderec = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        lblCEP = new javax.swing.JLabel();
-        txtEnder1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtEnder3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtEnder4 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtEnder2 = new javax.swing.JTextField();
+        lblProd = new javax.swing.JLabel();
+        cmbProd = new javax.swing.JComboBox<>();
+        lblSku = new javax.swing.JLabel();
+        txtSku = new javax.swing.JTextField();
+        lblPeso = new javax.swing.JLabel();
+        txtPeso = new javax.swing.JTextField();
+        lblEstoque = new javax.swing.JLabel();
+        txtEstoque = new javax.swing.JTextField();
+        lblObs = new javax.swing.JLabel();
+        txtObs = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -101,97 +98,77 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         painelEnderec.setAutoscrolls(true);
         painelEnderec.setLayout(new java.awt.GridLayout(5, 2, 15, 15));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Produto");
-        painelEnderec.add(jLabel1);
+        lblProd.setBackground(new java.awt.Color(255, 255, 255));
+        lblProd.setForeground(new java.awt.Color(255, 255, 255));
+        lblProd.setText("Produto");
+        painelEnderec.add(lblProd);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Um", "Aqui vai ter o select do banco de dados" }));
-        painelEnderec.add(jComboBox1);
+        cmbProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Um", "Aqui vai ter o select do banco de dados" }));
+        painelEnderec.add(cmbProd);
 
-        lblCEP.setBackground(new java.awt.Color(255, 255, 255));
-        lblCEP.setForeground(new java.awt.Color(255, 255, 255));
-        lblCEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblCEP.setText("SKU");
-        lblCEP.setAlignmentX(10.0F);
-        lblCEP.setAlignmentY(10.0F);
-        painelEnderec.add(lblCEP);
+        lblSku.setBackground(new java.awt.Color(255, 255, 255));
+        lblSku.setForeground(new java.awt.Color(255, 255, 255));
+        lblSku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
+        lblSku.setText("SKU");
+        lblSku.setAlignmentX(10.0F);
+        lblSku.setAlignmentY(10.0F);
+        painelEnderec.add(lblSku);
 
-        txtEnder1.setEditable(false);
-        txtEnder1.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder1.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder1.setText("SKU10");
-        txtEnder1.setAlignmentX(10.0F);
-        txtEnder1.setAlignmentY(10.0F);
-        txtEnder1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtEnder1.setEnabled(false);
-        txtEnder1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnder1ActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtEnder1);
+        txtSku.setEditable(false);
+        txtSku.setBackground(new java.awt.Color(255, 255, 255));
+        txtSku.setForeground(new java.awt.Color(0, 0, 0));
+        txtSku.setText("SKU10");
+        txtSku.setAlignmentX(10.0F);
+        txtSku.setAlignmentY(10.0F);
+        txtSku.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtSku.setEnabled(false);
+        painelEnderec.add(txtSku);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Peso (G)");
-        painelEnderec.add(jLabel3);
+        lblPeso.setBackground(new java.awt.Color(255, 255, 255));
+        lblPeso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPeso.setText("Peso (G)");
+        painelEnderec.add(lblPeso);
 
-        txtEnder3.setEditable(false);
-        txtEnder3.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder3.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder3.setText("500");
-        txtEnder3.setAlignmentX(10.0F);
-        txtEnder3.setAlignmentY(10.0F);
-        txtEnder3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtEnder3.setEnabled(false);
-        txtEnder3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnder3ActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtEnder3);
+        txtPeso.setEditable(false);
+        txtPeso.setBackground(new java.awt.Color(255, 255, 255));
+        txtPeso.setForeground(new java.awt.Color(0, 0, 0));
+        txtPeso.setText("500");
+        txtPeso.setAlignmentX(10.0F);
+        txtPeso.setAlignmentY(10.0F);
+        txtPeso.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtPeso.setEnabled(false);
+        painelEnderec.add(txtPeso);
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Em Estoque");
-        painelEnderec.add(jLabel4);
+        lblEstoque.setBackground(new java.awt.Color(255, 255, 255));
+        lblEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        lblEstoque.setText("Em Estoque");
+        painelEnderec.add(lblEstoque);
 
-        txtEnder4.setEditable(false);
-        txtEnder4.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder4.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder4.setText("1");
-        txtEnder4.setAlignmentX(10.0F);
-        txtEnder4.setAlignmentY(10.0F);
-        txtEnder4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtEnder4.setEnabled(false);
-        txtEnder4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnder4ActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtEnder4);
+        txtEstoque.setEditable(false);
+        txtEstoque.setBackground(new java.awt.Color(255, 255, 255));
+        txtEstoque.setForeground(new java.awt.Color(0, 0, 0));
+        txtEstoque.setText("1");
+        txtEstoque.setAlignmentX(10.0F);
+        txtEstoque.setAlignmentY(10.0F);
+        txtEstoque.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtEstoque.setEnabled(false);
+        painelEnderec.add(txtEstoque);
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Descrição");
-        painelEnderec.add(jLabel2);
+        lblObs.setBackground(new java.awt.Color(255, 255, 255));
+        lblObs.setForeground(new java.awt.Color(255, 255, 255));
+        lblObs.setText("Descrição");
+        painelEnderec.add(lblObs);
 
-        txtEnder2.setEditable(false);
-        txtEnder2.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder2.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder2.setText("O sabor do campo em forma de erva. A Limão Caipira traz a intensidade e a refrescância  do limão associado ao sabor único que só a erva mate tem. ");
-        txtEnder2.setAlignmentX(10.0F);
-        txtEnder2.setAlignmentY(10.0F);
-        txtEnder2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtEnder2.setEnabled(false);
-        txtEnder2.setMinimumSize(new java.awt.Dimension(100, 26));
-        txtEnder2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnder2ActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtEnder2);
+        txtObs.setEditable(false);
+        txtObs.setBackground(new java.awt.Color(255, 255, 255));
+        txtObs.setForeground(new java.awt.Color(0, 0, 0));
+        txtObs.setText("O sabor do campo em forma de erva. A Limão Caipira traz a intensidade e a refrescância  do limão associado ao sabor único que só a erva mate tem. ");
+        txtObs.setAlignmentX(10.0F);
+        txtObs.setAlignmentY(10.0F);
+        txtObs.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtObs.setEnabled(false);
+        txtObs.setMinimumSize(new java.awt.Dimension(100, 26));
+        painelEnderec.add(txtObs);
 
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
@@ -220,22 +197,6 @@ public class DialogBuscaProd extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtEnder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnder1ActionPerformed
-
-    private void txtEnder2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnder2ActionPerformed
-
-    private void txtEnder3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnder3ActionPerformed
-
-    private void txtEnder4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnder4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,17 +246,17 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JComboBox<String> cmbProd;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCEP;
+    private javax.swing.JLabel lblEstoque;
+    private javax.swing.JLabel lblObs;
+    private javax.swing.JLabel lblPeso;
+    private javax.swing.JLabel lblProd;
+    private javax.swing.JLabel lblSku;
     private javax.swing.JPanel painelEnderec;
-    private javax.swing.JTextField txtEnder1;
-    private javax.swing.JTextField txtEnder2;
-    private javax.swing.JTextField txtEnder3;
-    private javax.swing.JTextField txtEnder4;
+    private javax.swing.JTextField txtEstoque;
+    private javax.swing.JTextField txtObs;
+    private javax.swing.JTextField txtPeso;
+    private javax.swing.JTextField txtSku;
     // End of variables declaration//GEN-END:variables
 }

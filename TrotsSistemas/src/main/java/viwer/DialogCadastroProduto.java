@@ -163,11 +163,6 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         txtEnder1.setAlignmentX(10.0F);
         txtEnder1.setAlignmentY(10.0F);
         txtEnder1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEnder1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnder1ActionPerformed(evt);
-            }
-        });
         painelEnderec.add(txtEnder1);
 
         lblEnder.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,11 +178,6 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         txtEnder.setAlignmentX(10.0F);
         txtEnder.setAlignmentY(10.0F);
         txtEnder.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEnder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnderActionPerformed(evt);
-            }
-        });
         painelEnderec.add(txtEnder);
 
         lblNum.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,14 +277,6 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtEnderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnderActionPerformed
-
-    private void txtEnder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnder1ActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
         // TODO add your handling code here:

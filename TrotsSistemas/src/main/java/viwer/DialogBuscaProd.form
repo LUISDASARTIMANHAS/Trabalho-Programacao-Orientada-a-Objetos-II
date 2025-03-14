@@ -175,7 +175,7 @@
                         <Property name="verticalGap" type="int" value="15"/>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel1">
+                        <Component class="javax.swing.JLabel" name="lblProd">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -186,7 +186,7 @@
                             <Property name="text" type="java.lang.String" value="Produto"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                        <Component class="javax.swing.JComboBox" name="cmbProd">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
@@ -199,7 +199,7 @@
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblCEP">
+                        <Component class="javax.swing.JLabel" name="lblSku">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -215,7 +215,7 @@
                             <Property name="alignmentY" type="float" value="10.0"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEnder1">
+                        <Component class="javax.swing.JTextField" name="txtSku">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -232,11 +232,8 @@
                             </Property>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder1ActionPerformed"/>
-                          </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel3">
+                        <Component class="javax.swing.JLabel" name="lblPeso">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -247,7 +244,7 @@
                             <Property name="text" type="java.lang.String" value="Peso (G)"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEnder3">
+                        <Component class="javax.swing.JTextField" name="txtPeso">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -264,11 +261,8 @@
                             </Property>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder3ActionPerformed"/>
-                          </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel4">
+                        <Component class="javax.swing.JLabel" name="lblEstoque">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -279,7 +273,7 @@
                             <Property name="text" type="java.lang.String" value="Em Estoque"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEnder4">
+                        <Component class="javax.swing.JTextField" name="txtEstoque">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -296,11 +290,8 @@
                             </Property>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder4ActionPerformed"/>
-                          </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel2">
+                        <Component class="javax.swing.JLabel" name="lblObs">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -311,7 +302,7 @@
                             <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEnder2">
+                        <Component class="javax.swing.JTextField" name="txtObs">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -331,9 +322,6 @@
                               <Dimension value="[100, 26]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder2ActionPerformed"/>
-                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

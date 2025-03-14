@@ -313,12 +313,21 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void btnAddLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLancheActionPerformed
         // TODO add your handling code here:
-        inserirTabela("teste", "gpa", "s");
+        String item = cmbSabor.getSelectedItem().toString();
+        int qtde = (int) spnQtde.getValue();
+        double peso = 500 * qtde;
+        double valor = qtde * 10.89;
+        inserirTabela(item,qtde,peso,valor);
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showInternalConfirmDialog(this, evt);
+        JOptionPane.showMessageDialog(
+                    this,
+                    "Essa fucionalidade ainda não esta pronta",
+                    "Registro de Venda",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
@@ -327,6 +336,12 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(
+                    this,
+                    "Essa fucionalidade ainda não esta pronta",
+                    "Registro de Venda",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
@@ -351,14 +366,15 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void inserirTabela(String nome, String lista, String entrega) {
-        ((DefaultTableModel) tblPedido.getModel()).addRow(new Object[9]);
+    private void inserirTabela(String sabor, int qtde, double peso, double valor) {
+        ((DefaultTableModel) tblPedido.getModel()).addRow(new Object[4]);
 
         int linha = tblPedido.getRowCount() - 1;
         int col = 0;
-        tblPedido.setValueAt(nome, linha, col++);
-        tblPedido.setValueAt(lista, linha, col++);
-        tblPedido.setValueAt(entrega, linha, col++);
+        tblPedido.setValueAt(sabor, linha, col++);
+        tblPedido.setValueAt(qtde, linha, col++);
+        tblPedido.setValueAt(peso, linha, col++);
+        tblPedido.setValueAt(valor, linha, col++);
     }
 
     /**

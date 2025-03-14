@@ -1,8 +1,5 @@
 package viwer;
 
-
-import viwer.DialogCadastro;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -37,13 +34,13 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
         painelEnderec = new javax.swing.JPanel();
-        lblCEP = new javax.swing.JLabel();
-        txtEnder1 = new javax.swing.JTextField();
-        lblEnder = new javax.swing.JLabel();
-        txtEnder = new javax.swing.JTextField();
-        lblNum = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        lblComplem = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        lblSabor = new javax.swing.JLabel();
+        txtSabor = new javax.swing.JTextField();
+        lblValor = new javax.swing.JLabel();
+        spinValor = new javax.swing.JSpinner();
+        lblPeso = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
         lblComplem2 = new javax.swing.JLabel();
         jSpinner3 = new javax.swing.JSpinner();
@@ -101,66 +98,56 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         painelEnderec.setAutoscrolls(true);
         painelEnderec.setLayout(new java.awt.GridLayout(6, 2, 15, 15));
 
-        lblCEP.setBackground(new java.awt.Color(255, 255, 255));
-        lblCEP.setForeground(new java.awt.Color(255, 255, 255));
-        lblCEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblCEP.setText("Nome");
-        lblCEP.setAlignmentX(10.0F);
-        lblCEP.setAlignmentY(10.0F);
-        painelEnderec.add(lblCEP);
+        lblNome.setBackground(new java.awt.Color(255, 255, 255));
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
+        lblNome.setText("Nome");
+        lblNome.setAlignmentX(10.0F);
+        lblNome.setAlignmentY(10.0F);
+        painelEnderec.add(lblNome);
 
-        txtEnder1.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder1.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder1.setText("SKU10");
-        txtEnder1.setAlignmentX(10.0F);
-        txtEnder1.setAlignmentY(10.0F);
-        txtEnder1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEnder1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnder1ActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtEnder1);
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("SKU10");
+        txtNome.setAlignmentX(10.0F);
+        txtNome.setAlignmentY(10.0F);
+        txtNome.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtNome);
 
-        lblEnder.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
-        lblEnder.setText("Sabor");
-        lblEnder.setAlignmentX(10.0F);
-        lblEnder.setAlignmentY(10.0F);
-        painelEnderec.add(lblEnder);
+        lblSabor.setForeground(new java.awt.Color(255, 255, 255));
+        lblSabor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
+        lblSabor.setText("Sabor");
+        lblSabor.setAlignmentX(10.0F);
+        lblSabor.setAlignmentY(10.0F);
+        painelEnderec.add(lblSabor);
 
-        txtEnder.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder.setText("Eucalipto");
-        txtEnder.setAlignmentX(10.0F);
-        txtEnder.setAlignmentY(10.0F);
-        txtEnder.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtEnder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEnderActionPerformed(evt);
-            }
-        });
-        painelEnderec.add(txtEnder);
+        txtSabor.setBackground(new java.awt.Color(255, 255, 255));
+        txtSabor.setForeground(new java.awt.Color(0, 0, 0));
+        txtSabor.setText("Eucalipto");
+        txtSabor.setAlignmentX(10.0F);
+        txtSabor.setAlignmentY(10.0F);
+        txtSabor.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtSabor);
 
-        lblNum.setForeground(new java.awt.Color(255, 255, 255));
-        lblNum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
-        lblNum.setText("  Valor (R$)");
-        lblNum.setAlignmentX(10.0F);
-        lblNum.setAlignmentY(10.0F);
-        painelEnderec.add(lblNum);
+        lblValor.setForeground(new java.awt.Color(255, 255, 255));
+        lblValor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
+        lblValor.setText("  Valor (R$)");
+        lblValor.setAlignmentX(10.0F);
+        lblValor.setAlignmentY(10.0F);
+        painelEnderec.add(lblValor);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(10.85d, 1.0d, null, 1.0d));
-        jSpinner1.setAlignmentX(10.0F);
-        jSpinner1.setAlignmentY(10.0F);
-        jSpinner1.setAutoscrolls(true);
-        painelEnderec.add(jSpinner1);
+        spinValor.setModel(new javax.swing.SpinnerNumberModel(10.85d, 1.0d, null, 1.0d));
+        spinValor.setAlignmentX(10.0F);
+        spinValor.setAlignmentY(10.0F);
+        spinValor.setAutoscrolls(true);
+        painelEnderec.add(spinValor);
 
-        lblComplem.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
-        lblComplem.setText("Peso (G)");
-        lblComplem.setAlignmentX(10.0F);
-        lblComplem.setAlignmentY(10.0F);
-        painelEnderec.add(lblComplem);
+        lblPeso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPeso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
+        lblPeso.setText("Peso (G)");
+        lblPeso.setAlignmentX(10.0F);
+        lblPeso.setAlignmentY(10.0F);
+        painelEnderec.add(lblPeso);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jSpinner2.setAlignmentX(10.0F);
@@ -208,14 +195,6 @@ public class DialogBuscaCli extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtEnderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnderActionPerformed
-
-    private void txtEnder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnder1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnder1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,16 +245,16 @@ public class DialogBuscaCli extends javax.swing.JDialog {
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JLabel lblCEP;
-    private javax.swing.JLabel lblComplem;
     private javax.swing.JLabel lblComplem2;
-    private javax.swing.JLabel lblEnder;
-    private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblPeso;
+    private javax.swing.JLabel lblSabor;
+    private javax.swing.JLabel lblValor;
     private javax.swing.JPanel painelEnderec;
-    private javax.swing.JTextField txtEnder;
-    private javax.swing.JTextField txtEnder1;
+    private javax.swing.JSpinner spinValor;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSabor;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,16 +1,14 @@
 package viwer;
 
-
 import control.GUIManager;
-import viwer.DialogCadastro;
-import viwer.DialogCadastroProduto;
-import viwer.DialogCadastroVenda;
+import control.SwingUtils;
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this
+ * template
  */
-
 /**
  *
  * @author 2023122760328
@@ -33,7 +31,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        GrupodeTema = new javax.swing.ButtonGroup();
+        GrpTema = new javax.swing.ButtonGroup();
         Background = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
@@ -51,11 +49,12 @@ public class Principal extends javax.swing.JFrame {
         RelatorioPedidos = new javax.swing.JMenuItem();
         menuUtilitarios = new javax.swing.JMenu();
         MenuTema = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem5 = new javax.swing.JRadioButtonMenuItem();
+        WinTema = new javax.swing.JRadioButtonMenuItem();
+        MotifTema = new javax.swing.JRadioButtonMenuItem();
+        NimbusTema = new javax.swing.JRadioButtonMenuItem();
+        MetalTema = new javax.swing.JRadioButtonMenuItem();
+        DarkTema = new javax.swing.JRadioButtonMenuItem();
+        LightTema = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trots Sistemas - gestão de Vendas");
@@ -181,26 +180,66 @@ public class Principal extends javax.swing.JFrame {
         MenuTema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/settings2_16x16.gif"))); // NOI18N
         MenuTema.setText("Temas");
 
-        GrupodeTema.add(jRadioButtonMenuItem1);
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Windows");
-        MenuTema.add(jRadioButtonMenuItem1);
+        GrpTema.add(WinTema);
+        WinTema.setMnemonic('W');
+        WinTema.setSelected(true);
+        WinTema.setText("Windows");
+        WinTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MudarTemaActionPerformed(evt);
+            }
+        });
+        MenuTema.add(WinTema);
 
-        GrupodeTema.add(jRadioButtonMenuItem2);
-        jRadioButtonMenuItem2.setText("Motif");
-        MenuTema.add(jRadioButtonMenuItem2);
+        GrpTema.add(MotifTema);
+        MotifTema.setMnemonic('F');
+        MotifTema.setText("Motif");
+        MotifTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MudarTemaActionPerformed(evt);
+            }
+        });
+        MenuTema.add(MotifTema);
 
-        GrupodeTema.add(jRadioButtonMenuItem3);
-        jRadioButtonMenuItem3.setText("Nimbus");
-        MenuTema.add(jRadioButtonMenuItem3);
+        GrpTema.add(NimbusTema);
+        NimbusTema.setMnemonic('N');
+        NimbusTema.setText("Nimbus");
+        NimbusTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MudarTemaActionPerformed(evt);
+            }
+        });
+        MenuTema.add(NimbusTema);
 
-        GrupodeTema.add(jRadioButtonMenuItem4);
-        jRadioButtonMenuItem4.setText("Metal");
-        MenuTema.add(jRadioButtonMenuItem4);
+        GrpTema.add(MetalTema);
+        MetalTema.setMnemonic('M');
+        MetalTema.setText("Metal");
+        MetalTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MudarTemaActionPerformed(evt);
+            }
+        });
+        MenuTema.add(MetalTema);
 
-        GrupodeTema.add(jRadioButtonMenuItem5);
-        jRadioButtonMenuItem5.setText("Dark");
-        MenuTema.add(jRadioButtonMenuItem5);
+        GrpTema.add(DarkTema);
+        DarkTema.setMnemonic('D');
+        DarkTema.setText("Dark");
+        DarkTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MudarTemaActionPerformed(evt);
+            }
+        });
+        MenuTema.add(DarkTema);
+
+        GrpTema.add(LightTema);
+        LightTema.setMnemonic('L');
+        LightTema.setText("Light");
+        LightTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MudarTemaActionPerformed(evt);
+            }
+        });
+        MenuTema.add(LightTema);
 
         menuUtilitarios.add(MenuTema);
 
@@ -219,47 +258,72 @@ public class Principal extends javax.swing.JFrame {
 
     private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.sair();
     }//GEN-LAST:event_SairActionPerformed
 
     private void ConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaProdutoActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirBuscaProd();
     }//GEN-LAST:event_ConsultaProdutoActionPerformed
 
     private void RelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioClienteActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirRelatorioCli();
     }//GEN-LAST:event_RelatorioClienteActionPerformed
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        
-//        DialogCadastroProduto tela = new DialogCadastroProduto(this, false);
-//        
-//        tela.setVisible(true);
+        gui.abrirCadProd();
     }//GEN-LAST:event_CadProdutoActionPerformed
 
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
-//        DialogCadastroVenda tela = new DialogCadastroVenda(this, true);;
-//        
-//        tela.setVisible(true);
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirCadPedido();
     }//GEN-LAST:event_CadPedidoActionPerformed
 
     private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
         // TODO add your handling code here:
-//        DialogBuscaProd tela = new DialogBuscaProd(this,false);
-//        
-//        tela.setVisible(true);
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirBuscaProd();
     }//GEN-LAST:event_ConsultaPedidoActionPerformed
 
     private void ConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaClienteActionPerformed
         // TODO add your handling code here:
-        DialogBuscaCli tela = new DialogBuscaCli(this,false);
-        
-        tela.setVisible(true);
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirBuscaCli();
     }//GEN-LAST:event_ConsultaClienteActionPerformed
 
-    
+    private void MudarTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MudarTemaActionPerformed
+        // TODO add your handling code here:
+        TrocarLookAndFeel(GrpTema.getSelection().getMnemonic());
+    }//GEN-LAST:event_MudarTemaActionPerformed
+
+    private void TrocarLookAndFeel(int NomeLook) {
+        String lookAndFeel = switch (NomeLook) {
+            case 'W' ->
+                "Windows";
+            case 'M' ->
+                "Metal";
+            case 'F' ->
+                "CDE/Motif";
+            case 'N' ->
+                "Nimbus";
+            case 'L' ->
+                "com.formdev.flatlaf.FlatLightLaf";
+            case 'D' ->
+                "com.formdev.flatlaf.FlatDarkLaf";
+            default ->
+                "Metal";
+        };
+        SwingUtils.ChangeLookAndFeel("Principal", lookAndFeel,this);
+        pack();
+        System.out.println("Look: "+lookAndFeel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
@@ -269,17 +333,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ConsultaCliente;
     private javax.swing.JMenuItem ConsultaPedido;
     private javax.swing.JMenuItem ConsultaProduto;
-    private javax.swing.ButtonGroup GrupodeTema;
+    private javax.swing.JRadioButtonMenuItem DarkTema;
+    private javax.swing.ButtonGroup GrpTema;
+    private javax.swing.JRadioButtonMenuItem LightTema;
     private javax.swing.JMenu MenuTema;
+    private javax.swing.JRadioButtonMenuItem MetalTema;
+    private javax.swing.JRadioButtonMenuItem MotifTema;
+    private javax.swing.JRadioButtonMenuItem NimbusTema;
     private javax.swing.JMenuItem RelatorioCliente;
     private javax.swing.JMenuItem RelatorioPedidos;
     private javax.swing.JMenuItem Relatorioprodutos;
     private javax.swing.JMenuItem Sair;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
+    private javax.swing.JRadioButtonMenuItem WinTema;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuConsulta;

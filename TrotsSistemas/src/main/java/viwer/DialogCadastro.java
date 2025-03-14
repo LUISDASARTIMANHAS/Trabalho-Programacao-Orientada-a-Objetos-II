@@ -1,8 +1,8 @@
 package viwer;
 
-import domain.Endereco;
 import control.MainUtils;
 import control.SwingUtils;
+import domain.Endereco;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
@@ -14,7 +14,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
@@ -148,11 +147,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtNome.setText("My name");
         txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtNome.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
 
         btnNovo.setBackground(new java.awt.Color(255, 255, 255));
         btnNovo.setForeground(new java.awt.Color(0, 0, 0));
@@ -249,11 +243,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtTel.setToolTipText("Telefone Celular");
         txtTel.setActionCommand("<Not Set>");
         txtTel.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        txtTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelActionPerformed(evt);
-            }
-        });
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 16), new java.awt.Color(0, 0, 0))); // NOI18N
         jScrollPane2.setAutoscrolls(true);
@@ -330,11 +319,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtComplemento.setText("Compl");
         txtComplemento.setAlignmentX(10.0F);
         txtComplemento.setAlignmentY(10.0F);
-        txtComplemento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtComplementoActionPerformed(evt);
-            }
-        });
         painelEnderec.add(txtComplemento);
 
         lblLogradouro.setForeground(new java.awt.Color(255, 255, 255));
@@ -348,11 +332,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtLogradouro.setText("Ender");
         txtLogradouro.setAlignmentX(10.0F);
         txtLogradouro.setAlignmentY(10.0F);
-        txtLogradouro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLogradouroActionPerformed(evt);
-            }
-        });
         painelEnderec.add(txtLogradouro);
 
         bairroLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -484,14 +463,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComplementoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtComplementoActionPerformed
-
-    private void txtLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogradouroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLogradouroActionPerformed
-
     private void FotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoMouseClicked
         // TODO add your handling code here:
         MostrarFoto();
@@ -570,14 +541,6 @@ public class DialogCadastro extends javax.swing.JDialog {
             return false;
         }
     }
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelActionPerformed
 
     private void txtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCEPFocusLost
         // TODO add your handling code here:
@@ -678,6 +641,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         txtBairro.setText("");
         txtRef.setText("");
         cmbCidade.setSelectedIndex(0);
+        txtUf.setText("");
     }
 
     /**

@@ -317,9 +317,6 @@
                               <Color blue="0" green="0" red="ff" type="rgb"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnder1ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblEnder">
                           <Properties>
@@ -349,9 +346,6 @@
                               <Color blue="0" green="0" red="ff" type="rgb"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblNum">
                           <Properties>
