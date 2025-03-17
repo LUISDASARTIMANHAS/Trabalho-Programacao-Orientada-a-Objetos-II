@@ -4,7 +4,7 @@
  */
 package control;
 
-import static swing.SwingUtils.ChangeLookAndFeel;
+import swing.LDASwingUtils;
 import viwer.DialogCadastro;
 import viwer.Principal;
 
@@ -27,7 +27,7 @@ public class GUIManager {
 
     public void abrirPrincipal() {
         principal = new Principal();
-        ChangeLookAndFeel(Principal.class.getName(), "Metal",principal);
+        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal",principal);
         principal.setVisible(true);
     }
 
@@ -38,6 +38,11 @@ public class GUIManager {
 
     public static void main(String args[]) {
 
+        // TRADUÇÃO
+        javax.swing.UIManager.put("OptionPane.yesButtonText", "Sim"); 
+        javax.swing.UIManager.put("OptionPane.noButtonText", "Não");
+        javax.swing.UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+        
         /*
          * Create and display the form
          */

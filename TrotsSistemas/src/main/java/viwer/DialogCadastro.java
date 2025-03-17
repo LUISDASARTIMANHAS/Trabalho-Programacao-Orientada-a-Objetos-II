@@ -1,8 +1,8 @@
 package viwer;
 
-import control.MainUtils;
-import control.SwingUtils;
-import domain.Endereco;
+import control.LDACPFManager;
+import control.LDAMainUtils;
+import control.Endereco;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
@@ -15,7 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import swing.SwingUtils;
+import swing.LDASwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -523,7 +523,7 @@ public class DialogCadastro extends javax.swing.JDialog {
             msgError = msgError + "Digite seu CPF.\n";
             lblCpf.setForeground(Color.red);
         }
-        if (!MainUtils.ValidarCPF(cpf)) {
+        if (!LDACPFManager.ValidarCPF(cpf)) {
             msgError = msgError + "CPF inválido!.\n";
             lblCpf.setForeground(Color.red);
         }
@@ -552,7 +552,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                     "Busca Cep",
                     JOptionPane.INFORMATION_MESSAGE
             );
-            Endereco ender = MainUtils.consultarCEP(txtCEP.getText());
+            Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
 
             if (ender != null) {
                 txtLogradouro.setText(ender.getLogradouro());
@@ -561,10 +561,10 @@ public class DialogCadastro extends javax.swing.JDialog {
                 txtRef.setText(ender.getReferencia());
                 cmbCidade.setSelectedItem(ender.getCidade());
 
-                SwingUtils.toggleEnabledAndEditable(txtUf)(txtLogradouro);
-                SwingUtils.toggleEnabledAndEditable(txtUf);
-                SwingUtils.toggleEnabledAndEditable(txtBairro);
-                SwingUtils.toggleEnabledAndEditable(txtRef);
+                LDASwingUtils.toggleEnabledAndEditable(txtLogradouro);
+                LDASwingUtils.toggleEnabledAndEditable(txtUf);
+                LDASwingUtils.toggleEnabledAndEditable(txtBairro);
+                LDASwingUtils.toggleEnabledAndEditable(txtRef);
             } else {
                 JOptionPane.showMessageDialog(
                         this,
@@ -572,10 +572,10 @@ public class DialogCadastro extends javax.swing.JDialog {
                         "CADASTRO DE CLIENTE",
                         JOptionPane.ERROR_MESSAGE
                 );
-                SwingUtils.toggleEnabledAndEditable(txtLogradouro);
-                SwingUtils.toggleEnabledAndEditable(txtUf);
-                SwingUtils.toggleEnabledAndEditable(txtBairro);
-                SwingUtils.toggleEnabledAndEditable(txtRef);
+                LDASwingUtils.toggleEnabledAndEditable(txtLogradouro);
+                LDASwingUtils.toggleEnabledAndEditable(txtUf);
+                LDASwingUtils.toggleEnabledAndEditable(txtBairro);
+                LDASwingUtils.toggleEnabledAndEditable(txtRef);
             }
         } catch (IOException ex) {
             Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);

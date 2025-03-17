@@ -28,10 +28,14 @@ public class TableModelListaItens extends AbstractTableModel {
         return 4;
     }
 
+    public ItemPedido getRowItem(int rowIndex) {
+        return (ItemPedido) listaItens.get(rowIndex);
+    }
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 
-        ItemPedido item = (ItemPedido) listaItens.get(rowIndex);
+        ItemPedido item = getRowItem(rowIndex);
         switch (columnIndex) {
             case 0:
                 return item.getSabor();
