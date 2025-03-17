@@ -61,6 +61,11 @@ public class TableModelListaItens extends AbstractTableModel {
 
     }
 
+    public void editar(Object obj, int indice) {
+        remover(indice);
+        adicionar(obj);
+    }
+
     public void setLista(List novaLista) {
         if (novaLista == null || novaLista.isEmpty()) {
             if (!listaItens.isEmpty()) {

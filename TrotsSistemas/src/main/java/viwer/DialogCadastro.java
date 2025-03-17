@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import swing.SwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -560,7 +561,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                 txtRef.setText(ender.getReferencia());
                 cmbCidade.setSelectedItem(ender.getCidade());
 
-                SwingUtils.toggleEnabledAndEditable(txtLogradouro);
+                SwingUtils.toggleEnabledAndEditable(txtUf)(txtLogradouro);
                 SwingUtils.toggleEnabledAndEditable(txtUf);
                 SwingUtils.toggleEnabledAndEditable(txtBairro);
                 SwingUtils.toggleEnabledAndEditable(txtRef);
