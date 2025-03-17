@@ -4,6 +4,7 @@
  */
 package control;
 
+import static swing.SwingUtils.ChangeLookAndFeel;
 import viwer.DialogCadastro;
 import viwer.Principal;
 
@@ -26,7 +27,7 @@ public class GUIManager {
 
     public void abrirPrincipal() {
         principal = new Principal();
-        SwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal",principal);
+        ChangeLookAndFeel(Principal.class.getName(), "Metal",principal);
         principal.setVisible(true);
     }
 
