@@ -1,7 +1,7 @@
 package viwer;
 
 import control.GUIManager;
-import control.SwingUtils;
+import swing.LDASwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -320,7 +320,7 @@ public class Principal extends javax.swing.JFrame {
             default ->
                 "Metal";
         };
-        SwingUtils.ChangeLookAndFeel("Principal", lookAndFeel,this);
+        LDASwingUtils.ChangeLookAndFeel("Principal", lookAndFeel,this);
         pack();
         System.out.println("Look: "+lookAndFeel);
     }
