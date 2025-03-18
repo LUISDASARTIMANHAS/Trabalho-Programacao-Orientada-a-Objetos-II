@@ -7,14 +7,13 @@ package control;
 import domain.ItemPedido;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class LDATableModelListaItens extends AbstractTableModel {
+public class TableModelListaItens extends AbstractTableModel {
 
     private List listaItens = new ArrayList();
 
