@@ -38,6 +38,11 @@ public class GUIManager {
 
     public static void main(String args[]) {
 
+        // TRADUÇÃO
+        javax.swing.UIManager.put("OptionPane.yesButtonText", "Sim"); 
+        javax.swing.UIManager.put("OptionPane.noButtonText", "Não");
+        javax.swing.UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+        
         /*
          * Create and display the form
          */

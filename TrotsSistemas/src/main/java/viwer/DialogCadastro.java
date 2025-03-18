@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import swing.LDASwingUtils;
+import swing.LDASwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -523,6 +524,7 @@ public class DialogCadastro extends javax.swing.JDialog {
             lblCpf.setForeground(Color.red);
         }
         if (!LDACPFManager.ValidarCPF(cpf)) {
+        if (!LDACPFManager.ValidarCPF(cpf)) {
             msgError = msgError + "CPF inválido!.\n";
             lblCpf.setForeground(Color.red);
         }
@@ -560,10 +562,10 @@ public class DialogCadastro extends javax.swing.JDialog {
                 txtRef.setText(ender.getReferencia());
                 cmbCidade.setSelectedItem(ender.getCidade());
 
-                SwingUtils.toggleEnabledAndEditable(txtLogradouro);
-                SwingUtils.toggleEnabledAndEditable(txtUf);
-                SwingUtils.toggleEnabledAndEditable(txtBairro);
-                SwingUtils.toggleEnabledAndEditable(txtRef);
+                LDASwingUtils.toggleEnabledAndEditable(txtLogradouro);
+                LDASwingUtils.toggleEnabledAndEditable(txtUf);
+                LDASwingUtils.toggleEnabledAndEditable(txtBairro);
+                LDASwingUtils.toggleEnabledAndEditable(txtRef);
             } else {
                 JOptionPane.showMessageDialog(
                         this,

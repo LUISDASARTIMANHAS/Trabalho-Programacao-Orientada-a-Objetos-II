@@ -1,6 +1,9 @@
 package viwer;
 
 
+import control.TableModelListaItens;
+import domain.ItemPedido;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,12 +20,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
+    private TableModelListaItens tableModelItemPedido;
     /**
      * Creates new form Cadastro
      */
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         // Amarro o JTable com o meu Abstract Table Model
+        tableModelItemPedido = new TableModelListaItens();
+        tblPedido.setModel(tableModelItemPedido);
     }
 
     /**
@@ -366,16 +373,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void inserirTabela(String sabor, int qtde, double peso, double valor) {
-        ((DefaultTableModel) tblPedido.getModel()).addRow(new Object[4]);
-
-        int linha = tblPedido.getRowCount() - 1;
-        int col = 0;
-        tblPedido.setValueAt(sabor, linha, col++);
-        tblPedido.setValueAt(qtde, linha, col++);
-        tblPedido.setValueAt(peso, linha, col++);
-        tblPedido.setValueAt(valor, linha, col++);
+    private void inserirTabela(String sabor, int qtde, float peso, float valor) {
+        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
+        tableModelItemPedido.adicionar(item);
     }
+    
 
     /**
      * @param args the command line arguments
