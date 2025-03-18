@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class TableModelListaItens extends AbstractTableModel {
+public class LDATableModelListaItens extends AbstractTableModel {
 
     private List listaItens = new ArrayList();
 

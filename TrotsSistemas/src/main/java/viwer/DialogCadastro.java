@@ -9,12 +9,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import swing.LDASwingUtils;
 import swing.LDASwingUtils;
 
 /*
@@ -574,9 +571,9 @@ public class DialogCadastro extends javax.swing.JDialog {
                         JOptionPane.ERROR_MESSAGE
                 );
                 LDASwingUtils.toggleEnabledAndEditable(txtLogradouro);
-                SwingUtils.toggleEnabledAndEditable(txtUf);
-                SwingUtils.toggleEnabledAndEditable(txtBairro);
-                SwingUtils.toggleEnabledAndEditable(txtRef);
+                LDASwingUtils.toggleEnabledAndEditable(txtUf);
+                LDASwingUtils.toggleEnabledAndEditable(txtBairro);
+                LDASwingUtils.toggleEnabledAndEditable(txtRef);
             }
         } catch (IOException ex) {
             Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -595,16 +592,10 @@ public class DialogCadastro extends javax.swing.JDialog {
         limparCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void habilitarSpiner(JCheckBox chk, JSpinner spn) {
-        if (chk.isSelected()) {
-            spn.setEnabled(true);
-        } else {
-            spn.setEnabled(false);
-            spn.setValue(0);
-        }
-    }
+    
 
     private void MostrarFoto() {
+        File arq2 = carregarArq();
         JFileChooser fileWindow = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
 

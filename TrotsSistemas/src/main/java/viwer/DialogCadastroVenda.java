@@ -1,9 +1,8 @@
 package viwer;
 
 
-import control.TableModelListaItens;
+import control.LDATableModelListaItens;
 import domain.ItemPedido;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
-    private TableModelListaItens tableModelItemPedido;
+    private LDATableModelListaItens tableModelItemPedido;
     /**
      * Creates new form Cadastro
      */
@@ -28,7 +27,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
          // Amarro o JTable com o meu Abstract Table Model
-        tableModelItemPedido = new TableModelListaItens();
+        tableModelItemPedido = new LDATableModelListaItens();
         tblPedido.setModel(tableModelItemPedido);
     }
 
