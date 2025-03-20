@@ -17,7 +17,7 @@ public class ConexaoMysql {
     private static Connection conexao;
 
     public static Connection getConexao() throws ClassNotFoundException, SQLException {
-        String url = "jdbc:mysql://localhost:33060/trotsSistemas";
+        String url = "jdbc:mysql://localhost:3306/trotsSistemas";
         String user = "root";
         String password = "";
         
