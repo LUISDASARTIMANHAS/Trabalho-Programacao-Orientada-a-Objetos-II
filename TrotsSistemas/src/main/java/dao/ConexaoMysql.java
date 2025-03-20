@@ -21,7 +21,7 @@ public class ConexaoMysql {
         String user = "root";
         String password = "";
         
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         
         conexao = DriverManager.getConnection(url, user, password);
         return conexao;
