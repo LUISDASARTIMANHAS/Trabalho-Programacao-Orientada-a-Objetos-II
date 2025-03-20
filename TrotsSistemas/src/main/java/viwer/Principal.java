@@ -265,37 +265,37 @@ public class Principal extends javax.swing.JFrame {
     private void ConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaProdutoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirBuscaProd();
+//        gui.abrirBuscaProd();
     }//GEN-LAST:event_ConsultaProdutoActionPerformed
 
     private void RelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioClienteActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirRelatorioCli();
+//        gui.abrirRelatorioCli();
     }//GEN-LAST:event_RelatorioClienteActionPerformed
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirCadProd();
+//        gui.abrirCadProd();
     }//GEN-LAST:event_CadProdutoActionPerformed
 
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirCadPedido();
+//        gui.abrirCadPedido();
     }//GEN-LAST:event_CadPedidoActionPerformed
 
     private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirBuscaProd();
+//        gui.abrirBuscaProd();
     }//GEN-LAST:event_ConsultaPedidoActionPerformed
 
     private void ConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaClienteActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirBuscaCli();
+//        gui.abrirBuscaCli();
     }//GEN-LAST:event_ConsultaClienteActionPerformed
 
     private void MudarTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MudarTemaActionPerformed
@@ -320,9 +320,9 @@ public class Principal extends javax.swing.JFrame {
             default ->
                 "Metal";
         };
-        LDASwingUtils.ChangeLookAndFeel("Principal", lookAndFeel,this);
+        LDASwingUtils.ChangeLookAndFeel("Principal", lookAndFeel, this);
         pack();
-        System.out.println("Look: "+lookAndFeel);
+        System.out.println("Look: " + lookAndFeel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
