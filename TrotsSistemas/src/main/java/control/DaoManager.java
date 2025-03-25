@@ -4,17 +4,30 @@
  */
 package control;
 
+import dao.CidadeDao;
 import dao.ConexaoMysql;
+import dao.ConexaoPSQL;
+import domain.Cidade;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public  class DaoManager {
+//gerenciador de dominio
+public class DaoManager {
+    private CidadeDao cidadeDao;
+//    private Pedido pedido;
 
     public DaoManager() throws ClassNotFoundException, SQLException {
-        ConexaoMysql.getConexao();
+        ConexaoPSQL.getConexao();
+        
+//        instanciar as classes DAO
+        cidadeDao = new CidadeDao();
     }
-    
+
+    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
+        return cidadeDao.listar();
+    }
 }

@@ -92,6 +92,13 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.6.jre7</version>
+            <type>tar.gz</type>
+            <classifier>dist</classifier>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

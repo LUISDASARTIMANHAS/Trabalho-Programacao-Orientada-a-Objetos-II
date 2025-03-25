@@ -5,8 +5,13 @@
 package control;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxEditor;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import swing.LDASwingUtils;
 import viwer.DialogCadastro;
@@ -66,5 +71,16 @@ public class GUIManager {
          */
         GUIManager gui = GUIManager.getMyInstance();
         gui.abrirPrincipal();
+    }
+    
+    public void loadComboCidade(JComboBox combo){
+        try {
+            List Lista = daoManager.listarCidades();
+            
+            combo.setModel(new DefaultComboBoxModel(Lista.toArray()));
+        } catch (SQLException | ClassNotFoundException ex) {
+            LDASwingUtils.messageError(cadCli, ex.toString(), "CADASTRO DE CLIENTE");
+            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
