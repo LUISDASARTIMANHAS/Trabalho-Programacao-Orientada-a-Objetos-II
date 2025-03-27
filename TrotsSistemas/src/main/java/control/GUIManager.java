@@ -9,7 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import swing.LDASwingUtils;
+import viwer.DialogBuscaCli;
+import viwer.DialogBuscaProd;
 import viwer.DialogCadastro;
+import viwer.DialogCadastroProduto;
+import viwer.DialogCadastroVenda;
 import viwer.Principal;
 
 /**
@@ -21,6 +25,10 @@ public class GUIManager {
     private static GUIManager myInstance = new GUIManager();
     private Principal principal;
     private DialogCadastro cadCli;
+    private DialogBuscaCli buscaCli;
+    private DialogBuscaProd buscaProd;
+    private DialogCadastroProduto cadProd;
+    private DialogCadastroVenda cadVenda;
 
     private DaoManager daoManager;
 
@@ -45,10 +53,32 @@ public class GUIManager {
         principal.setVisible(true);
     }
 
+    public void abrirBuscaCli() {
+        buscaCli = new DialogBuscaCli(principal, true);
+        buscaCli.setVisible(true);
+    }
+    
+    public void abrirBuscaProd() {
+        buscaProd = new DialogBuscaProd(principal, true);
+        buscaProd.setVisible(true);
+    }
+    
     public void abrirCadCli() {
         cadCli = new DialogCadastro(principal, true);
         cadCli.setVisible(true);
     }
+    
+    public void abrirCadProd() {
+        cadProd = new DialogCadastroProduto(principal, true);
+        cadProd.setVisible(true);
+    }
+    
+    public void abrirCadVenda() {
+        cadVenda = new DialogCadastroVenda(principal, true);
+        cadVenda.setVisible(true);
+    }
+    
+    
 
     public void sair() {
         System.exit(0);
