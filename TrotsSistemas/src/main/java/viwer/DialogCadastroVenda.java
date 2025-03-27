@@ -2,6 +2,7 @@ package viwer;
 
 
 import control.LDATableModelListaItens;
+import domain.Erva;
 import domain.ItemPedido;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -361,6 +362,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
             if (confirmPane == JOptionPane.YES_OPTION) {
                 ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
+                
+                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
+                Erva erva = item.getErva();
+                
                 JOptionPane.showMessageDialog(
                         this,
                         "Excluido com sucesso!",
@@ -368,6 +373,8 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                         JOptionPane.INFORMATION_MESSAGE
                 );
             }
+        }else{
+            
         }
 
     }//GEN-LAST:event_excluirActionPerformed

@@ -7,7 +7,7 @@ package viwer;
 
 /**
  *
- * @author 2023122760328
+ * @author LUIS DAS ARTIMANHAS
  */
 public class DialogCadastroProduto extends javax.swing.JDialog {
 
