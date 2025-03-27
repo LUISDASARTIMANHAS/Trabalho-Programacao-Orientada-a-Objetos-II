@@ -46,8 +46,8 @@ public class GUIManager {
     }
 
     public void abrirCadCli() {
-//        cadCli = new DialogCadastro(principal, true);
-//        cadCli.setVisible(true);
+        cadCli = new DialogCadastro(principal, true);
+        cadCli.setVisible(true);
     }
 
     public void sair() {
@@ -67,6 +67,7 @@ public class GUIManager {
         GUIManager gui = GUIManager.getMyInstance();
         gui.abrirPrincipal();
     }
+    
     
 //    public void loadComboCidade(JComboBox combo){
 //        try {
