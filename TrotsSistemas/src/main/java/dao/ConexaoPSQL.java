@@ -18,8 +18,8 @@ public class ConexaoPSQL {
 
     public static Connection getConexao() throws ClassNotFoundException, SQLException {
         String url = "jdbc:postgres://localhost:5432/trotsSistemas";
-        String user = "trotsSistemas";
-        String password = "trotsSistemas";
+        String user = "TROTS";
+        String password = "SISTEMA";
         
         Class.forName("org.postgresql.Driver");
         
