@@ -37,13 +37,13 @@ public class TableModelListaItens extends AbstractTableModel {
         ItemPedido item = getRowItem(rowIndex);
         switch (columnIndex) {
             case 0:
-                return item.getSabor();
+                return item.getErva().getSabor();
             case 1:
                 return item.getQdte();
             case 2:
-                return item.getPeso();
+                return item.getErva().getPeso();
             case 3:
-                return item.getValor();
+                return item.getErva().getValor();
         }
         return null;
     }

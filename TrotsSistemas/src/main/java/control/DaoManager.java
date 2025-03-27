@@ -21,13 +21,13 @@ public class DaoManager {
 //    private Pedido pedido;
 
     public DaoManager() throws ClassNotFoundException, SQLException {
-        ConexaoPSQL.getConexao();
+//        ConexaoPSQL.getConexao();
         
 //        instanciar as classes DAO
         cidadeDao = new CidadeDao();
     }
 
-    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
-        return cidadeDao.listar();
-    }
+//    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
+//        return cidadeDao.listar();
+//    }
 }

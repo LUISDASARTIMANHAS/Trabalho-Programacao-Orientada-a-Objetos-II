@@ -13,11 +13,21 @@ public class Erva {
     private float Valor;
     private String Nome;
     private String Sabor;
+    private int peso;
 
-    public Erva(float Valor, String Nome, String Sabor) {
+    public Erva(float Valor, String Nome, String Sabor, int peso) {
         this.Valor = Valor;
         this.Nome = Nome;
         this.Sabor = Sabor;
+        this.peso = peso;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
     }
 
     public String getNome() {

@@ -324,7 +324,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         int qtde = (int) spnQtde.getValue();
         float peso = 500 * qtde;
         float valor = (float) (qtde * 10.89);
-        inserirTabela(item,qtde,peso,valor);
+//        inserirTabela(item,qtde,peso,valor);
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
@@ -379,10 +379,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void inserirTabela(String sabor, int qtde, float peso, float valor) {
-        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
-        tableModelItemPedido.adicionar(item);
-    }
+//    private void inserirTabela(String sabor, int qtde, float peso, float valor) {;
+//        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
+//        tableModelItemPedido.adicionar(item);
+//    }
     
 
     /**
