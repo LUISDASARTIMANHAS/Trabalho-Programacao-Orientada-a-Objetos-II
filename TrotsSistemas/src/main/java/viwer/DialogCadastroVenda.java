@@ -1,11 +1,7 @@
 package viwer;
 
-
-import control.LDATableModelListaItens;
-import domain.Erva;
-import domain.ItemPedido;
+import LDAUtils.control.LDATableModelListaItens;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 /*
@@ -21,15 +17,16 @@ import javax.swing.table.DefaultTableModel;
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private LDATableModelListaItens tableModelItemPedido;
+
     /**
      * Creates new form Cadastro
      */
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         // Amarro o JTable com o meu Abstract Table Model
-        tableModelItemPedido = new LDATableModelListaItens();
-        tblPedido.setModel(tableModelItemPedido);
+        // Amarro o JTable com o meu Abstract Table Model
+//        tableModelItemPedido = new LDATableModelListaItens();
+//        tblPedido.setModel(tableModelItemPedido);
     }
 
     /**
@@ -320,62 +317,80 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void btnAddLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLancheActionPerformed
         // TODO add your handling code here:
-        String item = cmbSabor.getSelectedItem().toString();
-        int qtde = (int) spnQtde.getValue();
-        float peso = 500 * qtde;
-        float valor = (float) (qtde * 10.89);
+//        String item = cmbSabor.getSelectedItem().toString();;
+//        int qtde = (int) spnQtde.getValue();
+//        float peso = 500 * qtde;
+//        float valor = (float) (qtde * 10.89);
 //        inserirTabela(item,qtde,peso,valor);
+        JOptionPane.showMessageDialog(
+                this,
+                "Essa fucionalidade ainda não esta pronta",
+                "Registro de Venda",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(
-                    this,
-                    "Essa fucionalidade ainda não esta pronta",
-                    "Registro de Venda",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+                this,
+                "Essa fucionalidade ainda não esta pronta",
+                "Registro de Venda",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(
+                this,
+                "Essa fucionalidade ainda não esta pronta",
+                "Registro de Venda",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(
-                    this,
-                    "Essa fucionalidade ainda não esta pronta",
-                    "Registro de Venda",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+                this,
+                "Essa fucionalidade ainda não esta pronta",
+                "Registro de Venda",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
-        int linha = tblPedido.getSelectedRow();
-        if (linha >= 0) {
-            int confirmPane = JOptionPane.showConfirmDialog(
-                    this,
-                    "Deseja realmente Excluir o Pedido?"
-            );
-
-            if (confirmPane == JOptionPane.YES_OPTION) {
-                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
-                
-                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
-                Erva erva = item.getErva();
-                
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Excluido com sucesso!",
-                        "Cadastro de Produto",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
-            }
-        }else{
-            
-        }
+//        int linha = tblPedido.getSelectedRow();;
+//        if (linha >= 0) {
+//            int confirmPane = JOptionPane.showConfirmDialog(
+//                    this,
+//                    "Deseja realmente Excluir o Pedido?"
+//            );
+//
+//            if (confirmPane == JOptionPane.YES_OPTION) {
+//                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
+//                
+//                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
+//                Erva erva = item.getErva();
+//                
+//                JOptionPane.showMessageDialog(
+//                        this,
+//                        "Excluido com sucesso!",
+//                        "Cadastro de Produto",
+//                        JOptionPane.INFORMATION_MESSAGE
+//                );
+//            }
+//        }else{
+//            
+//        }
+        JOptionPane.showMessageDialog(
+                this,
+                "Essa fucionalidade ainda não esta pronta",
+                "Registro de Venda",
+                JOptionPane.INFORMATION_MESSAGE
+        );
 
     }//GEN-LAST:event_excluirActionPerformed
 
@@ -383,29 +398,6 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 //        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
 //        tableModelItemPedido.adicionar(item);
 //    }
-    
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-   
-        /*
-         * Create and display the dialog
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogCadastroVenda dialog = new DialogCadastroVenda(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;

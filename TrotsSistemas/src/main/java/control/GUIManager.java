@@ -4,11 +4,11 @@
  */
 package control;
 
+import LDAUtils.swing.LDASwingUtils;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import swing.LDASwingUtils;
 import viwer.DialogBuscaCli;
 import viwer.DialogBuscaProd;
 import viwer.DialogCadastro;
@@ -76,6 +76,15 @@ public class GUIManager {
     public void abrirCadVenda() {
         cadVenda = new DialogCadastroVenda(principal, true);
         cadVenda.setVisible(true);
+    }
+    
+    public void abrirRelatorioCli() {
+       JOptionPane.showMessageDialog(
+                principal,
+                "Essa fucionalidade ainda não esta pronta",
+                "CADASTRO",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }
     
     

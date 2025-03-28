@@ -1,7 +1,8 @@
 package viwer;
 
-import control.LDACPFManager;
-import control.LDAMainUtils;
+import LDAUtils.control.LDACPFManager;
+import LDAUtils.control.LDAMainUtils;
+import LDAUtils.swing.LDASwingUtils;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import swing.LDASwingUtils;
 
 
 /*
@@ -551,7 +551,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         try {
 
             LDASwingUtils.message(this, "Consultando Integração...", "Busca Cep");
-            control.Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
+            LDAUtils.control.Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
 
             if (ender != null) {
                 txtLogradouro.setText(ender.getLogradouro());
@@ -605,45 +605,6 @@ public class DialogCadastro extends javax.swing.JDialog {
 
         cmbCidade.setSelectedIndex(
                 0);
-    }
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogCadastro dialog = new DialogCadastro(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify                     

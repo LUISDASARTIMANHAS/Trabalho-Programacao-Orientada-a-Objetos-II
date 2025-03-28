@@ -18,7 +18,7 @@
                     <archive>
                         <manifest>
                             <!--Definir a classe principal--> 
-                            <mainClass>Principal</mainClass>  
+                            <mainClass>control.GUIManager</mainClass>  
                         </manifest>
                     </archive>
                 </configuration>
@@ -32,8 +32,6 @@
                      <target>23</target>
                      <compilerArgs>
                          <arg>-Xlint</arg>
-                         <arg>--enable-preview</arg>
-                         <arg>--enable-preview</arg>
                      </compilerArgs>
                  </configuration>
              </plugin>
@@ -86,11 +84,6 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>9.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>LDAUtils</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
