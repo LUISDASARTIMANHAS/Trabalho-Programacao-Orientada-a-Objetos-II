@@ -5,9 +5,9 @@
 package control;
 
 import dao.CidadeDao;
-import dao.ConexaoMysql;
-import dao.ConexaoPSQL;
+import dao.ClienteDao;
 import domain.Cidade;
+import domain.Cliente;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,17 +17,26 @@ import java.util.List;
  */
 //gerenciador de dominio
 public class DaoManager {
+
     private CidadeDao cidadeDao;
+    private ClienteDao clienteDao;
 //    private Pedido pedido;
 
     public DaoManager() throws ClassNotFoundException, SQLException {
 //        ConexaoPSQL.getConexao();
-        
-//        instanciar as classes DAO
+
+//        instanciar as classes DAO 
         cidadeDao = new CidadeDao();
+        clienteDao = new ClienteDao();
     }
 
-//    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
-//        return cidadeDao.listar();
-//    }
+    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
+        return cidadeDao.listar();
+    }
+
+    public Cliente InserirCliente() {
+
+        return Cliente;
+    }
+
 }

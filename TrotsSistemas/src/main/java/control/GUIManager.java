@@ -48,6 +48,12 @@ public class GUIManager {
         return myInstance;
     }
 
+    public DaoManager getDaoManager() {
+        return daoManager;
+    }
+    
+    
+
     public void abrirPrincipal() {
         principal = new Principal();
         LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);

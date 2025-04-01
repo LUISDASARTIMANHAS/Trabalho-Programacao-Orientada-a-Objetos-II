@@ -1,5 +1,6 @@
 package viwer;
 
+import control.DaoManager;
 import control.GUIManager;
 import control.TableModelListaItens;
 import domain.Erva;
@@ -339,7 +340,9 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
+        DaoManager dao = gui.getDaoManager();
         gui.msgWIP(this);
+        
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed

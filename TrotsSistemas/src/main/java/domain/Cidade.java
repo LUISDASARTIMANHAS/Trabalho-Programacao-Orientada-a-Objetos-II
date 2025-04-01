@@ -11,9 +11,16 @@ import java.util.Objects;
  * @author LUIS DAS ARTIMANAHS
  */
 public class Cidade {
+
     private int id;
     private String nome;
 
+//    SEM ID
+    public Cidade(String nome) {
+        this.nome = nome;
+    }
+
+//  COM ID
     public Cidade(int id, String nome) {
         this.id = id;
         this.nome = nome;
@@ -37,7 +44,7 @@ public class Cidade {
 
     @Override
     public String toString() {
-        return id+ " - " +nome;
+        return id + " - " + nome;
     }
 
     @Override
@@ -61,6 +68,5 @@ public class Cidade {
         final Cidade other = (Cidade) obj;
         return Objects.equals(this.nome, other.nome);
     }
-    
-    
+
 }
