@@ -153,6 +153,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Produtos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RelatorioprodutosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="RelatorioPedidos">
               <Properties>
@@ -161,6 +164,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vendas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RelatorioPedidosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

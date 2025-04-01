@@ -48,7 +48,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1024, 720));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(826, 620));
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setAlignmentX(50.0F);

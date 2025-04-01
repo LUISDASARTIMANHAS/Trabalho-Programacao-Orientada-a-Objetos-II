@@ -1,12 +1,13 @@
 package viwer;
 
-import javax.swing.JOptionPane;
+import control.GUIManager;
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this
+ * template
  */
-
 /**
  *
  * @author LUIS DAS ARTIMANHAS
@@ -104,6 +105,11 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         btnNovo1.setMnemonic('N');
         btnNovo1.setText("Novo");
+        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovo1ActionPerformed(evt);
+            }
+        });
 
         btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
@@ -282,43 +288,33 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "CADASTRO",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     private void btnPesqProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "CADASTRO",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnPesqProdActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "CADASTRO",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "CADASTRO",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
+        // TODO add your handling code here
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
+    }//GEN-LAST:event_btnNovo1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;

@@ -26,6 +26,12 @@ public class TableModelListaItens extends AbstractTableModel {
     public int getColumnCount() {
         return 4;
     }
+    
+    @Override
+    public String getColumnName(int column) {
+        String nomes[] = {"Sabor", "Qtde", "Peso", "Valor"};
+        return nomes[column];
+    }
 
     public ItemPedido getRowItem(int rowIndex) {
         return (ItemPedido) listaItens.get(rowIndex);

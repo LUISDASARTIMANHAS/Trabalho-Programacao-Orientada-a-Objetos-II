@@ -1,7 +1,11 @@
 package viwer;
 
-import LDAUtils.control.LDATableModelListaItens;
+import control.GUIManager;
+import control.TableModelListaItens;
+import domain.Erva;
+import domain.ItemPedido;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 /*
@@ -16,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
-    private LDATableModelListaItens tableModelItemPedido;
+    private TableModelListaItens tableModelItemPedido;
 
     /**
      * Creates new form Cadastro
@@ -25,8 +29,8 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         // Amarro o JTable com o meu Abstract Table Model
-//        tableModelItemPedido = new LDATableModelListaItens();
-//        tblPedido.setModel(tableModelItemPedido);
+        tableModelItemPedido = new TableModelListaItens();
+        tblPedido.setModel(tableModelItemPedido);
     }
 
     /**
@@ -322,82 +326,65 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 //        float peso = 500 * qtde;
 //        float valor = (float) (qtde * 10.89);
 //        inserirTabela(item,qtde,peso,valor);
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "Registro de Venda",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+       GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "Registro de Venda",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "Registro de Venda",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "Registro de Venda",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
-//        int linha = tblPedido.getSelectedRow();;
-//        if (linha >= 0) {
-//            int confirmPane = JOptionPane.showConfirmDialog(
-//                    this,
-//                    "Deseja realmente Excluir o Pedido?"
-//            );
-//
-//            if (confirmPane == JOptionPane.YES_OPTION) {
-//                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
-//                
-//                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
-//                Erva erva = item.getErva();
-//                
-//                JOptionPane.showMessageDialog(
-//                        this,
-//                        "Excluido com sucesso!",
-//                        "Cadastro de Produto",
-//                        JOptionPane.INFORMATION_MESSAGE
-//                );
-//            }
-//        }else{
-//            
-//        }
-        JOptionPane.showMessageDialog(
-                this,
-                "Essa fucionalidade ainda não esta pronta",
-                "Registro de Venda",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        int linha = tblPedido.getSelectedRow();;
+        if (linha >= 0) {
+            int confirmPane = JOptionPane.showConfirmDialog(
+                    this,
+                    "Deseja realmente Excluir o Pedido?"
+            );
 
+            if (confirmPane == JOptionPane.YES_OPTION) {
+                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
+                
+                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
+                Erva erva = item.getErva();
+                
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Excluido com sucesso!",
+                        "Cadastro de Produto",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
+        }else{
+            JOptionPane.showMessageDialog(
+                        this,
+                        "Selcione ao menos uma linha",
+                        "Cadastro de Produto",
+                        JOptionPane.ERROR_MESSAGE
+                );
+        }
     }//GEN-LAST:event_excluirActionPerformed
 
-//    private void inserirTabela(String sabor, int qtde, float peso, float valor) {;
-//        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
-//        tableModelItemPedido.adicionar(item);
-//    }
+    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
+        Erva erva = new Erva(0,"SKU",sabor, peso);
+        ItemPedido item = new ItemPedido(erva, "Obs", qtde);
+        tableModelItemPedido.adicionar(item);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;

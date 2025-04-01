@@ -5,6 +5,7 @@
 package control;
 
 import LDAUtils.swing.LDASwingUtils;
+import java.awt.Component;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,10 +80,13 @@ public class GUIManager {
     }
     
     public void abrirRelatorioCli() {
-       JOptionPane.showMessageDialog(
-                principal,
+       msgWIP(principal);
+    }
+    public void msgWIP(Component comp) {
+        JOptionPane.showMessageDialog(
+                comp,
                 "Essa fucionalidade ainda não esta pronta",
-                "CADASTRO",
+                "Em Breve",
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
