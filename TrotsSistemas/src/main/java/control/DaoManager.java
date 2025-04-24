@@ -6,6 +6,7 @@ package control;
 
 import dao.CidadeDao;
 import dao.ClienteDao;
+import dao.ConexaoHibernate;
 import domain.Cidade;
 import domain.Cliente;
 import java.util.List;
@@ -23,7 +24,7 @@ public class DaoManager {
 //    private Pedido pedido;
 
     public DaoManager() throws ClassNotFoundException, HibernateException{
-//        ConexaoPSQL.getConexao();
+        ConexaoHibernate.getSessionFactory();
 
 //        instanciar as classes DAO 
         cidadeDao = new CidadeDao();
