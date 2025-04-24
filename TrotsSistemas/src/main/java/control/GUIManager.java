@@ -6,10 +6,10 @@ package control;
 
 import LDAUtils.swing.LDASwingUtils;
 import java.awt.Component;
-import java.sql.HibernateException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 import viwer.DialogBuscaCli;
 import viwer.DialogBuscaProd;
 import viwer.DialogCadastro;

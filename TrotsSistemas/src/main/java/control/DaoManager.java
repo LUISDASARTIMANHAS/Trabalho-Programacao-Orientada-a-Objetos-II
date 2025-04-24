@@ -8,8 +8,8 @@ import dao.CidadeDao;
 import dao.ClienteDao;
 import domain.Cidade;
 import domain.Cliente;
-import java.sql.HibernateException;
 import java.util.List;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -32,11 +32,6 @@ public class DaoManager {
 
     public List<Cidade> listarCidades() throws HibernateException, ClassNotFoundException {
         return cidadeDao.listar();
-    }
-
-    public Cliente InserirCliente() {
-
-        return Cliente;
     }
 
 }
