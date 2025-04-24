@@ -6,7 +6,7 @@ package control;
 
 import LDAUtils.swing.LDASwingUtils;
 import java.awt.Component;
-import java.sql.SQLException;
+import java.sql.HibernateException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -36,7 +36,7 @@ public class GUIManager {
     private GUIManager() {
         try {
             daoManager = new DaoManager();
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException | HibernateException ex) {
             JOptionPane.showMessageDialog(null, ex);
             Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -123,7 +123,7 @@ public class GUIManager {
 //            List Lista = daoManager.listarCidades();
 //            
 //            combo.setModel(new DefaultComboBoxModel(Lista.toArray()));
-//        } catch (SQLException | ClassNotFoundException ex) {
+//        } catch (HibernateException | ClassNotFoundException ex) {
 //            LDASwingUtils.messageError(cadCli, ex.toString(), "CADASTRO DE CLIENTE");
 //            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
 //        }

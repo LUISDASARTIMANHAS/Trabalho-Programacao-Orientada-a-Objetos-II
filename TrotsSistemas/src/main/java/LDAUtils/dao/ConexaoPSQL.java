@@ -6,7 +6,7 @@ package LDAUtils.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.HibernateException;
 
 /**
  *
@@ -16,7 +16,7 @@ public class ConexaoPSQL {
 
     private static Connection conexao;
 
-    public static Connection getConexao() throws ClassNotFoundException, SQLException {
+    public static Connection getConexao() throws ClassNotFoundException, HibernateException {
         String user = "root";
         String password = "";
         String database = "mydb";

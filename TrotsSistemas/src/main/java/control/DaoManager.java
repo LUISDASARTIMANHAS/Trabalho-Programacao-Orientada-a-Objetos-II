@@ -8,7 +8,7 @@ import dao.CidadeDao;
 import dao.ClienteDao;
 import domain.Cidade;
 import domain.Cliente;
-import java.sql.SQLException;
+import java.sql.HibernateException;
 import java.util.List;
 
 /**
@@ -22,7 +22,7 @@ public class DaoManager {
     private ClienteDao clienteDao;
 //    private Pedido pedido;
 
-    public DaoManager() throws ClassNotFoundException, SQLException {
+    public DaoManager() throws ClassNotFoundException, HibernateException {
 //        ConexaoPSQL.getConexao();
 
 //        instanciar as classes DAO 
@@ -30,7 +30,7 @@ public class DaoManager {
         clienteDao = new ClienteDao();
     }
 
-    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
+    public List<Cidade> listarCidades() throws HibernateException, ClassNotFoundException {
         return cidadeDao.listar();
     }
 
