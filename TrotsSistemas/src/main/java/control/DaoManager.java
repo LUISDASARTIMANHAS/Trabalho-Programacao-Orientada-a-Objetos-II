@@ -22,7 +22,7 @@ public class DaoManager {
     private ClienteDao clienteDao;
 //    private Pedido pedido;
 
-    public DaoManager() throws ClassNotFoundException, HibernateException {
+    public DaoManager() throws ClassNotFoundException, HibernateException{
 //        ConexaoPSQL.getConexao();
 
 //        instanciar as classes DAO 

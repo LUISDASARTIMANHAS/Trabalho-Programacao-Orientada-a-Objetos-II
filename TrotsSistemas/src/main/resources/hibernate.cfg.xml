@@ -6,9 +6,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
+        <property name="hibernate.connection.username">TROTS</property>
+        <property name="hibernate.connection.password">SISTEMA</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://172.16.39.161:5432/trotsSistemas</property>
 
 
         <!-- JDBC connection pool (use the built-in) -->
