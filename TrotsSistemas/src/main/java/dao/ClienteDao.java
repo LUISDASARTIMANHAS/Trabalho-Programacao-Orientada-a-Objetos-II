@@ -5,9 +5,9 @@
 package dao;
 
 import domain.Cliente;
-import java.sql.HibernateException;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.HibernateException;
 
 /**
  *

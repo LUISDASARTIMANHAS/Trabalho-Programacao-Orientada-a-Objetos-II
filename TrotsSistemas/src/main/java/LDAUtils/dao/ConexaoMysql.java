@@ -6,7 +6,7 @@ package LDAUtils.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.HibernateException;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,7 +16,7 @@ public class ConexaoMysql {
 
     private static Connection conexao;
 
-    public static Connection getConexao() throws ClassNotFoundException, HibernateException {
+    public static Connection getConexao() throws ClassNotFoundException, SQLException {
         String url = "jdbc:mysql://localhost:3306/trotsSistemas";
         String user = "root";
         String password = "";
