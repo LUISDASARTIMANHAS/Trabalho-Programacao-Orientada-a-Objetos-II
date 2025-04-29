@@ -5,11 +5,9 @@
 package dao;
 
 import domain.Cidade;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -17,21 +15,9 @@ import java.util.List;
  */
 public class CidadeDao {
 
-    public List<Cidade> listar() throws SQLException, ClassNotFoundException {
+    public List<Cidade> listar() throws HibernateException, ClassNotFoundException {
         List<Cidade> lista = new ArrayList();
-        Statement stat = ConexaoPSQL.getConexao().createStatement();
-
-        String pesq = "SELECT * FROM Cidade";
-
-        ResultSet res = stat.executeQuery(pesq);
-
-        while (res.next()) {
-            Cidade cidade = new Cidade(
-                    res.getInt("id_cidade"),
-                    res.getString("nome")
-            );
-            lista.add(cidade);
-        }
+        
         return lista;
     }
 }

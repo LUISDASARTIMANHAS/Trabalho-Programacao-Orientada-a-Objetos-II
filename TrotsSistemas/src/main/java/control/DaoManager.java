@@ -5,11 +5,12 @@
 package control;
 
 import dao.CidadeDao;
-import dao.ConexaoMysql;
-import dao.ConexaoPSQL;
+import dao.ClienteDao;
+import dao.ConexaoHibernate;
 import domain.Cidade;
-import java.sql.SQLException;
+import domain.Cliente;
 import java.util.List;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -17,17 +18,21 @@ import java.util.List;
  */
 //gerenciador de dominio
 public class DaoManager {
+
     private CidadeDao cidadeDao;
+    private ClienteDao clienteDao;
 //    private Pedido pedido;
 
-    public DaoManager() throws ClassNotFoundException, SQLException {
-//        ConexaoPSQL.getConexao();
-        
-//        instanciar as classes DAO
+    public DaoManager() throws ClassNotFoundException, HibernateException{
+        ConexaoHibernate.getSessionFactory();
+
+//        instanciar as classes DAO 
         cidadeDao = new CidadeDao();
+        clienteDao = new ClienteDao();
     }
 
-//    public List<Cidade> listarCidades() throws SQLException, ClassNotFoundException {
-//        return cidadeDao.listar();
-//    }
+    public List<Cidade> listarCidades() throws HibernateException, ClassNotFoundException {
+        return cidadeDao.listar();
+    }
+
 }
