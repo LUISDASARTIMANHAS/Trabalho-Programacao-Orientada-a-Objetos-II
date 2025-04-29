@@ -4,16 +4,28 @@
  */
 package domain;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.*;
 
 /**
  *
  * @author LUIS DAS ARTIMANAHS
  */
-public class Cidade {
+@Entity
+public class Cidade implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private int id;
+
+    @Column(nullable = false, length = 100)
     private String nome;
+
+    public Cidade() {
+    }
 
 //    SEM ID
     public Cidade(String nome) {

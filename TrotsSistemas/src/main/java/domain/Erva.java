@@ -4,21 +4,41 @@
  */
 package domain;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class Erva {
+@Entity
+public class Erva implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    private int id;
     
-    private float Valor;
-    private String Nome;
-    private String Sabor;
+    @Column (nullable = false,length = 100)
+    private String nome;
+    
+    @Column (nullable = false)
+    private String sabor;
+    
+    @Column (nullable = false)
     private int peso;
+    
+    @Column (nullable = false)
+    private float Valor;
+    
+
+    public Erva() {
+    }
 
     public Erva(float Valor, String Nome, String Sabor, int peso) {
         this.Valor = Valor;
-        this.Nome = Nome;
-        this.Sabor = Sabor;
+        this.nome = Nome;
+        this.sabor = Sabor;
         this.peso = peso;
     }
 
@@ -31,19 +51,19 @@ public class Erva {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String Nome) {
-        this.Nome = Nome;
+        this.nome = Nome;
     }
 
     public String getSabor() {
-        return Sabor;
+        return sabor;
     }
 
     public void setSabor(String Sabor) {
-        this.Sabor = Sabor;
+        this.sabor = Sabor;
     }
     
 
@@ -53,6 +73,14 @@ public class Erva {
 
     public void setValor(float Valor) {
         this.Valor = Valor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

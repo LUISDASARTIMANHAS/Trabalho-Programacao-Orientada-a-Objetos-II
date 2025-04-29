@@ -4,15 +4,33 @@
  */
 package domain;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class ItemPedido {
+@Entity
+public class ItemPedido implements Serializable {
 
-    private Erva Erva;
+    private static final long serialVersionUID = 1L;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private int id;
+
+    @Column
     private String Obs;
+    
+    @Column(nullable = false)
     private int Qdte;
+    
+    @Transient
+    private Erva Erva;
+
+    public ItemPedido() {
+    }
 
     public ItemPedido(Erva Erva, String Obs, int Qdte) {
         this.Erva = Erva;
@@ -42,6 +60,14 @@ public class ItemPedido {
 
     public void setQdte(int Qdte) {
         this.Qdte = Qdte;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
