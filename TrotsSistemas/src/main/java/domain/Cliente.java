@@ -5,21 +5,45 @@
 package domain;
 
 import LDAUtils.control.Endereco;
+import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class Cliente {
+@Entity
+public class Cliente implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
     private int id;
+    
+    @Column (nullable = false,length = 100)
     private String nome;
+    
+    @Column (unique = true,nullable = false,length = 14)
     private String cpf;
+    
+    @Column (nullable = false)
     private String email;
+    
+    @Column (length = 15)
     private String tel;
-    private Endereco endereco;
+    
+    @Lob
     private Byte foto;
+    
+    @Transient
+    private Endereco endereco;
+    @Transient
     private Cidade cidade;
+
+//    para hibernate 
+    public Cliente() {
+    }
 
 //    sem id
     public Cliente(String nome, String cpf, String email, String tel, Endereco endereco) {
