@@ -7,14 +7,13 @@ package control;
 import domain.ItemPedido;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class LDATableModelListaItens extends AbstractTableModel {
+public class TableModelListaItens extends AbstractTableModel {
 
     private List listaItens = new ArrayList();
 
@@ -27,6 +26,12 @@ public class LDATableModelListaItens extends AbstractTableModel {
     public int getColumnCount() {
         return 4;
     }
+    
+    @Override
+    public String getColumnName(int column) {
+        String nomes[] = {"Sabor", "Qtde", "Peso", "Valor"};
+        return nomes[column];
+    }
 
     public ItemPedido getRowItem(int rowIndex) {
         return (ItemPedido) listaItens.get(rowIndex);
@@ -38,13 +43,13 @@ public class LDATableModelListaItens extends AbstractTableModel {
         ItemPedido item = getRowItem(rowIndex);
         switch (columnIndex) {
             case 0:
-                return item.getSabor();
+                return item.getErva().getSabor();
             case 1:
                 return item.getQdte();
             case 2:
-                return item.getPeso();
+                return item.getErva().getPeso();
             case 3:
-                return item.getValor();
+                return item.getErva().getValor();
         }
         return null;
     }

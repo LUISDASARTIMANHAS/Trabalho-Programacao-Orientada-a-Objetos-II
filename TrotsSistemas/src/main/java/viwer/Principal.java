@@ -1,7 +1,7 @@
 package viwer;
 
+import LDAUtils.swing.LDASwingUtils;
 import control.GUIManager;
-import swing.LDASwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -60,7 +60,7 @@ public class Principal extends javax.swing.JFrame {
         setTitle("Trots Sistemas - gestão de Vendas");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setMinimumSize(new java.awt.Dimension(1024, 292));
         setResizable(false);
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,10 +165,20 @@ public class Principal extends javax.swing.JFrame {
 
         Relatorioprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_16x16.gif"))); // NOI18N
         Relatorioprodutos.setText("Produtos");
+        Relatorioprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelatorioprodutosActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(Relatorioprodutos);
 
         RelatorioPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
         RelatorioPedidos.setText("Vendas");
+        RelatorioPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelatorioPedidosActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(RelatorioPedidos);
 
         menu.add(menuRelatorios);
@@ -283,7 +293,7 @@ public class Principal extends javax.swing.JFrame {
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirCadPedido();
+        gui.abrirCadVenda();
     }//GEN-LAST:event_CadPedidoActionPerformed
 
     private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
@@ -303,6 +313,18 @@ public class Principal extends javax.swing.JFrame {
         TrocarLookAndFeel(GrpTema.getSelection().getMnemonic());
     }//GEN-LAST:event_MudarTemaActionPerformed
 
+    private void RelatorioprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioprodutosActionPerformed
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
+    }//GEN-LAST:event_RelatorioprodutosActionPerformed
+
+    private void RelatorioPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioPedidosActionPerformed
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
+    }//GEN-LAST:event_RelatorioPedidosActionPerformed
+
     private void TrocarLookAndFeel(int NomeLook) {
         String lookAndFeel = switch (NomeLook) {
             case 'W' ->
@@ -320,9 +342,9 @@ public class Principal extends javax.swing.JFrame {
             default ->
                 "Metal";
         };
-        LDASwingUtils.ChangeLookAndFeel("Principal", lookAndFeel,this);
+        LDASwingUtils.ChangeLookAndFeel("Principal", lookAndFeel, this);
         pack();
-        System.out.println("Look: "+lookAndFeel);
+        System.out.println("Look: " + lookAndFeel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

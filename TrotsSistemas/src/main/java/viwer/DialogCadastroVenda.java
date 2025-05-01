@@ -1,7 +1,9 @@
 package viwer;
 
-
-import control.LDATableModelListaItens;
+import control.DaoManager;
+import control.GUIManager;
+import control.TableModelListaItens;
+import domain.Erva;
 import domain.ItemPedido;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,19 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 /**
  *
- * @author 2023122760328
+ * @author LUIS DAS ARTIMANHAS
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
-    private LDATableModelListaItens tableModelItemPedido;
+    private TableModelListaItens tableModelItemPedido;
+
     /**
      * Creates new form Cadastro
      */
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         // Amarro o JTable com o meu Abstract Table Model
-        tableModelItemPedido = new LDATableModelListaItens();
+        // Amarro o JTable com o meu Abstract Table Model
+        tableModelItemPedido = new TableModelListaItens();
         tblPedido.setModel(tableModelItemPedido);
     }
 
@@ -319,40 +322,38 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void btnAddLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLancheActionPerformed
         // TODO add your handling code here:
-        String item = cmbSabor.getSelectedItem().toString();
-        int qtde = (int) spnQtde.getValue();
-        double peso = 500 * qtde;
-        double valor = qtde * 10.89;
-        inserirTabela(item,qtde,peso,valor);
+//        String item = cmbSabor.getSelectedItem().toString();;
+//        int qtde = (int) spnQtde.getValue();
+//        float peso = 500 * qtde;
+//        float valor = (float) (qtde * 10.89);
+//        inserirTabela(item,qtde,peso,valor);
+       GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnAddLancheActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                    this,
-                    "Essa fucionalidade ainda não esta pronta",
-                    "Registro de Venda",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        DaoManager dao = gui.getDaoManager();
+        gui.msgWIP(this);
+        
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                    this,
-                    "Essa fucionalidade ainda não esta pronta",
-                    "Registro de Venda",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
-        int linha = tblPedido.getSelectedRow();
+        int linha = tblPedido.getSelectedRow();;
         if (linha >= 0) {
             int confirmPane = JOptionPane.showConfirmDialog(
                     this,
@@ -361,6 +362,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
             if (confirmPane == JOptionPane.YES_OPTION) {
                 ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
+                
+                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
+                Erva erva = item.getErva();
+                
                 JOptionPane.showMessageDialog(
                         this,
                         "Excluido com sucesso!",
@@ -368,63 +373,20 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                         JOptionPane.INFORMATION_MESSAGE
                 );
             }
+        }else{
+            JOptionPane.showMessageDialog(
+                        this,
+                        "Selcione ao menos uma linha",
+                        "Cadastro de Produto",
+                        JOptionPane.ERROR_MESSAGE
+                );
         }
-
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void inserirTabela(String sabor, int qtde, float peso, float valor) {
-        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
+    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
+        Erva erva = new Erva(0,"SKU",sabor, peso);
+        ItemPedido item = new ItemPedido(erva, "Obs", qtde);
         tableModelItemPedido.adicionar(item);
-    }
-    
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /*
-         * Create and display the dialog
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogCadastro dialog = new DialogCadastro(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

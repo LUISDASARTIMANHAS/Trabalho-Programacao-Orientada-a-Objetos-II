@@ -1,18 +1,17 @@
 package viwer;
 
-import control.LDACPFManager;
-import control.LDAMainUtils;
+import LDAUtils.control.LDACPFManager;
+import LDAUtils.control.LDAMainUtils;
+import LDAUtils.swing.LDASwingUtils;
 import java.awt.Color;
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import swing.LDASwingUtils;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -26,7 +25,7 @@ import swing.LDASwingUtils;
  */
 public class DialogCadastro extends javax.swing.JDialog {
 
-    private File arq;
+    private File dir;
 
     /**
      * Creates new form Cadastro
@@ -34,8 +33,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     public DialogCadastro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        arq = null;
+        dir = null;
     }
 
     /**
@@ -521,36 +519,39 @@ public class DialogCadastro extends javax.swing.JDialog {
             lblCpf.setForeground(Color.red);
         }
         if (!LDACPFManager.ValidarCPF(cpf)) {
-        if (!LDACPFManager.ValidarCPF(cpf)) {
-            msgError = msgError + "CPF inválido!.\n";
-            lblCpf.setForeground(Color.red);
-        }
+            if (!LDACPFManager.ValidarCPF(cpf)) {
+                msgError = msgError + "CPF inválido!.\n";
+                lblCpf.setForeground(Color.red);
+            }
 
-        if (msgError.isEmpty()) {
+            if (msgError.isEmpty()) {
 //            não a erros
-            return true;
-        } else {
-            //            mostra o erro
-            JOptionPane.showMessageDialog(
-                    this,
-                    msgError,
-                    "CADASTRO DE CLIENTE",
-                    JOptionPane.ERROR_MESSAGE
-            );
-            return false;
+                return true;
+            } else {
+                //            mostra o erro
+                JOptionPane.showMessageDialog(
+                        this,
+                        msgError,
+                        "CADASTRO DE CLIENTE",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return false;
+            }
         }
+        return false;
     }
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        limparCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCEPFocusLost
         // TODO add your handling code here:
         try {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Consultando Integração...",
-                    "Busca Cep",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-            control.Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
+
+            LDASwingUtils.message(this, "Consultando Integração...", "Busca Cep");
+            LDAUtils.control.Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
 
             if (ender != null) {
                 txtLogradouro.setText(ender.getLogradouro());
@@ -564,12 +565,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                 LDASwingUtils.toggleEnabledAndEditable(txtBairro);
                 LDASwingUtils.toggleEnabledAndEditable(txtRef);
             } else {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "CEP Invalido!",
-                        "CADASTRO DE CLIENTE",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                LDASwingUtils.messageError(this, "CEP Invalido!", "CADASTRO DE CLIENTE");
                 LDASwingUtils.toggleEnabledAndEditable(txtLogradouro);
                 LDASwingUtils.toggleEnabledAndEditable(txtUf);
                 LDASwingUtils.toggleEnabledAndEditable(txtBairro);
@@ -577,114 +573,42 @@ public class DialogCadastro extends javax.swing.JDialog {
             }
         } catch (IOException ex) {
             Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(
-                    this,
-                    ex,
-                    "CADASTRO DE CLIENTE",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            LDASwingUtils.messageError(this, "Erro Desconhecido!", "CADASTRO DE CLIENTE");
         }
     }//GEN-LAST:event_txtCEPFocusLost
 
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        limparCampos();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    
-
     private void MostrarFoto() {
-        File arq2 = carregarArq();
-        JFileChooser fileWindow = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
-
-        //        config da janela
-        fileWindow.setMultiSelectionEnabled(false);
-        fileWindow.setAcceptAllFileFilterUsed(false);
-        fileWindow.setFileFilter(filtro);
-
-        // Abrir no último diretório aberto. Na primeira vez é NULL
-        fileWindow.setCurrentDirectory(arq);
-
-        if (fileWindow.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File arq = fileWindow.getSelectedFile();
-            ImageIcon foto = new ImageIcon(arq.getPath());
-
-            // Redimensionar
-            Image imagem = foto.getImage();
-            Image Scale = imagem.getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT);
-            foto.setImage(Scale);
+        File arq = LDAMainUtils.carregarArq(filtro, this, dir);
+        if (arq != null) {
+            ImageIcon foto = LDAMainUtils.redimensionarImg(arq, Foto);
             Foto.setIcon(foto);
         }
     }
 
     private void limparCampos() {
-        txtNome.setText("");
-        txtCpf.setText("");
-        txtTel.setText("");
-        txtEmail.setText("");
+        LDASwingUtils.clearTxt(txtNome);
+        LDASwingUtils.clearTxt(txtCpf);
+        LDASwingUtils.clearTxt(txtTel);
+        LDASwingUtils.clearTxt(txtEmail);
+        LDASwingUtils.clearTxt(txtCEP);
+        LDASwingUtils.clearTxt(txtLogradouro);
+        LDASwingUtils.clearTxt(txtComplemento);
+        LDASwingUtils.clearTxt(txtBairro);
+        LDASwingUtils.clearTxt(txtRef);
+        LDASwingUtils.clearTxt(txtUf);
+
+        txtNumResidencial.setValue(0);
+
         Foto.setText("Foto");
         Foto.setIcon(null);
 
-        txtCEP.setText("");
-        txtLogradouro.setText("");
-        txtNumResidencial.setValue(0);
-        txtComplemento.setText("");
-        txtBairro.setText("");
-        txtRef.setText("");
-        cmbCidade.setSelectedIndex(0);
-        txtUf.setText("");
+        cmbCidade.setSelectedIndex(
+                0);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /*
-         * Create and display the dialog
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogCadastro dialog = new DialogCadastro(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    // Variables declaration - do not modify                     
+    // End of variables declaration                   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
