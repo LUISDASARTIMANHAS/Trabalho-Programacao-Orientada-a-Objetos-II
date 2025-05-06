@@ -17,6 +17,7 @@ public class Cidade implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    //    CHAVE COM AUTO NUMERAÇÃO
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;

@@ -15,22 +15,23 @@ import javax.persistence.*;
 public class Erva implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+
+    //    CHAVE COM AUTO NUMERAÇÃO
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    
-    @Column (nullable = false,length = 100)
+
+    @Column(nullable = false, length = 100)
     private String nome;
-    
-    @Column (nullable = false)
+
+    @Column(nullable = false)
     private String sabor;
-    
-    @Column (nullable = false)
+
+    @Column(nullable = false)
     private int peso;
-    
-    @Column (nullable = false)
+
+    @Column(nullable = false)
     private float Valor;
-    
 
     public Erva() {
     }
@@ -65,7 +66,6 @@ public class Erva implements Serializable {
     public void setSabor(String Sabor) {
         this.sabor = Sabor;
     }
-    
 
     public float getValor() {
         return Valor;

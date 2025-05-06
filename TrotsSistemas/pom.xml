@@ -85,12 +85,11 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.3.0</version>
         </dependency>
+       
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.3.3</version>
-            <type>tar.gz</type>
-            <classifier>dist</classifier>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.15.Final</version>
         </dependency>
         <dependency>
             <groupId>postgresql</groupId>
@@ -98,9 +97,9 @@
             <version>9.1-901-1.jdbc4</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.6.15.Final</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.5</version>
         </dependency>
     </dependencies>
     <properties>
