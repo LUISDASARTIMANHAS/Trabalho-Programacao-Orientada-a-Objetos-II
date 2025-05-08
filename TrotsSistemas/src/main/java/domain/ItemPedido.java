@@ -13,26 +13,17 @@ import javax.persistence.*;
  */
 @Entity
 public class ItemPedido implements Serializable {
-    private static final long serialVersionUID = 1L;
     
-//    CHAVE COM AUTO NUMERAÇÃO
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private int id;
-
-    @Column
+    EmbeddedId
+    private ItemPedidoPK chaveComposta;
+    
     private String Obs;
-    
-    @Column(nullable = false)
     private int Qdte;
     
-    @Transient
-    private Erva Erva;
-
     public ItemPedido() {
     }
 
-    public ItemPedido(Erva Erva, String Obs, int Qdte) {
+    public ItemPedido(String Obs, int Qdte) {
         this.Erva = Erva;
         this.Obs = Obs;
         this.Qdte = Qdte;

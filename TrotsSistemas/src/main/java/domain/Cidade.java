@@ -20,7 +20,7 @@ public class Cidade implements Serializable {
     //    CHAVE COM AUTO NUMERAÇÃO
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private int idCidade;
 
     @Column(nullable = false, length = 100)
     private String nome;
@@ -34,17 +34,17 @@ public class Cidade implements Serializable {
     }
 
 //  COM ID
-    public Cidade(int id, String nome) {
-        this.id = id;
+    public Cidade(int idCidade, String nome) {
+        this.idCidade = idCidade;
         this.nome = nome;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCidade() {
+        return idCidade;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCidade(int idCidade) {
+        this.idCidade = idCidade;
     }
 
     public String getNome() {
@@ -57,7 +57,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return id + " - " + nome;
+        return idCidade + " - " + nome;
     }
 
     @Override

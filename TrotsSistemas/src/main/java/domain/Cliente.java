@@ -4,8 +4,8 @@
  */
 package domain;
 
-import LDAUtils.control.Endereco;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -36,10 +36,16 @@ public class Cliente implements Serializable {
     @Lob
     private Byte foto;
     
-    @Transient
-    private Endereco endereco;
-    @Transient
+    
+    @OneToOne (mappedBy = "cliente", cascade = CascadeType.ALL)
+    private domain.Endereco endereco;
+    
+    @ManyToOne
+    @JoinColumn (name = "idCidade")
     private Cidade cidade;
+    
+    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
+    private List<Venda> pedidos;
 
 //    para hibernate 
     public Cliente() {
@@ -130,5 +136,9 @@ public class Cliente implements Serializable {
         this.cidade = cidade;
     }
     
+    @Override
+    public String toString() {
+        return nome;
+    }
     
 }

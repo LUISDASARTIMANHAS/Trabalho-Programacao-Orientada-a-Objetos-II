@@ -5,6 +5,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -19,25 +20,22 @@ public class Erva implements Serializable {
     //    CHAVE COM AUTO NUMERAÇÃO
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private int idErva;
 
     @Column(nullable = false, length = 100)
     private String nome;
-
-    @Column(nullable = false)
     private String sabor;
-
-    @Column(nullable = false)
     private int peso;
+    private float valor;
 
-    @Column(nullable = false)
-    private float Valor;
-
+    @OneToMany ( mappedBy = "chaveComposta.erva")
+    private List<ItemPedido> listaItensPedido;
+    
     public Erva() {
     }
 
-    public Erva(float Valor, String Nome, String Sabor, int peso) {
-        this.Valor = Valor;
+    public Erva(float valor, String Nome, String Sabor, int peso) {
+        this.valor = valor;
         this.nome = Nome;
         this.sabor = Sabor;
         this.peso = peso;
@@ -68,19 +66,19 @@ public class Erva implements Serializable {
     }
 
     public float getValor() {
-        return Valor;
+        return valor;
     }
 
-    public void setValor(float Valor) {
-        this.Valor = Valor;
+    public void setValor(float valor) {
+        this.valor = valor;
     }
 
-    public int getId() {
-        return id;
+    public int getIdErva() {
+        return idErva;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdErva(int idErva) {
+        this.idErva = idErva;
     }
 
 }

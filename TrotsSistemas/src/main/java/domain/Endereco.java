@@ -24,26 +24,20 @@ public class Endereco implements Serializable {
     @Column(nullable = false, length = 9)
     private String cep;
 
-    @Column(nullable = false, length = 25)
     private String bairro;
-
-    @Column(nullable = false, length = 100)
     private String logradouro;
-
-    @Column(nullable = false)
     private int numero;
-    
-    @Column(nullable = false, length = 100)
     private String complemento;
-    
-    @Column(nullable = false, length = 100)
     private String referencia;
-    
-    @Column(nullable = false, length = 25)
     private String cidade;
     
-    @Column(nullable = false, length = 25)
+    @Column(nullable = false, length = 2)
     private String uf;
+    
+    @OneToOne
+    @MapsId
+    @JoinColumn (name = "idEndereco")
+    private Cliente cliente;
 
     public Endereco() {
     }
