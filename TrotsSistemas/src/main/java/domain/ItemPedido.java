@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 public class ItemPedido implements Serializable {
     
-    EmbeddedId
+    @EmbeddedId
     private ItemPedidoPK chaveComposta;
     
     private String Obs;
@@ -23,12 +23,13 @@ public class ItemPedido implements Serializable {
     public ItemPedido() {
     }
 
-    public ItemPedido(String Obs, int Qdte) {
-        this.Erva = Erva;
+    public ItemPedido(Erva erva, Venda venda, String Obs, int Qdte) {
+        this.chaveComposta = new ItemPedidoPK(erva, venda);
         this.Obs = Obs;
         this.Qdte = Qdte;
     }
 
+    
     public String getObs() {
         return Obs;
     }
@@ -37,28 +38,12 @@ public class ItemPedido implements Serializable {
         this.Obs = Obs;
     }
 
-    public Erva getErva() {
-        return Erva;
-    }
-
-    public void setErva(Erva Erva) {
-        this.Erva = Erva;
-    }
-
     public int getQdte() {
         return Qdte;
     }
 
     public void setQdte(int Qdte) {
         this.Qdte = Qdte;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
 }

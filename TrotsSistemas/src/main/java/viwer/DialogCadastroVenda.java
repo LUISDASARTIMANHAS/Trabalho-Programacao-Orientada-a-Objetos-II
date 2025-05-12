@@ -383,11 +383,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
-        Erva erva = new Erva(0,"SKU",sabor, peso);
-        ItemPedido item = new ItemPedido(erva, "Obs", qtde);
-        tableModelItemPedido.adicionar(item);
-    }
+//    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
+//        Erva erva = new Erva(0,"SKU",sabor, peso);
+//        ItemPedido item = new ItemPedido(erva, "Obs", qtde);
+//        tableModelItemPedido.adicionar(item);
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
