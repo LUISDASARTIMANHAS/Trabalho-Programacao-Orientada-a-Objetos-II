@@ -29,7 +29,22 @@ public class ItemPedido implements Serializable {
         this.Qdte = Qdte;
     }
 
+    public Erva getErva() {
+        return chaveComposta.getErva();
+    }
+
+    public void setErva(Erva erva) {
+        this.chaveComposta.setErva(erva);
+    }
+
+    public Venda getVenda() {
+        return chaveComposta.getVenda();
+    }
     
+    public void setVenda(Venda venda) {
+        this.chaveComposta.setVenda(venda);
+    }
+
     public String getObs() {
         return Obs;
     }

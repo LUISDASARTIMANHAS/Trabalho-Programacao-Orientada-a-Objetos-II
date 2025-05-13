@@ -10,10 +10,10 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
             </goals>
             <properties>
-                <exec.vmArgs>-verbose  -verbose:class  -verbose:gc  -verbose:jni  -version</exec.vmArgs>
+                <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
-                <exec.mainClass>control.GUIManager</exec.mainClass>
+                <exec.mainClass>${packageClassName}</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>D:\Projetos Temporarios\Trabalho-Programacao-Orientada-a-Objetos-II\TrotsSistemas\src\main\java</exec.workingdir>
             </properties>
@@ -28,10 +28,10 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
             </goals>
             <properties>
-                <exec.vmArgs>-verbose  -verbose:class  -verbose:gc  -verbose:jni  -version -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
-                <exec.mainClass>control.GUIManager</exec.mainClass>
+                <exec.mainClass>${packageClassName}</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
                 <exec.workingdir>D:\Projetos Temporarios\Trabalho-Programacao-Orientada-a-Objetos-II\TrotsSistemas\src\main\java</exec.workingdir>
@@ -47,9 +47,9 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
             </goals>
             <properties>
-                <exec.vmArgs>-verbose  -verbose:class  -verbose:gc  -verbose:jni  -version</exec.vmArgs>
+                <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.mainClass>control.GUIManager</exec.mainClass>
+                <exec.mainClass>${packageClassName}</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <exec.appArgs></exec.appArgs>
                 <exec.workingdir>D:\Projetos Temporarios\Trabalho-Programacao-Orientada-a-Objetos-II\TrotsSistemas\src\main\java</exec.workingdir>
