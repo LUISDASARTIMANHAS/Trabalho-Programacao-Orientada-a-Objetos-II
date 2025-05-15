@@ -4,6 +4,7 @@
  */
 package domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 /**
@@ -11,14 +12,15 @@ import javax.persistence.*;
  * @author LUIS DAS ARTIMANHAS
  */
 @Embeddable
-public class ItemPedidoPK {
+public class ItemPedidoPK implements Serializable {
+    private static final long serialVersionUID = 1L;
     
     @ManyToOne
     @JoinColumn (name = "idErva")
     private Erva erva;
     
     @ManyToOne
-    @JoinColumn (name = "idVenda")
+    @JoinColumn (name = "idPedido")
     private Venda venda;
 
     public ItemPedidoPK(Erva erva, Venda venda) {
@@ -46,46 +48,3 @@ public class ItemPedidoPK {
     }
     
 }
-
-
-
-//
-//
-//@
-//public class ItemPedidoPK implements Serializable {
-//        
-//    @ManyToOne
-//    @JoinColumn (name = "idLanche")
-//    private Lanche lanche;
-//    
-//    @ManyToOne
-//    @JoinColumn (name = "idPedido")
-//    private Pedido pedido;
-//
-//    public ItemPedidoPK(Lanche lanche, Pedido pedido) {
-//        this.lanche = lanche;
-//        this.pedido = pedido;
-//    }
-//
-//    public ItemPedidoPK() {
-//    }
-//
-//    public Lanche getLanche() {
-//        return lanche;
-//    }
-//
-//    public void setLanche(Lanche lanche) {
-//        this.lanche = lanche;
-//    }
-//
-//    public Pedido getPedido() {
-//        return pedido;
-//    }
-//
-//    public void setPedido(Pedido pedido) {
-//        this.pedido = pedido;
-//    }
-// 
-//    
-//    
-//}

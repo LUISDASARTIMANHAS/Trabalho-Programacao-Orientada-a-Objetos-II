@@ -9,13 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
-import swing.LDASwingUtils;
-import viwer.DialogBuscaCli;
-import viwer.DialogBuscaProd;
-import viwer.DialogCadastro;
-import viwer.DialogCadastroProduto;
-import viwer.DialogCadastroVenda;
-import viwer.Principal;
+import swing.*;
+import viwer.*;
 
 /**
  *
@@ -56,7 +51,7 @@ public class GUIManager {
 
     public void abrirPrincipal() {
         principal = new Principal();
-        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);
+//        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);;
         principal.setVisible(true);
     }
 

@@ -28,7 +28,7 @@ public class Venda {
     private Cliente cliente;
     
     
-    @OneToMany ( mappedBy = "chaveComposta.pedido")
+    @OneToMany ( mappedBy = "chaveComposta.venda")
     private List<ItemPedido> listaItensPedido;
 
 //    COM ID

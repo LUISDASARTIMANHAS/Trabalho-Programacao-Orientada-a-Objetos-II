@@ -44,8 +44,8 @@ public class Cliente implements Serializable {
     @JoinColumn (name = "idCidade")
     private Cidade cidade;
     
-    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
-    private List<Venda> pedidos;
+//    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
+//    private List<Venda> pedidos;
 
 //    para hibernate 
     public Cliente() {
