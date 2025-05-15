@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class ItemPedidoPK {
     
     @ManyToOne
-    @JoinColumn (name = "idLanche")
+    @JoinColumn (name = "idErva")
     private Erva erva;
     
     @ManyToOne
-    @JoinColumn (name = "idPedido")
+    @JoinColumn (name = "idVenda")
     private Venda venda;
 
     public ItemPedidoPK(Erva erva, Venda venda) {

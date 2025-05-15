@@ -1,7 +1,7 @@
 package viwer;
 
-import LDAUtils.swing.LDASwingUtils;
 import control.GUIManager;
+import swing.LDASwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt

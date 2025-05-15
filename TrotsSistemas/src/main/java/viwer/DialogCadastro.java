@@ -1,8 +1,6 @@
 package viwer;
 
-import LDAUtils.control.LDACPFManager;
-import LDAUtils.control.LDAMainUtils;
-import LDAUtils.swing.LDASwingUtils;
+import control.*;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import swing.*;
 
 
 /*
@@ -551,7 +550,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         try {
 
             LDASwingUtils.message(this, "Consultando Integração...", "Busca Cep");
-            LDAUtils.control.Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
+            Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
 
             if (ender != null) {
                 txtLogradouro.setText(ender.getLogradouro());
