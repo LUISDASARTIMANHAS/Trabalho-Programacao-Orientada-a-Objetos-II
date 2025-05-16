@@ -51,7 +51,7 @@ public class GUIManager {
 
     public void abrirPrincipal() {
         principal = new Principal();
-//        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);;
+        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);;
         principal.setVisible(true);
     }
 
