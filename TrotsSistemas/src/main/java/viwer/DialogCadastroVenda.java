@@ -1,12 +1,16 @@
 package viwer;
 
+import control.AutoTableModel;
+import control.CustomTableModel;
 import control.DaoManager;
 import control.GUIManager;
-import control.TableModelListaItens;
 import domain.Erva;
 import domain.ItemPedido;
+import domain.Venda;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import swing.LDASwingUtils;
 
 
 /*
@@ -21,7 +25,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
-    private TableModelListaItens tableModelItemPedido;
+    private List<String> getters = List.of("getDescricao", "getQuantidade", "getPreco");
+    private CustomTableModel tableModelItemPedido;
+    private AutoTableModel<ItemPedido> autoTable;
 
     /**
      * Creates new form Cadastro
@@ -29,9 +35,14 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         // Amarro o JTable com o meu Abstract Table Model
-        tableModelItemPedido = new TableModelListaItens();
+        tableModelItemPedido = new CustomTableModel(null,getters,ItemPedido.class);
         tblPedido.setModel(tableModelItemPedido);
+
+        // Amarro o JTable com o meu Abstract Table Model
+//        autoTable = new AutoTableModel<ItemPedido>(ItemPedido.class);
+//        tblPedido.setModel(autoTable);
     }
 
     /**
@@ -64,6 +75,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         btnAddLanche = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
+        btnAddLanche1 = new javax.swing.JButton();
 
         inserir.setText("inserir");
         inserir.addActionListener(new java.awt.event.ActionListener() {
@@ -220,11 +232,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         btnAddLanche.setBackground(new java.awt.Color(255, 255, 255));
         btnAddLanche.setForeground(new java.awt.Color(0, 0, 0));
-        btnAddLanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnAddLanche.setText("Incluir");
+        btnAddLanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/delete_16x16.gif"))); // NOI18N
+        btnAddLanche.setText("Excluir");
         btnAddLanche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddLancheActionPerformed(evt);
+                excluirActionPerformed(evt);
             }
         });
 
@@ -234,18 +246,30 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         spnQtde.setModel(new javax.swing.SpinnerNumberModel(5, 0, 10, 1));
 
+        btnAddLanche1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddLanche1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAddLanche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
+        btnAddLanche1.setText("Incluir");
+        btnAddLanche1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -268,16 +292,17 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                                 .addGap(60, 60, 60)
                                 .addComponent(btnNovo1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 79, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(btnAddLanche1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,9 +321,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddLanche1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(lblValor)
@@ -320,21 +347,16 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLancheActionPerformed
-        // TODO add your handling code here:
-//        String item = cmbSabor.getSelectedItem().toString();;
-//        int qtde = (int) spnQtde.getValue();
-//        float peso = 500 * qtde;
-//        float valor = (float) (qtde * 10.89);
-//        inserirTabela(item,qtde,peso,valor);
-       GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
-    }//GEN-LAST:event_btnAddLancheActionPerformed
-
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        String item = cmbSabor.getSelectedItem().toString();;
+        int qtde = (int) spnQtde.getValue();
+        int peso = 500 * qtde;
+        float valor = (float) (qtde * 10.89);
+
+        //        gui.msgWIP(this);
+        inserirTabela(item, qtde, peso, valor);
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
@@ -342,7 +364,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         GUIManager gui = GUIManager.getMyInstance();
         DaoManager dao = gui.getDaoManager();
         gui.msgWIP(this);
-        
+
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
@@ -361,33 +383,30 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
             );
 
             if (confirmPane == JOptionPane.YES_OPTION) {
-                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
-                
-                ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(linha);
-                Erva erva = item.getErva();
-                
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Excluido com sucesso!",
-                        "Cadastro de Produto",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
+//                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
+                tableModelItemPedido.remover(linha);
+//                ItemPedido item = (ItemPedido) autoTable.getItem(linha);
+//                Erva erva = item.getErva();
+                LDASwingUtils.message(this, "Excluido com sucesso!", "Cadastro de Produto");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(
-                        this,
-                        "Selcione ao menos uma linha",
-                        "Cadastro de Produto",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                    this,
+                    "Selcione ao menos uma linha",
+                    "Cadastro de Produto",
+                    JOptionPane.ERROR_MESSAGE
+            );
         }
     }//GEN-LAST:event_excluirActionPerformed
 
-//    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
-//        Erva erva = new Erva(0,"SKU",sabor, peso);
-//        ItemPedido item = new ItemPedido(erva, "Obs", qtde);
-//        tableModelItemPedido.adicionar(item);
-//    }
+    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
+        Erva erva = new Erva(0, "SKU", sabor, peso);
+        Venda venda = new Venda(new Date(), 0);
+
+        //    Erva erva, Venda venda, String Obs, int Qdte
+        ItemPedido item = new ItemPedido(erva, venda, "Obs", qtde);
+        autoTable.adicionar(item);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
@@ -396,6 +415,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JPopupMenu Popup;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAddLanche;
+    private javax.swing.JButton btnAddLanche1;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnNovo1;
     private javax.swing.JButton btnPesqCli;
