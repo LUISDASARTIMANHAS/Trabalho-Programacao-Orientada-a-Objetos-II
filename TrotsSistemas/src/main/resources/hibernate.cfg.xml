@@ -12,13 +12,13 @@
         <!--<property name="hibernate.connection.url">jdbc:postgresql://192.168.1.105:5433/trotsSistemas</property>-->
         
         <!--localhost-->
-        <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/trotsSistemas</property>-->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/trotsSistemas</property>
         
         <!--from vpn-->
         <!--<property name="hibernate.connection.url">jdbc:postgresql://fe80::7c79:935d:a690:7c40:5433/trotsSistemas</property>-->
         
         <!--localhost proxy-->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/trotsSistemas</property>
+        <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/trotsSistemas</property>-->
 
 
         <!-- JDBC connection pool (use the built-in) -->
