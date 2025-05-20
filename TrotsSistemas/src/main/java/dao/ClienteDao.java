@@ -7,7 +7,7 @@ package dao;
 import domain.Cliente;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.HibernateException;
+import org.hibernate.*;
 
 /**
  *
@@ -15,16 +15,7 @@ import org.hibernate.HibernateException;
  */
 public class ClienteDao {
 
-    public List<Cliente> listar() throws HibernateException, ClassNotFoundException {
-        List<Cliente> lista = new ArrayList();
-        return lista;
-    }
-
-    public void Inserir(Cliente cli) throws HibernateException, ClassNotFoundException {
-        
-    }
-
-    public void Excluir(Cliente cli) throws HibernateException, ClassNotFoundException {
+    public void pesquisar(Cliente cli) throws HibernateException, ClassNotFoundException {
         
     }
 }

@@ -4,10 +4,9 @@
  */
 package control;
 
-import dao.CidadeDao;
 import dao.ClienteDao;
 import dao.ConexaoHibernate;
-import domain.Cidade;
+import dao.GenericDao;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -18,20 +17,28 @@ import org.hibernate.HibernateException;
 //gerenciador de dominio
 public class DaoManager {
 
-    private CidadeDao cidadeDao;
+    private GenericDao genericDao;
     private ClienteDao clienteDao;
 //    private Pedido pedido;
 
-    public DaoManager() throws ClassNotFoundException, HibernateException{
+    public DaoManager() throws ClassNotFoundException, HibernateException {
         ConexaoHibernate.getSessionFactory();
 
 //        instanciar as classes DAO 
-        cidadeDao = new CidadeDao();
+        genericDao = new GenericDao();
         clienteDao = new ClienteDao();
     }
 
-    public List<Cidade> listarCidades() throws HibernateException, ClassNotFoundException {
-        return cidadeDao.listar();
+    public List listar(Class classe) throws HibernateException, ClassNotFoundException {
+        return genericDao.listar(classe);
+    }
+    
+    public void inserir(Class classe) throws HibernateException, ClassNotFoundException {
+        genericDao.Inserir(classe);
+    }
+    
+    public void deletar(Class classe) throws HibernateException, ClassNotFoundException {
+        genericDao.Excluir(classe);
     }
 
 }

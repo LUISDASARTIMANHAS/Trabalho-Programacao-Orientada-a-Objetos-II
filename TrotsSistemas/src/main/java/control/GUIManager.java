@@ -7,6 +7,7 @@ package control;
 import java.awt.Component;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import swing.*;
@@ -51,7 +52,8 @@ public class GUIManager {
 
     public void abrirPrincipal() {
         principal = new Principal();
-        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);;
+        LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);
+        getDaoManager();
         principal.setVisible(true);
     }
 
@@ -113,14 +115,14 @@ public class GUIManager {
     }
     
     
-//    public void loadComboCidade(JComboBox combo){
-//        try {
-//            List Lista = daoManager.listarCidades();
-//            
-//            combo.setModel(new DefaultComboBoxModel(Lista.toArray()));
-//        } catch (HibernateException | ClassNotFoundException ex) {
-//            LDASwingUtils.messageError(cadCli, ex.toString(), "CADASTRO DE CLIENTE");
-//            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    public void loadComboCidade(JComboBox combo){
+        try {
+            List Lista = daoManager.listar();
+            
+            combo.setModel(new DefaultComboBoxModel(Lista.toArray()));
+        } catch (HibernateException | ClassNotFoundException ex) {
+            LDASwingUtils.messageError(cadCli, ex.toString(), "CADASTRO DE CLIENTE");
+            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
