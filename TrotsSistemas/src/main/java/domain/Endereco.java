@@ -78,6 +78,14 @@ public class Endereco implements Serializable {
         this.referencia = ref;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public int getIdEndereco() {
         return idEndereco;
     }

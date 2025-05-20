@@ -35,14 +35,13 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        // Amarro o JTable com o meu Abstract Table Model
-        tableModelItemPedido = new CustomTableModel(null,getters,ItemPedido.class);
-        tblPedido.setModel(tableModelItemPedido);
 
         // Amarro o JTable com o meu Abstract Table Model
-//        autoTable = new AutoTableModel<ItemPedido>(ItemPedido.class);
-//        tblPedido.setModel(autoTable);
+//        tableModelItemPedido = new CustomTableModel(null,getters,ItemPedido.class);
+//        tblPedido.setModel(tableModelItemPedido);
+        // Amarro o JTable com o meu Abstract Table Model
+        autoTable = new AutoTableModel<ItemPedido>(ItemPedido.class);
+        tblPedido.setModel(autoTable);
     }
 
     /**
@@ -375,8 +374,9 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
-        int linha = tblPedido.getSelectedRow();;
+        int linha = tblPedido.getSelectedRow();
         if (linha >= 0) {
+
             int confirmPane = JOptionPane.showConfirmDialog(
                     this,
                     "Deseja realmente Excluir o Pedido?"
@@ -384,11 +384,12 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
             if (confirmPane == JOptionPane.YES_OPTION) {
 //                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
-                tableModelItemPedido.remover(linha);
+                autoTable.remover(linha);
 //                ItemPedido item = (ItemPedido) autoTable.getItem(linha);
 //                Erva erva = item.getErva();
                 LDASwingUtils.message(this, "Excluido com sucesso!", "Cadastro de Produto");
             }
+
         } else {
             JOptionPane.showMessageDialog(
                     this,

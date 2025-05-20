@@ -21,24 +21,24 @@ public class DaoManager {
     private ClienteDao clienteDao;
 //    private Pedido pedido;
 
-    public DaoManager() throws ClassNotFoundException, HibernateException {
-        ConexaoHibernate.getSessionFactory();
+    public DaoManager() throws java.lang.ExceptionInInitializerError, ClassNotFoundException, HibernateException {
+        ConexaoHibernate.getSessionFactory().openSession();
 
 //        instanciar as classes DAO 
         genericDao = new GenericDao();
         clienteDao = new ClienteDao();
     }
-
+    
+    // ######  MÉTODOS GENÉRICOS   ####
+    
     public List listar(Class classe) throws HibernateException, ClassNotFoundException {
-        return genericDao.listar(classe);
+        return genericDao.listar(classe);      
     }
     
-    public void inserir(Class classe) throws HibernateException, ClassNotFoundException {
-        genericDao.Inserir(classe);
+    public void excluir(Object obj) throws HibernateException {
+        genericDao.excluir(obj);
     }
     
-    public void deletar(Class classe) throws HibernateException, ClassNotFoundException {
-        genericDao.Excluir(classe);
-    }
+    // ##############
 
 }

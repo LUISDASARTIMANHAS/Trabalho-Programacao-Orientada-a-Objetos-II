@@ -5,9 +5,14 @@
 package control;
 
 import java.awt.Component;
+import java.awt.Frame;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import swing.*;
@@ -19,21 +24,23 @@ import viwer.*;
  */
 public class GUIManager {
 
-    private static GUIManager myInstance = new GUIManager();
-    private Principal principal;
-    private DialogCadastro cadCli;
-    private DialogBuscaCli buscaCli;
-    private DialogBuscaProd buscaProd;
-    private DialogCadastroProduto cadProd;
-    private DialogCadastroVenda cadVenda;
+    private static final GUIManager myInstance = new GUIManager();
+    private Principal principal = null;
+    private DialogCadastro cadCli = null;
+    private DialogBuscaCli buscaCli = null;
+    private DialogBuscaProd buscaProd = null;
+    private DialogCadastroProduto cadProd = null;
+    private DialogCadastroVenda cadVenda = null;
 
     private DaoManager daoManager;
 
+    // ########  SINGLETON  #########
+   
     private GUIManager() {
         try {
             daoManager = new DaoManager();
-        } catch (ClassNotFoundException | HibernateException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+        } catch (java.lang.ExceptionInInitializerError | ClassNotFoundException | HibernateException ex) {
+            LDASwingUtils.messageError(null, ex.toString(), "FATAL ERRO AO INICIAR");
             Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
 
             System.exit(-1);
@@ -47,44 +54,51 @@ public class GUIManager {
     public DaoManager getDaoManager() {
         return daoManager;
     }
-    
-    
+
+    // ######### SINGLETON ###########
+    // ABRIR JDIALOG
+    private JDialog abrirJanela(java.awt.Frame parent, JDialog dlg, Class classe) {
+        if (dlg == null) {
+            try {
+                dlg = (JDialog) classe.getConstructor(Frame.class, boolean.class).newInstance(parent, true);
+            } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                JOptionPane.showMessageDialog(parent, "Erro ao abrir a janela " + classe.getName() + ". " + ex.getMessage());
+            }
+        }
+        dlg.setVisible(true);
+        return dlg;
+    }
 
     public void abrirPrincipal() {
         principal = new Principal();
         LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);
-        getDaoManager();
         principal.setVisible(true);
     }
 
     public void abrirBuscaCli() {
-        buscaCli = new DialogBuscaCli(principal, true);
-        buscaCli.setVisible(true);
+        buscaCli = (DialogBuscaCli) abrirJanela(principal, buscaCli, DialogBuscaCli.class);
     }
-    
+
     public void abrirBuscaProd() {
-        buscaProd = new DialogBuscaProd(principal, true);
-        buscaProd.setVisible(true);
+        buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
     }
-    
+
     public void abrirCadCli() {
-        cadCli = new DialogCadastro(principal, true);
-        cadCli.setVisible(true);
+        cadCli = (DialogCadastro) abrirJanela(principal, cadCli, DialogCadastro.class);
     }
-    
+
     public void abrirCadProd() {
-        cadProd = new DialogCadastroProduto(principal, true);
-        cadProd.setVisible(true);
+        cadProd = (DialogCadastroProduto) abrirJanela(principal, cadProd, DialogCadastroProduto.class);
     }
-    
+
     public void abrirCadVenda() {
-        cadVenda = new DialogCadastroVenda(principal, true);
-        cadVenda.setVisible(true);
+        cadVenda = (DialogCadastroVenda) abrirJanela(principal, cadVenda, DialogCadastroVenda.class);
     }
-    
+
     public void abrirRelatorioCli() {
-       msgWIP(principal);
+        msgWIP(principal);
     }
+
     public void msgWIP(Component comp) {
         JOptionPane.showMessageDialog(
                 comp,
@@ -93,11 +107,19 @@ public class GUIManager {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
-    
-    
 
     public void sair() {
         System.exit(0);
+    }
+
+    public void carregarCombo(JComboBox combo, Class classe) {
+        try {
+            List lista = daoManager.listar(classe);
+            combo.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (HibernateException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(principal, ex, "Cadastro de Cliente", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void main(String args[]) {
@@ -113,16 +135,5 @@ public class GUIManager {
         GUIManager gui = GUIManager.getMyInstance();
         gui.abrirPrincipal();
     }
-    
-    
-    public void loadComboCidade(JComboBox combo){
-        try {
-            List Lista = daoManager.listar();
-            
-            combo.setModel(new DefaultComboBoxModel(Lista.toArray()));
-        } catch (HibernateException | ClassNotFoundException ex) {
-            LDASwingUtils.messageError(cadCli, ex.toString(), "CADASTRO DE CLIENTE");
-            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
 }

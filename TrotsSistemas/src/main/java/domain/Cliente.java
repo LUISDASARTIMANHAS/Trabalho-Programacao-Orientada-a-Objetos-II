@@ -58,10 +58,11 @@ public class Cliente implements Serializable {
         this.email = email;
         this.tel = tel;
         this.endereco = endereco;
+//        amarro o endereço no cliente
+        this.endereco.setCliente(this);
     }
 
 //    com id
-
     public Cliente(int id, String nome, String cpf, String email, String tel, Endereco endereco) {
         this.id = id;
         this.nome = nome;
@@ -69,6 +70,8 @@ public class Cliente implements Serializable {
         this.email = email;
         this.tel = tel;
         this.endereco = endereco;
+//        amarro o endereço no cliente
+        this.endereco.setCliente(this);
     }
     
 
