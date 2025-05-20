@@ -46,7 +46,7 @@
             <artifactId>LDAUtils</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/LDAUtils-1.0.0-jar-with-dependencies.jar</systemPath>
+            <systemPath>${project.basedir}/lib/LDAUtils-1.0.1.jar</systemPath>
         </dependency>
     </dependencies>
     <properties>
@@ -95,7 +95,7 @@
                     <includeProjectDependencies>true</includeProjectDependencies>
                     <includePluginDependencies>true</includePluginDependencies>
                     <additionalClasspathElements>
-                        <additionalClasspathElement>${project.basedir}/lib/LDAUtils-1.0.0-jar-with-dependencies.jar</additionalClasspathElement>
+                        <additionalClasspathElement>${project.basedir}/lib/LDAUtils-1.0.1.jar</additionalClasspathElement>
                     </additionalClasspathElements>
                 </configuration>
             </plugin>
