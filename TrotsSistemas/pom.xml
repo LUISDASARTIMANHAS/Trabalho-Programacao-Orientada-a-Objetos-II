@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
-            <version>RELEASE240</version>
+            <version>RELEASE260</version>
         </dependency>
         <dependency>
             <groupId>com.toedter</groupId>
