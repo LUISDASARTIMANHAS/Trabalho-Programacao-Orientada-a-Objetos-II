@@ -7,6 +7,7 @@ package control;
 import dao.ClienteDao;
 import dao.ConexaoHibernate;
 import dao.GenericDao;
+import domain.Cliente;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -28,17 +29,30 @@ public class DaoManager {
         genericDao = new GenericDao();
         clienteDao = new ClienteDao();
     }
-    
+
     // ######  MÉTODOS GENÉRICOS   ####
-    
     public List listar(Class classe) throws HibernateException, ClassNotFoundException {
-        return genericDao.listar(classe);      
+        return genericDao.listar(classe);
     }
-    
+
     public void excluir(Object obj) throws HibernateException {
         genericDao.excluir(obj);
     }
-    
-    // ##############
 
+    // ##############
+    public List<Cliente> pesquisarCliente(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
+
+        switch (tipo) {
+            case 1:
+                return clienteDao.pesquisarPorNome(pesq);
+            case 2:
+                return clienteDao.pesquisarPorCPF(pesq);
+            case 3:
+                return clienteDao.pesquisarPorBairro(pesq);
+            case 4:
+                return clienteDao.pesquisarPorMes(pesq);
+            default:
+                return null;
+        }
+    }
 }

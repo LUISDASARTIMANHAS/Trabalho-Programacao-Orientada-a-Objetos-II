@@ -5,6 +5,8 @@ import control.GUIManager;
 import domain.Cliente;
 import java.awt.Component;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -187,6 +189,8 @@ public class DialogBuscaCliTest extends javax.swing.JDialog {
             
         } catch (HibernateException ex) {
             JOptionPane.showMessageDialog(this, "ERRO ao pesquisar cliente! " + ex, "Pesquisar Cliente", JOptionPane.ERROR_MESSAGE);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DialogBuscaCliTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -196,7 +200,7 @@ public class DialogBuscaCliTest extends javax.swing.JDialog {
             int linha = tblClientes.getSelectedRow();        
             if ( linha >= 0 ) {
                 Cliente cli = (Cliente) tblModelCliente.getItem(linha);
-                gui.getDaoManager().deletar(cli);
+                gui.getDaoManager().excluir(cli);
             } else {
                 JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar Cliente", JOptionPane.ERROR_MESSAGE);
             }
