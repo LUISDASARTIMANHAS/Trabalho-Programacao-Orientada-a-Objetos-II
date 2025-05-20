@@ -7,9 +7,22 @@
     <packaging>jar</packaging>
     <build>
         <plugins>
-            <!-- Plugin para compilar o código -->
-
             <!--Plugin para gerar o JAR corretamente--> 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!--Definir a classe principal--> 
+                            <mainClass>control.GUIManager</mainClass>  
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            
+             <!-- Plugin para compilar o código -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -37,11 +50,10 @@
                     </additionalClasspathElements>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
     <dependencies>
-        <dependency>
+       <dependency>
             <groupId>pingobras.glitch.me</groupId>
             <artifactId>LDAUtils</artifactId>
             <version>1.0.0</version>
@@ -84,7 +96,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20250517</version>
+            <version>20250107</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
@@ -96,15 +108,21 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.3.0</version>
         </dependency>
+       
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.5</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.0.Final</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>LDAUtils</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     <properties>
