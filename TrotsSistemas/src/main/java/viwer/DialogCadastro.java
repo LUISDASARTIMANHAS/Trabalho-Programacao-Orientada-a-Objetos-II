@@ -1,6 +1,7 @@
 package viwer;
 
 import control.*;
+import domain.Cidade;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
@@ -86,6 +87,11 @@ public class DialogCadastro extends javax.swing.JDialog {
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(720, 720));
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setForeground(new java.awt.Color(0, 0, 0));
@@ -349,7 +355,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblCidade.setAlignmentY(10.0F);
         painelEnderec.add(lblCidade);
 
-        cmbCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "Vitória", "Colatina", "Aracruz", "Baixo Guandu" }));
+        cmbCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um" }));
         cmbCidade.setAlignmentX(10.0F);
         cmbCidade.setAlignmentY(10.0F);
         painelEnderec.add(cmbCidade);
@@ -575,6 +581,12 @@ public class DialogCadastro extends javax.swing.JDialog {
             LDASwingUtils.messageError(this, "Erro Desconhecido!", "CADASTRO DE CLIENTE");
         }
     }//GEN-LAST:event_txtCEPFocusLost
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.carregarCombo(cmbCidade, Cidade.class);
+    }//GEN-LAST:event_formComponentShown
 
     private void MostrarFoto() {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");

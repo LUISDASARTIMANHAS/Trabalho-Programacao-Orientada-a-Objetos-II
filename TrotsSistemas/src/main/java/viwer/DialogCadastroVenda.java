@@ -28,6 +28,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private List<String> getters = List.of("getDescricao", "getQuantidade", "getPreco");
     private CustomTableModel tableModelItemPedido;
     private AutoTableModel<ItemPedido> autoTable;
+    private float valorTotal;
 
     /**
      * Creates new form Cadastro
@@ -36,6 +37,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        valorTotal = (float) 0.0;
         // Amarro o JTable com o meu Abstract Table Model
 //        tableModelItemPedido = new CustomTableModel(null,getters,ItemPedido.class);
 //        tblPedido.setModel(tableModelItemPedido);
@@ -214,6 +216,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         cmbSabor.setForeground(new java.awt.Color(0, 0, 0));
         cmbSabor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "limão caipira", "lima & cereja", "eucalipto" }));
 
+        txtNome1.setEditable(false);
         txtNome1.setBackground(new java.awt.Color(255, 255, 255));
         txtNome1.setForeground(new java.awt.Color(0, 0, 0));
         txtNome1.setText("Teste");
@@ -407,6 +410,16 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         //    Erva erva, Venda venda, String Obs, int Qdte
         ItemPedido item = new ItemPedido(erva, venda, "Obs", qtde);
         autoTable.adicionar(item);
+    }
+    
+    private void atualizarValorTotal() {
+        GUIManager gui = GUIManager.getMyInstance();
+        int qtde = (int) spnQtde.getValue();;
+        Erva erva = (Erva) cmbSabor.getSelectedItem();
+        float valor = erva.getValor();
+        
+        String NovoValorTotal = gui.CalcValorTotal(qtde, valor, valorTotal);
+        lblValor.setText(NovoValorTotal);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

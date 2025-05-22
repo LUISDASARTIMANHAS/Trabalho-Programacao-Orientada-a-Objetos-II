@@ -4,6 +4,7 @@
  */
 package control;
 
+import domain.Erva;
 import java.awt.Component;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
@@ -13,7 +14,9 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import org.hibernate.HibernateException;
 import swing.*;
 import viwer.*;
@@ -120,6 +123,12 @@ public class GUIManager {
             JOptionPane.showMessageDialog(principal, ex, "Cadastro de Cliente", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public String CalcValorTotal(int qtde, float valor, float valorTotal) {   
+        float novoValor = qtde * valor;
+        
+        return "R$ " + (valorTotal + novoValor);
     }
 
     public static void main(String args[]) {
