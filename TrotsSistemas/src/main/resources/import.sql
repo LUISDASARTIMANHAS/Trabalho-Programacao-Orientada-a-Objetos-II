@@ -1,3 +1,4 @@
+-- inserir cidades
 INSERT INTO
     Cidade (idCidade, nome)
 VALUES
@@ -18,20 +19,21 @@ INSERT INTO
 VALUES
     (4, 'João Neiva');
 
+-- inserir ervas
 INSERT INTO
     Erva (idErva, nome, valor, peso, sabor)
 VALUES
-    (1, 'SKU 10', 23.5, 10, 'Limao');
+    (1, 'SKU 10', 23.5, 10, 'limão caipira');
 
 INSERT INTO
     Erva (idErva, nome, valor, peso, sabor)
 VALUES
-    (2, 'SKU 11', 23.5, 10, 'Limao');
+    (2, 'SKU 11', 23.5, 10, 'lima & cereja');
 
 INSERT INTO
     Erva (idErva, nome, valor, peso, sabor)
 VALUES
-    (3, 'SKU 12', 23.5, 10, 'Limao');
+    (3, 'SKU 12', 23.5, 10, 'eucalipto');
 
 INSERT INTO
     Erva (idErva, nome, valor, peso, sabor)

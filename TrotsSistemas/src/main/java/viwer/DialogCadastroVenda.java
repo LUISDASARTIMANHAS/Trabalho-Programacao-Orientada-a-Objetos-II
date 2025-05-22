@@ -7,6 +7,7 @@ import control.GUIManager;
 import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,8 +27,8 @@ import swing.LDASwingUtils;
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private List<String> getters = List.of("getDescricao", "getQuantidade", "getPreco");
-    private CustomTableModel tableModelItemPedido;
-    private AutoTableModel<ItemPedido> autoTable;
+//    private CustomTableModel tableModelItemPedido;
+    private AutoTableModel<ItemPedido> tableModelItemPedido;
     private float valorTotal;
 
     /**
@@ -39,11 +40,12 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         valorTotal = (float) 0.0;
         // Amarro o JTable com o meu Abstract Table Model
-//        tableModelItemPedido = new CustomTableModel(null,getters,ItemPedido.class);
+//        tableModelItemPedido = new CustomTableModel(new ArrayList<ItemPedido>(), getters, ItemPedido.class);
 //        tblPedido.setModel(tableModelItemPedido);
-        // Amarro o JTable com o meu Abstract Table Model
-        autoTable = new AutoTableModel<ItemPedido>(ItemPedido.class);
-        tblPedido.setModel(autoTable);
+
+        // Amarro o JTable com o meu AUTO Abstract Table Model
+        tableModelItemPedido = new AutoTableModel<ItemPedido>(ItemPedido.class);
+        tblPedido.setModel(tableModelItemPedido);
     }
 
     /**
@@ -97,6 +99,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(720, 720));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -210,11 +217,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         lblLanche.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLanche.setForeground(new java.awt.Color(0, 0, 0));
-        lblLanche.setText("Item");
+        lblLanche.setText("Erva");
 
         cmbSabor.setBackground(new java.awt.Color(255, 255, 255));
         cmbSabor.setForeground(new java.awt.Color(0, 0, 0));
-        cmbSabor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "limão caipira", "lima & cereja", "eucalipto" }));
+        cmbSabor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", " " }));
 
         txtNome1.setEditable(false);
         txtNome1.setBackground(new java.awt.Color(255, 255, 255));
@@ -268,7 +275,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +296,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                                                 .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                                .addGap(209, 209, 209)
+                                                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(btnNovo1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,11 +308,9 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
-                                .addComponent(btnAddLanche1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnAddLanche1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -372,27 +380,15 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        gui.abrirBuscaCli();
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
         int linha = tblPedido.getSelectedRow();
+        
         if (linha >= 0) {
-
-            int confirmPane = JOptionPane.showConfirmDialog(
-                    this,
-                    "Deseja realmente Excluir o Pedido?"
-            );
-
-            if (confirmPane == JOptionPane.YES_OPTION) {
-//                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
-                autoTable.remover(linha);
-//                ItemPedido item = (ItemPedido) autoTable.getItem(linha);
-//                Erva erva = item.getErva();
-                LDASwingUtils.message(this, "Excluido com sucesso!", "Cadastro de Produto");
-            }
-
+            excluirVenda(linha);
         } else {
             JOptionPane.showMessageDialog(
                     this,
@@ -403,21 +399,43 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_excluirActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:    
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.carregarCombo(cmbSabor, Erva.class);
+    }//GEN-LAST:event_formComponentShown
+
     private void inserirTabela(String sabor, int qtde, int peso, float valor) {
         Erva erva = new Erva(0, "SKU", sabor, peso);
         Venda venda = new Venda(new Date(), 0);
 
         //    Erva erva, Venda venda, String Obs, int Qdte
         ItemPedido item = new ItemPedido(erva, venda, "Obs", qtde);
-        autoTable.adicionar(item);
+        tableModelItemPedido.adicionar(item);
     }
-    
+
+    private void excluirVenda(int linha) {
+        int confirmPane = JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente Excluir o Pedido?"
+        );
+
+        if (confirmPane == JOptionPane.YES_OPTION) {
+//            deleta multiplas linhas selecionadas
+            while (linha >= 0) {
+                tableModelItemPedido.remover(linha);
+                linha = tblPedido.getSelectedRow();
+            }
+            LDASwingUtils.message(this, "Excluido com sucesso!", "Cadastro de Produto");
+        }
+    }
+
     private void atualizarValorTotal() {
         GUIManager gui = GUIManager.getMyInstance();
-        int qtde = (int) spnQtde.getValue();;
+        int qtde = (int) spnQtde.getValue();
         Erva erva = (Erva) cmbSabor.getSelectedItem();
         float valor = erva.getValor();
-        
+
         String NovoValorTotal = gui.CalcValorTotal(qtde, valor, valorTotal);
         lblValor.setText(NovoValorTotal);
     }

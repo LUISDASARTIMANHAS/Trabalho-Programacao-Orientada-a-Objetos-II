@@ -28,9 +28,9 @@ public class Erva implements Serializable {
     private int peso;
     private float valor;
 
-    @OneToMany ( mappedBy = "chaveComposta.erva")
+    @OneToMany(mappedBy = "chaveComposta.erva")
     private List<ItemPedido> listaItensPedido;
-    
+
     public Erva() {
     }
 
@@ -79,6 +79,11 @@ public class Erva implements Serializable {
 
     public void setIdErva(int idErva) {
         this.idErva = idErva;
+    }
+
+    @Override
+    public String toString() {
+        return idErva + " - " + nome + " - " + sabor;
     }
 
 }
