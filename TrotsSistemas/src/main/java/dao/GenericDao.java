@@ -4,9 +4,12 @@
  */
 package dao;
 
+import control.DaoManager;
+import control.GUIManager;
 import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.*;
+
 /**
  *
  * @author LUIS DAS ARTIMANHAS
@@ -15,26 +18,26 @@ public class GenericDao {
 
     public void inserir(Object obj) throws HibernateException {
         Session sessao = null;
+
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             // OPERAÇÃO
-            sessao.save(obj);            
-            
+            sessao.save(obj);
+
             sessao.getTransaction().commit();
             sessao.close();
-        } catch ( HibernateException ex) {
-            if ( sessao != null) {
+        } catch (HibernateException ex) {
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
             throw new HibernateException(ex);
         }
-       
-        
+
     }
-    
+
     public List listar(Class classe) throws HibernateException, ClassNotFoundException {
         List lista = null;
         Session sessao = null;
@@ -88,47 +91,48 @@ public class GenericDao {
             throw new HibernateException(ex);
         }
     }
-    
+
     public void alterar(Object obj) throws HibernateException {
         Session sessao = null;
+
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             // OPERAÇÃO
             sessao.update(obj);
-            
+
             sessao.getTransaction().commit();
             sessao.close();
-        } catch ( HibernateException ex) {
-            if ( sessao != null) {
+        } catch (HibernateException ex) {
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
             throw new HibernateException(ex);
-        }        
-        
-            
+        }
+
     }
 
     public void excluir(Object obj) throws HibernateException {
         Session sessao = null;
+
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             // OPERAÇÃO
             sessao.delete(obj);
-            
+
             sessao.getTransaction().commit();
             sessao.close();
-        } catch ( HibernateException ex) {
-            if ( sessao != null) {
+        } catch (HibernateException ex) {
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
             throw new HibernateException(ex);
-        }       
-        
+        }
+
     }
 }

@@ -110,6 +110,15 @@ public class GUIManager {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+    
+    public void msgAguardarProcesso() {
+        JOptionPane.showMessageDialog(
+                principal,
+                "Aguardando o Processamento",
+                "SISTEMA",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
 
     public void sair() {
         System.exit(0);
