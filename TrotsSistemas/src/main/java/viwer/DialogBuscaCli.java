@@ -1,5 +1,14 @@
 package viwer;
 
+import control.AutoTableModel;
+import control.GUIManager;
+import domain.Cliente;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hibernate.HibernateException;
+import swing.LDASwingUtils;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -11,6 +20,7 @@ package viwer;
  */
 public class DialogBuscaCli extends javax.swing.JDialog {
 
+    private AutoTableModel tblModelCliente;
     /**
      * Creates new form Cadastro
      */
@@ -33,17 +43,13 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         FORM = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
-        painelEnderec = new javax.swing.JPanel();
-        lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        lblSabor = new javax.swing.JLabel();
-        txtSabor = new javax.swing.JTextField();
-        lblValor = new javax.swing.JLabel();
-        spinValor = new javax.swing.JSpinner();
-        lblPeso = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        lblComplem2 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
+        btnSelecionar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblClientes1 = new javax.swing.JTable();
+        cmbTipo = new javax.swing.JComboBox();
+        txtPesq = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -91,98 +97,89 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         PaineldeCad1.setMaximumSize(new java.awt.Dimension(300, 500));
         PaineldeCad1.setMinimumSize(new java.awt.Dimension(300, 300));
 
-        painelEnderec.setBackground(new java.awt.Color(51, 51, 51));
-        painelEnderec.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.black));
-        painelEnderec.setAlignmentX(50.0F);
-        painelEnderec.setAlignmentY(50.0F);
-        painelEnderec.setAutoscrolls(true);
-        painelEnderec.setLayout(new java.awt.GridLayout(6, 2, 15, 15));
+        btnSelecionar.setBackground(new java.awt.Color(255, 255, 255));
+        btnSelecionar.setForeground(new java.awt.Color(0, 0, 0));
+        btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
+        btnSelecionar.setText("Selecionar");
 
-        lblNome.setBackground(new java.awt.Color(255, 255, 255));
-        lblNome.setForeground(new java.awt.Color(255, 255, 255));
-        lblNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblNome.setText("Nome");
-        lblNome.setAlignmentX(10.0F);
-        lblNome.setAlignmentY(10.0F);
-        painelEnderec.add(lblNome);
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Abort.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
 
-        txtNome.setBackground(new java.awt.Color(255, 255, 255));
-        txtNome.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome.setText("SKU10");
-        txtNome.setAlignmentX(10.0F);
-        txtNome.setAlignmentY(10.0F);
-        txtNome.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtNome);
+        tblClientes1.setAutoCreateRowSorter(true);
+        tblClientes1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.gray, java.awt.Color.lightGray, java.awt.Color.gray));
+        tblClientes1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        lblSabor.setForeground(new java.awt.Color(255, 255, 255));
-        lblSabor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
-        lblSabor.setText("Sabor");
-        lblSabor.setAlignmentX(10.0F);
-        lblSabor.setAlignmentY(10.0F);
-        painelEnderec.add(lblSabor);
+            },
+            new String [] {
+                "Nome", "Bairro", "Cidade", "Dt. Nasc.", "Tel. Cel.", "Foto"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        txtSabor.setBackground(new java.awt.Color(255, 255, 255));
-        txtSabor.setForeground(new java.awt.Color(0, 0, 0));
-        txtSabor.setText("Eucalipto");
-        txtSabor.setAlignmentX(10.0F);
-        txtSabor.setAlignmentY(10.0F);
-        txtSabor.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtSabor);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblClientes1);
 
-        lblValor.setForeground(new java.awt.Color(255, 255, 255));
-        lblValor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
-        lblValor.setText("  Valor (R$)");
-        lblValor.setAlignmentX(10.0F);
-        lblValor.setAlignmentY(10.0F);
-        painelEnderec.add(lblValor);
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro", "Mês" }));
+        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoActionPerformed(evt);
+            }
+        });
 
-        spinValor.setModel(new javax.swing.SpinnerNumberModel(10.85d, 1.0d, null, 1.0d));
-        spinValor.setAlignmentX(10.0F);
-        spinValor.setAlignmentY(10.0F);
-        spinValor.setAutoscrolls(true);
-        painelEnderec.add(spinValor);
-
-        lblPeso.setForeground(new java.awt.Color(255, 255, 255));
-        lblPeso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
-        lblPeso.setText("Peso (G)");
-        lblPeso.setAlignmentX(10.0F);
-        lblPeso.setAlignmentY(10.0F);
-        painelEnderec.add(lblPeso);
-
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        jSpinner2.setAlignmentX(10.0F);
-        jSpinner2.setAlignmentY(10.0F);
-        jSpinner2.setAutoscrolls(true);
-        painelEnderec.add(jSpinner2);
-
-        lblComplem2.setForeground(new java.awt.Color(255, 255, 255));
-        lblComplem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
-        lblComplem2.setText("Quantidade Em Estoque");
-        lblComplem2.setAlignmentX(10.0F);
-        lblComplem2.setAlignmentY(10.0F);
-        painelEnderec.add(lblComplem2);
-
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 10));
-        jSpinner3.setAlignmentX(10.0F);
-        jSpinner3.setAlignmentY(10.0F);
-        jSpinner3.setAutoscrolls(true);
-        painelEnderec.add(jSpinner3);
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                        .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisar)))
+                .addContainerGap())
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSelecionar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         FORM.add(PaineldeCad1);
@@ -196,22 +193,42 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        try {
+            String pesq = txtPesq.getText();
+            int tipo = cmbTipo.getSelectedIndex() + 1;
+            GUIManager gui = GUIManager.getMyInstance();
+            List<Cliente> lista = gui.getDaoManager().pesquisarCliente( pesq, tipo );
+
+            if ( lista.size() > 0 ) {
+                tblModelCliente.adicionar(lista);
+            } else {
+                LDASwingUtils.message(this, "Nenhum Cliente Encontrado", "CONSULTAR CLIENTES");
+            }
+
+        } catch (HibernateException ex) {
+            LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", "CONSULTAR CLIENTES");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DialogBuscaCliTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSelecionar;
+    private javax.swing.JComboBox cmbTipo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JLabel lblComplem2;
-    private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblPeso;
-    private javax.swing.JLabel lblSabor;
-    private javax.swing.JLabel lblValor;
-    private javax.swing.JPanel painelEnderec;
-    private javax.swing.JSpinner spinValor;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSabor;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tblClientes1;
+    private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables
 }

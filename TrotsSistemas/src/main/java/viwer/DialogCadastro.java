@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import swing.*;
 
@@ -114,9 +116,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         FORM.setAlignmentY(100.0F);
         FORM.setAutoscrolls(true);
         FORM.setMaximumSize(new java.awt.Dimension(720, 32767));
-        FORM.setMinimumSize(new java.awt.Dimension(650, 720));
+        FORM.setMinimumSize(new java.awt.Dimension(650, 630));
         FORM.setName(""); // NOI18N
-        FORM.setPreferredSize(new java.awt.Dimension(650, 720));
+        FORM.setPreferredSize(new java.awt.Dimension(650, 630));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15);
         flowLayout1.setAlignOnBaseline(true);
         FORM.setLayout(flowLayout1);
@@ -136,9 +138,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         PaineldeCad.setAlignmentY(50.0F);
         PaineldeCad.setAutoscrolls(true);
         PaineldeCad.setMaximumSize(new java.awt.Dimension(720, 620));
-        PaineldeCad.setMinimumSize(new java.awt.Dimension(620, 560));
+        PaineldeCad.setMinimumSize(new java.awt.Dimension(620, 480));
         PaineldeCad.setName(""); // NOI18N
-        PaineldeCad.setPreferredSize(new java.awt.Dimension(620, 560));
+        PaineldeCad.setPreferredSize(new java.awt.Dimension(620, 480));
 
         lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome");
@@ -400,7 +402,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCpf)
                             .addComponent(txtNome)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtTel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -443,7 +445,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                             .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -507,18 +509,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblEmail.setForeground(Color.black);
         lblCpf.setForeground(Color.black);
 
-        if (txtNome.getText().isEmpty()) {
-            msgError = msgError + "Digite seu nome.\n";
-            lblNome.setForeground(Color.red);
-        }
-        if (txtCEP.getText().isEmpty()) {
-            msgError = msgError + "Digite seu CEP.\n";
-            lblCEP.setForeground(Color.red);
-        }
-        if (txtEmail.getText().isEmpty()) {
-            msgError = msgError + "Digite seu EMAIL.\n";
-            lblEmail.setForeground(Color.red);
-        }
+        msgError = validarCampo(txtNome,lblNome);
+        msgError = validarCampo(txtCEP,lblCEP);
+        msgError = validarCampo(txtEmail,lblEmail);
         if (cpf.isEmpty()) {
             msgError = msgError + "Digite seu CPF.\n";
             lblCpf.setForeground(Color.red);
@@ -544,6 +537,16 @@ public class DialogCadastro extends javax.swing.JDialog {
             }
         }
         return false;
+    }
+    
+//    mover para lda utils
+    public String validarCampo(JTextField txt,JLabel label){
+        String msgError = "";
+        if (txt.getText().isEmpty()) {
+            msgError = txt.getName() +"inválido!.\n";
+            label.setForeground(Color.red);
+        }
+        return msgError;
     }
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

@@ -44,3 +44,9 @@ INSERT INTO
     Erva (idErva, nome, valor, peso, sabor)
 VALUES
     (5, 'SKU 14', 23.5, 10, 'Limao');
+
+-- INSERIR CLIENTES
+
+INSERT INTO 
+cliente(idcidade, nome,cpf, email, foto, , tel)
+	VALUES (1,'Luis Das Artimanhas','124.134-144-01', 'luisaugustodesouza785@gmail.com', null, '27991144771');
