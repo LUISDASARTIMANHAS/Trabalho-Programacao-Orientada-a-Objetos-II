@@ -71,27 +71,6 @@ public class GenericDao {
         return lista;
     }
 
-    public void Inserir(Object obj) throws HibernateException, ClassNotFoundException {
-        Session sessao = null;
-
-        try {
-            sessao = ConexaoHibernate.getSessionFactory().openSession();
-            sessao.beginTransaction();
-
-            //operação
-            sessao.save(obj);
-
-            sessao.getTransaction().commit();
-            sessao.close();
-        } catch (HibernateException ex) {
-            if (sessao != null) {
-                sessao.getTransaction().rollback();
-                sessao.close();
-            }
-            throw new HibernateException(ex);
-        }
-    }
-
     public void alterar(Object obj) throws HibernateException {
         Session sessao = null;
 

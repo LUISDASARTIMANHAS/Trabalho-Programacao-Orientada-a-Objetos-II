@@ -4,19 +4,12 @@
  */
 package control;
 
-import domain.Erva;
 import java.awt.Component;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
+import java.util.*;
+import java.util.logging.*;
+import javax.swing.*;
 import org.hibernate.HibernateException;
 import swing.*;
 import viwer.*;
@@ -103,12 +96,7 @@ public class GUIManager {
     }
 
     public void msgWIP(Component comp) {
-        JOptionPane.showMessageDialog(
-                comp,
-                "Essa fucionalidade ainda não esta pronta",
-                "Em Breve",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        LDASwingUtils.message(comp, "Essa fucionalidade ainda não esta pronta", "Em Breve");
     }
     
     public void msgAguardarProcesso() {
@@ -127,17 +115,10 @@ public class GUIManager {
     public void carregarCombo(JComboBox combo, Class classe) {
         try {
             List lista = daoManager.listar(classe);
-            combo.setModel(new DefaultComboBoxModel(lista.toArray()));
+            LDASwingUtils.loadListInComboBox(combo,lista);
         } catch (HibernateException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(principal, ex, "Cadastro de Cliente", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
+            LDASwingUtils.messageError(principal, ex.toString(), "Cadastro de Cliente");
         }
-    }
-    
-    public String CalcValorTotal(int qtde, float valor, float valorTotal) {   
-        float novoValor = qtde * valor;
-        
-        return "R$ " + (valorTotal + novoValor);
     }
 
     public static void main(String args[]) {

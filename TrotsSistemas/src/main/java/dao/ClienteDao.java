@@ -13,8 +13,13 @@ import org.hibernate.*;
  * @author LUIS DAS ARTIMANHAS
  */
 public class ClienteDao extends GenericDao {
+    
+    public void Inserir(Object obj) throws HibernateException, ClassNotFoundException {
+        Inserir(obj);
+    }
+    
 
-    private List<Cliente> pesquisar(String pesq, int tipo) throws HibernateException, ClassNotFoundException {
+    public List<Cliente> pesquisar(String pesq, int tipo) throws HibernateException, ClassNotFoundException {
 
         // TESTE        
         return listar(Cliente.class);

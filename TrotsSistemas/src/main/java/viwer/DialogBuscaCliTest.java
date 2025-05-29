@@ -181,8 +181,8 @@ public class DialogBuscaCliTest extends javax.swing.JDialog {
             GUIManager gui = GUIManager.getMyInstance();
             List<Cliente> lista = gui.getDaoManager().pesquisarCliente( pesq, tipo );
 
-            if ( lista.size() > 0 ) {
-                tblModelCliente.setDados(lista);
+            if ( !lista.isEmpty() ) {
+                tblModelCliente.setLista(lista);
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum registro encontrado.");
             }

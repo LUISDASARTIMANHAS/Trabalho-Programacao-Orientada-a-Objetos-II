@@ -16,11 +16,13 @@ import javax.persistence.*;
 public class Venda {
 
     @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY )
     private int idVenda;
     
     @Temporal(value = TemporalType.DATE)
     private java.util.Date data;
     
+    @Column(nullable = false, columnDefinition = "FLOAT DEFAULT 0.0")
     private float valorTotal;
     
     @ManyToOne ( fetch = FetchType.EAGER )
@@ -39,8 +41,8 @@ public class Venda {
     }
 
 //    SEM ID
-    public Venda(Date data, float valorTotal) {
-        this.data = data;
+    public Venda(float valorTotal) {
+        this.data = new Date();
         this.valorTotal = valorTotal;
     }
 
@@ -52,4 +54,37 @@ public class Venda {
         this.idVenda = idVenda;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ItemPedido> getListaItensPedido() {
+        return listaItensPedido;
+    }
+
+    public void setListaItensPedido(List<ItemPedido> listaItensPedido) {
+        this.listaItensPedido = listaItensPedido;
+    }
+
+    
 }

@@ -8,6 +8,9 @@ import dao.ClienteDao;
 import dao.ConexaoHibernate;
 import dao.GenericDao;
 import domain.Cliente;
+import domain.ItemPedido;
+import domain.Venda;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -34,6 +37,10 @@ public class DaoManager {
     public List listar(Class classe) throws HibernateException, ClassNotFoundException {
         return genericDao.listar(classe);
     }
+    
+    public void InserirCliente() throws HibernateException, ClassNotFoundException {
+        
+    }
 
     public void excluir(Object obj) throws HibernateException {
         genericDao.excluir(obj);
@@ -55,4 +62,22 @@ public class DaoManager {
                 return null;
         }
     }
+    
+    public Venda inserirVenda(Cliente cliente, List<ItemPedido> listaItensPedido) {
+        
+        Venda venda = new Venda(cliente, new Date(), (float) 0.0, listaItensPedido);
+
+        float total = (float) 0.0;
+        
+        // ATUALIZAR A REFERENCIA DO PEDIDO DENTRO DA LISTA DE ITENS
+        for (ItemPedido itemPedido : listaItensPedido) {
+            itemPedido.setVenda(venda);
+            total = total + itemPedido.getQdte()* itemPedido.getErva().getValor();
+        }
+        venda.setValorTotal(total);
+        
+        genericDao.inserir(venda);
+        return Venda;
+    }
+    
 }

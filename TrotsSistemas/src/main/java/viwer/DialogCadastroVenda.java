@@ -4,6 +4,7 @@ import control.AutoTableModel;
 import control.CustomTableModel;
 import control.DaoManager;
 import control.GUIManager;
+import control.LDAMainUtils;
 import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
@@ -44,7 +45,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 //        tblPedido.setModel(tableModelItemPedido);
 
         // Amarro o JTable com o meu AUTO Abstract Table Model
-        tableModelItemPedido = new AutoTableModel<ItemPedido>(ItemPedido.class);
+        tableModelItemPedido = new AutoTableModel<>(ItemPedido.class);
         tblPedido.setModel(tableModelItemPedido);
     }
 
@@ -373,8 +374,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         DaoManager dao = gui.getDaoManager();
-        gui.msgWIP(this);
-
+        dao.InserirCliente();
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
@@ -386,7 +386,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
         int linha = tblPedido.getSelectedRow();
-        
+
         if (linha >= 0) {
             excluirVenda(linha);
         } else {
@@ -436,7 +436,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         Erva erva = (Erva) cmbSabor.getSelectedItem();
         float valor = erva.getValor();
 
-        String NovoValorTotal = gui.CalcValorTotal(qtde, valor, valorTotal);
+        String NovoValorTotal = LDAMainUtils.CalcValorTotal(qtde, valor, valorTotal);
         lblValor.setText(NovoValorTotal);
     }
 
