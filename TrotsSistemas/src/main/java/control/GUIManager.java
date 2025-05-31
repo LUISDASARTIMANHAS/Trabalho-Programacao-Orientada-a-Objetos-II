@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.logging.*;
 import javax.swing.*;
 import org.hibernate.HibernateException;
-import swing.*;
+import swing.LDASwingUtils;
 import viwer.*;
 
 /**

@@ -15,14 +15,45 @@
             <goals>
               <goal>shade</goal>
             </goals>
+            <configuration>
+              <transformers>
+                <transformer>
+                  <mainClass>control.GUIManager</mainClass>
+                </transformer>
+              </transformers>
+              <artifactSet>
+                <includes>
+                  <include>*:*</include>
+                </includes>
+              </artifactSet>
+              <relocations />
+            </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.0</version>
         <configuration>
-          <transformers>
-            <transformer>
-              <mainClass>control.GUIManager</mainClass>
-            </transformer>
-          </transformers>
+          <source>23</source>
+          <target>23</target>
+          <compilerArgs>
+            <arg>-Xlint</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <mainClass>control.GUIManager</mainClass>
+          <classpathScope>compile</classpathScope>
+          <includeProjectDependencies>true</includeProjectDependencies>
+          <includePluginDependencies>true</includePluginDependencies>
+          <additionalClasspathElements>
+            <additionalClasspathElement>${project.basedir}/lib/LDAUtils-1.0.1.jar</additionalClasspathElement>
+          </additionalClasspathElements>
         </configuration>
       </plugin>
     </plugins>
@@ -31,9 +62,9 @@
     <dependency>
       <groupId>pingobras.glitch.me</groupId>
       <artifactId>LDAUtils</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/LDAUtils-1.0.0-jar-with-dependencies.jar</systemPath>
+      <systemPath>${project.basedir}/lib/LDAUtils-1.0.1.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>
