@@ -3,6 +3,7 @@ package viwer;
 import control.CustomTableModel;
 import control.DaoManager;
 import control.GUIManager;
+import control.LDAMainUtils;
 import domain.Cliente;
 import domain.Erva;
 import domain.ItemPedido;
@@ -395,7 +396,6 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirBuscaCli();
 
         cliSelecionado = gui.abrirBuscaCli();
         if (cliSelecionado != null) {
@@ -470,7 +470,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         for (int i = 0; i < tableModelItemPedido.getRowCount(); i++) {
             ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(i);
             
-            valorTotal = item.getSubTotal() + valorTotal;
+            valorTotal = LDAMainUtils.CalcValorTotal(item.getSubTotal(), valorTotal);
         }
 
         lblValor.setText("TOTAL R$:" + valorTotal);

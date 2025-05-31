@@ -5,6 +5,7 @@
 package control;
 
 import domain.Cliente;
+import domain.Erva;
 import java.awt.Component;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
@@ -77,8 +78,9 @@ public class GUIManager {
         return buscaCli.getCliSelecionado();
     }
 
-    public void abrirBuscaProd() {
+    public Erva abrirBuscaProd() {
         buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
+        return buscaProd.getErvaSelecionada();
     }
 
     public void abrirCadCli() {

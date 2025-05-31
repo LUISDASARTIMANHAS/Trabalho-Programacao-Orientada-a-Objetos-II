@@ -14,8 +14,8 @@ import org.hibernate.*;
  */
 public class ClienteDao extends GenericDao {
     
-    public void Inserir(Object obj) throws HibernateException, ClassNotFoundException {
-        Inserir(obj);
+    public void Inserir(Cliente cli) throws HibernateException, ClassNotFoundException {
+        Inserir(cli);
     }
     
 

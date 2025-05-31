@@ -20,6 +20,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     /**
      * Creates new form Cadastro
      */
+    private Erva ervaSelecionada = null;
+
     public DialogBuscaProd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -45,11 +47,11 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         lblPeso = new javax.swing.JLabel();
-        txtPeso = new javax.swing.JTextField();
-        lblEstoque = new javax.swing.JLabel();
-        txtEstoque = new javax.swing.JTextField();
+        spnPeso = new javax.swing.JSpinner();
         lblObs = new javax.swing.JLabel();
         txtObs = new javax.swing.JTextField();
+        lblEstoque = new javax.swing.JLabel();
+        spnEstoque = new javax.swing.JSpinner();
         btnSelecionar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -135,42 +137,26 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         txtNome.setEditable(false);
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome.setText("SKU10");
+        txtNome.setText("Selecione um");
         txtNome.setAlignmentX(10.0F);
         txtNome.setAlignmentY(10.0F);
         txtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNome.setEnabled(false);
         painelEnderec.add(txtNome);
 
-        lblPeso.setBackground(new java.awt.Color(255, 255, 255));
         lblPeso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPeso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
         lblPeso.setText("Peso (G)");
+        lblPeso.setAlignmentX(10.0F);
+        lblPeso.setAlignmentY(10.0F);
         painelEnderec.add(lblPeso);
 
-        txtPeso.setEditable(false);
-        txtPeso.setBackground(new java.awt.Color(255, 255, 255));
-        txtPeso.setForeground(new java.awt.Color(0, 0, 0));
-        txtPeso.setText("500");
-        txtPeso.setAlignmentX(10.0F);
-        txtPeso.setAlignmentY(10.0F);
-        txtPeso.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPeso.setEnabled(false);
-        painelEnderec.add(txtPeso);
-
-        lblEstoque.setBackground(new java.awt.Color(255, 255, 255));
-        lblEstoque.setForeground(new java.awt.Color(255, 255, 255));
-        lblEstoque.setText("Em Estoque");
-        painelEnderec.add(lblEstoque);
-
-        txtEstoque.setEditable(false);
-        txtEstoque.setBackground(new java.awt.Color(255, 255, 255));
-        txtEstoque.setForeground(new java.awt.Color(0, 0, 0));
-        txtEstoque.setText("1");
-        txtEstoque.setAlignmentX(10.0F);
-        txtEstoque.setAlignmentY(10.0F);
-        txtEstoque.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtEstoque.setEnabled(false);
-        painelEnderec.add(txtEstoque);
+        spnPeso.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnPeso.setAlignmentX(10.0F);
+        spnPeso.setAlignmentY(10.0F);
+        spnPeso.setAutoscrolls(true);
+        spnPeso.setEnabled(false);
+        painelEnderec.add(spnPeso);
 
         lblObs.setBackground(new java.awt.Color(255, 255, 255));
         lblObs.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,13 +166,27 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         txtObs.setEditable(false);
         txtObs.setBackground(new java.awt.Color(255, 255, 255));
         txtObs.setForeground(new java.awt.Color(0, 0, 0));
-        txtObs.setText("O sabor do campo em forma de erva. A Limão Caipira traz a intensidade e a refrescância  do limão associado ao sabor único que só a erva mate tem. ");
+        txtObs.setText("Selecione um");
         txtObs.setAlignmentX(10.0F);
         txtObs.setAlignmentY(10.0F);
         txtObs.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtObs.setEnabled(false);
         txtObs.setMinimumSize(new java.awt.Dimension(100, 26));
         painelEnderec.add(txtObs);
+
+        lblEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        lblEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
+        lblEstoque.setText("Quantidade Em Estoque");
+        lblEstoque.setAlignmentX(10.0F);
+        lblEstoque.setAlignmentY(10.0F);
+        painelEnderec.add(lblEstoque);
+
+        spnEstoque.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 10));
+        spnEstoque.setAlignmentX(10.0F);
+        spnEstoque.setAlignmentY(10.0F);
+        spnEstoque.setAutoscrolls(true);
+        spnEstoque.setEnabled(false);
+        painelEnderec.add(spnEstoque);
 
         btnSelecionar.setBackground(new java.awt.Color(255, 255, 255));
         btnSelecionar.setForeground(new java.awt.Color(0, 0, 0));
@@ -253,16 +253,18 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     private void cmbProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProdActionPerformed
         // TODO add your handling code here:
 //        ao selecionar um item atualizar os txt
-
-        LDASwingUtils.toggleEnabledAndEditable(txtNome);
-        LDASwingUtils.toggleEnabledAndEditable(txtPeso);
-        LDASwingUtils.toggleEnabledAndEditable(txtEstoque);
-        LDASwingUtils.toggleEnabledAndEditable(txtObs);
+        Erva erva = (Erva) cmbProd.getSelectedItem();
+        if (erva != null) {
+            txtNome.setText(erva.getNome());
+            spnPeso.setValue(erva.getPeso());
+            spnEstoque.setValue(erva.getQtdeEstoque());
+            txtObs.setText(erva.getDescricao());
+        }
     }//GEN-LAST:event_cmbProdActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         Erva erva = (Erva) cmbProd.getSelectedItem();
-        if ( erva != null ) {
+        if (erva != null) {
             ProdutoSelecionado = erva;
             this.setVisible(false);
         } else {
@@ -290,9 +292,14 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     private javax.swing.JLabel lblPeso;
     private javax.swing.JLabel lblProd;
     private javax.swing.JPanel painelEnderec;
-    private javax.swing.JTextField txtEstoque;
+    private javax.swing.JSpinner spnEstoque;
+    private javax.swing.JSpinner spnPeso;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtObs;
-    private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
+
+    public Erva getErvaSelecionada() {
+        return ervaSelecionada;
+    }
+
 }

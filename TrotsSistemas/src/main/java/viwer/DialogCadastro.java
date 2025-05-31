@@ -2,16 +2,18 @@ package viwer;
 
 import control.*;
 import domain.Cidade;
+import domain.Cliente;
+import domain.Endereco;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.hibernate.HibernateException;
 import swing.*;
 
 
@@ -28,6 +30,7 @@ import swing.*;
 public class DialogCadastro extends javax.swing.JDialog {
 
     private File dir;
+    private Cliente cliSelecionado = null;
 
     /**
      * Creates new form Cadastro
@@ -59,7 +62,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblCpf = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
         btnAlterar = new javax.swing.JButton();
-        Foto = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
         btnPesqCli = new javax.swing.JButton();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -192,19 +195,19 @@ public class DialogCadastro extends javax.swing.JDialog {
         btnAlterar.setAutoscrolls(true);
         btnAlterar.setEnabled(false);
 
-        Foto.setBackground(new java.awt.Color(0, 0, 0));
-        Foto.setForeground(new java.awt.Color(255, 255, 255));
-        Foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
-        Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Foto.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblFoto.setBackground(new java.awt.Color(0, 0, 0));
+        lblFoto.setForeground(new java.awt.Color(255, 255, 255));
+        lblFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user.png"))); // NOI18N
+        lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FotoMouseClicked(evt);
+                lblFotoMouseClicked(evt);
             }
         });
-        Foto.addKeyListener(new java.awt.event.KeyAdapter() {
+        lblFoto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                FotoKeyPressed(evt);
+                lblFotoKeyPressed(evt);
             }
         });
 
@@ -407,7 +410,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -443,7 +446,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTel)
                             .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -466,38 +469,59 @@ public class DialogCadastro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FotoMouseClicked
+    private void lblFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMouseClicked
         // TODO add your handling code here:
         MostrarFoto();
-    }//GEN-LAST:event_FotoMouseClicked
+    }//GEN-LAST:event_lblFotoMouseClicked
 
-    private void FotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FotoKeyPressed
+    private void lblFotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblFotoKeyPressed
         // TODO add your handling code here:
         MostrarFoto();
 
-    }//GEN-LAST:event_FotoKeyPressed
+    }//GEN-LAST:event_lblFotoKeyPressed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        
+        gui.abrirBuscaCli();
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        DaoManager dao = gui.getDaoManager();
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
         String email = txtEmail.getText();
         String tel = txtTel.getText();
         String cep = txtCEP.getText();
         String cidade = cmbCidade.getSelectedItem().toString();
+        String uf = txtUf.getText();
+        String bairro = txtBairro.getText();
+        String logradouro = txtLogradouro.getText();
+        String ref = txtRef.getText();
+        String complemento = txtComplemento.getText();
+        Icon Foto = lblFoto.getIcon();
 
+        int num = (int) txtNumResidencial.getValue();
+        Endereco endereco = new Endereco(cep, bairro, logradouro, num, complemento, ref, cidade, uf);
         if (validarCampos()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Usuario: " + nome + ". Cadastrado com sucesso!",
-                    "Cadastro de Cliente",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+            LDASwingUtils.message(this, "Operação em andamento...", "Cadastro de Cliente");
+            try {
+                // INSERIR
+                cliSelecionado = dao.InserirCliente(nome, cpf, email, tel,Foto, endereco);
+                LDASwingUtils.message(this, "Cliente: " + nome + ". Cadastrado com sucesso!", "Cadastro de Cliente");
+                this.dispose();
+            } catch (HibernateException ex) {
+                LDASwingUtils.messageError(this, "ERRO ao inserir cliente! " + ex, "Cadastro de Cliente");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            LDASwingUtils.messageError(this, "Preencha todos os campos!", "Cadastro de Cliente");
         }
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private boolean validarCampos() {
@@ -509,44 +533,31 @@ public class DialogCadastro extends javax.swing.JDialog {
         lblEmail.setForeground(Color.black);
         lblCpf.setForeground(Color.black);
 
-        msgError = validarCampo(txtNome,lblNome);
-        msgError = validarCampo(txtCEP,lblCEP);
-        msgError = validarCampo(txtEmail,lblEmail);
+        msgError = LDASwingUtils.validarCampo(txtNome, lblNome);
+        msgError = LDASwingUtils.validarCampo(txtCEP, lblCEP);
+        msgError = LDASwingUtils.validarCampo(txtEmail, lblEmail);
         if (cpf.isEmpty()) {
             msgError = msgError + "Digite seu CPF.\n";
             lblCpf.setForeground(Color.red);
         }
         if (!LDACPFManager.ValidarCPF(cpf)) {
-            if (!LDACPFManager.ValidarCPF(cpf)) {
-                msgError = msgError + "CPF inválido!.\n";
-                lblCpf.setForeground(Color.red);
-            }
+            msgError = msgError + "CPF inválido!.\n";
+            lblCpf.setForeground(Color.red);
+        }
 
-            if (msgError.isEmpty()) {
+        if (msgError.isEmpty()) {
 //            não a erros
-                return true;
-            } else {
-                //            mostra o erro
-                JOptionPane.showMessageDialog(
-                        this,
-                        msgError,
-                        "CADASTRO DE CLIENTE",
-                        JOptionPane.ERROR_MESSAGE
-                );
-                return false;
-            }
+            return true;
+        } else {
+            //            mostra o erro
+            JOptionPane.showMessageDialog(
+                    this,
+                    msgError,
+                    "CADASTRO DE CLIENTE",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return false;
         }
-        return false;
-    }
-    
-//    mover para lda utils
-    public String validarCampo(JTextField txt,JLabel label){
-        String msgError = "";
-        if (txt.getText().isEmpty()) {
-            msgError = txt.getName() +"inválido!.\n";
-            label.setForeground(Color.red);
-        }
-        return msgError;
     }
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -559,13 +570,13 @@ public class DialogCadastro extends javax.swing.JDialog {
         try {
 
             LDASwingUtils.message(this, "Consultando Integração...", "Busca Cep");
-            Endereco ender = LDAMainUtils.consultarCEP(txtCEP.getText());
+            EnderecoCep ender = LDAMainUtils.consultarCEP(txtCEP.getText());
 
             if (ender != null) {
                 txtLogradouro.setText(ender.getLogradouro());
                 txtUf.setText(ender.getUf());
                 txtBairro.setText(ender.getBairro());
-                txtRef.setText(ender.getReferencia());
+                txtRef.setText(ender.getLogradouro());
                 cmbCidade.setSelectedItem(ender.getCidade());
 
                 LDASwingUtils.toggleEnabledAndEditable(txtLogradouro);
@@ -595,8 +606,8 @@ public class DialogCadastro extends javax.swing.JDialog {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
         File arq = LDAMainUtils.carregarArq(filtro, this, dir);
         if (arq != null) {
-            ImageIcon foto = LDAMainUtils.redimensionarImg(arq, Foto);
-            Foto.setIcon(foto);
+            ImageIcon foto = LDAMainUtils.redimensionarImg(arq, lblFoto);
+            lblFoto.setIcon(foto);
         }
     }
 
@@ -614,8 +625,8 @@ public class DialogCadastro extends javax.swing.JDialog {
 
         txtNumResidencial.setValue(0);
 
-        Foto.setText("Foto");
-        Foto.setIcon(null);
+        lblFoto.setText("Foto");
+        lblFoto.setIcon(null);
 
         cmbCidade.setSelectedIndex(
                 0);
@@ -626,7 +637,6 @@ public class DialogCadastro extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
-    private javax.swing.JLabel Foto;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad;
     private javax.swing.JPanel background;
@@ -645,6 +655,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JLabel lblComplem;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblLogradouro;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;

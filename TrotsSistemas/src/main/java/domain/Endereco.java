@@ -42,40 +42,28 @@ public class Endereco implements Serializable {
     public Endereco() {
     }
 
-    public Endereco(String cep, String uf, String bairro, String cidade, String logradouro, String complemento) {
+    public Endereco(int idEndereco, String cep, String bairro, String logradouro, int numero, String complemento, String referencia, String cidade, String uf) {
+        this.idEndereco = idEndereco;
         this.cep = cep;
-        this.uf = uf;
         this.bairro = bairro;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.referencia = referencia;
         this.cidade = cidade;
-        this.logradouro = logradouro;
-        this.complemento = complemento;
+        this.uf = uf;
     }
-
-    // Para ser UTILIZADO pela classe CLIENTE
-    // Sem ID
-    public Endereco(String cep, String bairro, String logradouro, int num, String complemento, String ref) {
+    
+//    SEM ID
+    public Endereco(String cep, String bairro, String logradouro, int numero, String complemento, String referencia, String cidade, String uf) {
         this.cep = cep;
-        this.uf = "";
         this.bairro = bairro;
-        this.cidade = "";
         this.logradouro = logradouro;
-        this.numero = num;
+        this.numero = numero;
         this.complemento = complemento;
-        this.referencia = ref;
-    }
-
-    // Para ser UTILIZADO pela classe CLIENTE
-    // Com ID
-    public Endereco(int idEnder, String cep, String bairro, String logradouro, int num, String complemento, String ref) {
-        this.idEndereco = idEnder;
-        this.cep = cep;
-        this.uf = "";
-        this.bairro = bairro;
-        this.cidade = "";
-        this.logradouro = logradouro;
-        this.numero = num;
-        this.complemento = complemento;
-        this.referencia = ref;
+        this.referencia = referencia;
+        this.cidade = cidade;
+        this.uf = uf;
     }
 
     public Cliente getCliente() {

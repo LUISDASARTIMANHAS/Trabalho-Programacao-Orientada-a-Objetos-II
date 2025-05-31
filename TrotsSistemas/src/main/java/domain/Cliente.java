@@ -6,6 +6,8 @@ package domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.swing.Icon;
+import swing.LDASwingUtils;
 
 /**
  *
@@ -33,7 +35,7 @@ public class Cliente implements Serializable {
     private String tel;
     
     @Lob
-    private Byte foto;
+    private byte[] foto;
     
     
     @OneToOne (mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -51,24 +53,26 @@ public class Cliente implements Serializable {
     }
 
 //    sem id
-    public Cliente(String nome, String cpf, String email, String tel, Endereco endereco) {
+    public Cliente(String nome, String cpf, String email, String tel,Icon Foto, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.tel = tel;
         this.endereco = endereco;
+        this.foto = LDASwingUtils.IconToBytes(Foto);
 //        amarro o endereço no cliente
         this.endereco.setCliente(this);
     }
 
 //    com id
-    public Cliente(int id, String nome, String cpf, String email, String tel, Endereco endereco) {
+    public Cliente(int id, String nome, String cpf, String email, String tel,Icon Foto,  Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.tel = tel;
         this.endereco = endereco;
+        this.foto = LDASwingUtils.IconToBytes(Foto);
 //        amarro o endereço no cliente
         this.endereco.setCliente(this);
     }
@@ -122,11 +126,11 @@ public class Cliente implements Serializable {
         this.endereco = endereco;
     }
 
-    public Byte getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(Byte foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 

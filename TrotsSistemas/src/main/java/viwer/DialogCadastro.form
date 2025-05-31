@@ -168,7 +168,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="btnPesqCli" min="-2" pref="34" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="Foto" min="-2" pref="203" max="-2" attributes="0"/>
+                                      <Component id="lblFoto" min="-2" pref="203" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -215,7 +215,7 @@
                                           <Component id="txtTel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="Foto" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Component id="lblFoto" min="-2" pref="127" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="279" max="-2" attributes="0"/>
@@ -331,7 +331,7 @@
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="Foto">
+                    <Component class="javax.swing.JLabel" name="lblFoto">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -350,8 +350,8 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="FotoMouseClicked"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FotoKeyPressed"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblFotoMouseClicked"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lblFotoKeyPressed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnPesqCli">

@@ -27,18 +27,59 @@ public class Erva implements Serializable {
     private String sabor;
     private int peso;
     private float valor;
+    private int qtdeEstoque;
+    private String descricao;
 
     @OneToMany(mappedBy = "chaveComposta.erva")
     private List<ItemPedido> listaItensPedido;
 
     public Erva() {
     }
-
-    public Erva(float valor, String Nome, String Sabor, int peso) {
-        this.valor = valor;
-        this.nome = Nome;
-        this.sabor = Sabor;
+    
+//    COM ID
+    public Erva(int idErva, String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) {
+        this.idErva = idErva;
+        this.nome = nome;
+        this.sabor = sabor;
         this.peso = peso;
+        this.valor = valor;
+        this.qtdeEstoque = qtdeEstoque;
+        this.descricao = descricao;
+        this.listaItensPedido = listaItensPedido;
+    }
+    
+    public Erva(String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricaodescricao) {
+        this.valor = valor;
+        this.nome = nome;
+        this.sabor = sabor;
+        this.peso = peso;
+        this.qtdeEstoque = qtdeEstoque;
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    
+    public int getQtdeEstoque() {
+        return qtdeEstoque;
+    }
+
+    public void setQtdeEstoque(int qtdeEstoque) {
+        this.qtdeEstoque = qtdeEstoque;
+    }
+
+    public List<ItemPedido> getListaItensPedido() {
+        return listaItensPedido;
+    }
+
+    public void setListaItensPedido(List<ItemPedido> listaItensPedido) {
+        this.listaItensPedido = listaItensPedido;
     }
 
     public int getPeso() {

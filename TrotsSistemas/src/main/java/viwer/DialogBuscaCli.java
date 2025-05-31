@@ -218,7 +218,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         } catch (HibernateException ex) {
             LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", "CONSULTAR CLIENTES");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DialogBuscaCliTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 

@@ -19,6 +19,9 @@
         
         <!--localhost proxy-->
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/trotsSistemas</property>
+        
+        <!--Meu Servidor Global em Casa-->
+        <!--<property name="hibernate.connection.url">jdbc:postgresql://[]:5432/trotsSistemas</property>-->
 
 
         <!-- JDBC connection pool (use the built-in) -->
@@ -37,8 +40,8 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <!--<property name="hbm2ddl.auto">create</property>-->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
+<!--        <property name="hbm2ddl.auto">update</property>-->
         <property name="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</property>
         <property name="hibernate.format_sql">true</property>
         

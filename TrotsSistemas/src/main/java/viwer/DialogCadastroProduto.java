@@ -1,6 +1,13 @@
 package viwer;
 
+import control.DaoManager;
 import control.GUIManager;
+import domain.Erva;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
+import swing.LDASwingUtils;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -17,6 +24,8 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     /**
      * Creates new form Cadastro
      */
+    private Erva ervaSelecionada = null;
+    private String title = "CADASTRO DE PRODUTOS";
     public DialogCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -42,16 +51,18 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         painelEnderec = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnPesqProd = new javax.swing.JButton();
-        lblCEP = new javax.swing.JLabel();
-        txtEnder1 = new javax.swing.JTextField();
-        lblEnder = new javax.swing.JLabel();
-        txtEnder = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        lblSabor = new javax.swing.JLabel();
+        txtSabor = new javax.swing.JTextField();
         lblNum = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnValor = new javax.swing.JSpinner();
         lblComplem = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        spnPeso = new javax.swing.JSpinner();
         lblComplem2 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
+        spnEstoque = new javax.swing.JSpinner();
+        lblObs = new javax.swing.JLabel();
+        txtObs = new javax.swing.JTextField();
         btnDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -138,7 +149,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         painelEnderec.setAlignmentX(50.0F);
         painelEnderec.setAlignmentY(50.0F);
         painelEnderec.setAutoscrolls(true);
-        painelEnderec.setLayout(new java.awt.GridLayout(6, 2, 15, 15));
+        painelEnderec.setLayout(new java.awt.GridLayout(7, 2, 15, 15));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -157,36 +168,36 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         });
         painelEnderec.add(btnPesqProd);
 
-        lblCEP.setBackground(new java.awt.Color(255, 255, 255));
-        lblCEP.setForeground(new java.awt.Color(255, 255, 255));
-        lblCEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblCEP.setText("Nome");
-        lblCEP.setAlignmentX(10.0F);
-        lblCEP.setAlignmentY(10.0F);
-        painelEnderec.add(lblCEP);
+        lblNome.setBackground(new java.awt.Color(255, 255, 255));
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
+        lblNome.setText("Nome");
+        lblNome.setAlignmentX(10.0F);
+        lblNome.setAlignmentY(10.0F);
+        painelEnderec.add(lblNome);
 
-        txtEnder1.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder1.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder1.setText("SKU10");
-        txtEnder1.setAlignmentX(10.0F);
-        txtEnder1.setAlignmentY(10.0F);
-        txtEnder1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtEnder1);
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("SKU10");
+        txtNome.setAlignmentX(10.0F);
+        txtNome.setAlignmentY(10.0F);
+        txtNome.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtNome);
 
-        lblEnder.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
-        lblEnder.setText("Sabor");
-        lblEnder.setAlignmentX(10.0F);
-        lblEnder.setAlignmentY(10.0F);
-        painelEnderec.add(lblEnder);
+        lblSabor.setForeground(new java.awt.Color(255, 255, 255));
+        lblSabor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Retort.png"))); // NOI18N
+        lblSabor.setText("Sabor");
+        lblSabor.setAlignmentX(10.0F);
+        lblSabor.setAlignmentY(10.0F);
+        painelEnderec.add(lblSabor);
 
-        txtEnder.setBackground(new java.awt.Color(255, 255, 255));
-        txtEnder.setForeground(new java.awt.Color(0, 0, 0));
-        txtEnder.setText("Eucalipto");
-        txtEnder.setAlignmentX(10.0F);
-        txtEnder.setAlignmentY(10.0F);
-        txtEnder.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        painelEnderec.add(txtEnder);
+        txtSabor.setBackground(new java.awt.Color(255, 255, 255));
+        txtSabor.setForeground(new java.awt.Color(0, 0, 0));
+        txtSabor.setText("Eucalipto");
+        txtSabor.setAlignmentX(10.0F);
+        txtSabor.setAlignmentY(10.0F);
+        txtSabor.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        painelEnderec.add(txtSabor);
 
         lblNum.setForeground(new java.awt.Color(255, 255, 255));
         lblNum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
@@ -195,11 +206,11 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         lblNum.setAlignmentY(10.0F);
         painelEnderec.add(lblNum);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(10.85d, 1.0d, null, 1.0d));
-        jSpinner1.setAlignmentX(10.0F);
-        jSpinner1.setAlignmentY(10.0F);
-        jSpinner1.setAutoscrolls(true);
-        painelEnderec.add(jSpinner1);
+        spnValor.setModel(new javax.swing.SpinnerNumberModel(10.85f, 1.0f, null, 1.0f));
+        spnValor.setAlignmentX(10.0F);
+        spnValor.setAlignmentY(10.0F);
+        spnValor.setAutoscrolls(true);
+        painelEnderec.add(spnValor);
 
         lblComplem.setForeground(new java.awt.Color(255, 255, 255));
         lblComplem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
@@ -208,11 +219,11 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         lblComplem.setAlignmentY(10.0F);
         painelEnderec.add(lblComplem);
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        jSpinner2.setAlignmentX(10.0F);
-        jSpinner2.setAlignmentY(10.0F);
-        jSpinner2.setAutoscrolls(true);
-        painelEnderec.add(jSpinner2);
+        spnPeso.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnPeso.setAlignmentX(10.0F);
+        spnPeso.setAlignmentY(10.0F);
+        spnPeso.setAutoscrolls(true);
+        painelEnderec.add(spnPeso);
 
         lblComplem2.setForeground(new java.awt.Color(255, 255, 255));
         lblComplem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
@@ -221,11 +232,27 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         lblComplem2.setAlignmentY(10.0F);
         painelEnderec.add(lblComplem2);
 
-        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 10));
-        jSpinner3.setAlignmentX(10.0F);
-        jSpinner3.setAlignmentY(10.0F);
-        jSpinner3.setAutoscrolls(true);
-        painelEnderec.add(jSpinner3);
+        spnEstoque.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 10));
+        spnEstoque.setAlignmentX(10.0F);
+        spnEstoque.setAlignmentY(10.0F);
+        spnEstoque.setAutoscrolls(true);
+        painelEnderec.add(spnEstoque);
+
+        lblObs.setBackground(new java.awt.Color(255, 255, 255));
+        lblObs.setForeground(new java.awt.Color(255, 255, 255));
+        lblObs.setText("Descrição");
+        painelEnderec.add(lblObs);
+
+        txtObs.setEditable(false);
+        txtObs.setBackground(new java.awt.Color(255, 255, 255));
+        txtObs.setForeground(new java.awt.Color(0, 0, 0));
+        txtObs.setText("Selecione um");
+        txtObs.setAlignmentX(10.0F);
+        txtObs.setAlignmentY(10.0F);
+        txtObs.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtObs.setEnabled(false);
+        txtObs.setMinimumSize(new java.awt.Dimension(100, 26));
+        painelEnderec.add(txtObs);
 
         btnDeletar.setBackground(new java.awt.Color(255, 255, 255));
         btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
@@ -256,7 +283,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
                 .addGroup(PaineldeCad1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(13, Short.MAX_VALUE)))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,8 +298,8 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
             .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PaineldeCad1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                    .addGap(68, 68, 68)))
+                    .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(41, Short.MAX_VALUE)))
         );
 
         FORM.add(PaineldeCad1);
@@ -288,14 +315,18 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
         // TODO add your handling code here:
-        GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        ervaSelecionada = null;
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     private void btnPesqProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        
+        ervaSelecionada = gui.abrirBuscaProd();
+        if (ervaSelecionada != null) {
+            txtNome.setText(ervaSelecionada.getNome());
+        }
     }//GEN-LAST:event_btnPesqProdActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -313,9 +344,49 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here
         GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        DaoManager dao = gui.getDaoManager();
+        String nome = txtNome.getText();
+        String sabor = txtSabor.getText();
+        float valor = (float) spnValor.getValue();
+        int peso = (int) spnPeso.getValue();
+        int qtdeEstoque = (int) spnEstoque.getValue();
+        String descricao = txtObs.getText();
+
+            LDASwingUtils.message(this, "Operação em andamento...", title);
+            try {
+                // INSERIR
+                ervaSelecionada = dao.InserirErva(nome, sabor, peso, valor, qtdeEstoque, descricao);
+                LDASwingUtils.message(this, "Produto: " + nome + ". Cadastrado com sucesso!", title);
+                this.dispose();
+            } catch (HibernateException ex) {
+                LDASwingUtils.messageError(this, "ERRO ao inserir Produto! " + ex, title);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DialogCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
+    private boolean validarCampos() {
+        String msgError = "";
+
+        msgError = LDASwingUtils.validarCampo(txtNome, lblNome);
+        msgError = LDASwingUtils.validarCampo(txtSabor, lblSabor);
+        msgError = LDASwingUtils.validarCampo(txtObs, lblObs);
+
+        if (msgError.isEmpty()) {
+//            não a erros
+            return true;
+        } else {
+            //            mostra o erro
+            JOptionPane.showMessageDialog(
+                    this,
+                    msgError,
+                    title,
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return false;
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
     private javax.swing.JLabel Logo;
@@ -328,16 +399,18 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private javax.swing.JButton btnPesqProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblComplem;
     private javax.swing.JLabel lblComplem2;
-    private javax.swing.JLabel lblEnder;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblObs;
+    private javax.swing.JLabel lblSabor;
     private javax.swing.JPanel painelEnderec;
-    private javax.swing.JTextField txtEnder;
-    private javax.swing.JTextField txtEnder1;
+    private javax.swing.JSpinner spnEstoque;
+    private javax.swing.JSpinner spnPeso;
+    private javax.swing.JSpinner spnValor;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtObs;
+    private javax.swing.JTextField txtSabor;
     // End of variables declaration//GEN-END:variables
 }

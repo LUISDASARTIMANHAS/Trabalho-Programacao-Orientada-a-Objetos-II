@@ -6,11 +6,15 @@ package control;
 
 import dao.ClienteDao;
 import dao.ConexaoHibernate;
+import dao.ErvaDao;
 import dao.GenericDao;
 import domain.Cliente;
+import domain.Endereco;
+import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
 import java.util.List;
+import javax.swing.Icon;
 import org.hibernate.HibernateException;
 
 /**
@@ -22,7 +26,7 @@ public class DaoManager {
 
     private GenericDao genericDao;
     private ClienteDao clienteDao;
-//    private Pedido pedido;
+    private ErvaDao ervaDao;
 
     public DaoManager() throws java.lang.ExceptionInInitializerError, ClassNotFoundException, HibernateException {
         ConexaoHibernate.getSessionFactory().openSession();
@@ -30,6 +34,7 @@ public class DaoManager {
 //        instanciar as classes DAO 
         genericDao = new GenericDao();
         clienteDao = new ClienteDao();
+        ervaDao = new ErvaDao();
     }
 
     // ######  MÉTODOS GENÉRICOS   ####
@@ -37,10 +42,23 @@ public class DaoManager {
         return genericDao.listar(classe);
     }
     
-    public void InserirCliente() throws HibernateException, ClassNotFoundException {
-        
+    public Cliente InserirCliente(String nome,String cpf,String email,String tel,Icon Foto, Endereco endereco) throws HibernateException, ClassNotFoundException {
+//        String nome, String cpf, String email, String tel, Endereco endereco
+        Cliente cli = new Cliente(nome, cpf, email, tel,Foto, endereco);
+            
+            clienteDao.inserir(cli);
+            return cli;
     }
 
+    public Erva InserirErva(String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) throws HibernateException, ClassNotFoundException {
+//        String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao
+        Erva erva = new Erva(nome, sabor, peso, valor, qtdeEstoque, descricao);
+                
+            ervaDao.inserir(erva);
+            return erva;
+    }
+
+    
     public void excluir(Object obj) throws HibernateException {
         genericDao.excluir(obj);
     }
