@@ -12,10 +12,11 @@ import org.hibernate.HibernateException;
 import swing.LDASwingUtils;
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this
+ * template
  */
-
 /**
  *
  * @author 2023122760328
@@ -24,12 +25,18 @@ public class DialogBuscaCli extends javax.swing.JDialog {
 
     private AutoTableModel tblModelCliente;
     private Cliente cliSelecionado = null;
+    private String title = "CONSULTAR CLIENTE";
+
     /**
      * Creates new form Cadastro
      */
     public DialogBuscaCli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        
         initComponents();
+        // Amarro o JTable com o meu AUTO Abstract Table Model
+        tblModelCliente = new AutoTableModel(Cliente.class);
+        tblCli.setModel(tblModelCliente);
     }
 
     /**
@@ -58,6 +65,11 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1024, 720));
         setPreferredSize(new java.awt.Dimension(826, 620));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setAlignmentX(50.0F);
@@ -207,16 +219,16 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             int tipo = cmbTipo.getSelectedIndex() + 1;
             GUIManager gui = GUIManager.getMyInstance();
             DaoManager dao = gui.getDaoManager();
-            List<Cliente> lista = dao.pesquisarCliente( pesq, tipo );
+            List<Cliente> lista = dao.pesquisarCliente(pesq, tipo);
 
-            if ( lista.size() > 0 ) {
+            if (lista.size() > 0) {
                 tblModelCliente.setLista(lista);
             } else {
-                LDASwingUtils.message(this, "Nenhum Cliente Encontrado", "CONSULTAR CLIENTES");
+                LDASwingUtils.message(this, "Nenhum Cliente Encontrado", title);
             }
 
         } catch (HibernateException ex) {
-            LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", "CONSULTAR CLIENTES");
+            LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", title);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -224,8 +236,8 @@ public class DialogBuscaCli extends javax.swing.JDialog {
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         // TODO add your handling code here:
-        int linha = tblCli.getSelectedRow();        
-        if ( linha >= 0 ) {
+        int linha = tblCli.getSelectedRow();
+        if (linha >= 0) {
             cliSelecionado = (Cliente) tblModelCliente.getItem(linha);
             this.setVisible(false);
         } else {
@@ -238,6 +250,23 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         cliSelecionado = null;
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        try {
+            // TODO add your handling code here:
+            GUIManager gui = GUIManager.getMyInstance();
+            DaoManager dao = gui.getDaoManager();
+            List<Cliente> lista = dao.listar(Cliente.class);
+            
+            tblModelCliente.setLista(lista);
+        } catch (HibernateException ex) {
+            LDASwingUtils.messageError(this, "Falha ao Carregar Clientes", title);
+//            encerra a janela com falhas;
+            this.dispose(); 
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formComponentShown
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;

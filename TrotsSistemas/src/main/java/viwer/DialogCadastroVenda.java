@@ -29,6 +29,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 //    private CustomTableModel tableModelItemPedido;
     private CustomTableModel<ItemPedido> tableModelItemPedido;
     private Cliente cliSelecionado = null;
+    private String title = "REGISTRAR VENDA";
 
     /**
      * Creates new form Cadastro
@@ -387,9 +388,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         if (cliSelecionado != null) {
             Venda venda = dao.inserirVenda(cliSelecionado, ListaItensPedido);
-            LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", "Cadastro de Pedido");
+            LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", title);
+            this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione um cliente.", "Cadastro de Pedido", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Selecione um cliente.", title, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
@@ -413,7 +415,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(
                     this,
                     "Selcione ao menos uma linha",
-                    "Cadastro de Produto",
+                    title,
                     JOptionPane.ERROR_MESSAGE
             );
         }
@@ -460,7 +462,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                 tableModelItemPedido.remover(linha);
                 linha = tblPedido.getSelectedRow();
             }
-            LDASwingUtils.message(this, "Excluido com sucesso!", "Cadastro de Produto");
+            LDASwingUtils.message(this, "Excluido com sucesso!", title);
             atualizarValorTotal();
         }
     }
