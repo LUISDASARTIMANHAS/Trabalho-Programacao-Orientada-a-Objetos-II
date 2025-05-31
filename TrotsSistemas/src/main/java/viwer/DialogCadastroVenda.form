@@ -203,7 +203,7 @@
                                                       </Group>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="txtNome1" min="-2" pref="203" max="-2" attributes="0"/>
+                                                              <Component id="txtNome" min="-2" pref="203" max="-2" attributes="0"/>
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Component id="btnPesqCli" min="-2" pref="26" max="-2" attributes="0"/>
                                                           </Group>
@@ -246,7 +246,7 @@
                                   <Component id="btnPesqCli" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblNome1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtNome1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -310,6 +310,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelar1ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="overflow">
                       <Properties>
@@ -340,7 +343,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
-                                <Column editable="false" title="Sabor" type="java.lang.String">
+                                <Column editable="false" title="Tipo" type="java.lang.String">
                                   <Data value="sad"/>
                                   <Data value="Erva Mate - Menta &amp; Cereja "/>
                                   <Data value="aasd"/>
@@ -352,18 +355,8 @@
                                   <Data value="5"/>
                                   <Data value="8"/>
                                 </Column>
-                                <Column editable="false" title="Peso" type="java.lang.Double">
-                                  <Data value="500.0"/>
-                                  <Data value="500.0"/>
-                                  <Data value="500.0"/>
-                                  <Data value="500.0"/>
-                                </Column>
-                                <Column editable="false" title="Valor" type="java.lang.Double">
-                                  <Data value="10.89"/>
-                                  <Data value="10.89"/>
-                                  <Data value="10.89"/>
-                                  <Data value="10.89"/>
-                                </Column>
+                                <Column editable="false" title="ValorDaUnidade" type="java.lang.Float"/>
+                                <Column editable="false" title="SubTotal" type="java.lang.Float"/>
                               </Table>
                             </Property>
                             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -440,8 +433,11 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbSaborItemStateChanged"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtNome1">
+                    <Component class="javax.swing.JTextField" name="txtNome">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -509,6 +505,9 @@
                           <SpinnerModel initial="5" maximum="10" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="spnQtdeStateChanged"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnAddLanche1">
                       <Properties>

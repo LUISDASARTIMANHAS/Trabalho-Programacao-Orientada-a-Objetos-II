@@ -10,7 +10,6 @@ import dao.GenericDao;
 import domain.Cliente;
 import domain.ItemPedido;
 import domain.Venda;
-import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -65,7 +64,7 @@ public class DaoManager {
     
     public Venda inserirVenda(Cliente cliente, List<ItemPedido> listaItensPedido) {
         
-        Venda venda = new Venda(cliente, new Date(), (float) 0.0, listaItensPedido);
+        Venda venda = new Venda(cliente, (float) 0.0, listaItensPedido);
 
         float total = (float) 0.0;
         
@@ -77,7 +76,7 @@ public class DaoManager {
         venda.setValorTotal(total);
         
         genericDao.inserir(venda);
-        return Venda;
+        return venda;
     }
     
 }

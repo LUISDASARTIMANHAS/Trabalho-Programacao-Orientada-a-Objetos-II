@@ -4,6 +4,7 @@
  */
 package control;
 
+import domain.Cliente;
 import java.awt.Component;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
@@ -71,8 +72,9 @@ public class GUIManager {
         principal.setVisible(true);
     }
 
-    public void abrirBuscaCli() {
+    public Cliente abrirBuscaCli() {
         buscaCli = (DialogBuscaCli) abrirJanela(principal, buscaCli, DialogBuscaCli.class);
+        return buscaCli.getCliSelecionado();
     }
 
     public void abrirBuscaProd() {

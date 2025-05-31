@@ -1,15 +1,12 @@
 package viwer;
 
-import control.AutoTableModel;
 import control.CustomTableModel;
 import control.DaoManager;
 import control.GUIManager;
-import control.LDAMainUtils;
+import domain.Cliente;
 import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import swing.LDASwingUtils;
@@ -27,10 +24,10 @@ import swing.LDASwingUtils;
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
-    private List<String> getters = List.of("getDescricao", "getQuantidade", "getPreco");
+    private List<String> getters = List.of( "getQdte", "getTipo","getValorDaUnidade", "getSubTotal");
 //    private CustomTableModel tableModelItemPedido;
-    private AutoTableModel<ItemPedido> tableModelItemPedido;
-    private float valorTotal;
+    private CustomTableModel<ItemPedido> tableModelItemPedido;
+    private Cliente cliSelecionado = null;
 
     /**
      * Creates new form Cadastro
@@ -38,14 +35,12 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        valorTotal = (float) 0.0;
         // Amarro o JTable com o meu Abstract Table Model
 //        tableModelItemPedido = new CustomTableModel(new ArrayList<ItemPedido>(), getters, ItemPedido.class);
 //        tblPedido.setModel(tableModelItemPedido);
 
         // Amarro o JTable com o meu AUTO Abstract Table Model
-        tableModelItemPedido = new AutoTableModel<>(ItemPedido.class);
+        tableModelItemPedido = new CustomTableModel(getters,ItemPedido.class);
         tblPedido.setModel(tableModelItemPedido);
     }
 
@@ -74,7 +69,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         lblNome1 = new javax.swing.JLabel();
         lblLanche = new javax.swing.JLabel();
         cmbSabor = new javax.swing.JComboBox();
-        txtNome1 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         btnPesqCli = new javax.swing.JButton();
         btnAddLanche = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -165,6 +160,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
         btnCancelar1.setText("Cancelar");
+        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar1ActionPerformed(evt);
+            }
+        });
 
         overflow.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Ervas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -173,17 +173,17 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         tblPedido.setForeground(new java.awt.Color(0, 0, 0));
         tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"sad",  new Integer(7),  new Double(500.0),  new Double(10.89)},
-                {"Erva Mate - Menta & Cereja ",  new Integer(3),  new Double(500.0),  new Double(10.89)},
-                {"aasd",  new Integer(5),  new Double(500.0),  new Double(10.89)},
-                {"aasdasd",  new Integer(8),  new Double(500.0),  new Double(10.89)}
+                {"sad",  new Integer(7), null, null},
+                {"Erva Mate - Menta & Cereja ",  new Integer(3), null, null},
+                {"aasd",  new Integer(5), null, null},
+                {"aasdasd",  new Integer(8), null, null}
             },
             new String [] {
-                "Sabor", "Qtde", "Peso", "Valor"
+                "Tipo", "Qtde", "ValorDaUnidade", "SubTotal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -223,12 +223,17 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         cmbSabor.setBackground(new java.awt.Color(255, 255, 255));
         cmbSabor.setForeground(new java.awt.Color(0, 0, 0));
         cmbSabor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", " " }));
+        cmbSabor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSaborItemStateChanged(evt);
+            }
+        });
 
-        txtNome1.setEditable(false);
-        txtNome1.setBackground(new java.awt.Color(255, 255, 255));
-        txtNome1.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome1.setText("Teste");
-        txtNome1.setEnabled(false);
+        txtNome.setEditable(false);
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("Teste");
+        txtNome.setEnabled(false);
 
         btnPesqCli.setBackground(new java.awt.Color(255, 255, 255));
         btnPesqCli.setForeground(new java.awt.Color(0, 0, 0));
@@ -255,6 +260,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         jLabel3.setText("Qtde");
 
         spnQtde.setModel(new javax.swing.SpinnerNumberModel(5, 0, 10, 1));
+        spnQtde.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQtdeStateChanged(evt);
+            }
+        });
 
         btnAddLanche1.setBackground(new java.awt.Color(255, 255, 255));
         btnAddLanche1.setForeground(new java.awt.Color(0, 0, 0));
@@ -294,7 +304,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                                                 .addGap(7, 7, 7)))
                                         .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                                                .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +333,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                     .addComponent(btnPesqCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNome1)
-                        .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(7, 7, 7)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLanche)
@@ -361,26 +371,36 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        String item = cmbSabor.getSelectedItem().toString();;
+        Erva erva = (Erva) cmbSabor.getSelectedItem();
         int qtde = (int) spnQtde.getValue();
-        int peso = 500 * qtde;
-        float valor = (float) (qtde * 10.89);
+        String tipo = erva.getSabor();
 
-        //        gui.msgWIP(this);
-        inserirTabela(item, qtde, peso, valor);
+        inserirTabela(erva, tipo, qtde);
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         DaoManager dao = gui.getDaoManager();
-        dao.InserirCliente();
+        List ListaItensPedido = tableModelItemPedido.getLista();
+
+        if (cliSelecionado != null) {
+            Venda venda = dao.inserirVenda(cliSelecionado, ListaItensPedido);
+            LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", "Cadastro de Pedido");
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um cliente.", "Cadastro de Pedido", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         gui.abrirBuscaCli();
+
+        cliSelecionado = gui.abrirBuscaCli();
+        if (cliSelecionado != null) {
+            txtNome.setText(cliSelecionado.getNome());
+        }
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
@@ -405,13 +425,27 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         gui.carregarCombo(cmbSabor, Erva.class);
     }//GEN-LAST:event_formComponentShown
 
-    private void inserirTabela(String sabor, int qtde, int peso, float valor) {
-        Erva erva = new Erva(0, "SKU", sabor, peso);
-        Venda venda = new Venda(new Date(), 0);
+    private void cmbSaborItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSaborItemStateChanged
+        // TODO add your handling code here:
+        atualizarValorTotal();
+    }//GEN-LAST:event_cmbSaborItemStateChanged
 
-        //    Erva erva, Venda venda, String Obs, int Qdte
-        ItemPedido item = new ItemPedido(erva, venda, "Obs", qtde);
+    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+        // TODO add your handling code here:
+        cliSelecionado = null;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelar1ActionPerformed
+
+    private void spnQtdeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQtdeStateChanged
+        // TODO add your handling code here:
+        atualizarValorTotal();
+    }//GEN-LAST:event_spnQtdeStateChanged
+
+    private void inserirTabela(Erva erva, String tipo, int qtde) {
+        //    Erva erva, Venda venda, String tipo, int Qdte
+        ItemPedido item = new ItemPedido(erva, null, tipo, qtde);
         tableModelItemPedido.adicionar(item);
+        atualizarValorTotal();
     }
 
     private void excluirVenda(int linha) {
@@ -427,17 +461,19 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                 linha = tblPedido.getSelectedRow();
             }
             LDASwingUtils.message(this, "Excluido com sucesso!", "Cadastro de Produto");
+            atualizarValorTotal();
         }
     }
 
     private void atualizarValorTotal() {
-        GUIManager gui = GUIManager.getMyInstance();
-        int qtde = (int) spnQtde.getValue();
-        Erva erva = (Erva) cmbSabor.getSelectedItem();
-        float valor = erva.getValor();
+        float valorTotal = 0;
+        for (int i = 0; i < tableModelItemPedido.getRowCount(); i++) {
+            ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(i);
+            
+            valorTotal = item.getSubTotal() + valorTotal;
+        }
 
-        String NovoValorTotal = LDAMainUtils.CalcValorTotal(qtde, valor, valorTotal);
-        lblValor.setText(NovoValorTotal);
+        lblValor.setText("TOTAL R$:" + valorTotal);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -462,6 +498,6 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JScrollPane overflow;
     private javax.swing.JSpinner spnQtde;
     private javax.swing.JTable tblPedido;
-    private javax.swing.JTextField txtNome1;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

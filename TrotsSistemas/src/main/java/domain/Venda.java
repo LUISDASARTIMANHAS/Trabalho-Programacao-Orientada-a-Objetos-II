@@ -34,16 +34,20 @@ public class Venda {
     private List<ItemPedido> listaItensPedido;
 
 //    COM ID
-    public Venda(int idVenda, Date data, float valorTotal) {
+    public Venda(int idVenda,Cliente cliente, Date data, float valorTotal, List<ItemPedido> listaItensPedido) {
         this.idVenda = idVenda;
         this.data = data;
         this.valorTotal = valorTotal;
+        this.cliente = cliente;
+        this.listaItensPedido = listaItensPedido;
     }
 
 //    SEM ID
-    public Venda(float valorTotal) {
+    public Venda(Cliente cliente, float valorTotal, List<ItemPedido> listaItensPedido) {
         this.data = new Date();
         this.valorTotal = valorTotal;
+        this.cliente = cliente;
+        this.listaItensPedido = listaItensPedido;
     }
 
     public int getIdVenda() {

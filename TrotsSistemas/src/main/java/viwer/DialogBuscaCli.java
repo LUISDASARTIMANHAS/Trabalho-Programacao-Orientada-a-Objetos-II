@@ -1,11 +1,13 @@
 package viwer;
 
 import control.AutoTableModel;
+import control.DaoManager;
 import control.GUIManager;
 import domain.Cliente;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import swing.LDASwingUtils;
 
@@ -21,6 +23,7 @@ import swing.LDASwingUtils;
 public class DialogBuscaCli extends javax.swing.JDialog {
 
     private AutoTableModel tblModelCliente;
+    private Cliente cliSelecionado = null;
     /**
      * Creates new form Cadastro
      */
@@ -46,7 +49,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         btnSelecionar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblClientes1 = new javax.swing.JTable();
+        tblCli = new javax.swing.JTable();
         cmbTipo = new javax.swing.JComboBox();
         txtPesq = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
@@ -101,38 +104,43 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         btnSelecionar.setForeground(new java.awt.Color(0, 0, 0));
         btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
         btnSelecionar.setText("Selecionar");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Abort.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
-        tblClientes1.setAutoCreateRowSorter(true);
-        tblClientes1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.gray, java.awt.Color.lightGray, java.awt.Color.gray));
-        tblClientes1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCli.setAutoCreateRowSorter(true);
+        tblCli.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.gray, java.awt.Color.lightGray, java.awt.Color.gray));
+        tblCli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Bairro", "Cidade", "Dt. Nasc.", "Tel. Cel.", "Foto"
+                "Nome", "Bairro", "Cidade", "Tel. Cel.", "Foto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tblClientes1);
+        jScrollPane3.setViewportView(tblCli);
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro", "Mês" }));
-        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTipoActionPerformed(evt);
-            }
-        });
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -198,10 +206,11 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             String pesq = txtPesq.getText();
             int tipo = cmbTipo.getSelectedIndex() + 1;
             GUIManager gui = GUIManager.getMyInstance();
-            List<Cliente> lista = gui.getDaoManager().pesquisarCliente( pesq, tipo );
+            DaoManager dao = gui.getDaoManager();
+            List<Cliente> lista = dao.pesquisarCliente( pesq, tipo );
 
             if ( lista.size() > 0 ) {
-                tblModelCliente.adicionar(lista);
+                tblModelCliente.setLista(lista);
             } else {
                 LDASwingUtils.message(this, "Nenhum Cliente Encontrado", "CONSULTAR CLIENTES");
             }
@@ -213,9 +222,22 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTipoActionPerformed
+        int linha = tblCli.getSelectedRow();        
+        if ( linha >= 0 ) {
+            cliSelecionado = (Cliente) tblModelCliente.getItem(linha);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar Cliente", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        cliSelecionado = null;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
@@ -228,7 +250,12 @@ public class DialogBuscaCli extends javax.swing.JDialog {
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tblClientes1;
+    private javax.swing.JTable tblCli;
     private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables
+
+    public Cliente getCliSelecionado() {
+        return cliSelecionado;
+    }
+
 }

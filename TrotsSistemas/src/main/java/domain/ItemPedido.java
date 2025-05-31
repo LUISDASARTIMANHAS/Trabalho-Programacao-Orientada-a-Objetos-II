@@ -17,16 +17,22 @@ public class ItemPedido implements Serializable {
     @EmbeddedId
     private ItemPedidoPK chaveComposta;
     
-    private String Obs;
+    private String Tipo;
     private int Qdte;
+    private float ValorDaUnidade;
     
     public ItemPedido() {
     }
 
-    public ItemPedido(Erva erva, Venda venda, String Obs, int Qdte) {
+    public ItemPedido(Erva erva, Venda venda, String tipo, int qdte) {
         this.chaveComposta = new ItemPedidoPK(erva, venda);
-        this.Obs = Obs;
-        this.Qdte = Qdte;
+        this.Tipo = tipo;
+        this.Qdte = qdte;
+        this.ValorDaUnidade = erva.getValor();
+    }
+
+    public float getValorDaUnidade() {
+        return ValorDaUnidade;
     }
 
     public Erva getErva() {
@@ -45,12 +51,12 @@ public class ItemPedido implements Serializable {
         this.chaveComposta.setVenda(venda);
     }
 
-    public String getObs() {
-        return Obs;
+    public String getTipo() {
+        return Tipo;
     }
 
-    public void setObs(String Obs) {
-        this.Obs = Obs;
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
     }
 
     public int getQdte() {
@@ -61,4 +67,8 @@ public class ItemPedido implements Serializable {
         this.Qdte = Qdte;
     }
 
+//    METODOS IMPORTADAS PARA QUE O AUTO TABLE MODEL ADICIONE NA TABELA 
+    public float getSubTotal() {
+        return  getQdte() * getValorDaUnidade();
+    }
 }
