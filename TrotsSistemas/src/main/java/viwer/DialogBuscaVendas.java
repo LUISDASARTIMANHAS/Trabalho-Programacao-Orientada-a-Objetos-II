@@ -20,16 +20,16 @@ import swing.*;
  *
  * @author 2023122760328
  */
-public class DialogBuscaCli extends javax.swing.JDialog {
+public class DialogBuscaVendas extends javax.swing.JDialog {
 
     private AutoTableModel tblModelCliente;
     private Cliente cliSelecionado = null;
-    private String title = "CONSULTAR CLIENTE";
+    private String title = "CONSULTAR VENDA";
 
     /**
      * Creates new form Cadastro
      */
-    public DialogBuscaCli(java.awt.Frame parent, boolean modal) {
+    public DialogBuscaVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         
         initComponents();
@@ -64,7 +64,6 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1024, 720));
-        setPreferredSize(new java.awt.Dimension(826, 620));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -105,7 +104,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         FORM.add(Logo);
 
         PaineldeCad1.setBackground(new java.awt.Color(204, 204, 204));
-        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        PaineldeCad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultar Vendas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         PaineldeCad1.setForeground(new java.awt.Color(0, 0, 0));
         PaineldeCad1.setAlignmentX(50.0F);
         PaineldeCad1.setAlignmentY(50.0F);
@@ -216,6 +215,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         );
 
         FORM.add(PaineldeCad1);
+        PaineldeCad1.getAccessibleContext().setAccessibleName("Consultar Vendas");
 
         jScrollPane1.setViewportView(FORM);
 
@@ -243,7 +243,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         } catch (HibernateException ex) {
             LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", title);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
         }
          lblWait.setVisible(false);
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -279,7 +279,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
 //            encerra a janela com falhas;
             this.dispose(); 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentShown
 
