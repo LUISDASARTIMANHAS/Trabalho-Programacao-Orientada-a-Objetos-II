@@ -23,19 +23,25 @@ public class Cidade implements Serializable {
 
     @Column(nullable = false, length = 100)
     private String nome;
+    
+    @Column(nullable = false, length = 2)
+    private String UF;
 
     public Cidade() {
     }
 
 //    SEM ID
-    public Cidade(String nome) {
+    public Cidade(String nome, String UF) {
         this.nome = nome;
+        this.UF = UF;
     }
+   
 
 //  COM ID
-    public Cidade(int idCidade, String nome) {
+    public Cidade(int idCidade, String nome, String UF) {
         this.idCidade = idCidade;
         this.nome = nome;
+        this.UF = UF;
     }
 
     public int getIdCidade() {

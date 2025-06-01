@@ -82,6 +82,11 @@ public class GUIManager {
         buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
         return buscaProd.getErvaSelecionada();
     }
+    
+    public Erva abrirBuscaVenda() {
+        buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
+        return buscaProd.getErvaSelecionada();
+    }
 
     public void abrirCadCli() {
         cadCli = (DialogCadastro) abrirJanela(principal, cadCli, DialogCadastro.class);
@@ -101,6 +106,15 @@ public class GUIManager {
 
     public void msgWIP(Component comp) {
         LDASwingUtils.message(comp, "Essa fucionalidade ainda não esta pronta", "Em Breve");
+    }
+    
+    public void msgBuscaCompleta() {
+        JOptionPane.showMessageDialog(
+                principal,
+                "A busca retornou resultados!",
+                "SISTEMA",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }
     
     public void msgAguardarProcesso() {

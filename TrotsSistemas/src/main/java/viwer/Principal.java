@@ -143,7 +143,7 @@ public class Principal extends javax.swing.JFrame {
         ConsultaPedido.setText("Venda");
         ConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultaPedidoActionPerformed(evt);
+                ConsultaVendaPerformed(evt);
             }
         });
         menuConsulta.add(ConsultaPedido);
@@ -296,11 +296,11 @@ public class Principal extends javax.swing.JFrame {
         gui.abrirCadVenda();
     }//GEN-LAST:event_CadPedidoActionPerformed
 
-    private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
+    private void ConsultaVendaPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaVendaPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirBuscaProd();
-    }//GEN-LAST:event_ConsultaPedidoActionPerformed
+        gui.abrirBuscaVenda();
+    }//GEN-LAST:event_ConsultaVendaPerformed
 
     private void ConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaClienteActionPerformed
         // TODO add your handling code here:

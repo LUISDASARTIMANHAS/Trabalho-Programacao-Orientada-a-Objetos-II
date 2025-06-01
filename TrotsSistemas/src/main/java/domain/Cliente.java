@@ -5,6 +5,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 import javax.swing.Icon;
 import swing.LDASwingUtils;
@@ -45,8 +46,8 @@ public class Cliente implements Serializable {
     @JoinColumn (name = "idCidade")
     private Cidade cidade;
     
-//    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
-//    private List<Venda> pedidos;
+    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
+    private List<Venda> Vendas;
 
 //    para hibernate 
     public Cliente() {

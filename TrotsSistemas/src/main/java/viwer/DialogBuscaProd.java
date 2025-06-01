@@ -54,6 +54,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         spnEstoque = new javax.swing.JSpinner();
         btnSelecionar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblWait = new javax.swing.JButton();
+        lblWait1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -208,6 +210,21 @@ public class DialogBuscaProd extends javax.swing.JDialog {
             }
         });
 
+        lblWait.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        lblWait.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblWait.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblWait.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        lblWait1.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait1.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait1.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
@@ -215,22 +232,36 @@ public class DialogBuscaProd extends javax.swing.JDialog {
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
-                        .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                            .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblWait1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSelecionar)
                     .addComponent(btnCancelar)))
+            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblWait1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         FORM.add(PaineldeCad1);
@@ -248,6 +279,7 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         gui.carregarCombo(cmbProd, Erva.class);
+        lblWait.setVisible(false);
     }//GEN-LAST:event_formComponentShown
 
     private void cmbProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProdActionPerformed
@@ -291,6 +323,8 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     private javax.swing.JLabel lblObs;
     private javax.swing.JLabel lblPeso;
     private javax.swing.JLabel lblProd;
+    private javax.swing.JButton lblWait;
+    private javax.swing.JButton lblWait1;
     private javax.swing.JPanel painelEnderec;
     private javax.swing.JSpinner spnEstoque;
     private javax.swing.JSpinner spnPeso;

@@ -7,9 +7,8 @@ import domain.Cliente;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
-import swing.LDASwingUtils;
+import swing.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
@@ -60,6 +59,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         cmbTipo = new javax.swing.JComboBox();
         txtPesq = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
+        lblWait = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -161,12 +161,20 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             }
         });
 
+        lblWait.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        lblWait.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblWait.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblWait.setPreferredSize(new java.awt.Dimension(30, 30));
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
                         .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,11 +192,17 @@ public class DialogBuscaCli extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPesquisar)))
                 .addContainerGap())
+            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,6 +233,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             int tipo = cmbTipo.getSelectedIndex() + 1;
             GUIManager gui = GUIManager.getMyInstance();
             DaoManager dao = gui.getDaoManager();
+            lblWait.setVisible(true);
             List<Cliente> lista = dao.pesquisarCliente(pesq, tipo);
 
             if (lista.size() > 0) {
@@ -226,12 +241,12 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             } else {
                 LDASwingUtils.message(this, "Nenhum Cliente Encontrado", title);
             }
-
         } catch (HibernateException ex) {
             LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", title);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
         }
+         lblWait.setVisible(false);
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
@@ -241,14 +256,14 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             cliSelecionado = (Cliente) tblModelCliente.getItem(linha);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma linha.", "Pesquisar Cliente", JOptionPane.ERROR_MESSAGE);
+           LDASwingUtils.messageError(this,"Selecione uma linha.", title);
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         cliSelecionado = null;
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -259,6 +274,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             List<Cliente> lista = dao.listar(Cliente.class);
             
             tblModelCliente.setLista(lista);
+            lblWait.setVisible(false);
         } catch (HibernateException ex) {
             LDASwingUtils.messageError(this, "Falha ao Carregar Clientes", title);
 //            encerra a janela com falhas;
@@ -279,6 +295,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton lblWait;
     private javax.swing.JTable tblCli;
     private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables

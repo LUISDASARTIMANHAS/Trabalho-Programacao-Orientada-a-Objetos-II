@@ -77,6 +77,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
         btnAddLanche1 = new javax.swing.JButton();
+        lblWait = new javax.swing.JButton();
 
         inserir.setText("inserir");
         inserir.addActionListener(new java.awt.event.ActionListener() {
@@ -278,6 +279,12 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
             }
         });
 
+        lblWait.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
@@ -306,13 +313,17 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                                                 .addGap(7, 7, 7)))
                                         .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                                 .addGap(209, 209, 209)
-                                                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PaineldeCad1Layout.createSequentialGroup()
+                                                    .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PaineldeCad1Layout.createSequentialGroup()
+                                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(btnNovo1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,16 +341,21 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPesqCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNome1)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLanche)
-                    .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPesqCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblNome1)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(7, 7, 7)
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblLanche)
+                            .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -425,6 +441,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         // TODO add your handling code here:    
         GUIManager gui = GUIManager.getMyInstance();
         gui.carregarCombo(cmbSabor, Erva.class);
+        lblWait.setVisible(false);
     }//GEN-LAST:event_formComponentShown
 
     private void cmbSaborItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSaborItemStateChanged
@@ -497,6 +514,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JLabel lblLanche;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblValor;
+    private javax.swing.JButton lblWait;
     private javax.swing.JScrollPane overflow;
     private javax.swing.JSpinner spnQtde;
     private javax.swing.JTable tblPedido;
