@@ -29,7 +29,7 @@ public class Endereco implements Serializable {
     private int numero;
     private String complemento;
     private String referencia;
-    private String cidadeNome;
+    private String cidade;
 
     @Column(nullable = false, length = 2)
     private String uf;
@@ -61,7 +61,7 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.cidadeNome = cidadeNome;
+        this.cidade = cidadeNome;
         this.uf = uf;
     }
 
@@ -82,7 +82,7 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.cidadeNome = cidadeNome;
+        this.cidade = cidadeNome;
         this.uf = uf;
     }
 
@@ -127,11 +127,11 @@ public class Endereco implements Serializable {
     }
 
     public String getCidadeNome() {
-        return cidadeNome;
+        return cidade;
     }
 
     public void setCidadeNome(String cidadeNome) {
-        this.cidadeNome = cidadeNome;
+        this.cidade = cidadeNome;
     }
 
     public String getLogradouro() {
