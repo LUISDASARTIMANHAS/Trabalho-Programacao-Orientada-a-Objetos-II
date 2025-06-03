@@ -29,7 +29,7 @@ public class Endereco implements Serializable {
     private int numero;
     private String complemento;
     private String referencia;
-    private String cidade;
+    private String cidadeNome;
 
     @Column(nullable = false, length = 2)
     private String uf;
@@ -42,22 +42,6 @@ public class Endereco implements Serializable {
     public Endereco() {
     }
 
-    public Endereco(
-            String cep,
-            String uf,
-            String bairro,
-            String cidade,
-            String logradouro,
-            String complemento
-    ) {
-        this.cep = cep;
-        this.uf = uf;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.logradouro = logradouro;
-        this.complemento = complemento;
-    }
-
 //    com id para CLIENTE
     public Endereco(
             int idEndereco,
@@ -66,7 +50,9 @@ public class Endereco implements Serializable {
             String logradouro,
             int numero,
             String complemento,
-            String referencia
+            String referencia,
+            String cidadeNome,
+            String uf
     ) {
         this.idEndereco = idEndereco;
         this.cep = cep;
@@ -75,8 +61,8 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.cidade = "";
-        this.uf = "";
+        this.cidadeNome = cidadeNome;
+        this.uf = uf;
     }
 
 //    SEM ID para CLIENTE
@@ -86,7 +72,9 @@ public class Endereco implements Serializable {
             String logradouro,
             int numero,
             String complemento,
-            String referencia
+            String referencia,
+            String cidadeNome,
+            String uf
     ) {
         this.cep = cep;
         this.bairro = bairro;
@@ -94,8 +82,8 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.cidade = "";
-        this.uf = "";
+        this.cidadeNome = cidadeNome;
+        this.uf = uf;
     }
 
     public Cliente getCliente() {
@@ -138,12 +126,12 @@ public class Endereco implements Serializable {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCidadeNome() {
+        return cidadeNome;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCidadeNome(String cidadeNome) {
+        this.cidadeNome = cidadeNome;
     }
 
     public String getLogradouro() {

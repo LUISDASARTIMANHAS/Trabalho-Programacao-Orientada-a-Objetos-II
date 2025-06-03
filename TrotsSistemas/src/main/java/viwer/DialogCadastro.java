@@ -505,7 +505,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         Icon Foto = lblFoto.getIcon();
 
         int num = (int) txtNumResidencial.getValue();
-        Endereco endereco = new Endereco(cep, bairro, logradouro, num, complemento, ref);
+        Endereco endereco = new Endereco(cep, bairro, logradouro, num, complemento, ref, cidade.getNome(), uf);
         if (validarCampos()) {
             LDASwingUtils.message(this, "Operação em andamento...", "Cadastro de Cliente");
             try {

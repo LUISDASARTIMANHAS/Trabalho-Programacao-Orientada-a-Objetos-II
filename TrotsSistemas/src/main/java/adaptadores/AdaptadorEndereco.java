@@ -29,7 +29,7 @@ public class AdaptadorEndereco {
 //String logradouro, String bairro, String cidade, String uf
         destino.setLogradouro(origem.getLogradouro());
         destino.setBairro(origem.getBairro());
-        destino.setCidade(origem.getCidade());
+        destino.setCidadeNome(origem.getCidade());
         destino.setUf(origem.getUf());
 
         return destino;
