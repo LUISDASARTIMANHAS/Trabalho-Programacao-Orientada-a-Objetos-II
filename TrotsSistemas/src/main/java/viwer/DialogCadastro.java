@@ -496,7 +496,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         String email = txtEmail.getText();
         String tel = txtTel.getText();
         String cep = txtCEP.getText();
-        String cidade = cmbCidade.getSelectedItem().toString();
+        Cidade cidade = (Cidade) cmbCidade.getSelectedItem();
         String uf = txtUf.getText();
         String bairro = txtBairro.getText();
         String logradouro = txtLogradouro.getText();
@@ -505,12 +505,12 @@ public class DialogCadastro extends javax.swing.JDialog {
         Icon Foto = lblFoto.getIcon();
 
         int num = (int) txtNumResidencial.getValue();
-        Endereco endereco = new Endereco(cep, bairro, logradouro, num, complemento, ref, cidade, uf);
+        Endereco endereco = new Endereco(cep, bairro, logradouro, num, complemento, ref);
         if (validarCampos()) {
             LDASwingUtils.message(this, "Operação em andamento...", "Cadastro de Cliente");
             try {
                 // INSERIR
-                cliSelecionado = dao.InserirCliente(nome, cpf, email, tel,Foto, endereco);
+                cliSelecionado = dao.InserirCliente(nome, cpf, email, tel,Foto, endereco,cidade);
                 LDASwingUtils.message(this, "Cliente: " + nome + ". Cadastrado com sucesso!", "Cadastro de Cliente");
                 this.dispose();
             } catch (HibernateException ex) {

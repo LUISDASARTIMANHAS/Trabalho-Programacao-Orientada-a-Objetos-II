@@ -30,19 +30,44 @@ public class Endereco implements Serializable {
     private String complemento;
     private String referencia;
     private String cidade;
-    
+
     @Column(nullable = false, length = 2)
     private String uf;
-    
+
     @OneToOne
     @MapsId
-    @JoinColumn (name = "idEndereco")
+    @JoinColumn(name = "idEndereco")
     private Cliente cliente;
 
     public Endereco() {
     }
 
-    public Endereco(int idEndereco, String cep, String bairro, String logradouro, int numero, String complemento, String referencia, String cidade, String uf) {
+    public Endereco(
+            String cep,
+            String uf,
+            String bairro,
+            String cidade,
+            String logradouro,
+            String complemento
+    ) {
+        this.cep = cep;
+        this.uf = uf;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+    }
+
+//    com id para CLIENTE
+    public Endereco(
+            int idEndereco,
+            String cep,
+            String bairro,
+            String logradouro,
+            int numero,
+            String complemento,
+            String referencia
+    ) {
         this.idEndereco = idEndereco;
         this.cep = cep;
         this.bairro = bairro;
@@ -50,20 +75,27 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.cidade = cidade;
-        this.uf = uf;
+        this.cidade = "";
+        this.uf = "";
     }
-    
-//    SEM ID
-    public Endereco(String cep, String bairro, String logradouro, int numero, String complemento, String referencia, String cidade, String uf) {
+
+//    SEM ID para CLIENTE
+    public Endereco(
+            String cep,
+            String bairro,
+            String logradouro,
+            int numero,
+            String complemento,
+            String referencia
+    ) {
         this.cep = cep;
         this.bairro = bairro;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.cidade = cidade;
-        this.uf = uf;
+        this.cidade = "";
+        this.uf = "";
     }
 
     public Cliente getCliente() {

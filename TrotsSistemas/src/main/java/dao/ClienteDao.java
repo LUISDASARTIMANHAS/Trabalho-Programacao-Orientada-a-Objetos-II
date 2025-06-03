@@ -26,10 +26,6 @@ public class ClienteDao extends GenericDao {
 
     }
 
-    public List<Cliente> listar() throws HibernateException, ClassNotFoundException {
-        return pesquisar("", 0);
-    }
-
     public List<Cliente> pesquisarPorNome(String pesq) throws HibernateException, ClassNotFoundException {
         return pesquisar(pesq, 1);
     }
@@ -42,7 +38,4 @@ public class ClienteDao extends GenericDao {
         return pesquisar(pesq, 3);
     }
 
-    public List<Cliente> pesquisarPorMes(String pesq) throws HibernateException, ClassNotFoundException {
-        return pesquisar(pesq, 4);
-    }
 }

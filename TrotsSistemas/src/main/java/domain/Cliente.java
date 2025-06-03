@@ -16,45 +16,53 @@ import swing.LDASwingUtils;
  */
 @Entity
 public class Cliente implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     //    CHAVE COM AUTO NUMERAÇÃO
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @Column (nullable = false,length = 100)
+
+    @Column(nullable = false, length = 100)
     private String nome;
-    
-    @Column (unique = true,nullable = false,length = 14,updatable = false)
+
+    @Column(unique = true, nullable = false, length = 14, updatable = false)
     private String cpf;
-    
-    @Column (nullable = false)
+
+    @Column(nullable = false)
     private String email;
-    
-    @Column (length = 15)
+
+    @Column(length = 15)
     private String tel;
-    
+
     @Lob
     private byte[] foto;
-    
-    
-    @OneToOne (mappedBy = "cliente", cascade = CascadeType.ALL)
-    private domain.Endereco endereco;
-    
+
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private Endereco endereco;
+
     @ManyToOne
-    @JoinColumn (name = "idCidade")
+    @JoinColumn(name = "idCidade")
     private Cidade cidade;
-    
-    @OneToMany ( mappedBy = "cliente", fetch = FetchType.LAZY )
-    private List<Venda> Vendas;
+
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Venda> vendas;
 
 //    para hibernate 
     public Cliente() {
     }
 
 //    sem id
-    public Cliente(String nome, String cpf, String email, String tel,Icon Foto, Endereco endereco) {
+    public Cliente(
+            String nome,
+            String cpf,
+            String email,
+            String tel,
+            Icon Foto,
+            Endereco endereco,
+            Cidade cidade
+    ) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
@@ -63,21 +71,31 @@ public class Cliente implements Serializable {
         this.foto = LDASwingUtils.IconToBytes(Foto);
 //        amarro o endereço no cliente
         this.endereco.setCliente(this);
+        this.cidade = cidade;
     }
 
 //    com id
-    public Cliente(int id, String nome, String cpf, String email, String tel,Icon Foto,  Endereco endereco) {
+    public Cliente(
+            int id,
+            String nome,
+            String cpf,
+            String email,
+            String tel,
+            Icon Foto,
+            Endereco endereco,
+            Cidade cidade
+    ) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.tel = tel;
-        this.endereco = endereco;
         this.foto = LDASwingUtils.IconToBytes(Foto);
+        this.endereco =endereco;
 //        amarro o endereço no cliente
         this.endereco.setCliente(this);
+        this.cidade = cidade;
     }
-    
 
     public int getId() {
         return id;
@@ -142,10 +160,10 @@ public class Cliente implements Serializable {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
-    
+
     @Override
     public String toString() {
         return nome;
     }
-    
+
 }

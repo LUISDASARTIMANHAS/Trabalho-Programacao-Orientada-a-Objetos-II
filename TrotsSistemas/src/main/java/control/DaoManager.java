@@ -8,6 +8,7 @@ import dao.ClienteDao;
 import dao.ConexaoHibernate;
 import dao.ErvaDao;
 import dao.GenericDao;
+import domain.Cidade;
 import domain.Cliente;
 import domain.Endereco;
 import domain.Erva;
@@ -42,9 +43,9 @@ public class DaoManager {
         return genericDao.listar(classe);
     }
     
-    public Cliente InserirCliente(String nome,String cpf,String email,String tel,Icon Foto, Endereco endereco) throws HibernateException, ClassNotFoundException {
+    public Cliente InserirCliente(String nome,String cpf,String email,String tel,Icon Foto, Endereco endereco,Cidade cidade) throws HibernateException, ClassNotFoundException {
 //        String nome, String cpf, String email, String tel, Endereco endereco
-        Cliente cli = new Cliente(nome, cpf, email, tel,Foto, endereco);
+        Cliente cli = new Cliente(nome, cpf, email, tel,Foto, endereco,cidade);
             
             clienteDao.inserir(cli);
             return cli;
@@ -73,8 +74,6 @@ public class DaoManager {
                 return clienteDao.pesquisarPorCPF(pesq);
             case 3:
                 return clienteDao.pesquisarPorBairro(pesq);
-            case 4:
-                return clienteDao.pesquisarPorMes(pesq);
             default:
                 return null;
         }
