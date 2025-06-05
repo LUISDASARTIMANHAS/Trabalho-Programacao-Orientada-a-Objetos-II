@@ -72,6 +72,22 @@
                     </transformers>
                 </configuration>
             </plugin>
+            
+            <!--PLUGIN PARA ADICIONAR LDA UTILS AO PROJETO-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>control.GUIManager</mainClass>
+                    <classpathScope>compile</classpathScope>
+                    <includeProjectDependencies>true</includeProjectDependencies>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <additionalClasspathElements>
+                        <additionalClasspathElement>${project.basedir}/lib/LDAUtils-1.0.1.jar</additionalClasspathElement>
+                    </additionalClasspathElements>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
