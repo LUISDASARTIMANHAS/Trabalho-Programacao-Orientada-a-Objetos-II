@@ -226,28 +226,6 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        try {
-            String pesq = txtPesq.getText();
-            int tipo = cmbTipo.getSelectedIndex() + 1;
-            GUIManager gui = GUIManager.getMyInstance();
-            DaoManager dao = gui.getDaoManager();
-            lblWait.setVisible(true);
-            List<Cliente> lista = dao.pesquisarCliente(pesq, tipo);
-
-            if (lista.size() > 0) {
-                tblModelCliente.setLista(lista);
-            } else {
-                LDASwingUtils.message(this, "Nenhum Cliente Encontrado", title);
-            }
-        } catch (HibernateException ex) {
-            LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", title);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         lblWait.setVisible(false);
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         // TODO add your handling code here:
         int linha = tblCli.getSelectedRow();
@@ -282,6 +260,28 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        try {
+            String pesq = txtPesq.getText();
+            int tipo = cmbTipo.getSelectedIndex() + 1;
+            GUIManager gui = GUIManager.getMyInstance();
+            DaoManager dao = gui.getDaoManager();
+            lblWait.setVisible(true);
+            List<Cliente> lista = dao.pesquisarCliente(pesq, tipo);
+
+            if (lista.size() > 0) {
+                tblModelCliente.setLista(lista);
+            } else {
+                LDASwingUtils.message(this, "Nenhum Cliente Encontrado", title);
+            }
+        } catch (HibernateException ex) {
+            LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", title);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DialogBuscaCli.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        lblWait.setVisible(false);
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
