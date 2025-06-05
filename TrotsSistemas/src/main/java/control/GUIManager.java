@@ -6,6 +6,8 @@ package control;
 
 import domain.Cliente;
 import domain.Erva;
+import domain.ItemPedido;
+import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
@@ -27,6 +29,7 @@ public class GUIManager {
     private DialogCadastro cadCli = null;
     private DialogBuscaCli buscaCli = null;
     private DialogBuscaProd buscaProd = null;
+    private DialogBuscaVendas buscaVendas = null;
     private DialogCadastroProduto cadProd = null;
     private DialogCadastroVenda cadVenda = null;
 
@@ -83,9 +86,9 @@ public class GUIManager {
         return buscaProd.getErvaSelecionada();
     }
     
-    public Erva abrirBuscaVenda() {
-        buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
-        return buscaProd.getErvaSelecionada();
+    public Venda abrirBuscaVenda() {
+        buscaVendas = (DialogBuscaVendas) abrirJanela(principal, buscaVendas, DialogBuscaVendas.class);
+        return buscaVendas.getVendaSelecionada();
     }
 
     public void abrirCadCli() {

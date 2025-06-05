@@ -44,6 +44,14 @@ public class Cidade implements Serializable {
         this.UF = UF;
     }
 
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
+    }
+
     public int getIdCidade() {
         return idCidade;
     }

@@ -30,7 +30,7 @@ public class Venda {
     private Cliente cliente;
     
     
-     @OneToMany ( mappedBy = "chaveComposta.venda", cascade = CascadeType.ALL)
+    @OneToMany ( mappedBy = "chaveComposta.venda", cascade = CascadeType.ALL)
     private List<ItemPedido> listaItensPedido;
     
 //    COM ID

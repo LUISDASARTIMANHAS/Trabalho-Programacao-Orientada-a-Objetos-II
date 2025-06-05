@@ -263,7 +263,7 @@
                             <StringItem index="0" value="Nome"/>
                             <StringItem index="1" value="CPF"/>
                             <StringItem index="2" value="Bairro"/>
-                            <StringItem index="3" value="M&#xea;s"/>
+                            <StringItem index="3" value="Valor"/>
                           </StringArray>
                         </Property>
                       </Properties>

@@ -4,26 +4,21 @@ import control.AutoTableModel;
 import control.DaoManager;
 import control.GUIManager;
 import domain.Cliente;
+import domain.Venda;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import swing.*;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license Click
- * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this
- * template
- */
 /**
  *
- * @author 2023122760328
+ * @author LUIS DAS ARTIMANHAS
  */
 public class DialogBuscaVendas extends javax.swing.JDialog {
 
-    private AutoTableModel tblModelCliente;
-    private Cliente cliSelecionado = null;
+    private AutoTableModel tblModelVendas;
+    private Venda vendaSelecionada = null;
     private String title = "CONSULTAR VENDA";
 
     /**
@@ -34,8 +29,8 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         
         initComponents();
         // Amarro o JTable com o meu AUTO Abstract Table Model
-        tblModelCliente = new AutoTableModel(Cliente.class);
-        tblCli.setModel(tblModelCliente);
+        tblModelVendas = new AutoTableModel(Venda.class);
+        tblCli.setModel(tblModelVendas);
     }
 
     /**
@@ -233,17 +228,15 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             GUIManager gui = GUIManager.getMyInstance();
             DaoManager dao = gui.getDaoManager();
             lblWait.setVisible(true);
-            List<Cliente> lista = dao.pesquisarCliente(pesq, tipo);
+            List<Venda> lista = dao.pesquisarVenda(pesq, tipo);
 
             if (lista.size() > 0) {
-                tblModelCliente.setLista(lista);
+                tblModelVendas.setLista(lista);
             } else {
-                LDASwingUtils.message(this, "Nenhum Cliente Encontrado", title);
+                LDASwingUtils.message(this, "Nenhuma Venda Encontrada", title);
             }
         } catch (HibernateException ex) {
-            LDASwingUtils.messageError(this, "Falha ao Buscar Clientes", title);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
+            LDASwingUtils.messageError(this, "Falha ao Buscar Vendas", title);
         }
          lblWait.setVisible(false);
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -252,7 +245,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         // TODO add your handling code here:
         int linha = tblCli.getSelectedRow();
         if (linha >= 0) {
-            cliSelecionado = (Cliente) tblModelCliente.getItem(linha);
+            vendaSelecionada = (Venda) tblModelVendas.getItem(linha);
             this.setVisible(false);
         } else {
            LDASwingUtils.messageError(this,"Selecione uma linha.", title);
@@ -261,7 +254,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        cliSelecionado = null;
+        vendaSelecionada = null;
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -270,12 +263,12 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             // TODO add your handling code here:
             GUIManager gui = GUIManager.getMyInstance();
             DaoManager dao = gui.getDaoManager();
-            List<Cliente> lista = dao.listar(Cliente.class);
+            List<Venda> lista = dao.listar(Venda.class);
             
-            tblModelCliente.setLista(lista);
+            tblModelVendas.setLista(lista);
             lblWait.setVisible(false);
         } catch (HibernateException ex) {
-            LDASwingUtils.messageError(this, "Falha ao Carregar Clientes", title);
+            LDASwingUtils.messageError(this, "Falha ao Carregar Vendas", title);
 //            encerra a janela com falhas;
             this.dispose(); 
         } catch (ClassNotFoundException ex) {
@@ -299,8 +292,8 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
     private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables
 
-    public Cliente getCliSelecionado() {
-        return cliSelecionado;
+    public Venda getVendaSelecionada() {
+        return vendaSelecionada;
     }
 
 }

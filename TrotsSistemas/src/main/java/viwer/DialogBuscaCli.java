@@ -10,15 +10,9 @@ import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import swing.*;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license Click
- * nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this
- * template
- */
 /**
  *
- * @author 2023122760328
+ * @author LUIS DAS ARTIMANHAS
  */
 public class DialogBuscaCli extends javax.swing.JDialog {
 
@@ -152,7 +146,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(tblCli);
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro", "Mês" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro", "Valor" }));
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
