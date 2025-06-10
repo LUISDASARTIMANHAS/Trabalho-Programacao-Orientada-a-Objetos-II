@@ -4,12 +4,13 @@
  */
 package control;
 
+import static control.LDAMainUtils.playSound;
 import domain.Cliente;
 import domain.Erva;
-import domain.ItemPedido;
 import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.logging.*;
@@ -17,6 +18,14 @@ import javax.swing.*;
 import org.hibernate.HibernateException;
 import swing.*;
 import viwer.*;
+
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -36,7 +45,6 @@ public class GUIManager {
     private DaoManager daoManager;
 
     // ########  SINGLETON  #########
-   
     private GUIManager() {
         try {
             daoManager = new DaoManager();
@@ -61,6 +69,7 @@ public class GUIManager {
     private JDialog abrirJanela(java.awt.Frame parent, JDialog dlg, Class classe) {
         if (dlg == null) {
             try {
+//                playSound(null);
                 dlg = (JDialog) classe.getConstructor(Frame.class, boolean.class).newInstance(parent, true);
             } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                 JOptionPane.showMessageDialog(parent, "Erro ao abrir a janela " + classe.getName() + ". " + ex.getMessage());
@@ -85,7 +94,7 @@ public class GUIManager {
         buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
         return buscaProd.getErvaSelecionada();
     }
-    
+
     public Venda abrirBuscaVenda() {
         buscaVendas = (DialogBuscaVendas) abrirJanela(principal, buscaVendas, DialogBuscaVendas.class);
         return buscaVendas.getVendaSelecionada();
@@ -110,7 +119,7 @@ public class GUIManager {
     public void msgWIP(Component comp) {
         LDASwingUtils.message(comp, "Essa fucionalidade ainda não esta pronta", "Em Breve");
     }
-    
+
     public void msgBuscaCompleta() {
         JOptionPane.showMessageDialog(
                 principal,
@@ -119,7 +128,7 @@ public class GUIManager {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
-    
+
     public void msgAguardarProcesso() {
         JOptionPane.showMessageDialog(
                 principal,
@@ -136,7 +145,7 @@ public class GUIManager {
     public void carregarCombo(JComboBox combo, Class classe) {
         try {
             List lista = daoManager.listar(classe);
-            LDASwingUtils.loadListInComboBox(combo,lista);
+            LDASwingUtils.loadListInComboBox(combo, lista);
         } catch (HibernateException | ClassNotFoundException ex) {
             LDASwingUtils.messageError(principal, ex.toString(), "Cadastro de Cliente");
         }

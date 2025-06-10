@@ -19,6 +19,7 @@ import org.hibernate.*;
  */
 public class ClienteDao extends GenericDao {
     
+//    inserir esta aqui para obrigar o programador a passar cliente e não qualquer coisa
     public void inserirCliente(Cliente cli) throws HibernateException, ClassNotFoundException {
         inserir(cli);
     }
@@ -82,6 +83,41 @@ public class ClienteDao extends GenericDao {
 
     public List<Cliente> pesquisarPorBairro(String pesq) throws HibernateException, ClassNotFoundException {
         return pesquisar(pesq, 3);
+    }
+    
+    public List contPorBairro() {
+        List lista = null;
+        Session sessao = null;
+        
+         try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            // OPERAÇÃO
+            CriteriaBuilder builder = sessao.getCriteriaBuilder();
+            CriteriaQuery consulta = builder.createQuery( Object[].class );            
+            Root tabela = consulta.from( Cliente.class );            
+            
+            consulta.multiselect( tabela.get("endereco").get("bairro") ,
+                                  builder.count(tabela.get("idCliente") ) );
+            
+            consulta.groupBy(tabela.get("endereco").get("bairro") );
+            consulta.orderBy( builder.asc( tabela.get("endereco").get("bairro") )  );
+            
+            // Executar a query
+            lista = sessao.createQuery(consulta).getResultList();            
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+        } catch ( HibernateException ex) {
+            if ( sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            throw new HibernateException(ex);
+        }
+        
+        return lista;        
     }
 
 }

@@ -3,11 +3,12 @@ package viwer;
 import control.AutoTableModel;
 import control.DaoManager;
 import control.GUIManager;
-import domain.Cliente;
+import domain.ItemPedido;
 import domain.Venda;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import swing.*;
 
@@ -26,11 +27,11 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
      */
     public DialogBuscaVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
+
         initComponents();
         // Amarro o JTable com o meu AUTO Abstract Table Model
         tblModelVendas = new AutoTableModel(Venda.class);
-        tblCli.setModel(tblModelVendas);
+        tblPedidos.setModel(tblModelVendas);
     }
 
     /**
@@ -50,11 +51,13 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         btnSelecionar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblCli = new javax.swing.JTable();
-        cmbTipo = new javax.swing.JComboBox();
-        txtPesq = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
+        tblPedidos = new javax.swing.JTable();
         lblWait = new javax.swing.JButton();
+        cmbTipo = new javax.swing.JComboBox();
+        btnRel = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        txtPesq = new javax.swing.JTextField();
+        btnProdutos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -126,34 +129,17 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             }
         });
 
-        tblCli.setAutoCreateRowSorter(true);
-        tblCli.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.gray, java.awt.Color.lightGray, java.awt.Color.gray));
-        tblCli.setModel(new javax.swing.table.DefaultTableModel(
+        tblPedidos.setAutoCreateRowSorter(true);
+        tblPedidos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.gray, java.awt.Color.lightGray, java.awt.Color.gray));
+        tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Bairro", "Cidade", "Tel. Cel.", "Foto"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        jScrollPane3.setViewportView(tblCli);
-
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro", "Mês" }));
-
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
+        ));
+        jScrollPane3.setViewportView(tblPedidos);
 
         lblWait.setBackground(new java.awt.Color(255, 255, 255));
         lblWait.setForeground(new java.awt.Color(0, 0, 0));
@@ -164,6 +150,38 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         lblWait.setMinimumSize(new java.awt.Dimension(30, 30));
         lblWait.setPreferredSize(new java.awt.Dimension(30, 30));
 
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID Pedido", "Cliente", "Bairro", "Mês" }));
+
+        btnRel.setBackground(new java.awt.Color(255, 255, 255));
+        btnRel.setForeground(new java.awt.Color(0, 0, 0));
+        btnRel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/table_16x16.gif"))); // NOI18N
+        btnRel.setText("Relatórios");
+        btnRel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelActionPerformed(evt);
+            }
+        });
+
+        btnPesquisar.setBackground(new java.awt.Color(255, 255, 255));
+        btnPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Search.png"))); // NOI18N
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
+        btnProdutos.setBackground(new java.awt.Color(255, 255, 255));
+        btnProdutos.setForeground(new java.awt.Color(0, 0, 0));
+        btnProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
+        btnProdutos.setText("Ervas");
+        btnProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProdutosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
@@ -171,18 +189,23 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                        .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPesquisar))
+                        .addContainerGap()
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPesq)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesquisar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRel))
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
                         .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
-                                .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addContainerGap()
@@ -199,18 +222,19 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
+                    .addComponent(btnPesquisar)
+                    .addComponent(btnRel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSelecionar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnProdutos))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
         FORM.add(PaineldeCad1);
-        PaineldeCad1.getAccessibleContext().setAccessibleName("Consultar Vendas");
 
         jScrollPane1.setViewportView(FORM);
 
@@ -220,6 +244,45 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+        // TODO add your handling code here:
+        int linha = tblPedidos.getSelectedRow();
+        if (linha >= 0) {
+            vendaSelecionada = (Venda) tblModelVendas.getItem(linha);
+            this.setVisible(false);
+        } else {
+            LDASwingUtils.messageError(this, "Selecione uma linha.", title);
+        }
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        vendaSelecionada = null;
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        try {
+            // TODO add your handling code here:
+            GUIManager gui = GUIManager.getMyInstance();
+            DaoManager dao = gui.getDaoManager();
+            List<Venda> lista = dao.listar(Venda.class);
+
+            tblModelVendas.setLista(lista);
+            lblWait.setVisible(false);
+        } catch (HibernateException ex) {
+            LDASwingUtils.messageError(this, "Falha ao Carregar Vendas", title);
+//            encerra a janela com falhas;
+            this.dispose();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formComponentShown
+
+    private void btnRelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelActionPerformed
+
+    }//GEN-LAST:event_btnRelActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
@@ -238,43 +301,24 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         } catch (HibernateException ex) {
             LDASwingUtils.messageError(this, "Falha ao Buscar Vendas", title);
         }
-         lblWait.setVisible(false);
+        lblWait.setVisible(false);
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // TODO add your handling code here:
-        int linha = tblCli.getSelectedRow();
-        if (linha >= 0) {
-            vendaSelecionada = (Venda) tblModelVendas.getItem(linha);
-            this.setVisible(false);
-        } else {
-           LDASwingUtils.messageError(this,"Selecione uma linha.", title);
+    private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
+        vendaSelecionada = pegarLinhaSelecionada();
+        GUIManager gui = GUIManager.getMyInstance();
+        DaoManager dao = gui.getDaoManager();
+        String msg = "";
+        if (vendaSelecionada != null) {
+            dao.carregarItensPedido(vendaSelecionada);
+            for (ItemPedido ip : vendaSelecionada.getListaItensPedido()) {
+                String nome = ip.getLanche().getNome();
+                msg = msg.concat(nome).concat("\n");
+            }
+            JOptionPane.showMessageDialog(this, msg);
         }
-    }//GEN-LAST:event_btnSelecionarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        vendaSelecionada = null;
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        try {
-            // TODO add your handling code here:
-            GUIManager gui = GUIManager.getMyInstance();
-            DaoManager dao = gui.getDaoManager();
-            List<Venda> lista = dao.listar(Venda.class);
-            
-            tblModelVendas.setLista(lista);
-            lblWait.setVisible(false);
-        } catch (HibernateException ex) {
-            LDASwingUtils.messageError(this, "Falha ao Carregar Vendas", title);
-//            encerra a janela com falhas;
-            this.dispose(); 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_formComponentShown
+    }//GEN-LAST:event_btnProdutosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
@@ -283,17 +327,30 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
     private javax.swing.JPanel background;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnProdutos;
+    private javax.swing.JButton btnRel;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox cmbTipo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton lblWait;
-    private javax.swing.JTable tblCli;
+    private javax.swing.JTable tblPedidos;
     private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables
 
     public Venda getVendaSelecionada() {
         return vendaSelecionada;
     }
-
+    
+    private Venda pegarLinhaSelecionada() {
+        vendaSelecionada = null;
+        int linha = tblPedidos.getSelectedRow();
+        if (linha >= 0) {
+            linha = tblPedidos.convertRowIndexToModel(linha);
+            vendaSelecionada = (Venda) tblModelVendas.getItem(linha);                        
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um PEDIDO.");
+        }  
+        return vendaSelecionada;                     
+    }
 }

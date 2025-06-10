@@ -15,8 +15,11 @@ import domain.Endereco;
 import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
+import java.text.NumberFormat;
 import java.util.List;
 import javax.swing.Icon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 
 /**
@@ -66,6 +69,10 @@ public class DaoManager {
         genericDao.excluir(obj);
     }
 
+    public void carregarItensPedido(Venda venda) {
+        VendaDao.carregarItens(venda);
+    }
+
     // ##############
     public List<Cliente> pesquisarCliente(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
 
@@ -111,6 +118,47 @@ public class DaoManager {
         genericDao.inserir(venda);
         return venda;
 
+    }
+
+    public void relGroupBy(JTable tabela, int tipo) throws Exception {
+        List<Object[]> lista = null;
+
+        // Limpa a tabela
+        ((DefaultTableModel) tabela.getModel()).setRowCount(0);
+
+        switch (tipo) {
+            case 'B':
+                lista = clienteDao.contPorBairro();
+                break;
+            case 'M':
+                lista = VendaDao.valorPorMes();
+                break;
+            case 'C':
+                lista = VendaDao.valorPorCliente();
+                break;
+        }
+
+        NumberFormat formato = NumberFormat.getCurrencyInstance();
+
+        // Percorrer a LISTA
+        if (lista != null) {
+
+            for (Object[] obj : lista) {
+                switch (tipo) {
+                    case 'M':
+                        obj[0] = obj[0].toString() + "/" + obj[1].toString();
+                        obj[1] = formato.format(Double.parseDouble(obj[2].toString()));
+                        break;
+                    case 'C':
+                        obj[1] = formato.format(Double.parseDouble(obj[1].toString()));
+                        break;
+
+                }
+
+                ((DefaultTableModel) tabela.getModel()).addRow(obj);
+            }
+
+        }
     }
 
 }
