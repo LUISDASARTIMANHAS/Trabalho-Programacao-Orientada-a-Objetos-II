@@ -1,7 +1,6 @@
 package viwer;
 
 import control.AutoTableModel;
-import control.CustomTableModel;
 import control.DaoManager;
 import control.GUIManager;
 import domain.ItemPedido;
@@ -19,11 +18,13 @@ import swing.*;
  */
 public class DialogBuscaVendas extends javax.swing.JDialog {
 
-    private CustomTableModel tblModelVendas;
-    private List nomesMetodosGetter;
+    private AutoTableModel tblModelVendas;
     private Venda vendaSelecionada = null;
     private String title = "CONSULTAR VENDA";
 
+    //    COMENTARIO ANTI TDH E DISLEXSIA
+//    FAZER OS GET ALTERNATIVO PRA PEGAR DADOS DO CLIENTE, BAIRRO E MES EXEMPLO DO CLIENTE TAMBEM TEM ESSES GET ALTERNATIVOS
+    
     /**
      * Creates new form Cadastro
      */
@@ -32,7 +33,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
 
         initComponents();
         // Amarro o JTable com o meu AUTO Abstract Table Model
-        tblModelVendas = new CustomTableModel(nomesMetodosGetter,Venda.class);
+        tblModelVendas = new AutoTableModel(Venda.class);
         tblPedidos.setModel(tblModelVendas);
     }
 

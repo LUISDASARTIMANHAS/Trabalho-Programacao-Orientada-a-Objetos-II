@@ -15,7 +15,8 @@ import swing.*;
  * @author LUIS DAS ARTIMANHAS
  */
 public class DialogBuscaCli extends javax.swing.JDialog {
-
+    
+//    define o sistema automatico de tabelas;
     private AutoTableModel tblModelCliente;
     private Cliente cliSelecionado = null;
     private String title = "CONSULTAR CLIENTE";
@@ -28,6 +29,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         
         initComponents();
         // Amarro o JTable com o meu AUTO Abstract Table Model
+        //    instancia o sistema automatico de tabelas;
         tblModelCliente = new AutoTableModel(Cliente.class);
         tblCli.setModel(tblModelCliente);
     }
