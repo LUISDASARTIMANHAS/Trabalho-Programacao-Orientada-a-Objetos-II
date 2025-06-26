@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb571533-5681-4fdc-bd79-e775a7bc99c7">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="cabecalhoTabela" mode="Opaque" forecolor="#FFFFFF" backcolor="#006763" radius="0" hAlign="Center" vAlign="Middle" fontName="Monospaced" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box leftPadding="0" rightPadding="0">
+			<pen lineWidth="2.0"/>
+			<topPen lineWidth="2.0"/>
+			<leftPen lineWidth="2.0"/>
+			<bottomPen lineWidth="2.0"/>
+			<rightPen lineWidth="2.0"/>
+		</box>
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="linhaTabela" mode="Opaque" forecolor="#000000" backcolor="#E7E9ED" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<pen lineStyle="Solid" lineColor="#FFFFFF"/>
+		<box leftPadding="0" rightPadding="0">
+			<pen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<topPen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="2.0" lineColor="#FFFFFF"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} %2 == 0]]></conditionExpression>
+			<style forecolor="#FFFFFF" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="padrao" isDefault="true" forecolor="#006665" hAlign="Center" vAlign="Middle" fontSize="15" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="SEPARADOR" forecolor="#FFDA09" backcolor="#FFFF00" fill="Solid">
+		<pen lineWidth="4.0"/>
+		<box>
+			<pen lineWidth="2.0"/>
+			<topPen lineWidth="2.0"/>
+			<leftPen lineWidth="2.0"/>
+			<bottomPen lineWidth="2.0"/>
+			<rightPen lineWidth="2.0"/>
+		</box>
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="titulo" style="padrao" fontSize="24"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="valorDaUnidade" class="java.lang.Float">
+		<fieldDescription><![CDATA[valorDaUnidade]]></fieldDescription>
+	</field>
+	<field name="qdte" class="java.lang.Integer">
+		<fieldDescription><![CDATA[qdte]]></fieldDescription>
+	</field>
+	<field name="venda" class="domain.Venda">
+		<fieldDescription><![CDATA[venda]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[tipo]]></fieldDescription>
+	</field>
+	<field name="subTotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[subTotal]]></fieldDescription>
+	</field>
+	<field name="erva" class="domain.Erva">
+		<fieldDescription><![CDATA[erva]]></fieldDescription>
+	</field>
+	<field name="venda_1" class="domain.Venda">
+		<fieldDescription><![CDATA[venda]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34" splitType="Stretch">
+			<line>
+				<reportElement style="SEPARADOR" x="0" y="21" width="555" height="1" uuid="37dbe454-7ffc-46e2-be5b-6dffbb08f684"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="252" height="21" uuid="886e5b55-a785-4e80-b237-a552f53e97e8"/>
+				<text><![CDATA[TABELA DE ITENS DO PEDIDO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="27" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement style="linhaTabela" x="0" y="0" width="400" height="20" uuid="0002d3f3-8a64-4201-9b5b-82abbd516131"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>
