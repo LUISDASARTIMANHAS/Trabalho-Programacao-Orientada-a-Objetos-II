@@ -63,9 +63,6 @@
 	<field name="erva" class="domain.Erva">
 		<fieldDescription><![CDATA[erva]]></fieldDescription>
 	</field>
-	<field name="venda_1" class="domain.Venda">
-		<fieldDescription><![CDATA[venda]]></fieldDescription>
-	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -81,13 +78,54 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="27" splitType="Stretch"/>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="0" y="0" width="112" height="27" uuid="93d27575-ced9-4258-bc94-979017c0f10e"/>
+				<text><![CDATA[QUANTIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="112" y="0" width="77" height="27" uuid="95677790-2062-48e0-90ba-6110e05e049d"/>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="189" y="0" width="136" height="27" uuid="d54f1368-3e75-4c60-bfff-7eca0e87ea4a"/>
+				<text><![CDATA[VALOR DA UNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="325" y="0" width="75" height="27" uuid="f8892722-c394-4f90-8eab-8e0efa23db16"/>
+				<text><![CDATA[erva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="400" y="0" width="100" height="27" uuid="72f16a3c-6ee7-46c9-8db4-4205a917823e"/>
+				<text><![CDATA[venda]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="40" splitType="Stretch">
 			<rectangle>
-				<reportElement style="linhaTabela" x="0" y="0" width="400" height="20" uuid="0002d3f3-8a64-4201-9b5b-82abbd516131"/>
+				<reportElement style="linhaTabela" x="0" y="0" width="500" height="20" uuid="0002d3f3-8a64-4201-9b5b-82abbd516131"/>
 			</rectangle>
+			<textField>
+				<reportElement style="linhaTabela" x="0" y="0" width="112" height="20" uuid="a4351630-db46-45a0-ab7e-e725ca05336b"/>
+				<textFieldExpression><![CDATA[$F{qdte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="112" y="0" width="77" height="20" uuid="3ce0340d-a9fc-4ec9-9393-207a962aebb9"/>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="189" y="0" width="136" height="20" uuid="ebae7296-d612-4dd6-bee5-fe73f659be81"/>
+				<textFieldExpression><![CDATA[$F{valorDaUnidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="325" y="0" width="75" height="20" uuid="7d95a9d6-1798-4b32-a028-6cadac9193af"/>
+				<textFieldExpression><![CDATA[""+$F{erva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="400" y="0" width="100" height="20" uuid="647c68a1-552e-459e-b494-12496d62d2f3"/>
+				<textFieldExpression><![CDATA[""+$F{venda}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
