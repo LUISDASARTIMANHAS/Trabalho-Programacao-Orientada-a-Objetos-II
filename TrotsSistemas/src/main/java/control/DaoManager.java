@@ -88,15 +88,17 @@ public class DaoManager {
         }
     }
 
-    public List<Cliente> pesquisarVenda(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
+    public List<Venda> pesquisarVenda(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
 
         switch (tipo) {
             case 1:
-                return clienteDao.pesquisarPorNome(pesq);
+                return VendaDao.pesquisarPorID(pesq);
             case 2:
-                return clienteDao.pesquisarPorCPF(pesq);
+                return VendaDao.pesquisarPorCliente(pesq);
             case 3:
-                return clienteDao.pesquisarPorBairro(pesq);
+                return VendaDao.pesquisarPorBairro(pesq);
+            case 4:
+                return VendaDao.pesquisarPorMes(pesq);
             default:
                 return null;
         }
@@ -115,7 +117,7 @@ public class DaoManager {
         }
         venda.setValorTotal(total);
 
-        genericDao.inserir(venda);
+        VendaDao.inserirVenda(venda);
         return venda;
 
     }

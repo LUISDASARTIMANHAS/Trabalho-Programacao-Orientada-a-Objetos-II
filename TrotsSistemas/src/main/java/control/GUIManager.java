@@ -43,11 +43,13 @@ public class GUIManager {
     private DialogCadastroVenda cadVenda = null;
 
     private DaoManager daoManager;
+    private RelatorioManager relManager;
 
     // ########  SINGLETON  #########
     private GUIManager() {
         try {
             daoManager = new DaoManager();
+            relManager = new RelatorioManager();
         } catch (java.lang.ExceptionInInitializerError | ClassNotFoundException | HibernateException ex) {
             LDASwingUtils.messageError(null, ex.toString(), "FATAL ERRO AO INICIAR");
             Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);

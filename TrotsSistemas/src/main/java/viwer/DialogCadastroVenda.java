@@ -439,6 +439,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:    
+        lblWait.setVisible(true);
         GUIManager gui = GUIManager.getMyInstance();
         gui.carregarCombo(cmbSabor, Erva.class);
         lblWait.setVisible(false);
@@ -470,7 +471,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void excluirVenda(int linha) {
         int confirmPane = JOptionPane.showConfirmDialog(
                 this,
-                "Deseja realmente Excluir o Pedido?"
+                "Deseja realmente Excluir o item do carrinho?"
         );
 
         if (confirmPane == JOptionPane.YES_OPTION) {

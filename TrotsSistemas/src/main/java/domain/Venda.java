@@ -32,6 +32,9 @@ public class Venda {
     
     @OneToMany ( mappedBy = "chaveComposta.venda", cascade = CascadeType.ALL)
     private List<ItemPedido> listaItensPedido;
+
+    public Venda() {
+    }
     
 //    COM ID
     public Venda(int idVenda,Cliente cliente, Date data, float valorTotal, List<ItemPedido> listaItensPedido) {

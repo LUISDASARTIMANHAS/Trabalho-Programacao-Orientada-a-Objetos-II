@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb571533-5681-4fdc-bd79-e775a7bc99c7">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="cabecalhoTabela" mode="Opaque" forecolor="#FFFFFF" backcolor="#006763" radius="0" hAlign="Center" vAlign="Middle" fontName="Monospaced" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box leftPadding="0" rightPadding="0">
+			<pen lineWidth="2.0"/>
+			<topPen lineWidth="2.0"/>
+			<leftPen lineWidth="2.0"/>
+			<bottomPen lineWidth="2.0"/>
+			<rightPen lineWidth="2.0"/>
+		</box>
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="linhaTabela" mode="Opaque" forecolor="#000000" backcolor="#E7E9ED" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<pen lineStyle="Solid" lineColor="#FFFFFF"/>
+		<box leftPadding="0" rightPadding="0">
+			<pen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<topPen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="2.0" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="2.0" lineColor="#FFFFFF"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} %2 == 0]]></conditionExpression>
+			<style forecolor="#FFFFFF" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="padrao" isDefault="true" forecolor="#006665" hAlign="Center" vAlign="Middle" fontSize="15" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="SEPARADOR" forecolor="#FFDA09" backcolor="#FFFF00" fill="Solid">
+		<pen lineWidth="4.0"/>
+		<box>
+			<pen lineWidth="2.0"/>
+			<topPen lineWidth="2.0"/>
+			<leftPen lineWidth="2.0"/>
+			<bottomPen lineWidth="2.0"/>
+			<rightPen lineWidth="2.0"/>
+		</box>
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="titulo" style="padrao" fontSize="24"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="valorTotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[valorTotal]]></fieldDescription>
+	</field>
+	<field name="cliente" class="domain.Cliente">
+		<fieldDescription><![CDATA[cliente]]></fieldDescription>
+	</field>
+	<field name="listaItensPedido" class="java.util.List">
+		<fieldDescription><![CDATA[listaItensPedido]]></fieldDescription>
+	</field>
+	<field name="data" class="java.util.Date">
+		<fieldDescription><![CDATA[data]]></fieldDescription>
+	</field>
+	<field name="idVenda" class="java.lang.Integer">
+		<fieldDescription><![CDATA[idVenda]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34" splitType="Stretch">
+			<line>
+				<reportElement style="SEPARADOR" x="0" y="21" width="555" height="1" uuid="37dbe454-7ffc-46e2-be5b-6dffbb08f684"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="170" height="21" uuid="886e5b55-a785-4e80-b237-a552f53e97e8"/>
+				<text><![CDATA[TABELA DE VENDAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="0" y="0" width="42" height="27" uuid="f134e911-3b88-4c57-ba54-6934db5dc421"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="42" y="0" width="100" height="27" uuid="be66697e-efde-4bcf-9876-b5a64edff2e0"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="142" y="0" width="100" height="27" uuid="641b5ac3-98b1-44ba-86ef-8b158cb29603"/>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="400" y="0" width="126" height="27" uuid="0688ab2c-27f5-44b4-8a2f-7cf1ad29d3da"/>
+				<text><![CDATA[VALOR TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="cabecalhoTabela" x="242" y="0" width="158" height="27" uuid="57c91056-cf52-44b5-9736-189ab715c7fa"/>
+				<text><![CDATA[ITENS DO PEDIDO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement style="linhaTabela" x="0" y="0" width="526" height="20" uuid="0002d3f3-8a64-4201-9b5b-82abbd516131"/>
+			</rectangle>
+			<textField>
+				<reportElement style="linhaTabela" x="0" y="0" width="42" height="20" uuid="a15c24db-c939-4919-aa2c-f195fd1eccfa"/>
+				<textFieldExpression><![CDATA[$F{idVenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="42" y="0" width="100" height="20" uuid="804f471b-f033-464e-a14f-b0b86d96de93"/>
+				<textFieldExpression><![CDATA[""+$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="142" y="0" width="100" height="20" uuid="d474fd35-4773-4740-91da-33c9c836f218"/>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="400" y="0" width="126" height="20" uuid="ccca7457-dde9-4703-952a-239fa275ef1d"/>
+				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="linhaTabela" x="242" y="0" width="158" height="20" uuid="6508d57c-ac4e-45c9-bd26-0b411d9e9b81"/>
+				<textFieldExpression><![CDATA[""+$F{listaItensPedido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

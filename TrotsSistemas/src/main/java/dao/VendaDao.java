@@ -19,6 +19,9 @@ import org.hibernate.*;
  * @author LUIS DAS ARTIMANHAS
  */
 public class VendaDao extends GenericDao {
+     public void inserirVenda(Venda venda) throws HibernateException {
+         inserir(venda);
+     }
     
     public void carregarItens(Venda venda) throws HibernateException {
         Session sessao = null;  

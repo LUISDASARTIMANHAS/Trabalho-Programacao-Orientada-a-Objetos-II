@@ -22,6 +22,9 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
     private Venda vendaSelecionada = null;
     private String title = "CONSULTAR VENDA";
 
+    //    COMENTARIO ANTI TDH E DISLEXSIA
+//    FAZER OS GET ALTERNATIVO PRA PEGAR DADOS DO CLIENTE, BAIRRO E MES EXEMPLO DO CLIENTE TAMBEM TEM ESSES GET ALTERNATIVOS
+    
     /**
      * Creates new form Cadastro
      */
@@ -150,7 +153,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         lblWait.setMinimumSize(new java.awt.Dimension(30, 30));
         lblWait.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID Pedido", "Cliente", "Bairro", "Mês" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID Venda", "Cliente", "Bairro", "Mês" }));
 
         btnRel.setBackground(new java.awt.Color(255, 255, 255));
         btnRel.setForeground(new java.awt.Color(0, 0, 0));
@@ -300,6 +303,8 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             }
         } catch (HibernateException ex) {
             LDASwingUtils.messageError(this, "Falha ao Buscar Vendas", title);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
         }
         lblWait.setVisible(false);
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -312,7 +317,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         if (vendaSelecionada != null) {
             dao.carregarItensPedido(vendaSelecionada);
             for (ItemPedido ip : vendaSelecionada.getListaItensPedido()) {
-                String nome = ip.getLanche().getNome();
+                String nome = ip.getErva().getNome();
                 msg = msg.concat(nome).concat("\n");
             }
             JOptionPane.showMessageDialog(this, msg);
@@ -349,7 +354,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             linha = tblPedidos.convertRowIndexToModel(linha);
             vendaSelecionada = (Venda) tblModelVendas.getItem(linha);                        
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione um PEDIDO.");
+            JOptionPane.showMessageDialog(this, "Selecione uma Venda.");
         }  
         return vendaSelecionada;                     
     }
