@@ -25,24 +25,28 @@ public class ItemPedido implements Serializable {
     }
 
     public ItemPedido(Erva erva, Venda venda, String tipo, int qdte) {
+//        anexa a erva com a venda e retorna um itemPedidoPk;
         this.chaveComposta = new ItemPedidoPK(erva, venda);
         this.Tipo = tipo;
         this.Qdte = qdte;
+//        importa da erva que e passada na hora de construir
         this.ValorDaUnidade = erva.getValor();
-    }
-
-    public float getValorDaUnidade() {
-        return ValorDaUnidade;
     }
 
     public Erva getErva() {
         return chaveComposta.getErva();
     }
-
+    
     public void setErva(Erva erva) {
         this.chaveComposta.setErva(erva);
     }
 
+    public float getValorDaUnidade() {
+//        pega da chave itemPedidoPk
+//        return getErva().getValor();
+        return ValorDaUnidade;
+    }
+    
     public Venda getVenda() {
         return chaveComposta.getVenda();
     }
