@@ -4,8 +4,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license Click
+ * nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this
+ * template
  */
 /**
  *
@@ -17,7 +19,6 @@ public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //    CHAVE COM AUTO NUMERAÇÃO
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int idEndereco;
 

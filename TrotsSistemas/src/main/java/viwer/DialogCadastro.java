@@ -88,7 +88,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         cmbCidade = new javax.swing.JComboBox();
         lblUf = new javax.swing.JLabel();
         txtUf = new javax.swing.JTextField();
-        btnDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -195,10 +194,9 @@ public class DialogCadastro extends javax.swing.JDialog {
         btnAlterar.setMnemonic('A');
         btnAlterar.setText("Alterar");
         btnAlterar.setAutoscrolls(true);
-        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
+                btnNovoActionPerformed(evt);
             }
         });
 
@@ -387,12 +385,6 @@ public class DialogCadastro extends javax.swing.JDialog {
 
         jScrollPane2.setViewportView(painelEnderec);
 
-        btnDeletar.setBackground(new java.awt.Color(255, 255, 255));
-        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
-        btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/user2_(delete)_16x16.gif"))); // NOI18N
-        btnDeletar.setText("Deletar");
-        btnDeletar.setEnabled(false);
-
         javax.swing.GroupLayout PaineldeCadLayout = new javax.swing.GroupLayout(PaineldeCad);
         PaineldeCad.setLayout(PaineldeCadLayout);
         PaineldeCadLayout.setHorizontalGroup(
@@ -413,7 +405,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                             .addComponent(txtCpf)
                             .addComponent(txtNome)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTel))
+                            .addComponent(txtTel, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -421,8 +413,6 @@ public class DialogCadastro extends javax.swing.JDialog {
                         .addGap(7, 7, 7))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCadLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnDeletar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNovo)
@@ -460,8 +450,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                 .addGroup(PaineldeCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNovo)
-                    .addComponent(btnDeletar))
+                    .addComponent(btnNovo))
                 .addContainerGap())
         );
 
@@ -478,12 +467,12 @@ public class DialogCadastro extends javax.swing.JDialog {
 
     private void lblFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMouseClicked
         // TODO add your handling code here:
-        MostrarFoto();
+        mostrarFoto();
     }//GEN-LAST:event_lblFotoMouseClicked
 
     private void lblFotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblFotoKeyPressed
         // TODO add your handling code here:
-        MostrarFoto();
+        mostrarFoto();
     }//GEN-LAST:event_lblFotoKeyPressed
 
 //    PESQUISAR
@@ -493,23 +482,8 @@ public class DialogCadastro extends javax.swing.JDialog {
 
         cliSelecionado = gui.abrirBuscaCli();
         if (cliSelecionado != null) {
-            habilitarBotoes(cliSelecionado);
-
-            Cidade cid = cliSelecionado.getCidade();
-            Endereco ender = cliSelecionado.getEndereco();
-
-            txtNome.setText(cliSelecionado.getNome());
-            txtCpf.setText(cliSelecionado.getCpf());
-            txtEmail.setText(cliSelecionado.getEmail());
-            txtTel.setText(cliSelecionado.getTel());
-            cmbCidade.setSelectedItem(cid);
-            txtTel.setText(cid.getUF());
-            txtBairro.setText(ender.getBairro());
-            txtCEP.setText(ender.getCep());
-            txtComplemento.setText(ender.getComplemento());
-            txtLogradouro.setText(ender.getLogradouro());
-            txtRef.setText(ender.getReferencia());
-        }else{
+            preencherCampos(cliSelecionado);
+        } else {
             gui.log("IMPOSSIVEL EDITAR O CLIENTE VEIO NULL");
         }
     }//GEN-LAST:event_btnPesqCliActionPerformed
@@ -535,17 +509,30 @@ public class DialogCadastro extends javax.swing.JDialog {
         int num = (int) txtNumResidencial.getValue();
         Endereco endereco = new Endereco(cep, bairro, logradouro, num, complemento, ref, cidade.getNome(), uf);
         if (validarCampos()) {
-            LDASwingUtils.message(this, "Operação em andamento...", "Cadastro de Cliente");
+
             try {
-                // INSERIR
-                cliSelecionado = dao.InserirCliente(nome, cpf, email, tel, Foto, endereco, cidade);
-                LDASwingUtils.message(this, "Cliente: " + nome + ". Cadastrado com sucesso!", "Cadastro de Cliente");
+//            INSERIR
+                if (cliSelecionado == null) {
+                    gui.log("INSERIR EM ANDAMENTO...");
+                    LDASwingUtils.message(this, "Operação em andamento...", title);
+
+                    // INSERIR
+                    cliSelecionado = dao.InserirCliente(nome, cpf, email, tel, Foto, endereco, cidade);
+                    LDASwingUtils.message(this, "Cliente: " + nome + ". Cadastrado com sucesso!", title);
+                } else {
+//                ALTERAR
+                    gui.log("ALTERAR EM ANDAMENTO...");
+                    dao.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, endereco, cidade);
+
+                    LDASwingUtils.message(this, "Cliente " + cliSelecionado.getId() + " alterado com sucesso.", title);
+                }
                 this.dispose();
             } catch (HibernateException ex) {
                 LDASwingUtils.messageError(this, "ERRO ao inserir cliente! " + ex, title);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         } else {
             LDASwingUtils.messageError(this, "Preencha todos os campos!", title);
         }
@@ -597,10 +584,6 @@ public class DialogCadastro extends javax.swing.JDialog {
         gui.carregarCombo(cmbCidade, Cidade.class);
     }//GEN-LAST:event_formComponentShown
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
 //    FUNCOES UTEIS PRIVADAS
     private boolean validarCampos() {
         String msgError = "";
@@ -637,13 +620,27 @@ public class DialogCadastro extends javax.swing.JDialog {
             return false;
         }
     }
-    
-    private void MostrarFoto() {
+
+    private void mostrarFoto() {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
         File arq = LDAMainUtils.carregarArq(filtro, this, dir);
         if (arq != null) {
             ImageIcon foto = LDAMainUtils.redimensionarImg(arq, lblFoto);
             lblFoto.setIcon(foto);
+        }
+    }
+
+    private void carregarFotoPadrao() {
+        File imagemPadrao = new File("src/main/resources/imagens/png/128x128/user.png");
+
+        if (imagemPadrao.exists()) {
+            ImageIcon foto = LDAMainUtils.redimensionarImg(imagemPadrao, lblFoto);
+            lblFoto.setIcon(foto);
+            lblFoto.setText(null); // remove o texto "Foto", se houver
+        } else {
+            System.err.println("Imagem padrão não encontrada em: " + imagemPadrao.getAbsolutePath());
+            lblFoto.setIcon(null);
+            lblFoto.setText("Foto");
         }
     }
 
@@ -668,19 +665,49 @@ public class DialogCadastro extends javax.swing.JDialog {
                 0);
     }
 
-    private void habilitarBotoes(Cliente cli) {
-
+    private void preencherCampos(Cliente cli) {
         if (cli != null) {
+            Cidade cid = cli.getCidade();
+            Endereco ender = cli.getEndereco();
+
+//            cliente
+            txtNome.setText(cli.getNome());
+            txtCpf.setText(cli.getCpf());
+            txtEmail.setText(cli.getEmail());
+            txtTel.setText(cli.getTel());
+
+//            cidade
+            cmbCidade.setSelectedItem(cid);
+            txtTel.setText(cid.getUF());
+
+//            endereço
+            txtBairro.setText(ender.getBairro());
+            txtCEP.setText(ender.getCep());
+            txtComplemento.setText(ender.getComplemento());
+            txtLogradouro.setText(ender.getLogradouro());
+            txtRef.setText(ender.getReferencia());
+
+            if (cli.getFoto() != null) {
+                ImageIcon foto = new ImageIcon(cli.getFoto());
+                lblFoto.setIcon(foto);
+            } else {
+                carregarFotoPadrao();
+            }
+        }
+        habilitarBotoes(cli);
+    }
+
+    private void habilitarBotoes(Object obj) {
+
+        if (obj != null) {
 //        ao selecionar
             btnNovo.setVisible(false);
             btnAlterar.setVisible(true);
-            btnDeletar.setVisible(true);
         } else {
 
 //        limpar campos
             btnNovo.setVisible(true);
             btnAlterar.setVisible(false);
-            btnDeletar.setVisible(false);
         }
     }
 
@@ -695,7 +722,6 @@ public class DialogCadastro extends javax.swing.JDialog {
     private javax.swing.JLabel bairroLabel;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesqCli;
     private javax.swing.JComboBox cmbCidade;

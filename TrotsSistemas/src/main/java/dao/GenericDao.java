@@ -4,8 +4,6 @@
  */
 package dao;
 
-import control.DaoManager;
-import control.GUIManager;
 import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.*;

@@ -15,8 +15,14 @@ import domain.Endereco;
 import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
 import javax.swing.Icon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -86,6 +92,30 @@ public class DaoManager {
             default:
                 return null;
         }
+    }
+
+    public Cliente alterarCliente(
+            Cliente cli,
+            String nome,
+            String cpf,
+            String email,
+            String tel,
+            Icon foto,
+            Cidade cidade
+    ) throws HibernateException, ClassNotFoundException {
+        Endereco endAtual = cli.getEndereco();
+        cli.setNome(nome);
+        cli.setCpf(cpf);
+        cli.setEmail(email);
+        cli.setTel(tel);
+        cli.setFoto(IconToBytes(foto));
+        cli.setEndereco(endAtual);
+        cli.setCidade(cidade);
+
+        endAtual.setCliente(cli); // <- ESSENCIAL AQUI
+
+        clienteDao.alterarCliente(cli); 
+        return cli;
     }
 
     public List<Venda> pesquisarVenda(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
@@ -161,6 +191,35 @@ public class DaoManager {
             }
 
         }
+    }
+
+//    mover para LDA UTILS
+    public static byte[] IconToBytes(Icon icon) {
+        if (icon == null) {
+            return null;
+        }
+        BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = img.createGraphics();
+        icon.paintIcon(null, g2d, 0, 0);
+        g2d.dispose();
+
+        byte[] bFile = null;
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
+            try {
+                ImageIO.write(img, "png", ios);
+                // Set a flag to indicate that the write was successful
+            } finally {
+                ios.close();
+            }
+            bFile = baos.toByteArray();
+        } catch (IOException ex) {
+            bFile = null;
+            System.out.println(ex);
+        } finally {
+            return bFile;
+        }
+
     }
 
 }

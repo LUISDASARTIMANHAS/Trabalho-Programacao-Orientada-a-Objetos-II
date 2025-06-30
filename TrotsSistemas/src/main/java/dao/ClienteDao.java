@@ -24,6 +24,10 @@ public class ClienteDao extends GenericDao {
         inserir(cli);
     }
     
+    public void alterarCliente(Cliente cli) throws HibernateException, ClassNotFoundException {
+        alterar(cli);
+    }
+    
 
     public List<Cliente> listar() throws HibernateException, ClassNotFoundException {       
         return listar(Cliente.class);
