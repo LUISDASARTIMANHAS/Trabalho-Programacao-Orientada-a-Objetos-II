@@ -522,7 +522,7 @@ public class DialogCadastro extends javax.swing.JDialog {
                 } else {
 //                ALTERAR
                     gui.log("ALTERAR EM ANDAMENTO...");
-                    dao.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, endereco, cidade);
+                    dao.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, cidade);
 
                     LDASwingUtils.message(this, "Cliente " + cliSelecionado.getId() + " alterado com sucesso.", title);
                 }
