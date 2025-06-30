@@ -29,8 +29,9 @@ public class ItemPedido implements Serializable {
         this.chaveComposta = new ItemPedidoPK(erva, venda);
         this.Tipo = tipo;
         this.Qdte = qdte;
-//        importa da erva que e passada na hora de construir
-        this.ValorDaUnidade = erva.getValor();
+//        usado para salvar no banco o valor atual naquela compra.
+//        para caso o valor da erva mude futuramente
+        this.ValorDaUnidade = chaveComposta.getErva().getValor();
     }
 
     public Erva getErva() {
@@ -42,8 +43,6 @@ public class ItemPedido implements Serializable {
     }
 
     public float getValorDaUnidade() {
-//        pega da chave itemPedidoPk
-//        return getErva().getValor();
         return ValorDaUnidade;
     }
     
