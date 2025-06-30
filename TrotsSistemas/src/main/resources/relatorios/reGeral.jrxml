@@ -183,6 +183,7 @@
 			</image>
 			<subreport>
 				<reportElement x="0" y="23" width="555" height="61" uuid="c750d701-d9ac-403f-a93d-300474efbc35"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource( $F{listaParaSub} )]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "reItemPedido.jasper"]]></subreportExpression>
 			</subreport>
 			<textField>
@@ -199,6 +200,10 @@
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="0" y="0" width="100" height="20" uuid="38d8b30b-1c9d-4eb5-8805-0989124154a1"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="455" y="0" width="100" height="20" uuid="f6bea0fd-59c3-454c-bd20-8567928b1fe3"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
