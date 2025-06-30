@@ -31,6 +31,7 @@ public class DialogCadastro extends javax.swing.JDialog {
 
     private File dir;
     private Cliente cliSelecionado = null;
+    private String title = "CADASTRO DE CLIENTE";
 
     /**
      * Creates new form Cadastro
@@ -39,6 +40,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         dir = null;
+        habilitarBotoes(cliSelecionado);
     }
 
     /**
@@ -482,18 +484,20 @@ public class DialogCadastro extends javax.swing.JDialog {
     private void lblFotoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblFotoKeyPressed
         // TODO add your handling code here:
         MostrarFoto();
-
     }//GEN-LAST:event_lblFotoKeyPressed
 
+//    PESQUISAR
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        
+
         cliSelecionado = gui.abrirBuscaCli();
         if (cliSelecionado != null) {
+            habilitarBotoes(cliSelecionado);
+
             Cidade cid = cliSelecionado.getCidade();
             Endereco ender = cliSelecionado.getEndereco();
-            
+
             txtNome.setText(cliSelecionado.getNome());
             txtCpf.setText(cliSelecionado.getCpf());
             txtEmail.setText(cliSelecionado.getEmail());
@@ -505,9 +509,12 @@ public class DialogCadastro extends javax.swing.JDialog {
             txtComplemento.setText(ender.getComplemento());
             txtLogradouro.setText(ender.getLogradouro());
             txtRef.setText(ender.getReferencia());
+        }else{
+            gui.log("IMPOSSIVEL EDITAR O CLIENTE VEIO NULL");
         }
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
+//    INSERIR
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
@@ -531,59 +538,26 @@ public class DialogCadastro extends javax.swing.JDialog {
             LDASwingUtils.message(this, "Operação em andamento...", "Cadastro de Cliente");
             try {
                 // INSERIR
-                cliSelecionado = dao.InserirCliente(nome, cpf, email, tel,Foto, endereco,cidade);
+                cliSelecionado = dao.InserirCliente(nome, cpf, email, tel, Foto, endereco, cidade);
                 LDASwingUtils.message(this, "Cliente: " + nome + ". Cadastrado com sucesso!", "Cadastro de Cliente");
                 this.dispose();
             } catch (HibernateException ex) {
-                LDASwingUtils.messageError(this, "ERRO ao inserir cliente! " + ex, "Cadastro de Cliente");
+                LDASwingUtils.messageError(this, "ERRO ao inserir cliente! " + ex, title);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DialogCadastro.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            LDASwingUtils.messageError(this, "Preencha todos os campos!", "Cadastro de Cliente");
+            LDASwingUtils.messageError(this, "Preencha todos os campos!", title);
         }
 
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private boolean validarCampos() {
-        String msgError = "";
-        String cpf = txtCpf.getText();
-
-        lblNome.setForeground(Color.black);
-        lblCEP.setForeground(Color.white);
-        lblEmail.setForeground(Color.black);
-        lblCpf.setForeground(Color.black);
-
-        msgError = LDASwingUtils.validarCampo(txtNome, lblNome);
-        msgError = LDASwingUtils.validarCampo(txtCEP, lblCEP);
-        msgError = LDASwingUtils.validarCampo(txtEmail, lblEmail);
-        if (cpf.isEmpty()) {
-            msgError = msgError + "Digite seu CPF.\n";
-            lblCpf.setForeground(Color.red);
-        }
-        if (!LDACPFManager.ValidarCPF(cpf)) {
-            msgError = msgError + "CPF inválido!.\n";
-            lblCpf.setForeground(Color.red);
-        }
-
-        if (msgError.isEmpty()) {
-//            não a erros
-            return true;
-        } else {
-            //            mostra o erro
-            JOptionPane.showMessageDialog(
-                    this,
-                    msgError,
-                    "CADASTRO DE CLIENTE",
-                    JOptionPane.ERROR_MESSAGE
-            );
-            return false;
-        }
-    }
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        cliSelecionado = null;
+        habilitarBotoes(cliSelecionado);
         limparCampos();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCEPFocusLost
@@ -627,6 +601,43 @@ public class DialogCadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+//    FUNCOES UTEIS PRIVADAS
+    private boolean validarCampos() {
+        String msgError = "";
+        String cpf = txtCpf.getText();
+
+        lblNome.setForeground(Color.black);
+        lblCEP.setForeground(Color.white);
+        lblEmail.setForeground(Color.black);
+        lblCpf.setForeground(Color.black);
+
+        msgError = LDASwingUtils.validarCampo(txtNome, lblNome);
+        msgError = LDASwingUtils.validarCampo(txtCEP, lblCEP);
+        msgError = LDASwingUtils.validarCampo(txtEmail, lblEmail);
+        if (cpf.isEmpty()) {
+            msgError = msgError + "Digite seu CPF.\n";
+            lblCpf.setForeground(Color.red);
+        }
+        if (!LDACPFManager.ValidarCPF(cpf)) {
+            msgError = msgError + "CPF inválido!.\n";
+            lblCpf.setForeground(Color.red);
+        }
+
+        if (msgError.isEmpty()) {
+//            não a erros
+            return true;
+        } else {
+            //            mostra o erro
+            JOptionPane.showMessageDialog(
+                    this,
+                    msgError,
+                    "CADASTRO DE CLIENTE",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return false;
+        }
+    }
+    
     private void MostrarFoto() {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
         File arq = LDAMainUtils.carregarArq(filtro, this, dir);
@@ -655,6 +666,22 @@ public class DialogCadastro extends javax.swing.JDialog {
 
         cmbCidade.setSelectedIndex(
                 0);
+    }
+
+    private void habilitarBotoes(Cliente cli) {
+
+        if (cli != null) {
+//        ao selecionar
+            btnNovo.setVisible(false);
+            btnAlterar.setVisible(true);
+            btnDeletar.setVisible(true);
+        } else {
+
+//        limpar campos
+            btnNovo.setVisible(true);
+            btnAlterar.setVisible(false);
+            btnDeletar.setVisible(false);
+        }
     }
 
     // Variables declaration - do not modify                     

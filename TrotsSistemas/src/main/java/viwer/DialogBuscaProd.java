@@ -20,7 +20,6 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     /**
      * Creates new form Cadastro
      */
-    private Erva ervaSelecionada = null;
 
     public DialogBuscaProd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -333,7 +332,7 @@ public class DialogBuscaProd extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public Erva getErvaSelecionada() {
-        return ervaSelecionada;
+        return ProdutoSelecionado;
     }
 
 }

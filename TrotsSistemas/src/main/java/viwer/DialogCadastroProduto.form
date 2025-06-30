@@ -136,7 +136,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnAlterar" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnNovo1" pref="89" max="32767" attributes="0"/>
+                              <Component id="btnNovo" pref="89" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnCancelar1" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -155,7 +155,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnNovo1" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="btnNovo" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnCancelar1" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnAlterar" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnDeletar" alignment="3" max="32767" attributes="0"/>
@@ -173,7 +173,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btnNovo1">
+                    <Component class="javax.swing.JButton" name="btnNovo">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -188,7 +188,7 @@
                         <Property name="text" type="java.lang.String" value="Novo"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovo1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCancelar1">

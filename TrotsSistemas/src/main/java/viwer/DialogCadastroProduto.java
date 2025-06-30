@@ -5,7 +5,6 @@ import control.GUIManager;
 import domain.Erva;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import swing.LDASwingUtils;
 
@@ -26,9 +25,11 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
      */
     private Erva ervaSelecionada = null;
     private String title = "CADASTRO DE PRODUTOS";
+
     public DialogCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        habilitarBotoes(ervaSelecionada);
     }
 
     /**
@@ -45,7 +46,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         FORM = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PaineldeCad1 = new javax.swing.JPanel();
-        btnNovo1 = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
         btnCancelar1 = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         painelEnderec = new javax.swing.JPanel();
@@ -111,14 +112,14 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         PaineldeCad1.setMaximumSize(new java.awt.Dimension(300, 500));
         PaineldeCad1.setMinimumSize(new java.awt.Dimension(300, 300));
 
-        btnNovo1.setBackground(new java.awt.Color(255, 255, 255));
-        btnNovo1.setForeground(new java.awt.Color(0, 0, 0));
-        btnNovo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnNovo1.setMnemonic('N');
-        btnNovo1.setText("Novo");
-        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
+        btnNovo.setBackground(new java.awt.Color(255, 255, 255));
+        btnNovo.setForeground(new java.awt.Color(0, 0, 0));
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
+        btnNovo.setMnemonic('N');
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovo1ActionPerformed(evt);
+                btnNovoActionPerformed(evt);
             }
         });
 
@@ -275,7 +276,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -290,7 +291,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addGap(317, 317, 317)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -316,32 +317,47 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
         // TODO add your handling code here:
         ervaSelecionada = null;
+        habilitarBotoes(ervaSelecionada);
+        limparCampos();
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
+//    PESQUISAR
     private void btnPesqProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        
+
         ervaSelecionada = gui.abrirBuscaProd();
         if (ervaSelecionada != null) {
+            habilitarBotoes(ervaSelecionada);
             txtNome.setText(ervaSelecionada.getNome());
+            txtObs.setText(ervaSelecionada.getDescricao());
+            txtSabor.setText(ervaSelecionada.getSabor());
+
+            spnEstoque.setValue(ervaSelecionada.getQtdeEstoque());
+            spnPeso.setValue(ervaSelecionada.getPeso());
+            spnValor.setValue(ervaSelecionada.getValor());
+        }else{
+            gui.log("IMPOSSIVEL EDITAR A ERVA VEIO NULL");
         }
     }//GEN-LAST:event_btnPesqProdActionPerformed
 
+//    ALTERAR
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         gui.msgWIP(this);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+//    DELETAR
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         gui.msgWIP(this);
     }//GEN-LAST:event_btnDeletarActionPerformed
 
-    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
+//    INSERIR
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here
         GUIManager gui = GUIManager.getMyInstance();
         DaoManager dao = gui.getDaoManager();
@@ -352,7 +368,8 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         int qtdeEstoque = (int) spnEstoque.getValue();
         String descricao = txtObs.getText();
 
-            LDASwingUtils.message(this, "Operação em andamento...", title);
+        LDASwingUtils.message(this, "Operação em andamento...", title);
+        if (validarCampos()) {
             try {
                 // INSERIR
                 ervaSelecionada = dao.InserirErva(nome, sabor, peso, valor, qtdeEstoque, descricao);
@@ -363,8 +380,12 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DialogCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }//GEN-LAST:event_btnNovo1ActionPerformed
+        } else {
+            LDASwingUtils.messageError(this, "Preencha todos os campos!", title);
+        }
+    }//GEN-LAST:event_btnNovoActionPerformed
 
+    //    FUNCOES UTEIS PRIVADAS
     private boolean validarCampos() {
         String msgError = "";
 
@@ -376,17 +397,37 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 //            não a erros
             return true;
         } else {
-            //            mostra o erro
-            JOptionPane.showMessageDialog(
-                    this,
-                    msgError,
-                    title,
-                    JOptionPane.ERROR_MESSAGE
-            );
+            LDASwingUtils.messageError(this, msgError, title);
             return false;
         }
     }
-    
+
+    private void limparCampos() {
+        LDASwingUtils.clearTxt(txtNome);
+        LDASwingUtils.clearTxt(txtObs);
+        LDASwingUtils.clearTxt(txtSabor);
+
+        spnEstoque.setValue(0);
+        spnPeso.setValue(500);
+        spnValor.setValue(1);
+    }
+
+    private void habilitarBotoes(Erva erva) {
+
+        if (erva != null) {
+//        ao selecionar
+            btnNovo.setVisible(false);
+            btnAlterar.setVisible(true);
+            btnDeletar.setVisible(true);
+        } else {
+
+//        limpar campos
+            btnNovo.setVisible(true);
+            btnAlterar.setVisible(false);
+            btnDeletar.setVisible(false);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
     private javax.swing.JLabel Logo;
@@ -395,7 +436,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnDeletar;
-    private javax.swing.JButton btnNovo1;
+    private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesqProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
