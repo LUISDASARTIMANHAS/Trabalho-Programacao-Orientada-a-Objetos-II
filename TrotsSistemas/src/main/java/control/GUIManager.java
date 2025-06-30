@@ -4,13 +4,11 @@
  */
 package control;
 
-import static control.LDAMainUtils.playSound;
 import domain.Cliente;
 import domain.Erva;
 import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
-import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.logging.*;
@@ -19,13 +17,6 @@ import org.hibernate.HibernateException;
 import swing.*;
 import viwer.*;
 
-import java.io.File;
-import java.io.IOException;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -142,6 +133,10 @@ public class GUIManager {
 
     public void sair() {
         System.exit(0);
+    }
+    
+    public void log(String txt) {
+        System.out.println("[LOG] " + txt);
     }
 
     public void carregarCombo(JComboBox combo, Class classe) {

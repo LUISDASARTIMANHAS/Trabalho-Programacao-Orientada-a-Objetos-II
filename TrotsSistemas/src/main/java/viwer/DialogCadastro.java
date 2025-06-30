@@ -194,6 +194,11 @@ public class DialogCadastro extends javax.swing.JDialog {
         btnAlterar.setText("Alterar");
         btnAlterar.setAutoscrolls(true);
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         lblFoto.setBackground(new java.awt.Color(0, 0, 0));
         lblFoto.setForeground(new java.awt.Color(255, 255, 255));
@@ -484,7 +489,23 @@ public class DialogCadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
         
-        gui.abrirBuscaCli();
+        cliSelecionado = gui.abrirBuscaCli();
+        if (cliSelecionado != null) {
+            Cidade cid = cliSelecionado.getCidade();
+            Endereco ender = cliSelecionado.getEndereco();
+            
+            txtNome.setText(cliSelecionado.getNome());
+            txtCpf.setText(cliSelecionado.getCpf());
+            txtEmail.setText(cliSelecionado.getEmail());
+            txtTel.setText(cliSelecionado.getTel());
+            cmbCidade.setSelectedItem(cid);
+            txtTel.setText(cid.getUF());
+            txtBairro.setText(ender.getBairro());
+            txtCEP.setText(ender.getCep());
+            txtComplemento.setText(ender.getComplemento());
+            txtLogradouro.setText(ender.getLogradouro());
+            txtRef.setText(ender.getReferencia());
+        }
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -601,6 +622,10 @@ public class DialogCadastro extends javax.swing.JDialog {
         GUIManager gui = GUIManager.getMyInstance();
         gui.carregarCombo(cmbCidade, Cidade.class);
     }//GEN-LAST:event_formComponentShown
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void MostrarFoto() {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagens", "png", "jpeg", "gif", "jpg");
