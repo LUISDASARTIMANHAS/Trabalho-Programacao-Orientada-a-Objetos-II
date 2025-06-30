@@ -1,0 +1,56 @@
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">TROTSSISTEMAS</property>
+        <property name="hibernate.connection.password">SISTEMA</property>
+        <!--local IFES ETHERNET-->
+        <!--<property name="hibernate.connection.url">jdbc:postgresql://192.168.1.105:5433/trotsSistemas</property>-->
+        
+        <!--localhost-->
+         <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/trotsSistemas</property>--> 
+        
+        <!--from vpn-->
+        <property name="hibernate.connection.url">jdbc:postgresql://26.106.30.88:5432/trotsSistemas</property>
+        
+        <!--localhost proxy-->
+        <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/trotsSistemas</property>-->
+        
+        <!--Meu Servidor Global em Casa-->
+        <!--<property name="hibernate.connection.url">jdbc:postgresql://[]:5432/trotsSistemas</property>-->
+
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <!--<property name="hbm2ddl.auto">create</property>-->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</property>
+        <property name="hibernate.format_sql">true</property>
+        
+        <mapping class="domain.Cidade"></mapping>
+        <mapping class="domain.Cliente"></mapping>
+        <mapping class="domain.Endereco"></mapping>
+        <mapping class="domain.Erva"></mapping>
+        <mapping class="domain.ItemPedido"></mapping>
+        <mapping class="domain.Venda"></mapping>
+  
+    </session-factory> 
+</hibernate-configuration>

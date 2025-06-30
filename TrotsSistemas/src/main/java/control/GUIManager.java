@@ -4,18 +4,19 @@
  */
 package control;
 
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ComboBoxEditor;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import swing.LDASwingUtils;
-import viwer.DialogCadastro;
-import viwer.Principal;
+import domain.Cliente;
+import domain.Erva;
+import domain.Venda;
+import java.awt.Component;
+import java.awt.Frame;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import java.util.logging.*;
+import javax.swing.*;
+import org.hibernate.HibernateException;
+import swing.*;
+import viwer.*;
+
 
 /**
  *
@@ -23,17 +24,25 @@ import viwer.Principal;
  */
 public class GUIManager {
 
-    private static GUIManager myInstance = new GUIManager();
-    private Principal principal;
-    private DialogCadastro cadCli;
+    private static final GUIManager myInstance = new GUIManager();
+    private Principal principal = null;
+    private DialogCadastro cadCli = null;
+    private DialogBuscaCli buscaCli = null;
+    private DialogBuscaProd buscaProd = null;
+    private DialogBuscaVendas buscaVendas = null;
+    private DialogCadastroProduto cadProd = null;
+    private DialogCadastroVenda cadVenda = null;
 
     private DaoManager daoManager;
+    private RelatorioManager relManager;
 
+    // ########  SINGLETON  #########
     private GUIManager() {
         try {
             daoManager = new DaoManager();
-        } catch (ClassNotFoundException | SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            relManager = new RelatorioManager();
+        } catch (java.lang.ExceptionInInitializerError | ClassNotFoundException | HibernateException ex) {
+            LDASwingUtils.messageError(null, ex.toString(), "FATAL ERRO AO INICIAR");
             Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
 
             System.exit(-1);
@@ -44,19 +53,99 @@ public class GUIManager {
         return myInstance;
     }
 
+    public DaoManager getDaoManager() {
+        return daoManager;
+    }
+
+    // ######### SINGLETON ###########
+    // ABRIR JDIALOG
+    private JDialog abrirJanela(java.awt.Frame parent, JDialog dlg, Class classe) {
+        if (dlg == null) {
+            try {
+//                playSound(null);
+                dlg = (JDialog) classe.getConstructor(Frame.class, boolean.class).newInstance(parent, true);
+            } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                JOptionPane.showMessageDialog(parent, "Erro ao abrir a janela " + classe.getName() + ". " + ex.getMessage());
+            }
+        }
+        dlg.setVisible(true);
+        return dlg;
+    }
+
     public void abrirPrincipal() {
         principal = new Principal();
         LDASwingUtils.ChangeLookAndFeel(Principal.class.getName(), "Metal", principal);
         principal.setVisible(true);
     }
 
+    public Cliente abrirBuscaCli() {
+        buscaCli = (DialogBuscaCli) abrirJanela(principal, buscaCli, DialogBuscaCli.class);
+        return buscaCli.getCliSelecionado();
+    }
+
+    public Erva abrirBuscaProd() {
+        buscaProd = (DialogBuscaProd) abrirJanela(principal, buscaProd, DialogBuscaProd.class);
+        return buscaProd.getErvaSelecionada();
+    }
+
+    public Venda abrirBuscaVenda() {
+        buscaVendas = (DialogBuscaVendas) abrirJanela(principal, buscaVendas, DialogBuscaVendas.class);
+        return buscaVendas.getVendaSelecionada();
+    }
+
     public void abrirCadCli() {
-//        cadCli = new DialogCadastro(principal, true);
-//        cadCli.setVisible(true);
+        cadCli = (DialogCadastro) abrirJanela(principal, cadCli, DialogCadastro.class);
+    }
+
+    public void abrirCadProd() {
+        cadProd = (DialogCadastroProduto) abrirJanela(principal, cadProd, DialogCadastroProduto.class);
+    }
+
+    public void abrirCadVenda() {
+        cadVenda = (DialogCadastroVenda) abrirJanela(principal, cadVenda, DialogCadastroVenda.class);
+    }
+
+    public void abrirRelatorioCli() {
+        msgWIP(principal);
+    }
+
+    public void msgWIP(Component comp) {
+        LDASwingUtils.message(comp, "Essa fucionalidade ainda não esta pronta", "Em Breve");
+    }
+
+    public void msgBuscaCompleta() {
+        JOptionPane.showMessageDialog(
+                principal,
+                "A busca retornou resultados!",
+                "SISTEMA",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+
+    public void msgAguardarProcesso() {
+        JOptionPane.showMessageDialog(
+                principal,
+                "Aguardando o Processamento",
+                "SISTEMA",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }
 
     public void sair() {
         System.exit(0);
+    }
+    
+    public void log(String txt) {
+        System.out.println("[LOG] " + txt);
+    }
+
+    public void carregarCombo(JComboBox combo, Class classe) {
+        try {
+            List lista = daoManager.listar(classe);
+            LDASwingUtils.loadListInComboBox(combo, lista);
+        } catch (HibernateException | ClassNotFoundException ex) {
+            LDASwingUtils.messageError(principal, ex.toString(), "Cadastro de Cliente");
+        }
     }
 
     public static void main(String args[]) {
@@ -72,15 +161,5 @@ public class GUIManager {
         GUIManager gui = GUIManager.getMyInstance();
         gui.abrirPrincipal();
     }
-    
-    public void loadComboCidade(JComboBox combo){
-        try {
-            List Lista = daoManager.listarCidades();
-            
-            combo.setModel(new DefaultComboBoxModel(Lista.toArray()));
-        } catch (SQLException | ClassNotFoundException ex) {
-            LDASwingUtils.messageError(cadCli, ex.toString(), "CADASTRO DE CLIENTE");
-            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
 }

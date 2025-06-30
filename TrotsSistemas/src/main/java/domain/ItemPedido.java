@@ -4,65 +4,75 @@
  */
 package domain;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author LUIS DAS ARTIMANHAS
  */
-public class ItemPedido {
-
-    private String Sabor;
-    private int Codigo;
+@Entity
+public class ItemPedido implements Serializable {
+    
+    @EmbeddedId
+    private ItemPedidoPK chaveComposta;
+    
+    private String Tipo;
     private int Qdte;
-    private float Peso;
-    private float Valor;
-
-    public ItemPedido(int Codigo, String Sabor, int Qdte, float Peso, float Valor) {
-        this.Sabor = Sabor;
-        this.Codigo = Codigo;
-        this.Qdte = Qdte;
-        this.Peso = Peso;
-        this.Valor = Valor;
+    private float ValorDaUnidade;
+    
+    public ItemPedido() {
     }
 
-    public String getSabor() {
-        return Sabor;
+    public ItemPedido(Erva erva, Venda venda, String tipo, int qdte) {
+//        anexa a erva com a venda e retorna um itemPedidoPk;
+        this.chaveComposta = new ItemPedidoPK(erva, venda);
+        this.Tipo = tipo;
+        this.Qdte = qdte;
+//        importa da erva que e passada na hora de construir
+        this.ValorDaUnidade = erva.getValor();
     }
 
-    public int getCodigo() {
-        return Codigo;
+    public Erva getErva() {
+        return chaveComposta.getErva();
+    }
+    
+    public void setErva(Erva erva) {
+        this.chaveComposta.setErva(erva);
+    }
+
+    public float getValorDaUnidade() {
+//        pega da chave itemPedidoPk
+//        return getErva().getValor();
+        return ValorDaUnidade;
+    }
+    
+    public Venda getVenda() {
+        return chaveComposta.getVenda();
+    }
+    
+    public void setVenda(Venda venda) {
+        this.chaveComposta.setVenda(venda);
+    }
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
     }
 
     public int getQdte() {
         return Qdte;
     }
 
-    public float getPeso() {
-        return Peso;
-    }
-
-    public float getValor() {
-        return Valor;
-    }
-
-    public void setSabor(String Sabor) {
-        this.Sabor = Sabor;
-    }
-
-    public void setCodigo(int Codigo) {
-        this.Codigo = Codigo;
-    }
-
     public void setQdte(int Qdte) {
         this.Qdte = Qdte;
     }
 
-    public void setPeso(float Peso) {
-        this.Peso = Peso;
+//    METODOS IMPORTADAS PARA QUE O AUTO TABLE MODEL ADICIONE NA TABELA 
+    public float getSubTotal() {
+        return  getQdte() * getValorDaUnidade();
     }
-
-    public void setValor(float Valor) {
-        this.Valor = Valor;
-    }
-
-    
 }

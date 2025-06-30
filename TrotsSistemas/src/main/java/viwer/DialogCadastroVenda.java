@@ -1,10 +1,16 @@
 package viwer;
 
-
-import control.LDATableModelListaItens;
+import control.CustomTableModel;
+import control.DaoManager;
+import control.GUIManager;
+import control.LDAMainUtils;
+import domain.Cliente;
+import domain.Erva;
 import domain.ItemPedido;
+import domain.Venda;
+import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import swing.LDASwingUtils;
 
 
 /*
@@ -19,15 +25,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DialogCadastroVenda extends javax.swing.JDialog {
 
-    private LDATableModelListaItens tableModelItemPedido;
+    private List<String> getters = List.of( "getQdte", "getTipo","getValorDaUnidade", "getSubTotal");
+//    private CustomTableModel tableModelItemPedido;
+    private CustomTableModel<ItemPedido> tableModelItemPedido;
+    private Cliente cliSelecionado = null;
+    private String title = "REGISTRAR VENDA";
+
     /**
      * Creates new form Cadastro
      */
     public DialogCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         // Amarro o JTable com o meu Abstract Table Model
-        tableModelItemPedido = new LDATableModelListaItens();
+        // Amarro o JTable com o meu Abstract Table Model
+//        tableModelItemPedido = new CustomTableModel(new ArrayList<ItemPedido>(), getters, ItemPedido.class);
+//        tblPedido.setModel(tableModelItemPedido);
+
+        // Amarro o JTable com o meu AUTO Abstract Table Model
+        tableModelItemPedido = new CustomTableModel(getters,ItemPedido.class);
         tblPedido.setModel(tableModelItemPedido);
     }
 
@@ -56,11 +71,13 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         lblNome1 = new javax.swing.JLabel();
         lblLanche = new javax.swing.JLabel();
         cmbSabor = new javax.swing.JComboBox();
-        txtNome1 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         btnPesqCli = new javax.swing.JButton();
         btnAddLanche = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
+        btnAddLanche1 = new javax.swing.JButton();
+        lblWait = new javax.swing.JButton();
 
         inserir.setText("inserir");
         inserir.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +98,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(720, 720));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -141,6 +163,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         btnCancelar1.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/remove.png"))); // NOI18N
         btnCancelar1.setText("Cancelar");
+        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar1ActionPerformed(evt);
+            }
+        });
 
         overflow.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Ervas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -149,17 +176,17 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         tblPedido.setForeground(new java.awt.Color(0, 0, 0));
         tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"sad",  new Integer(7),  new Double(500.0),  new Double(10.89)},
-                {"Erva Mate - Menta & Cereja ",  new Integer(3),  new Double(500.0),  new Double(10.89)},
-                {"aasd",  new Integer(5),  new Double(500.0),  new Double(10.89)},
-                {"aasdasd",  new Integer(8),  new Double(500.0),  new Double(10.89)}
+                {"sad",  new Integer(7), null, null},
+                {"Erva Mate - Menta & Cereja ",  new Integer(3), null, null},
+                {"aasd",  new Integer(5), null, null},
+                {"aasdasd",  new Integer(8), null, null}
             },
             new String [] {
-                "Sabor", "Qtde", "Peso", "Valor"
+                "Tipo", "Qtde", "ValorDaUnidade", "SubTotal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -194,16 +221,22 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         lblLanche.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLanche.setForeground(new java.awt.Color(0, 0, 0));
-        lblLanche.setText("Item");
+        lblLanche.setText("Erva");
 
         cmbSabor.setBackground(new java.awt.Color(255, 255, 255));
         cmbSabor.setForeground(new java.awt.Color(0, 0, 0));
-        cmbSabor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", "limão caipira", "lima & cereja", "eucalipto" }));
+        cmbSabor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Um", " " }));
+        cmbSabor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSaborItemStateChanged(evt);
+            }
+        });
 
-        txtNome1.setBackground(new java.awt.Color(255, 255, 255));
-        txtNome1.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome1.setText("Teste");
-        txtNome1.setEnabled(false);
+        txtNome.setEditable(false);
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("Teste");
+        txtNome.setEnabled(false);
 
         btnPesqCli.setBackground(new java.awt.Color(255, 255, 255));
         btnPesqCli.setForeground(new java.awt.Color(0, 0, 0));
@@ -217,11 +250,11 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
 
         btnAddLanche.setBackground(new java.awt.Color(255, 255, 255));
         btnAddLanche.setForeground(new java.awt.Color(0, 0, 0));
-        btnAddLanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
-        btnAddLanche.setText("Incluir");
+        btnAddLanche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/delete_16x16.gif"))); // NOI18N
+        btnAddLanche.setText("Excluir");
         btnAddLanche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddLancheActionPerformed(evt);
+                excluirActionPerformed(evt);
             }
         });
 
@@ -230,6 +263,27 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         jLabel3.setText("Qtde");
 
         spnQtde.setModel(new javax.swing.SpinnerNumberModel(5, 0, 10, 1));
+        spnQtde.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQtdeStateChanged(evt);
+            }
+        });
+
+        btnAddLanche1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddLanche1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAddLanche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
+        btnAddLanche1.setText("Incluir");
+        btnAddLanche1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirActionPerformed(evt);
+            }
+        });
+
+        lblWait.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
@@ -237,12 +291,14 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
                         .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -257,45 +313,58 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                                                 .addGap(7, 7, 7)))
                                         .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                                                .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addGap(209, 209, 209)
+                                                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PaineldeCad1Layout.createSequentialGroup()
+                                                    .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lblWait, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PaineldeCad1Layout.createSequentialGroup()
+                                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(btnPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(btnNovo1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 79, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(btnAddLanche1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPesqCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNome1)
-                        .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLanche)
-                    .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPesqCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblNome1)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(7, 7, 7)
+                        .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblLanche)
+                            .addComponent(cmbSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddLanche1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(overflow, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(lblValor)
@@ -317,87 +386,114 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLancheActionPerformed
-        // TODO add your handling code here:
-        String item = cmbSabor.getSelectedItem().toString();
-        int qtde = (int) spnQtde.getValue();
-        float peso = 500 * qtde;
-        float valor = (float) (qtde * 10.89);
-        inserirTabela(item,qtde,peso,valor);
-    }//GEN-LAST:event_btnAddLancheActionPerformed
-
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                    this,
-                    "Essa fucionalidade ainda não esta pronta",
-                    "Registro de Venda",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+        GUIManager gui = GUIManager.getMyInstance();
+        Erva erva = (Erva) cmbSabor.getSelectedItem();
+        int qtde = (int) spnQtde.getValue();
+        String tipo = erva.getSabor();
+
+        inserirTabela(erva, tipo, qtde);
     }//GEN-LAST:event_inserirActionPerformed
 
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        DaoManager dao = gui.getDaoManager();
+        List ListaItensPedido = tableModelItemPedido.getLista();
+
+        if (cliSelecionado != null) {
+            Venda venda = dao.inserirVenda(cliSelecionado, ListaItensPedido);
+            LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", title);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um cliente.", title, JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                    this,
-                    "Essa fucionalidade ainda não esta pronta",
-                    "Registro de Venda",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+        GUIManager gui = GUIManager.getMyInstance();
+
+        cliSelecionado = gui.abrirBuscaCli();
+        if (cliSelecionado != null) {
+            txtNome.setText(cliSelecionado.getNome());
+        }
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
         int linha = tblPedido.getSelectedRow();
+
         if (linha >= 0) {
-            int confirmPane = JOptionPane.showConfirmDialog(
+            excluirVenda(linha);
+        } else {
+            JOptionPane.showMessageDialog(
                     this,
-                    "Deseja realmente Excluir o Pedido?"
+                    "Selcione ao menos uma linha",
+                    title,
+                    JOptionPane.ERROR_MESSAGE
             );
-
-            if (confirmPane == JOptionPane.YES_OPTION) {
-                ((DefaultTableModel) tblPedido.getModel()).removeRow(linha);
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Excluido com sucesso!",
-                        "Cadastro de Produto",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
-            }
         }
-
     }//GEN-LAST:event_excluirActionPerformed
 
-    private void inserirTabela(String sabor, int qtde, float peso, float valor) {
-        ItemPedido item = new ItemPedido(0, sabor, qtde, peso,valor);
-        tableModelItemPedido.adicionar(item);
-    }
-    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:    
+        lblWait.setVisible(true);
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.carregarCombo(cmbSabor, Erva.class);
+        lblWait.setVisible(false);
+    }//GEN-LAST:event_formComponentShown
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-   
-        /*
-         * Create and display the dialog
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogCadastroVenda dialog = new DialogCadastroVenda(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+    private void cmbSaborItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSaborItemStateChanged
+        // TODO add your handling code here:
+        atualizarValorTotal();
+    }//GEN-LAST:event_cmbSaborItemStateChanged
+
+    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+        // TODO add your handling code here:
+        cliSelecionado = null;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelar1ActionPerformed
+
+    private void spnQtdeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQtdeStateChanged
+        // TODO add your handling code here:
+        atualizarValorTotal();
+    }//GEN-LAST:event_spnQtdeStateChanged
+
+    private void inserirTabela(Erva erva, String tipo, int qtde) {
+        //    Erva erva, Venda venda, String tipo, int Qdte
+        ItemPedido item = new ItemPedido(erva, null, tipo, qtde);
+        tableModelItemPedido.adicionar(item);
+        atualizarValorTotal();
+    }
+
+    private void excluirVenda(int linha) {
+        int confirmPane = JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente Excluir o item do carrinho?"
+        );
+
+        if (confirmPane == JOptionPane.YES_OPTION) {
+//            deleta multiplas linhas selecionadas
+            while (linha >= 0) {
+                tableModelItemPedido.remover(linha);
+                linha = tblPedido.getSelectedRow();
             }
-        });
+            LDASwingUtils.message(this, "Excluido com sucesso!", title);
+            atualizarValorTotal();
+        }
+    }
+
+    private void atualizarValorTotal() {
+        float valorTotal = 0;
+        for (int i = 0; i < tableModelItemPedido.getRowCount(); i++) {
+            ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(i);
+            
+            valorTotal = LDAMainUtils.CalcValorTotal(item.getSubTotal(), valorTotal);
+        }
+
+        lblValor.setText("TOTAL R$:" + valorTotal);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -407,6 +503,7 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JPopupMenu Popup;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAddLanche;
+    private javax.swing.JButton btnAddLanche1;
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnNovo1;
     private javax.swing.JButton btnPesqCli;
@@ -418,9 +515,10 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JLabel lblLanche;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblValor;
+    private javax.swing.JButton lblWait;
     private javax.swing.JScrollPane overflow;
     private javax.swing.JSpinner spnQtde;
     private javax.swing.JTable tblPedido;
-    private javax.swing.JTextField txtNome1;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

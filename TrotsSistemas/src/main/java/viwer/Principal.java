@@ -60,7 +60,7 @@ public class Principal extends javax.swing.JFrame {
         setTitle("Trots Sistemas - gestão de Vendas");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setMinimumSize(new java.awt.Dimension(1024, 292));
         setResizable(false);
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
@@ -143,7 +143,7 @@ public class Principal extends javax.swing.JFrame {
         ConsultaPedido.setText("Venda");
         ConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultaPedidoActionPerformed(evt);
+                ConsultaVendaPerformed(evt);
             }
         });
         menuConsulta.add(ConsultaPedido);
@@ -165,10 +165,20 @@ public class Principal extends javax.swing.JFrame {
 
         Relatorioprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/shopping_cart_16x16.gif"))); // NOI18N
         Relatorioprodutos.setText("Produtos");
+        Relatorioprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelatorioprodutosActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(Relatorioprodutos);
 
         RelatorioPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Dollar.png"))); // NOI18N
         RelatorioPedidos.setText("Vendas");
+        RelatorioPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelatorioPedidosActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(RelatorioPedidos);
 
         menu.add(menuRelatorios);
@@ -265,43 +275,55 @@ public class Principal extends javax.swing.JFrame {
     private void ConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaProdutoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-//        gui.abrirBuscaProd();
+        gui.abrirBuscaProd();
     }//GEN-LAST:event_ConsultaProdutoActionPerformed
 
     private void RelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioClienteActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-//        gui.abrirRelatorioCli();
+        gui.abrirRelatorioCli();
     }//GEN-LAST:event_RelatorioClienteActionPerformed
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-//        gui.abrirCadProd();
+        gui.abrirCadProd();
     }//GEN-LAST:event_CadProdutoActionPerformed
 
     private void CadPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadPedidoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-//        gui.abrirCadPedido();
+        gui.abrirCadVenda();
     }//GEN-LAST:event_CadPedidoActionPerformed
 
-    private void ConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPedidoActionPerformed
+    private void ConsultaVendaPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaVendaPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-//        gui.abrirBuscaProd();
-    }//GEN-LAST:event_ConsultaPedidoActionPerformed
+        gui.abrirBuscaVenda();
+    }//GEN-LAST:event_ConsultaVendaPerformed
 
     private void ConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaClienteActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-//        gui.abrirBuscaCli();
+        gui.abrirBuscaCli();
     }//GEN-LAST:event_ConsultaClienteActionPerformed
 
     private void MudarTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MudarTemaActionPerformed
         // TODO add your handling code here:
         TrocarLookAndFeel(GrpTema.getSelection().getMnemonic());
     }//GEN-LAST:event_MudarTemaActionPerformed
+
+    private void RelatorioprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioprodutosActionPerformed
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
+    }//GEN-LAST:event_RelatorioprodutosActionPerformed
+
+    private void RelatorioPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioPedidosActionPerformed
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.msgWIP(this);
+    }//GEN-LAST:event_RelatorioPedidosActionPerformed
 
     private void TrocarLookAndFeel(int NomeLook) {
         String lookAndFeel = switch (NomeLook) {

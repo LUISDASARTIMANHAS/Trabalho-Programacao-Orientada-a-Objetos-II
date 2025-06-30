@@ -1,5 +1,9 @@
 package viwer;
 
+import control.GUIManager;
+import domain.Erva;
+import swing.LDASwingUtils;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
  * to change this license Click
@@ -12,9 +16,11 @@ package viwer;
  */
 public class DialogBuscaProd extends javax.swing.JDialog {
 
+    private Erva ProdutoSelecionado = null;
     /**
      * Creates new form Cadastro
      */
+
     public DialogBuscaProd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,19 +43,28 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         painelEnderec = new javax.swing.JPanel();
         lblProd = new javax.swing.JLabel();
         cmbProd = new javax.swing.JComboBox<>();
-        lblSku = new javax.swing.JLabel();
-        txtSku = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
         lblPeso = new javax.swing.JLabel();
-        txtPeso = new javax.swing.JTextField();
-        lblEstoque = new javax.swing.JLabel();
-        txtEstoque = new javax.swing.JTextField();
+        spnPeso = new javax.swing.JSpinner();
         lblObs = new javax.swing.JLabel();
         txtObs = new javax.swing.JTextField();
+        lblEstoque = new javax.swing.JLabel();
+        spnEstoque = new javax.swing.JSpinner();
+        btnSelecionar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lblWait = new javax.swing.JButton();
+        lblWait1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1024, 720));
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 204, 204));
         background.setAlignmentX(50.0F);
@@ -105,55 +120,44 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         painelEnderec.add(lblProd);
 
         cmbProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Um", "Aqui vai ter o select do banco de dados" }));
+        cmbProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbProdActionPerformed(evt);
+            }
+        });
         painelEnderec.add(cmbProd);
 
-        lblSku.setBackground(new java.awt.Color(255, 255, 255));
-        lblSku.setForeground(new java.awt.Color(255, 255, 255));
-        lblSku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
-        lblSku.setText("SKU");
-        lblSku.setAlignmentX(10.0F);
-        lblSku.setAlignmentY(10.0F);
-        painelEnderec.add(lblSku);
+        lblNome.setBackground(new java.awt.Color(255, 255, 255));
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Smile.png"))); // NOI18N
+        lblNome.setText("Nome");
+        lblNome.setAlignmentX(10.0F);
+        lblNome.setAlignmentY(10.0F);
+        painelEnderec.add(lblNome);
 
-        txtSku.setEditable(false);
-        txtSku.setBackground(new java.awt.Color(255, 255, 255));
-        txtSku.setForeground(new java.awt.Color(0, 0, 0));
-        txtSku.setText("SKU10");
-        txtSku.setAlignmentX(10.0F);
-        txtSku.setAlignmentY(10.0F);
-        txtSku.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtSku.setEnabled(false);
-        painelEnderec.add(txtSku);
+        txtNome.setEditable(false);
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setText("Selecione um");
+        txtNome.setAlignmentX(10.0F);
+        txtNome.setAlignmentY(10.0F);
+        txtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNome.setEnabled(false);
+        painelEnderec.add(txtNome);
 
-        lblPeso.setBackground(new java.awt.Color(255, 255, 255));
         lblPeso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPeso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Target.png"))); // NOI18N
         lblPeso.setText("Peso (G)");
+        lblPeso.setAlignmentX(10.0F);
+        lblPeso.setAlignmentY(10.0F);
         painelEnderec.add(lblPeso);
 
-        txtPeso.setEditable(false);
-        txtPeso.setBackground(new java.awt.Color(255, 255, 255));
-        txtPeso.setForeground(new java.awt.Color(0, 0, 0));
-        txtPeso.setText("500");
-        txtPeso.setAlignmentX(10.0F);
-        txtPeso.setAlignmentY(10.0F);
-        txtPeso.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtPeso.setEnabled(false);
-        painelEnderec.add(txtPeso);
-
-        lblEstoque.setBackground(new java.awt.Color(255, 255, 255));
-        lblEstoque.setForeground(new java.awt.Color(255, 255, 255));
-        lblEstoque.setText("Em Estoque");
-        painelEnderec.add(lblEstoque);
-
-        txtEstoque.setEditable(false);
-        txtEstoque.setBackground(new java.awt.Color(255, 255, 255));
-        txtEstoque.setForeground(new java.awt.Color(0, 0, 0));
-        txtEstoque.setText("1");
-        txtEstoque.setAlignmentX(10.0F);
-        txtEstoque.setAlignmentY(10.0F);
-        txtEstoque.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtEstoque.setEnabled(false);
-        painelEnderec.add(txtEstoque);
+        spnPeso.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnPeso.setAlignmentX(10.0F);
+        spnPeso.setAlignmentY(10.0F);
+        spnPeso.setAutoscrolls(true);
+        spnPeso.setEnabled(false);
+        painelEnderec.add(spnPeso);
 
         lblObs.setBackground(new java.awt.Color(255, 255, 255));
         lblObs.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,7 +167,7 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         txtObs.setEditable(false);
         txtObs.setBackground(new java.awt.Color(255, 255, 255));
         txtObs.setForeground(new java.awt.Color(0, 0, 0));
-        txtObs.setText("O sabor do campo em forma de erva. A Limão Caipira traz a intensidade e a refrescância  do limão associado ao sabor único que só a erva mate tem. ");
+        txtObs.setText("Selecione um");
         txtObs.setAlignmentX(10.0F);
         txtObs.setAlignmentY(10.0F);
         txtObs.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -171,21 +175,92 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         txtObs.setMinimumSize(new java.awt.Dimension(100, 26));
         painelEnderec.add(txtObs);
 
+        lblEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        lblEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Table.png"))); // NOI18N
+        lblEstoque.setText("Quantidade Em Estoque");
+        lblEstoque.setAlignmentX(10.0F);
+        lblEstoque.setAlignmentY(10.0F);
+        painelEnderec.add(lblEstoque);
+
+        spnEstoque.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 10));
+        spnEstoque.setAlignmentX(10.0F);
+        spnEstoque.setAlignmentY(10.0F);
+        spnEstoque.setAutoscrolls(true);
+        spnEstoque.setEnabled(false);
+        painelEnderec.add(spnEstoque);
+
+        btnSelecionar.setBackground(new java.awt.Color(255, 255, 255));
+        btnSelecionar.setForeground(new java.awt.Color(0, 0, 0));
+        btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/png/16x16/accept.png"))); // NOI18N
+        btnSelecionar.setText("Selecionar");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/Abort.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        lblWait.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        lblWait.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblWait.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblWait.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        lblWait1.setBackground(new java.awt.Color(255, 255, 255));
+        lblWait1.setForeground(new java.awt.Color(0, 0, 0));
+        lblWait1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16x16/wait_16x16.gif"))); // NOI18N
+        lblWait1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblWait1.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+
         javax.swing.GroupLayout PaineldeCad1Layout = new javax.swing.GroupLayout(PaineldeCad1);
         PaineldeCad1.setLayout(PaineldeCad1Layout);
         PaineldeCad1Layout.setHorizontalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineldeCad1Layout.createSequentialGroup()
+                            .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(painelEnderec, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblWait1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         PaineldeCad1Layout.setVerticalGroup(
             PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaineldeCad1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addComponent(lblWait, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelEnderec, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSelecionar)
+                    .addComponent(btnCancelar)))
+            .addGroup(PaineldeCad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PaineldeCad1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblWait1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         FORM.add(PaineldeCad1);
@@ -199,43 +274,65 @@ public class DialogBuscaProd extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Create and display the dialog
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogBuscaProd dialog = new DialogBuscaProd(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.carregarCombo(cmbProd, Erva.class);
+        lblWait.setVisible(false);
+    }//GEN-LAST:event_formComponentShown
+
+    private void cmbProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProdActionPerformed
+        // TODO add your handling code here:
+//        ao selecionar um item atualizar os txt
+        Erva erva = (Erva) cmbProd.getSelectedItem();
+        if (erva != null) {
+            txtNome.setText(erva.getNome());
+            spnPeso.setValue(erva.getPeso());
+            spnEstoque.setValue(erva.getQtdeEstoque());
+            txtObs.setText(erva.getDescricao());
+        }
+    }//GEN-LAST:event_cmbProdActionPerformed
+
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+        Erva erva = (Erva) cmbProd.getSelectedItem();
+        if (erva != null) {
+            ProdutoSelecionado = erva;
+            this.setVisible(false);
+        } else {
+            LDASwingUtils.messageError(this, "Selecione um Produto!", "BUSCAR PRODUTOS");
+        }
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        ProdutoSelecionado = null;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PaineldeCad1;
     private javax.swing.JPanel background;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cmbProd;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEstoque;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObs;
     private javax.swing.JLabel lblPeso;
     private javax.swing.JLabel lblProd;
-    private javax.swing.JLabel lblSku;
+    private javax.swing.JButton lblWait;
+    private javax.swing.JButton lblWait1;
     private javax.swing.JPanel painelEnderec;
-    private javax.swing.JTextField txtEstoque;
+    private javax.swing.JSpinner spnEstoque;
+    private javax.swing.JSpinner spnPeso;
+    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtObs;
-    private javax.swing.JTextField txtPeso;
-    private javax.swing.JTextField txtSku;
     // End of variables declaration//GEN-END:variables
+
+    public Erva getErvaSelecionada() {
+        return ProdutoSelecionado;
+    }
+
 }
