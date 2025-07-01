@@ -1,5 +1,6 @@
 package control;
 
+import java.awt.Component;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,7 @@ public class RelatorioManager {
     public RelatorioManager() {
     }
 
-    public void relComConexao(String nome) {
+    public void relComConexao(Component parentComponent, String nome) {
         try {
             // PASSO 1 - Caminho do relatório
             InputStream rel = getClass().getResourceAsStream("../relatorios/" + nome);
@@ -54,17 +55,18 @@ public class RelatorioManager {
                 viewer.setVisible(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "Relatório de clientes vazio.");
+                
+                JOptionPane.showMessageDialog(parentComponent, "Relatório vazio.");
             }
 
         } catch (JRException erro) {
-            JOptionPane.showMessageDialog(null, "ERRO ao abrir relatório de clientes. " + erro.getMessage());
+            JOptionPane.showMessageDialog(parentComponent, "ERRO ao abrir relatório de clientes. " + erro.getMessage());
 
         }
 
     }
 
-    public void relComLista(List lista, String nome) {
+    public void relComLista(Component parentComponent, List lista, String nome) {
         try {
             // PASSO 1 - Caminho do relatório
             InputStream rel = getClass().getResourceAsStream("../relatorios/" + nome);
@@ -94,11 +96,11 @@ public class RelatorioManager {
                 viewer.setVisible(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "Relatório vazio.");
+                JOptionPane.showMessageDialog(parentComponent, "Relatório vazio.");
             }
 
         } catch (JRException erro) {
-            JOptionPane.showMessageDialog(null, "ERRO ao abrir relatório de clientes. " + erro.getMessage());
+            JOptionPane.showMessageDialog(parentComponent, "ERRO ao abrir relatório de clientes. " + erro.getMessage());
 
         }
 

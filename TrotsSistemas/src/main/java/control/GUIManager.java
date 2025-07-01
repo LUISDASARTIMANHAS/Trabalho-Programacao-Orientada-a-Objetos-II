@@ -82,7 +82,7 @@ public class GUIManager {
         RelatorioManager rel = gui.relManager;
         List<Venda> lista = dao.pesquisarParaRelatorio();
         
-        rel.relComLista(lista, nome+".jasper");
+        rel.relComLista(principal, lista, nome+".jasper");
         return lista;
     }
 
