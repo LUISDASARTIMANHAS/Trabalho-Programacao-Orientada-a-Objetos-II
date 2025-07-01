@@ -166,4 +166,8 @@ public class Cliente implements Serializable {
         return nome;
     }
 
+//    para AUTO TABLE MODEL
+     public String getBairro() {
+        return getEndereco().getBairro();
+    }
 }
