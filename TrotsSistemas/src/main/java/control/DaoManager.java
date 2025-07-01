@@ -153,6 +153,10 @@ public class DaoManager {
                 return null;
         }
     }
+    
+    public List<Venda> pesquisarParaRelatorio() throws HibernateException {
+        return VendaDao.pesquisarParaRelatorio();
+    }
 
     public Venda inserirVenda(Cliente cliente, List<ItemPedido> listaItensPedido) {
         //        String nome, String cpf, String email, String tel, Endereco endereco

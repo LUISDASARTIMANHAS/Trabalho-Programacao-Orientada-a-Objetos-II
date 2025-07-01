@@ -148,7 +148,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(tblCli);
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro", "Valor" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro" }));
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {

@@ -242,14 +242,12 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         lblObs.setText("Descrição");
         painelEnderec.add(lblObs);
 
-        txtObs.setEditable(false);
         txtObs.setBackground(new java.awt.Color(255, 255, 255));
         txtObs.setForeground(new java.awt.Color(0, 0, 0));
         txtObs.setText("Selecione um");
         txtObs.setAlignmentX(10.0F);
         txtObs.setAlignmentY(10.0F);
         txtObs.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtObs.setEnabled(false);
         txtObs.setMinimumSize(new java.awt.Dimension(100, 26));
         painelEnderec.add(txtObs);
 

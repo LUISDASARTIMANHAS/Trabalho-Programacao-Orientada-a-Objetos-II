@@ -57,6 +57,10 @@ public class GUIManager {
         return daoManager;
     }
 
+    public RelatorioManager getRelManager() {
+        return relManager;
+    }
+
     // ######### SINGLETON ###########
     // ABRIR JDIALOG
     private JDialog abrirJanela(java.awt.Frame parent, JDialog dlg, Class classe) {

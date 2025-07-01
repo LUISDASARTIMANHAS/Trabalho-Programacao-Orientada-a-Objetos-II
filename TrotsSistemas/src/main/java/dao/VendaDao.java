@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.*;
@@ -61,7 +62,7 @@ public class VendaDao extends GenericDao {
 
     }
     
-    private List<Venda> pesquisar(int tipo, String pesq) throws HibernateException {
+    public List<Venda> pesquisarParaRelatorio() throws HibernateException {
                 
        List lista = null;
         Session sessao = null;
@@ -75,12 +76,41 @@ public class VendaDao extends GenericDao {
             Root tabela = consulta.from(Venda.class);
             
             // Alterar o fetch LAZY
-            //tabela.fetch("itensPedido", JoinType.INNER );
-            //consulta.distinct(true);
+            tabela.fetch("listaItensPedido", JoinType.INNER );
+            consulta.distinct(true);
+                        
+            // EXECUTAR
+            lista = sessao.createQuery(consulta).getResultList();
+
+            sessao.getTransaction().commit();
+            sessao.close();
+        } catch (HibernateException ex) {
+            if (sessao != null ) {
+                sessao.getTransaction().rollback();          
+                sessao.close();
+            }
+            throw new HibernateException(ex);
+        }
+        return lista;
+                                        
+    }
+    
+    private List<Venda> pesquisar(int tipo, String pesq) throws HibernateException {
+                
+       List lista = null;
+        Session sessao = null;
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            CriteriaBuilder builder = sessao.getCriteriaBuilder();
+            CriteriaQuery consulta = builder.createQuery(Venda.class);
+            
+            Root tabela = consulta.from(Venda.class);
             
             Predicate restricoes = null;
             switch ( tipo ) {
-                case 0: restricoes = builder.equal(tabela.get("idPedido"), pesq);
+                case 0: restricoes = builder.equal(tabela.get("idVenda"), pesq);
                         break;      
                 case 1: restricoes = builder.like(tabela.get("cliente").get("nome"), pesq+"%");
                         break;      
@@ -88,8 +118,8 @@ public class VendaDao extends GenericDao {
                 case 2: restricoes = builder.like(tabela.get("cliente").get("endereco").get("bairro"), pesq+"%");
                         break;                    
                     
-                case 3: Expression mes = builder.function("month", Integer.class, tabela.get("dtPedido") );
-                        Expression ano = builder.function("year", Integer.class, tabela.get("dtPedido") );
+                case 3: Expression mes = builder.function("month", Integer.class, tabela.get("data") );
+                        Expression ano = builder.function("year", Integer.class, tabela.get("data") );
                         
                         String arr[] = pesq.split("/");                        
                         
