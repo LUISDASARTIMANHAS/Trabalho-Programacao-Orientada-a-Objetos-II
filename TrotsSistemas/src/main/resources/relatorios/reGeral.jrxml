@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb571533-5681-4fdc-bd79-e775a7bc99c7">
-	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.zoom" value="1.0000000000000009"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="9"/>
+	<property name="ireport.y" value="60"/>
 	<style name="cabecalhoTabela" mode="Opaque" forecolor="#FFFFFF" backcolor="#006763" radius="0" hAlign="Center" vAlign="Middle" fontName="Monospaced" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
 		<box leftPadding="0" rightPadding="0">
 			<pen lineWidth="2.0"/>
@@ -168,7 +168,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""+$F{cidade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cidade}.getNome()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="linhaTabela" mode="Transparent" x="300" y="0" width="100" height="20" uuid="dace0ae9-5ea9-4033-b640-e97906bd63ee"/>
@@ -181,17 +181,12 @@
 				<reportElement style="linhaTabela" x="400" y="0" width="70" height="20" uuid="1ddf6029-5cc7-4e18-bf82-e38f301e5766"/>
 				<imageExpression><![CDATA[new java.io.ByteArrayInputStream( $F{foto} )]]></imageExpression>
 			</image>
-			<subreport>
-				<reportElement x="0" y="23" width="555" height="61" uuid="c750d701-d9ac-403f-a93d-300474efbc35"/>
-				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource( $F{listaParaSub} )]]></dataSourceExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "reItemPedido.jasper"]]></subreportExpression>
-			</subreport>
 			<textField>
 				<reportElement style="linhaTabela" mode="Transparent" x="100" y="0" width="100" height="20" uuid="bca8a247-4a0b-4038-8fb0-20680d988f68"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""+$F{endereco}.getBairro()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco}.getBairro()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
