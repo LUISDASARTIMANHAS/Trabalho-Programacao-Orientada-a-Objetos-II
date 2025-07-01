@@ -24,12 +24,12 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20140107</version>
+            <version>20231013</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.0.Final</version>
+            <version>5.4.24.Final</version>
         </dependency>
         <dependency>
             <groupId>pingobras.glitch.me</groupId>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.5</version>
+            <version>42.7.7</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
