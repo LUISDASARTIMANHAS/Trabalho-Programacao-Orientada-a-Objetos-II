@@ -70,6 +70,26 @@ public class DaoManager {
         ervaDao.inserir(erva);
         return erva;
     }
+    
+    public Erva alterarErva(
+            Erva erva,
+            String nome,
+            String sabor, 
+            int peso, 
+            float valor, 
+            int qtdeEstoque, 
+            String descricao
+    ) throws HibernateException, ClassNotFoundException {
+        erva.setNome(nome);
+        erva.setSabor(sabor);
+        erva.setPeso(peso);
+        erva.setValor(valor);
+        erva.setQtdeEstoque(qtdeEstoque);
+        erva.setDescricao(descricao);
+
+        ervaDao.alterarErva(erva);
+        return erva;
+    }
 
     public void excluir(Object obj) throws HibernateException {
         genericDao.excluir(obj);
