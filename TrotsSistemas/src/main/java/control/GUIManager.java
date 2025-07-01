@@ -75,6 +75,16 @@ public class GUIManager {
         dlg.setVisible(true);
         return dlg;
     }
+    
+    public List abrirRelatorio(String nome){
+        GUIManager gui = getMyInstance();
+        DaoManager dao = getDaoManager();
+        RelatorioManager rel = gui.relManager;
+        List<Venda> lista = dao.pesquisarParaRelatorio();
+        
+        rel.relComLista(lista, nome+".jasper");
+        return lista;
+    }
 
     public void abrirPrincipal() {
         principal = new Principal();
@@ -108,11 +118,7 @@ public class GUIManager {
     public void abrirCadVenda() {
         cadVenda = (DialogCadastroVenda) abrirJanela(principal, cadVenda, DialogCadastroVenda.class);
     }
-
-    public void abrirRelatorioCli() {
-        msgWIP(principal);
-    }
-
+    
     public void msgWIP(Component comp) {
         LDASwingUtils.message(comp, "Essa fucionalidade ainda não esta pronta", "Em Breve");
     }

@@ -281,7 +281,7 @@ public class Principal extends javax.swing.JFrame {
     private void RelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioClienteActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.abrirRelatorioCli();
+        gui.abrirRelatorio("reGeral");
     }//GEN-LAST:event_RelatorioClienteActionPerformed
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
@@ -316,13 +316,13 @@ public class Principal extends javax.swing.JFrame {
     private void RelatorioprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioprodutosActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        gui.abrirRelatorio("reItemPedido");
     }//GEN-LAST:event_RelatorioprodutosActionPerformed
 
     private void RelatorioPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioPedidosActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        gui.msgWIP(this);
+        gui.abrirRelatorio("reVendas");
     }//GEN-LAST:event_RelatorioPedidosActionPerformed
 
     private void TrocarLookAndFeel(int NomeLook) {

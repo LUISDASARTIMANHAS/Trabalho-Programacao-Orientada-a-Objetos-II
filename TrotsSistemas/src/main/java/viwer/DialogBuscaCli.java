@@ -135,17 +135,9 @@ public class DialogBuscaCli extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Nome", "Bairro", "Cidade", "Tel. Cel.", "Foto"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane3.setViewportView(tblCli);
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Bairro" }));
