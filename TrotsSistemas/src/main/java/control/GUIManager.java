@@ -8,6 +8,7 @@ import domain.Cidade;
 import domain.Cliente;
 import domain.Endereco;
 import domain.Erva;
+import domain.ItemPedido;
 import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
@@ -75,14 +76,6 @@ public class GUIManager {
         }
         dlg.setVisible(true);
         return dlg;
-    }
-
-    public List abrirRelatorio(String nome) {
-        RelatorioManager rel = getRelManager();
-        List<Venda> lista = daoManager.pesquisarParaRelatorio();
-
-        rel.relComLista(principal, lista, nome + ".jasper");
-        return lista;
     }
 
     public void abrirPrincipal() {
@@ -192,6 +185,13 @@ public class GUIManager {
         return daoManager.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, cidade);
     }
     
+    public void abrirRelatorioClientes() throws HibernateException, ClassNotFoundException {
+        RelatorioManager rel = getRelManager();
+        List<Cliente> Clientes = daoManager.listar(Cliente.class);
+
+        rel.relComLista(principal, Clientes, "reGeral.jasper");
+    }
+    
 //    venda;
     public List<Venda> pesquisarVenda(String pesq, int tipo) throws HibernateException, ClassNotFoundException {
         return daoManager.pesquisarVenda(pesq, tipo);
@@ -205,6 +205,13 @@ public class GUIManager {
         daoManager.carregarItensPedido(venda);
     }
     
+    public void abrirRelatorioVendas() {
+        RelatorioManager rel = getRelManager();
+        List<Venda> lista = daoManager.pesquisarParaRelatorioVenda();
+
+        rel.relComLista(principal, lista, "reVendas.jasper");
+    }
+    
 //    erva
     public Erva inserirErva(String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) throws HibernateException, ClassNotFoundException {
         return daoManager.InserirErva(nome, sabor, peso, valor, qtdeEstoque, descricao);
@@ -212,5 +219,12 @@ public class GUIManager {
     
     public Erva alterarErva(Erva ervaSelecionada, String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) throws HibernateException, ClassNotFoundException {
         return daoManager.alterarErva(ervaSelecionada, nome, sabor, peso, valor, qtdeEstoque, descricao);
+    }
+    
+    public void abrirRelatorioProdutos() throws HibernateException, ClassNotFoundException {
+        RelatorioManager rel = getRelManager();
+        List<ItemPedido> ItemPedidos = daoManager.listar(ItemPedido.class);
+
+        rel.relComLista(principal, ItemPedidos, "reItemPedido.jasper");
     }
 }
