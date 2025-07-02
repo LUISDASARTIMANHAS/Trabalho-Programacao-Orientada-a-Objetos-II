@@ -92,6 +92,15 @@ public class Venda {
     public void setListaItensPedido(List<ItemPedido> listaItensPedido) {
         this.listaItensPedido = listaItensPedido;
     }
+    
+//    para renderização do auto table model;
+    public String getNomeCliente() {
+        return cliente.toString();
+    }
+    
+     public String getDataVenda() {
+        return data.toString();
+    }
 
     
 }

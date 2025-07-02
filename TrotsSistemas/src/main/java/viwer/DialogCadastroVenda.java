@@ -425,12 +425,14 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
                 LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", title);
                 this.dispose();
             } catch (HibernateException ex) {
+                LDASwingUtils.messageError(this, String.valueOf(ex), title);
                 Logger.getLogger(DialogCadastroVenda.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
+                LDASwingUtils.messageError(this, String.valueOf(ex), title);
                 Logger.getLogger(DialogCadastroVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione um cliente.", title, JOptionPane.ERROR_MESSAGE);
+            LDASwingUtils.messageError(this, "Selecione um cliente.", title);
         }
     }//GEN-LAST:event_btnNovo1ActionPerformed
 
