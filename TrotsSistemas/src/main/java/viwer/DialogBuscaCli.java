@@ -1,8 +1,7 @@
 package viwer;
 
 import control.AutoTableModel;
-import control.DaoManager;
-import control.GUIManager;
+ import control.GUIManager;
 import domain.Cliente;
 import java.util.List;
 import java.util.logging.Level;
@@ -235,8 +234,8 @@ public class DialogBuscaCli extends javax.swing.JDialog {
         try {
             // TODO add your handling code here:
             GUIManager gui = GUIManager.getMyInstance();
-            DaoManager dao = gui.getDaoManager();
-            List<Cliente> lista = dao.listar(Cliente.class);
+            
+            List<Cliente> lista = gui.listar(Cliente.class);
             
             tblModelCliente.setLista(lista);
             lblWait.setVisible(false);
@@ -254,9 +253,9 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             String pesq = txtPesq.getText();
             int tipo = cmbTipo.getSelectedIndex() + 1;
             GUIManager gui = GUIManager.getMyInstance();
-            DaoManager dao = gui.getDaoManager();
+            
             lblWait.setVisible(true);
-            List<Cliente> lista = dao.pesquisarCliente(pesq, tipo);
+            List<Cliente> lista = gui.pesquisarCliente(pesq, tipo);
 
             if (lista.size() > 0) {
                 tblModelCliente.setLista(lista);

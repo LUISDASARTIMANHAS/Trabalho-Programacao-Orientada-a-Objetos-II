@@ -4,8 +4,11 @@
  */
 package control;
 
+import domain.Cidade;
 import domain.Cliente;
+import domain.Endereco;
 import domain.Erva;
+import domain.ItemPedido;
 import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
@@ -16,7 +19,6 @@ import javax.swing.*;
 import org.hibernate.HibernateException;
 import swing.*;
 import viwer.*;
-
 
 /**
  *
@@ -75,14 +77,14 @@ public class GUIManager {
         dlg.setVisible(true);
         return dlg;
     }
-    
-    public List abrirRelatorio(String nome){
+
+    public List abrirRelatorio(String nome) {
         GUIManager gui = getMyInstance();
         DaoManager dao = getDaoManager();
         RelatorioManager rel = gui.relManager;
         List<Venda> lista = dao.pesquisarParaRelatorio();
-        
-        rel.relComLista(principal, lista, nome+".jasper");
+
+        rel.relComLista(principal, lista, nome + ".jasper");
         return lista;
     }
 
@@ -118,7 +120,7 @@ public class GUIManager {
     public void abrirCadVenda() {
         cadVenda = (DialogCadastroVenda) abrirJanela(principal, cadVenda, DialogCadastroVenda.class);
     }
-    
+
     public void msgWIP(Component comp) {
         LDASwingUtils.message(comp, "Essa fucionalidade ainda não esta pronta", "Em Breve");
     }
@@ -144,7 +146,7 @@ public class GUIManager {
     public void sair() {
         System.exit(0);
     }
-    
+
     public void log(String txt) {
         System.out.println("[LOG] " + txt);
     }
@@ -172,4 +174,46 @@ public class GUIManager {
         gui.abrirPrincipal();
     }
 
+//    INTERAÇÕES COM A DAO
+    
+//    generico
+    public List listar(Class classe) throws HibernateException, ClassNotFoundException {
+        List lista = daoManager.listar(classe);
+        return lista;
+    }
+
+//    cliente
+    public List<Cliente> pesquisarCliente(String pesq, int tipo) throws HibernateException, ClassNotFoundException {
+        return daoManager.pesquisarCliente(pesq, tipo);
+    }
+    
+    public Cliente inserirCliente(String nome, String cpf, String email, String tel,Icon Foto,Endereco endereco,Cidade cidade) throws HibernateException, ClassNotFoundException {
+        return daoManager.InserirCliente(nome, cpf, email, tel, Foto, endereco, cidade);
+    }
+    
+    public Cliente alterarCliente(Cliente cliSelecionado, String nome, String cpf, String email, String tel, Icon Foto, Cidade cidade) throws HibernateException, ClassNotFoundException {
+        return daoManager.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, cidade);
+    }
+    
+//    venda;
+    public List<Venda> pesquisarVenda(String pesq, int tipo) throws HibernateException, ClassNotFoundException {
+        return daoManager.pesquisarVenda(pesq, tipo);
+    }
+    
+    public Venda inserirVenda(Cliente cliSelecionado,List ListaItensVenda) throws HibernateException, ClassNotFoundException {
+        return daoManager.inserirVenda(cliSelecionado, ListaItensVenda);
+    }
+    
+    public void  carregarItensVenda(Venda venda) throws HibernateException, ClassNotFoundException {
+        daoManager.carregarItensPedido(venda);
+    }
+    
+//    erva
+    public Erva inserirErva(String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) throws HibernateException, ClassNotFoundException {
+        return daoManager.InserirErva(nome, sabor, peso, valor, qtdeEstoque, descricao);
+    }
+    
+    public Erva alterarErva(Erva ervaSelecionada, String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) throws HibernateException, ClassNotFoundException {
+        return daoManager.alterarErva(ervaSelecionada, nome, sabor, peso, valor, qtdeEstoque, descricao);
+    }
 }

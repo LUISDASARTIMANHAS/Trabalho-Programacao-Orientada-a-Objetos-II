@@ -1,7 +1,6 @@
 package viwer;
 
 import control.CustomTableModel;
-import control.DaoManager;
 import control.GUIManager;
 import control.LDAMainUtils;
 import domain.Cliente;
@@ -9,7 +8,10 @@ import domain.Erva;
 import domain.ItemPedido;
 import domain.Venda;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 import swing.LDASwingUtils;
 
 
@@ -414,13 +416,19 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        DaoManager dao = gui.getDaoManager();
+
         List ListaItensPedido = tableModelItemPedido.getLista();
 
         if (cliSelecionado != null) {
-            Venda venda = dao.inserirVenda(cliSelecionado, ListaItensPedido);
-            LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", title);
-            this.dispose();
+            try {
+                Venda venda = gui.inserirVenda(cliSelecionado, ListaItensPedido);
+                LDASwingUtils.message(this, "Pedido " + venda.getIdVenda() + " inserido com sucesso.", title);
+                this.dispose();
+            } catch (HibernateException ex) {
+                Logger.getLogger(DialogCadastroVenda.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DialogCadastroVenda.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um cliente.", title, JOptionPane.ERROR_MESSAGE);
         }
@@ -472,59 +480,6 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         atualizarValorTotal();
     }//GEN-LAST:event_spnQtdeStateChanged
 
-//    FUNÇÕES UTEIS;
-    private void inserirTabela(Erva erva, String tipo, int qtde) {
-        //    Erva erva, Venda venda, String tipo, int Qdte
-        ItemPedido item = new ItemPedido(erva, null, tipo, qtde);
-        tableModelItemPedido.adicionar(item);
-        atualizarValorTotal();
-    }
-
-    private void excluirVenda(int linha) {
-        int confirmPane = JOptionPane.showConfirmDialog(
-                this,
-                "Deseja realmente Excluir o item do carrinho?"
-        );
-
-        if (confirmPane == JOptionPane.YES_OPTION) {
-//            deleta multiplas linhas selecionadas
-            while (linha >= 0) {
-                tableModelItemPedido.remover(linha);
-                linha = tblPedido.getSelectedRow();
-            }
-            LDASwingUtils.message(this, "Excluido com sucesso!", title);
-            atualizarValorTotal();
-        }
-    }
-
-    private void atualizarValorTotal() {
-        float valorTotal = 0;
-        int tam = tableModelItemPedido.getRowCount();
-        
-        for (int i = 0; i < tam; i++) {
-            ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(i);
-
-            valorTotal = LDAMainUtils.CalcValorTotal(item.getSubTotal(), valorTotal);
-        }
-
-        lblQtdeCard.setText(String.valueOf(tam));
-        lblValor.setText("TOTAL R$:" + valorTotal);
-        GUIManager.getMyInstance().log("VALOR TOTAL ATUALIZADO!");
-    }
-
-    private void limparCampos() {
-        GUIManager gui = GUIManager.getMyInstance();
-        int linha = tableModelItemPedido.getRowCount() -1;
-        LDASwingUtils.clearTxt(txtNome);
-        
-//        deleta multiplas linhas selecionadas
-        while (linha >= 0) {
-            tableModelItemPedido.remover(linha);
-            gui.log("VENDA " + linha + " REMOVIDA");
-            linha = tableModelItemPedido.getRowCount()-1;
-        }
-        atualizarValorTotal();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FORM;
@@ -553,4 +508,58 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JTable tblPedido;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
+
+//    FUNÇÕES UTEIS;
+    private void inserirTabela(Erva erva, String tipo, int qtde) {
+        //    Erva erva, Venda venda, String tipo, int Qdte
+        ItemPedido item = new ItemPedido(erva, null, tipo, qtde);
+        tableModelItemPedido.adicionar(item);
+        atualizarValorTotal();
+    }
+
+    private void excluirVenda(int linha) {
+        int confirmPane = JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente Excluir o item do carrinho?"
+        );
+
+        if (confirmPane == JOptionPane.YES_OPTION) {
+//            deleta multiplas linhas selecionadas
+            while (linha >= 0) {
+                tableModelItemPedido.remover(linha);
+                linha = tblPedido.getSelectedRow();
+            }
+            LDASwingUtils.message(this, "Excluido com sucesso!", title);
+            atualizarValorTotal();
+        }
+    }
+
+    private void atualizarValorTotal() {
+        float valorTotal = 0;
+        int tam = tableModelItemPedido.getRowCount();
+
+        for (int i = 0; i < tam; i++) {
+            ItemPedido item = (ItemPedido) tableModelItemPedido.getItem(i);
+
+            valorTotal = LDAMainUtils.CalcValorTotal(item.getSubTotal(), valorTotal);
+        }
+
+        lblQtdeCard.setText(String.valueOf(tam));
+        lblValor.setText("TOTAL R$:" + valorTotal);
+        GUIManager.getMyInstance().log("VALOR TOTAL ATUALIZADO!");
+    }
+
+    private void limparCampos() {
+        GUIManager gui = GUIManager.getMyInstance();
+        int linha = tableModelItemPedido.getRowCount() - 1;
+        LDASwingUtils.clearTxt(txtNome);
+
+//        deleta multiplas linhas selecionadas
+        while (linha >= 0) {
+            tableModelItemPedido.remover(linha);
+            gui.log("VENDA " + linha + " REMOVIDA");
+            linha = tableModelItemPedido.getRowCount() - 1;
+        }
+        atualizarValorTotal();
+    }
 }

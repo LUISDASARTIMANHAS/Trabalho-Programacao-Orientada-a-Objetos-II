@@ -1,8 +1,7 @@
 package viwer;
 
 import control.AutoTableModel;
-import control.DaoManager;
-import control.GUIManager;
+ import control.GUIManager;
 import domain.ItemPedido;
 import domain.Venda;
 import java.util.List;
@@ -269,8 +268,8 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         try {
             // TODO add your handling code here:
             GUIManager gui = GUIManager.getMyInstance();
-            DaoManager dao = gui.getDaoManager();
-            List<Venda> lista = dao.listar(Venda.class);
+            
+            List<Venda> lista = gui.listar(Venda.class);
 
             tblModelVendas.setLista(lista);
             lblWait.setVisible(false);
@@ -292,9 +291,9 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             String pesq = txtPesq.getText();
             int tipo = cmbTipo.getSelectedIndex() + 1;
             GUIManager gui = GUIManager.getMyInstance();
-            DaoManager dao = gui.getDaoManager();
+            
             lblWait.setVisible(true);
-            List<Venda> lista = dao.pesquisarVenda(pesq, tipo);
+            List<Venda> lista = gui.pesquisarVenda(pesq, tipo);
 
             if (lista.size() > 0) {
                 tblModelVendas.setLista(lista);
@@ -312,15 +311,19 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
         vendaSelecionada = pegarLinhaSelecionada();
         GUIManager gui = GUIManager.getMyInstance();
-        DaoManager dao = gui.getDaoManager();
+        
         String msg = "";
         if (vendaSelecionada != null) {
-            dao.carregarItensPedido(vendaSelecionada);
-            for (ItemPedido ip : vendaSelecionada.getListaItensPedido()) {
-                String nome = ip.getErva().getNome();
-                msg = msg.concat(nome).concat("\n");
+            try {
+                gui.carregarItensVenda(vendaSelecionada);
+                for (ItemPedido ip : vendaSelecionada.getListaItensPedido()) {
+                    String nome = ip.getErva().getNome();
+                    msg = msg.concat(nome).concat("\n");
+                }
+                JOptionPane.showMessageDialog(this, msg);
+            } catch (HibernateException | ClassNotFoundException ex) {
+                Logger.getLogger(DialogBuscaVendas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this, msg);
         }
 
     }//GEN-LAST:event_btnProdutosActionPerformed

@@ -492,7 +492,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
         GUIManager gui = GUIManager.getMyInstance();
-        DaoManager dao = gui.getDaoManager();
+        
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
         String email = txtEmail.getText();
@@ -517,12 +517,12 @@ public class DialogCadastro extends javax.swing.JDialog {
                     LDASwingUtils.message(this, "Operação em andamento...", title);
 
                     // INSERIR
-                    cliSelecionado = dao.InserirCliente(nome, cpf, email, tel, Foto, endereco, cidade);
+                    cliSelecionado = gui.inserirCliente(nome, cpf, email, tel, Foto, endereco, cidade);
                     LDASwingUtils.message(this, "Cliente: " + nome + ". Cadastrado com sucesso!", title);
                 } else {
 //                ALTERAR
                     gui.log("ALTERAR EM ANDAMENTO...");
-                    dao.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, cidade);
+                    gui.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, cidade);
 
                     LDASwingUtils.message(this, "Cliente " + cliSelecionado.getId() + " alterado com sucesso.", title);
                 }

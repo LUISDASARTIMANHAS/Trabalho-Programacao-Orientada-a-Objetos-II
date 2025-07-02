@@ -1,7 +1,6 @@
 package viwer;
 
-import control.DaoManager;
-import control.GUIManager;
+ import control.GUIManager;
 import domain.Erva;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -327,7 +326,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here
         GUIManager gui = GUIManager.getMyInstance();
-        DaoManager dao = gui.getDaoManager();
+        
         String nome = txtNome.getText();
         String sabor = txtSabor.getText();
         float valor = (float) spnValor.getValue();
@@ -341,12 +340,12 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 //            INSERIR
                 if (ervaSelecionada == null) {
                     gui.log("INSERIR EM ANDAMENTO...");
-                    ervaSelecionada = dao.InserirErva(nome, sabor, peso, valor, qtdeEstoque, descricao);
+                    ervaSelecionada = gui.inserirErva(nome, sabor, peso, valor, qtdeEstoque, descricao);
                     LDASwingUtils.message(this, "Produto: " + nome + ". Cadastrado com sucesso!", title);
                 } else {
 //                  ALTERAR
                     gui.log("ALTERAR EM ANDAMENTO...");
-                    dao.alterarErva(ervaSelecionada, nome, sabor, peso, valor, qtdeEstoque, descricao);
+                    gui.alterarErva(ervaSelecionada, nome, sabor, peso, valor, qtdeEstoque, descricao);
 
                     LDASwingUtils.message(this, "Produto: " + ervaSelecionada.toString()+ " alterado com sucesso.", title);
                 }
