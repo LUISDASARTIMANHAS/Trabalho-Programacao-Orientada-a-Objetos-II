@@ -154,7 +154,11 @@ public class DaoManager {
         }
     }
     
-    public List<Venda> pesquisarParaRelatorio() throws HibernateException {
+    public List<Venda> pesquisarParaRelatorioCliente() throws HibernateException {
+        return ClienteDao.pesquisarParaRelatorio();
+    }
+    
+    public List<Venda> pesquisarParaRelatorioVenda() throws HibernateException {
         return VendaDao.pesquisarParaRelatorio();
     }
 

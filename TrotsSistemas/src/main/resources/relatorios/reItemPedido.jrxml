@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb571533-5681-4fdc-bd79-e775a7bc99c7">
-	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.zoom" value="1.1000000000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="cabecalhoTabela" mode="Opaque" forecolor="#FFFFFF" backcolor="#006763" radius="0" hAlign="Center" vAlign="Middle" fontName="Monospaced" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
@@ -123,11 +123,11 @@
 			</textField>
 			<textField>
 				<reportElement style="linhaTabela" x="325" y="0" width="75" height="20" uuid="7d95a9d6-1798-4b32-a028-6cadac9193af"/>
-				<textFieldExpression><![CDATA[$F{erva}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{erva}.getIdErva()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="linhaTabela" x="400" y="0" width="100" height="20" uuid="647c68a1-552e-459e-b494-12496d62d2f3"/>
-				<textFieldExpression><![CDATA[""+$F{venda}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{venda}.getIdVenda()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

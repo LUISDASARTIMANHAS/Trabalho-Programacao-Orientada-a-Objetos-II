@@ -8,7 +8,6 @@ import domain.Cidade;
 import domain.Cliente;
 import domain.Endereco;
 import domain.Erva;
-import domain.ItemPedido;
 import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
@@ -79,10 +78,8 @@ public class GUIManager {
     }
 
     public List abrirRelatorio(String nome) {
-        GUIManager gui = getMyInstance();
-        DaoManager dao = getDaoManager();
-        RelatorioManager rel = gui.relManager;
-        List<Venda> lista = dao.pesquisarParaRelatorio();
+        RelatorioManager rel = getRelManager();
+        List<Venda> lista = daoManager.pesquisarParaRelatorio();
 
         rel.relComLista(principal, lista, nome + ".jasper");
         return lista;
