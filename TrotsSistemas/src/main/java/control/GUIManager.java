@@ -8,7 +8,6 @@ import domain.Cidade;
 import domain.Cliente;
 import domain.Endereco;
 import domain.Erva;
-import domain.ItemPedido;
 import domain.Venda;
 import java.awt.Component;
 import java.awt.Frame;
@@ -223,8 +222,8 @@ public class GUIManager {
     
     public void abrirRelatorioProdutos() throws HibernateException, ClassNotFoundException {
         RelatorioManager rel = getRelManager();
-        List<ItemPedido> ItemPedidos = daoManager.listar(ItemPedido.class);
+        List<Erva> lista = daoManager.listar(Erva.class);
 
-        rel.relComLista(principal, ItemPedidos, "reItemPedido.jasper");
+        rel.relComLista(principal, lista, "reErvas.jasper");
     }
 }
