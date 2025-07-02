@@ -45,20 +45,29 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="valorTotal" class="java.lang.Float">
-		<fieldDescription><![CDATA[valorTotal]]></fieldDescription>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
 	</field>
 	<field name="cliente" class="domain.Cliente">
 		<fieldDescription><![CDATA[cliente]]></fieldDescription>
 	</field>
-	<field name="listaItensPedido" class="java.util.List">
-		<fieldDescription><![CDATA[listaItensPedido]]></fieldDescription>
-	</field>
 	<field name="data" class="java.util.Date">
 		<fieldDescription><![CDATA[data]]></fieldDescription>
 	</field>
+	<field name="dataVenda" class="java.lang.String">
+		<fieldDescription><![CDATA[dataVenda]]></fieldDescription>
+	</field>
 	<field name="idVenda" class="java.lang.Integer">
 		<fieldDescription><![CDATA[idVenda]]></fieldDescription>
+	</field>
+	<field name="listaItensPedido" class="java.util.List">
+		<fieldDescription><![CDATA[listaItensPedido]]></fieldDescription>
+	</field>
+	<field name="nomeCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[nomeCliente]]></fieldDescription>
+	</field>
+	<field name="valorTotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[valorTotal]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -81,20 +90,16 @@
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="cabecalhoTabela" x="42" y="0" width="100" height="27" uuid="be66697e-efde-4bcf-9876-b5a64edff2e0"/>
+				<reportElement style="cabecalhoTabela" x="268" y="0" width="258" height="27" uuid="be66697e-efde-4bcf-9876-b5a64edff2e0"/>
 				<text><![CDATA[CLIENTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="cabecalhoTabela" x="142" y="0" width="100" height="27" uuid="641b5ac3-98b1-44ba-86ef-8b158cb29603"/>
+				<reportElement style="cabecalhoTabela" x="42" y="0" width="100" height="27" uuid="641b5ac3-98b1-44ba-86ef-8b158cb29603"/>
 				<text><![CDATA[DATA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="cabecalhoTabela" x="400" y="0" width="126" height="27" uuid="0688ab2c-27f5-44b4-8a2f-7cf1ad29d3da"/>
+				<reportElement style="cabecalhoTabela" x="142" y="0" width="126" height="27" uuid="0688ab2c-27f5-44b4-8a2f-7cf1ad29d3da"/>
 				<text><![CDATA[VALOR TOTAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="cabecalhoTabela" x="242" y="0" width="158" height="27" uuid="57c91056-cf52-44b5-9736-189ab715c7fa"/>
-				<text><![CDATA[ITENS DO PEDIDO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -108,20 +113,16 @@
 				<textFieldExpression><![CDATA[$F{idVenda}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="linhaTabela" x="42" y="0" width="100" height="20" uuid="804f471b-f033-464e-a14f-b0b86d96de93"/>
-				<textFieldExpression><![CDATA[""+$F{cliente}]]></textFieldExpression>
+				<reportElement style="linhaTabela" x="268" y="0" width="258" height="20" uuid="804f471b-f033-464e-a14f-b0b86d96de93"/>
+				<textFieldExpression><![CDATA[$F{cliente}.getNome()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="linhaTabela" x="142" y="0" width="100" height="20" uuid="d474fd35-4773-4740-91da-33c9c836f218"/>
+				<reportElement style="linhaTabela" x="42" y="0" width="100" height="20" uuid="d474fd35-4773-4740-91da-33c9c836f218"/>
 				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="linhaTabela" x="400" y="0" width="126" height="20" uuid="ccca7457-dde9-4703-952a-239fa275ef1d"/>
+				<reportElement style="linhaTabela" x="142" y="0" width="126" height="20" uuid="ccca7457-dde9-4703-952a-239fa275ef1d"/>
 				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="linhaTabela" x="242" y="0" width="158" height="20" uuid="6508d57c-ac4e-45c9-bd26-0b411d9e9b81"/>
-				<textFieldExpression><![CDATA[""+$F{listaItensPedido}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
