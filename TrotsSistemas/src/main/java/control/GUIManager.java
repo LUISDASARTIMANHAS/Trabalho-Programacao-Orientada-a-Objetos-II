@@ -170,6 +170,19 @@ public class GUIManager {
         List lista = daoManager.listar(classe);
         return lista;
     }
+    
+    public void abrirRelatorio(Class classe, String nomeRelatorio) {
+        try {
+            RelatorioManager rel = getRelManager();
+            List lista = daoManager.listar(classe);
+            
+            rel.relComLista(principal, lista, nomeRelatorio+".jasper");
+        } catch (HibernateException | ClassNotFoundException ex) {
+            log(String.valueOf(ex));
+            Logger.getLogger(GUIManager.class.getName()).log(Level.SEVERE, null, ex);
+            LDASwingUtils.messageError(principal, "Erro ao abrir relatorio. " + ex, "RELATORIO");
+        }
+    }
 
 //    cliente
     public List<Cliente> pesquisarCliente(String pesq, int tipo) throws HibernateException, ClassNotFoundException {
@@ -184,11 +197,8 @@ public class GUIManager {
         return daoManager.alterarCliente(cliSelecionado, nome, cpf, email, tel, Foto, cidade);
     }
     
-    public void abrirRelatorioClientes() throws HibernateException, ClassNotFoundException {
-        RelatorioManager rel = getRelManager();
-        List<Cliente> Clientes = daoManager.listar(Cliente.class);
-
-        rel.relComLista(principal, Clientes, "reGeral.jasper");
+    public void abrirRelatorioClientes() {
+        abrirRelatorio(Cliente.class, "reGeral");
     }
     
 //    venda;
@@ -205,10 +215,7 @@ public class GUIManager {
     }
     
     public void abrirRelatorioVendas() {
-        RelatorioManager rel = getRelManager();
-        List<Venda> lista = daoManager.pesquisarParaRelatorioVenda();
-
-        rel.relComLista(principal, lista, "reVendas.jasper");
+        abrirRelatorio(Venda.class, "reVendas");
     }
     
 //    erva
@@ -220,10 +227,7 @@ public class GUIManager {
         return daoManager.alterarErva(ervaSelecionada, nome, sabor, peso, valor, qtdeEstoque, descricao);
     }
     
-    public void abrirRelatorioProdutos() throws HibernateException, ClassNotFoundException {
-        RelatorioManager rel = getRelManager();
-        List<Erva> lista = daoManager.listar(Erva.class);
-
-        rel.relComLista(principal, lista, "reErvas.jasper");
+    public void abrirRelatorioProdutos() {
+        abrirRelatorio(Erva.class, "reErvas");
     }
 }

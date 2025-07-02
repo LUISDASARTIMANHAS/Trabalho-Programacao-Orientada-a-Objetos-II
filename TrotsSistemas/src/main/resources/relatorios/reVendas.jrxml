@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb571533-5681-4fdc-bd79-e775a7bc99c7">
-	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.zoom" value="1.4641000000000013"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="cabecalhoTabela" mode="Opaque" forecolor="#FFFFFF" backcolor="#006763" radius="0" hAlign="Center" vAlign="Middle" fontName="Monospaced" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
@@ -104,7 +104,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="40" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<rectangle>
 				<reportElement style="linhaTabela" x="0" y="0" width="526" height="20" uuid="0002d3f3-8a64-4201-9b5b-82abbd516131"/>
 			</rectangle>
@@ -126,4 +126,21 @@
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="39">
+			<textField>
+				<reportElement x="406" y="3" width="80" height="20" uuid="2091b0f9-b567-4ac4-b176-00713cecb458"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="486" y="3" width="40" height="20" uuid="ca5fd710-2d41-419d-bf28-8d4a19474a1a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="118" height="24" uuid="a278caa0-ed17-4829-87b1-850614d31630"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>

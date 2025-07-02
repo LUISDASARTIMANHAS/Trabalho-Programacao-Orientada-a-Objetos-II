@@ -1,9 +1,6 @@
 package viwer;
 
 import control.GUIManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.hibernate.HibernateException;
 import swing.LDASwingUtils;
 
 /*
@@ -282,13 +279,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ConsultaProdutoActionPerformed
 
     private void RelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioClienteActionPerformed
-        try {
+
             // TODO add your handling code here:
             GUIManager gui = GUIManager.getMyInstance();
             gui.abrirRelatorioClientes();
-        } catch (HibernateException | ClassNotFoundException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }//GEN-LAST:event_RelatorioClienteActionPerformed
 
     private void CadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadProdutoActionPerformed
@@ -321,13 +316,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_MudarTemaActionPerformed
 
     private void RelatorioprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioprodutosActionPerformed
-        try {
-            // TODO add your handling code here:
-            GUIManager gui = GUIManager.getMyInstance();
-            gui.abrirRelatorioProdutos();
-        } catch (HibernateException | ClassNotFoundException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        // TODO add your handling code here:
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirRelatorioProdutos();
     }//GEN-LAST:event_RelatorioprodutosActionPerformed
 
     private void RelatorioPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioPedidosActionPerformed

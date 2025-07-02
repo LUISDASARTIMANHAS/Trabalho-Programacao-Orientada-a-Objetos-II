@@ -105,7 +105,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="40" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<rectangle>
 				<reportElement style="linhaTabela" x="0" y="0" width="500" height="20" uuid="0002d3f3-8a64-4201-9b5b-82abbd516131"/>
 			</rectangle>
@@ -131,4 +131,21 @@
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="21">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="21ab952b-e80e-4b92-b6d3-5def0dc95daa"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="80" height="20" uuid="d7817cf0-cb81-4155-9e85-3e20f05e0392"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="460" y="0" width="40" height="20" uuid="a4bb07cf-2439-45e6-bc9e-a23dc5388a55"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>

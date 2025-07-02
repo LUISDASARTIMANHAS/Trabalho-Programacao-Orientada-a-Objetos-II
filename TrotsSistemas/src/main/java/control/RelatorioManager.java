@@ -49,7 +49,7 @@ public class RelatorioManager {
 
                 // Criar uma janela MODAL e colocar o JasperView dentro dela
                 JDialog viewer = new JDialog(new javax.swing.JFrame(), "Visualização do Relatório", true);
-                viewer.setSize(800, 600);
+                viewer.setSize(1024, 600);
                 viewer.setLocationRelativeTo(null);
                 viewer.getContentPane().add(jrViewer.getContentPane());
                 viewer.setVisible(true);
@@ -72,7 +72,7 @@ public class RelatorioManager {
             InputStream rel = getClass().getResourceAsStream("../relatorios/" + nome);
 
             // COMPILAR
-            // JasperReport rel = JasperCompileManager.compileReport(relArq);
+//             JasperReport rel = JasperCompileManager.compileReport(relArq);;
             // PASSO 2 - Criar parâmetros de Pesquisa 
             Map parametros = new HashMap();
 
@@ -90,7 +90,7 @@ public class RelatorioManager {
 
                 // Criar uma janela MODAL e colocar o JasperView dentro dela
                 JDialog viewer = new JDialog(new javax.swing.JFrame(), "Visualização do Relatório", true);
-                viewer.setSize(800, 600);
+                viewer.setSize(1024, 600);
                 viewer.setLocationRelativeTo(null);
                 viewer.getContentPane().add(jrViewer.getContentPane());
                 viewer.setVisible(true);
