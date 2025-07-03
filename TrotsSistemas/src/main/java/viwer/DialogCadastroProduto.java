@@ -28,7 +28,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     public DialogCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        habilitarBotoes(ervaSelecionada);
+        LDASwingUtils.habilitarBotoes(btnNovo,btnAlterar,ervaSelecionada);
     }
 
     /**
@@ -298,7 +298,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
         // TODO add your handling code here:
         ervaSelecionada = null;
-        habilitarBotoes(ervaSelecionada);
+        LDASwingUtils.habilitarBotoes(btnNovo,btnAlterar,ervaSelecionada);
         limparCampos();
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelar1ActionPerformed
@@ -310,7 +310,7 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
         ervaSelecionada = gui.abrirBuscaProd();
         if (ervaSelecionada != null) {
-            habilitarBotoes(ervaSelecionada);
+            LDASwingUtils.habilitarBotoes(btnNovo,btnAlterar,ervaSelecionada);
             txtNome.setText(ervaSelecionada.getNome());
             txtObs.setText(ervaSelecionada.getDescricao());
             txtSabor.setText(ervaSelecionada.getSabor());
@@ -361,6 +361,32 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnNovoActionPerformed
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FORM;
+    private javax.swing.JLabel Logo;
+    private javax.swing.JPanel PaineldeCad1;
+    private javax.swing.JPanel background;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnCancelar1;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesqProd;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblComplem;
+    private javax.swing.JLabel lblComplem2;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblObs;
+    private javax.swing.JLabel lblSabor;
+    private javax.swing.JPanel painelEnderec;
+    private javax.swing.JSpinner spnEstoque;
+    private javax.swing.JSpinner spnPeso;
+    private javax.swing.JSpinner spnValor;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtObs;
+    private javax.swing.JTextField txtSabor;
+    // End of variables declaration//GEN-END:variables
+
     //    FUNCOES UTEIS PRIVADAS
     private boolean validarCampos() {
         String msgError = "";
@@ -387,42 +413,4 @@ public class DialogCadastroProduto extends javax.swing.JDialog {
         spnPeso.setValue(500);
         spnValor.setValue(1);
     }
-
-    private void habilitarBotoes(Object obj) {
-        if (obj != null) {
-//        ao selecionar
-            btnNovo.setVisible(false);
-            btnAlterar.setVisible(true);
-        } else {
-//        limpar campos
-            btnNovo.setVisible(true);
-            btnAlterar.setVisible(false);
-        }
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel FORM;
-    private javax.swing.JLabel Logo;
-    private javax.swing.JPanel PaineldeCad1;
-    private javax.swing.JPanel background;
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCancelar1;
-    private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesqProd;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblComplem;
-    private javax.swing.JLabel lblComplem2;
-    private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblNum;
-    private javax.swing.JLabel lblObs;
-    private javax.swing.JLabel lblSabor;
-    private javax.swing.JPanel painelEnderec;
-    private javax.swing.JSpinner spnEstoque;
-    private javax.swing.JSpinner spnPeso;
-    private javax.swing.JSpinner spnValor;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtObs;
-    private javax.swing.JTextField txtSabor;
-    // End of variables declaration//GEN-END:variables
 }

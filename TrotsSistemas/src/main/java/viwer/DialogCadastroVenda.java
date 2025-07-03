@@ -180,30 +180,15 @@ public class DialogCadastroVenda extends javax.swing.JDialog {
         tblPedido.setForeground(new java.awt.Color(0, 0, 0));
         tblPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"sad",  new Integer(7), null, null},
-                {"Erva Mate - Menta & Cereja ",  new Integer(3), null, null},
-                {"aasd",  new Integer(5), null, null},
-                {"aasdasd",  new Integer(8), null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Tipo", "Qtde", "ValorDaUnidade", "SubTotal"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tblPedido.setComponentPopupMenu(Popup);
         tblPedido.setGridColor(new java.awt.Color(0, 0, 0));
         tblPedido.setMinimumSize(new java.awt.Dimension(400, 520));

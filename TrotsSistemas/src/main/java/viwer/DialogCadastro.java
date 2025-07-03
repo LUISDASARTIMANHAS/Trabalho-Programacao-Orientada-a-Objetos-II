@@ -40,7 +40,7 @@ public class DialogCadastro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         dir = null;
-        habilitarBotoes(cliSelecionado);
+        LDASwingUtils.habilitarBotoes(btnNovo,btnAlterar,cliSelecionado);
     }
 
     /**
@@ -542,7 +542,7 @@ public class DialogCadastro extends javax.swing.JDialog {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         cliSelecionado = null;
-        habilitarBotoes(cliSelecionado);
+        LDASwingUtils.habilitarBotoes(btnNovo,btnAlterar,cliSelecionado);
         limparCampos();
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -694,22 +694,9 @@ public class DialogCadastro extends javax.swing.JDialog {
                 carregarFotoPadrao();
             }
         }
-        habilitarBotoes(cli);
+        LDASwingUtils.habilitarBotoes(btnNovo,btnAlterar, cli);
     }
 
-    private void habilitarBotoes(Object obj) {
-
-        if (obj != null) {
-//        ao selecionar
-            btnNovo.setVisible(false);
-            btnAlterar.setVisible(true);
-        } else {
-
-//        limpar campos
-            btnNovo.setVisible(true);
-            btnAlterar.setVisible(false);
-        }
-    }
 
     // Variables declaration - do not modify                     
     // End of variables declaration                   

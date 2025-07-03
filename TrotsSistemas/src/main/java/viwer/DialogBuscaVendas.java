@@ -299,6 +299,8 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
                 gui.log("Sistema Encontrou dados da Venda!");
                 tblModelVendas.setLista(lista);
             } else {
+                //                limpa a lista;
+                tblModelVendas.clearLista();
                 LDASwingUtils.message(this, "Nenhuma Venda Encontrada", title);
             }
         } catch (HibernateException ex) {
