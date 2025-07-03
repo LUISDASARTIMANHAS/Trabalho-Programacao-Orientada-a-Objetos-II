@@ -6,7 +6,6 @@ package control;
 
 import dao.ClienteDao;
 import dao.ConexaoHibernate;
-import dao.ErvaDao;
 import dao.GenericDao;
 import dao.VendaDao;
 import domain.Cidade;
@@ -37,7 +36,6 @@ public class DaoManager {
 
     private GenericDao genericDao;
     private ClienteDao clienteDao;
-    private ErvaDao ervaDao;
     private VendaDao VendaDao;
 
     public DaoManager() throws java.lang.ExceptionInInitializerError, ClassNotFoundException, HibernateException {
@@ -46,7 +44,6 @@ public class DaoManager {
 //        instanciar as classes DAO 
         genericDao = new GenericDao();
         clienteDao = new ClienteDao();
-        ervaDao = new ErvaDao();
         VendaDao = new VendaDao();
     }
 
@@ -54,20 +51,27 @@ public class DaoManager {
     public List listar(Class classe) throws HibernateException, ClassNotFoundException {
         return genericDao.listar(classe);
     }
-
-    public Cliente InserirCliente(String nome, String cpf, String email, String tel, Icon Foto, Endereco endereco, Cidade cidade) throws HibernateException, ClassNotFoundException {
-//        String nome, String cpf, String email, String tel, Endereco endereco
-        Cliente cli = new Cliente(nome, cpf, email, tel, Foto, endereco, cidade);
-
-        clienteDao.inserir(cli);
-        return cli;
+    
+    public void inserir(Object obj) throws HibernateException, ClassNotFoundException {
+        genericDao.inserir(obj);
+    }
+    
+    public void alterar(Object obj) throws HibernateException, ClassNotFoundException {
+        genericDao.alterar(obj);
+    }
+    
+    public void excluir(Object obj) throws HibernateException {
+        genericDao.excluir(obj);
     }
 
+    
+    
+//    ERVA;
     public Erva InserirErva(String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao) throws HibernateException, ClassNotFoundException {
 //        String nome, String sabor, int peso, float valor, int qtdeEstoque, String descricao
         Erva erva = new Erva(nome, sabor, peso, valor, qtdeEstoque, descricao);
 
-        ervaDao.inserir(erva);
+        genericDao.inserir(erva);
         return erva;
     }
     
@@ -87,19 +91,20 @@ public class DaoManager {
         erva.setQtdeEstoque(qtdeEstoque);
         erva.setDescricao(descricao);
 
-        ervaDao.alterarErva(erva);
+        genericDao.alterar(erva);
         return erva;
     }
+    
+    
+//    CLIENTE
+    public Cliente InserirCliente(String nome, String cpf, String email, String tel, Icon Foto, Endereco endereco, Cidade cidade) throws HibernateException, ClassNotFoundException {
+//        String nome, String cpf, String email, String tel, Endereco endereco
+        Cliente cli = new Cliente(nome, cpf, email, tel, Foto, endereco, cidade);
 
-    public void excluir(Object obj) throws HibernateException {
-        genericDao.excluir(obj);
+        clienteDao.inserir(cli);
+        return cli;
     }
 
-    public void carregarItensPedido(Venda venda) {
-        VendaDao.carregarItens(venda);
-    }
-
-    // ##############
     public List<Cliente> pesquisarCliente(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
 
         switch (tipo) {
@@ -138,6 +143,11 @@ public class DaoManager {
         return cli;
     }
 
+//    VENDA;
+    public void carregarItensPedido(Venda venda) {
+        VendaDao.carregarItens(venda);
+    }
+    
     public List<Venda> pesquisarVenda(String pesq, int tipo) throws HibernateException, ClassNotFoundException, ClassNotFoundException {
 
         switch (tipo) {

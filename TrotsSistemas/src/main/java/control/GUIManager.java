@@ -163,7 +163,9 @@ public class GUIManager {
         gui.abrirPrincipal();
     }
 
-//    INTERAÇÕES COM A DAO
+//    INTERAÇÕES COM A DAO 
+//   CORRIGIDO FALHA NA QUEBRA DE DIVISÃO EM CAMADAS
+//    REPORTADO PELO PROFESSOR Giovany Frossard Teixeira;
     
 //    generico
     public List listar(Class classe) throws HibernateException, ClassNotFoundException {
