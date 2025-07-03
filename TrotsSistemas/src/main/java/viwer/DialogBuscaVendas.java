@@ -283,7 +283,8 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_formComponentShown
 
     private void btnRelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelActionPerformed
-
+        GUIManager gui = GUIManager.getMyInstance();
+        gui.abrirRelatorioVendas();
     }//GEN-LAST:event_btnRelActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
