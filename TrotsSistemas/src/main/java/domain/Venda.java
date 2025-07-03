@@ -101,6 +101,9 @@ public class Venda {
      public String getDataVenda() {
         return data.toString();
     }
+     public String getBairroCliente() {
+        return getCliente().getBairro();
+    }
 
     
 }

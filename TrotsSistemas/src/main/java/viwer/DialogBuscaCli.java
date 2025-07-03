@@ -258,6 +258,7 @@ public class DialogBuscaCli extends javax.swing.JDialog {
             List<Cliente> lista = gui.pesquisarCliente(pesq, tipo);
 
             if (lista.size() > 0) {
+                gui.log("Sistema Encontrou dados do Cliente!");
                 tblModelCliente.setLista(lista);
             } else {
                 LDASwingUtils.message(this, "Nenhum Cliente Encontrado", title);

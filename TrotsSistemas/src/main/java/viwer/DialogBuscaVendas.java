@@ -152,7 +152,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
         lblWait.setMinimumSize(new java.awt.Dimension(30, 30));
         lblWait.setPreferredSize(new java.awt.Dimension(30, 30));
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID Venda", "Cliente", "Bairro", "Mês" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID Venda", "Nome do Cliente", "Bairro" }));
 
         btnRel.setBackground(new java.awt.Color(255, 255, 255));
         btnRel.setForeground(new java.awt.Color(0, 0, 0));
@@ -296,6 +296,7 @@ public class DialogBuscaVendas extends javax.swing.JDialog {
             List<Venda> lista = gui.pesquisarVenda(pesq, tipo);
 
             if (lista.size() > 0) {
+                gui.log("Sistema Encontrou dados da Venda!");
                 tblModelVendas.setLista(lista);
             } else {
                 LDASwingUtils.message(this, "Nenhuma Venda Encontrada", title);
